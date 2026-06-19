@@ -74,8 +74,7 @@ export default function ContactPage() {
             className="max-w-2xl text-lg leading-8 text-slate-400"
           >
             Share what you want to build, who it is for, and what outcome you
-            need. The current form opens a real email draft; the next production
-            pass can wire this into Resend, Supabase, or a CRM.
+            need. A focused project note is enough to start the conversation.
           </motion.p>
         </section>
 
@@ -193,7 +192,7 @@ export default function ContactPage() {
 
             {status === "drafted" && (
               <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/8 p-4 text-sm text-cyan-100">
-                Your email client should be opening with the project details. No fake success state here - send the email from your client to complete the inquiry.
+                Your email client should be opening with the project details. Send the draft to complete the inquiry.
               </div>
             )}
 

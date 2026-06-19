@@ -178,7 +178,7 @@ a {
 
 /* Section spacing */
 .section {
-  padding: 5.5rem 0;
+  padding: 4.75rem 0;
   position: relative;
   z-index: 10;
 }
@@ -194,12 +194,12 @@ a {
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 1.25rem;
+  border-radius: 1rem;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.052), rgba(255, 255, 255, 0.018)),
     rgba(2, 6, 23, 0.72);
-  padding: 1.5rem;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 24px 80px rgba(0, 0, 0, 0.22);
+  padding: 1.35rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.045), 0 18px 60px rgba(0, 0, 0, 0.18);
   backdrop-filter: blur(22px);
   -webkit-backdrop-filter: blur(22px);
   transition: border-color 220ms ease, transform 220ms ease, background 220ms ease;
@@ -216,8 +216,7 @@ a {
 }
 
 .premium-card:hover {
-  border-color: rgba(103, 232, 249, 0.22);
-  transform: translateY(-3px);
+  border-color: rgba(103, 232, 249, 0.18);
 }
 
 .premium-card:hover::before {
@@ -228,7 +227,7 @@ a {
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(103, 232, 249, 0.14);
-  border-radius: 1.75rem;
+  border-radius: 1.25rem;
   background:
     linear-gradient(145deg, rgba(15, 23, 42, 0.9), rgba(2, 6, 23, 0.72)),
     rgba(2, 6, 23, 0.82);
@@ -284,9 +283,9 @@ a {
 }
 
 .metric-tile {
-  min-height: 6.25rem;
+  min-height: 5.75rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 1rem;
+  border-radius: 0.9rem;
   background: rgba(255, 255, 255, 0.03);
   padding: 1rem;
 }
@@ -320,7 +319,7 @@ a {
 }
 
 .section-heading {
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
   max-width: 46rem;
 }
 
@@ -338,11 +337,11 @@ a {
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(103, 232, 249, 0.14);
-  border-radius: 1.75rem;
+  border-radius: 1.2rem;
   background:
     linear-gradient(135deg, rgba(8, 47, 73, 0.42), rgba(15, 23, 42, 0.64)),
     rgba(2, 6, 23, 0.76);
-  padding: clamp(2rem, 5vw, 4rem);
+  padding: clamp(2rem, 4vw, 3.25rem);
 }
 
 .form-field {

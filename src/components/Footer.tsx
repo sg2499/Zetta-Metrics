@@ -8,12 +8,12 @@ import { brand } from "@/lib/content";
 const footerLinks = {
   Company: [
     { label: "Home", href: "/" },
-    { label: "About", href: "/about" },
     { label: "Services", href: "/studio" },
+    { label: "Work", href: "/projects" },
+    { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
   ],
-  Proof: [
-    { label: "Projects", href: "/projects" },
+  Resources: [
     { label: "MathPath", href: "/studio#mathpath" },
     { label: "AI Concierge", href: "/chat" },
     { label: "Insights", href: "/blog" },
