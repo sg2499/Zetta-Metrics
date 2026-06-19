@@ -1,235 +1,135 @@
 "use client";
 
-import { useState, useRef } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
-import type { Variants } from "framer-motion";
-import { ArrowRight, ExternalLink } from "lucide-react";
-import { GithubIcon } from "@/components/BrandIcons";
+import { useState } from "react";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
+import type { Variants } from "framer-motion";
+import { ArrowRight, ExternalLink, Search } from "lucide-react";
+import { projects } from "@/lib/content";
+import { GithubIcon } from "@/components/BrandIcons";
+
+const filters = ["All", "AI product", "EdTech", "Data science", "Recommendation"];
+
+const categoryMap: Record<string, string[]> = {
+  "AI product": ["ShaileshGPT", "Deep Research Agent", "OpenAI QA ChatBot"],
+  EdTech: ["MathPath Platform", "Campus Placement Predictor"],
+  "Data science": ["Stock Price Predictor", "Campus Placement Predictor"],
+  Recommendation: ["Movie Recommender System", "Udemy Course Recommender"],
+};
+
+const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
 const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i: number = 0) => ({
-    opacity: 1, y: 0,
-    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as [number,number,number,number], delay: i * 0.07 },
+  hidden: { opacity: 0, y: 26 },
+  visible: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, delay: i * 0.05, ease },
   }),
 };
 
-const FILTERS = ["All", "AI/LLM", "Deep Learning", "NLP", "Recommendation", "Analytics", "Classification"];
-
-const PROJECTS = [
-  {
-    title: "ShaileshGPT",
-    description: "AI-powered personal portfolio assistant. Answers recruiter and client questions, performs JD-fit analysis, and acts as my 24/7 representative.",
-    tags: ["OpenAI", "LangChain", "React", "FastAPI"],
-    category: "AI/LLM",
-    icon: "🤖",
-    github: "https://github.com/sg2499",
-    demo: "/chat",
-    gradient: "from-blue-600/15 to-cyan-500/5",
-    border: "border-blue-500/15",
-    featured: true,
-  },
-  {
-    title: "Deep Research Agent",
-    description: "Multi-agent research system with orchestrator architecture. Clarifies queries, plans research, searches the web, synthesizes evidence, and delivers professional long-form reports.",
-    tags: ["OpenAI Agents SDK", "Gradio", "Pydantic", "SendGrid"],
-    category: "AI/LLM",
-    icon: "🔎",
-    github: "https://github.com/sg2499/Deep-Research-Agent",
-    demo: null,
-    gradient: "from-violet-600/15 to-indigo-500/5",
-    border: "border-violet-500/15",
-    featured: true,
-  },
-  {
-    title: "OpenAI QA ChatBot",
-    description: "Streamlit chatbot powered by OpenAI and LangChain with streaming responses, chat history, and customizable system prompts.",
-    tags: ["OpenAI", "LangChain", "Streamlit", "Python"],
-    category: "AI/LLM",
-    icon: "💬",
-    github: "https://github.com/sg2499/OpenAI-Enhanced-QA-ChatBot",
-    demo: null,
-    gradient: "from-emerald-600/15 to-teal-500/5",
-    border: "border-emerald-500/15",
-    featured: false,
-  },
-  {
-    title: "Stock Price Predictor",
-    description: "LSTM-based deep learning model that forecasts stock prices from Yahoo Finance data. Features historical trend visualization, moving averages, and next-value estimation.",
-    tags: ["LSTM", "TensorFlow", "Keras", "Streamlit"],
-    category: "Deep Learning",
-    icon: "📈",
-    github: "https://github.com/sg2499/Stock-Price-Predictor",
-    demo: null,
-    gradient: "from-orange-600/15 to-yellow-500/5",
-    border: "border-orange-500/15",
-    featured: false,
-  },
-  {
-    title: "Next Word Prediction (Hamlet)",
-    description: "LSTM language model trained on 12,000+ words from Shakespeare's Hamlet. Predicts next word in a sequence with contextual accuracy through an interactive Streamlit interface.",
-    tags: ["LSTM", "NLP", "Keras", "Streamlit"],
-    category: "NLP",
-    icon: "📜",
-    github: "https://github.com/sg2499",
-    demo: null,
-    gradient: "from-rose-600/15 to-pink-500/5",
-    border: "border-rose-500/15",
-    featured: false,
-  },
-  {
-    title: "Movie Recommender System",
-    description: "Content-based recommendation engine using TF-IDF vectorization and cosine similarity on movie metadata (genres, cast, keywords). Suggests top 5 similar movies with posters.",
-    tags: ["TF-IDF", "Cosine Similarity", "Streamlit", "Python"],
-    category: "Recommendation",
-    icon: "🎬",
-    github: "https://github.com/sg2499/Movie-Recommender-System",
-    demo: null,
-    gradient: "from-cyan-600/15 to-blue-500/5",
-    border: "border-cyan-500/15",
-    featured: false,
-  },
-  {
-    title: "Udemy Course Recommender",
-    description: "NLP-powered course recommendation system that matches user queries to Udemy course descriptions using TF-IDF and cosine similarity. Includes an EDA dashboard.",
-    tags: ["TF-IDF", "NLP", "Streamlit", "Pandas"],
-    category: "Recommendation",
-    icon: "🎓",
-    github: "https://github.com/sg2499/Udemy-Course-Recommendation-System",
-    demo: null,
-    gradient: "from-indigo-600/15 to-violet-500/5",
-    border: "border-indigo-500/15",
-    featured: false,
-  },
-  {
-    title: "IPL Win Probability Predictor",
-    description: "Ball-by-ball IPL data powers a logistic regression model that predicts real-time win probability for the chasing team in a T20 match.",
-    tags: ["Logistic Regression", "Sports Analytics", "Streamlit"],
-    category: "Analytics",
-    icon: "🏏",
-    github: "https://github.com/sg2499/IPL-Win-Probability-Predictor",
-    demo: null,
-    gradient: "from-yellow-600/15 to-orange-500/5",
-    border: "border-yellow-500/15",
-    featured: false,
-  },
-  {
-    title: "Campus Placement Predictor",
-    description: "Binary classification model predicting student placement probability from academic scores, work experience, specialization, and gender.",
-    tags: ["Logistic Regression", "Decision Trees", "Classification"],
-    category: "Classification",
-    icon: "🏛️",
-    github: "https://github.com/sg2499",
-    demo: null,
-    gradient: "from-teal-600/15 to-emerald-500/5",
-    border: "border-teal-500/15",
-    featured: false,
-  },
-];
-
 export default function ProjectsPage() {
-  const [activeFilter, setActiveFilter] = useState("All");
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true });
-
-  const filtered = activeFilter === "All"
-    ? PROJECTS
-    : PROJECTS.filter((p) => p.category === activeFilter);
+  const [active, setActive] = useState("All");
+  const filtered =
+    active === "All"
+      ? projects
+      : projects.filter((project) => categoryMap[active]?.includes(project.title));
 
   return (
-    <div className="pt-28 pb-20">
+    <div className="px-6 pb-20 pt-32">
       <div className="container-custom">
-        {/* Header */}
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center mb-16"
-        >
-          <p className="text-xs font-semibold uppercase tracking-widest text-blue-400 mb-4">Portfolio</p>
-          <h1 className="font-display font-bold leading-tight mb-4" style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)" }}>
-            Work That <span className="gradient-text">Speaks.</span>
+        <div className="mx-auto mb-14 max-w-3xl text-center">
+          <p className="eyebrow">Proof of work</p>
+          <h1 className="font-display text-5xl font-bold leading-tight text-white md:text-6xl">
+            A public trail of systems built, tested, and explained.
           </h1>
-          <p className="text-slate-400 text-lg max-w-xl mx-auto">
-            Every project is a problem solved, a system engineered, and a product shipped.
+          <p className="mt-5 text-lg leading-8 text-slate-400">
+            This page turns repositories into business proof. Each card connects
+            a problem area, a stack, and a reason it matters for client work.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Filters */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-2 mb-12"
-        >
-          {FILTERS.map((f) => (
-            <button
-              key={f}
-              onClick={() => setActiveFilter(f)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                activeFilter === f
-                  ? "bg-blue-600 text-white shadow-lg shadow-blue-500/25"
-                  : "glass text-slate-400 hover:text-white border border-white/5 hover:border-white/10"
-              }`}
-            >
-              {f}
-            </button>
-          ))}
-        </motion.div>
+        <div className="mb-10 flex flex-col gap-4 rounded-3xl border border-white/8 bg-white/[0.025] p-4 md:flex-row md:items-center md:justify-between">
+          <div className="flex items-center gap-3 text-sm text-slate-400">
+            <Search size={16} className="text-cyan-300" />
+            Filter by the type of proof a client would care about.
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {filters.map((filter) => (
+              <button
+                key={filter}
+                onClick={() => setActive(filter)}
+                className={`rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
+                  active === filter
+                    ? "bg-cyan-400 text-slate-950"
+                    : "border border-white/8 bg-white/[0.03] text-slate-400 hover:text-white"
+                }`}
+              >
+                {filter}
+              </button>
+            ))}
+          </div>
+        </div>
 
-        {/* Grid */}
         <AnimatePresence mode="wait">
           <motion.div
-            key={activeFilter}
+            key={active}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid gap-5 md:grid-cols-2 xl:grid-cols-3"
           >
-            {filtered.map((project, i) => (
-              <motion.div
-                key={project.title}
-                custom={i}
-                variants={fadeUp}
-                initial="hidden"
-                animate="visible"
-                whileHover={{ y: -6, transition: { duration: 0.25 } }}
-                className={`glass rounded-2xl p-6 border ${project.border} bg-gradient-to-br ${project.gradient} group flex flex-col h-full`}
-              >
-                {project.featured && (
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-500/15 border border-blue-500/25 text-blue-300 text-xs font-medium mb-3 self-start">
-                    ⭐ Featured
-                  </div>
-                )}
-                <div className="text-3xl mb-3">{project.icon}</div>
-                <h3 className="font-display font-bold text-lg text-white mb-2">{project.title}</h3>
-                <p className="text-slate-400 text-sm leading-relaxed flex-1">{project.description}</p>
-                <div className="flex flex-wrap gap-1.5 mt-4">
-                  {project.tags.map((tag) => (
-                    <span key={tag} className="px-2.5 py-1 rounded-full text-xs glass text-slate-400">
-                      {tag}
+            {filtered.map((project, index) => {
+              const Icon = project.icon;
+              return (
+                <motion.article
+                  key={project.title}
+                  initial="hidden"
+                  animate="visible"
+                  custom={index}
+                  variants={fadeUp}
+                  className="premium-card flex min-h-[390px] flex-col"
+                >
+                  <div className="mb-5 flex items-start justify-between gap-4">
+                    <div className="rounded-2xl border border-cyan-400/15 bg-cyan-400/8 p-3 text-cyan-200">
+                      <Icon size={22} />
+                    </div>
+                    <span className="rounded-full border border-white/10 px-3 py-1 text-xs text-slate-400">
+                      {project.eyebrow}
                     </span>
-                  ))}
-                </div>
-                <div className="flex items-center gap-3 mt-5">
-                  {project.github && (
-                    <a href={project.github} target="_blank" rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 text-sm text-slate-400 hover:text-white transition-colors">
-                      <GithubIcon size={13} /> Code
+                  </div>
+                  <h2 className="font-display text-2xl font-semibold text-white">{project.title}</h2>
+                  <p className="mt-3 flex-1 text-sm leading-6 text-slate-400">{project.summary}</p>
+                  <div className="mt-5 rounded-2xl border border-white/8 bg-black/10 p-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                      Why it matters
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-slate-300">{project.proof}</p>
+                  </div>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {project.stack.map((tag) => (
+                      <span key={tag} className="tech-pill">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="mt-6 flex items-center gap-4">
+                    {project.href.startsWith("/") ? (
+                      <Link href={project.href} className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-200 hover:text-white">
+                        Details <ArrowRight size={14} />
+                      </Link>
+                    ) : (
+                      <a href={project.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-200 hover:text-white">
+                        Details <ExternalLink size={14} />
+                      </a>
+                    )}
+                    <a href={project.repo} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-slate-200">
+                      <GithubIcon size={14} /> Repo
                     </a>
-                  )}
-                  {project.demo && (
-                    <Link href={project.demo}
-                      className="flex items-center gap-1.5 text-sm text-blue-400 hover:text-blue-300 transition-colors">
-                      <ExternalLink size={13} /> Live Demo
-                    </Link>
-                  )}
-                </div>
-              </motion.div>
-            ))}
+                  </div>
+                </motion.article>
+              );
+            })}
           </motion.div>
         </AnimatePresence>
       </div>

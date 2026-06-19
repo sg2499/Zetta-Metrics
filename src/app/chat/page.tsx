@@ -1,177 +1,196 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Send, Sparkles, User, Bot, RefreshCw } from "lucide-react";
-
-const SUGGESTED = [
-  "What projects has Shailesh built?",
-  "What is his tech stack?",
-  "Is he available for freelance work?",
-  "Tell me about MathPath",
-  "What is his educational background?",
-  "What kind of clients does he work with?",
-];
-
-const GREETING = {
-  role: "assistant" as const,
-  content: "Hi! I'm ShaileshGPT — an AI assistant that knows everything about Shailesh Gupta. You can ask me about his projects, skills, experience, availability for freelance work, or anything else. What would you like to know? 🚀",
-};
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { ArrowRight, Bot, Info, RefreshCw, Send, User } from "lucide-react";
+import { clientFitQuestions } from "@/lib/content";
+import { GithubIcon } from "@/components/BrandIcons";
 
 type Message = { role: "user" | "assistant"; content: string };
 
-// Static responses for demo (replace with real API call)
-const getResponse = async (message: string): Promise<string> => {
-  await new Promise((r) => setTimeout(r, 1000 + Math.random() * 500));
-
-  const lower = message.toLowerCase();
-  if (lower.includes("project") || lower.includes("built") || lower.includes("work")) {
-    return "Shailesh has built some impressive projects! His key ones include:\n\n🤖 **ShaileshGPT** — This very assistant you're talking to! An AI-powered portfolio representative.\n\n🔎 **Deep Research Agent** — A multi-agent system that researches topics and generates long-form reports using the OpenAI Agents SDK.\n\n📐 **MathPath** — An adaptive EdTech platform for mathematics (currently in active development).\n\n📈 **Stock Price Predictor** — LSTM-based deep learning model for time-series forecasting.\n\nYou can see all his projects at /projects. Want to know more about any specific one?";
-  }
-  if (lower.includes("tech") || lower.includes("stack") || lower.includes("skill") || lower.includes("language")) {
-    return "Shailesh's tech stack spans the full AI/ML pipeline:\n\n**Core:** Python, TypeScript, SQL\n\n**ML/DL:** TensorFlow, Keras, PyTorch, Scikit-Learn, LSTM, NLP\n\n**Big Data & Cloud:** PySpark, Azure, ETL pipelines\n\n**Generative AI:** OpenAI API, LangChain, HuggingFace, RAG, Multi-Agent Systems\n\n**Web & Deployment:** Next.js, FastAPI, Streamlit, Gradio, Vercel\n\nHe's comfortable working across the entire stack — from data pipelines to production deployment.";
-  }
-  if (lower.includes("freelance") || lower.includes("hire") || lower.includes("available") || lower.includes("client")) {
-    return "Yes! Shailesh is open to freelance projects through ZettaMetrics. He works on:\n\n• AI & LLM integration projects\n• Full-stack AI web applications\n• EdTech product development\n• Data science consulting\n\nHis typical response time is within 24 hours. Head to the /contact page to start a conversation, or visit /studio to learn more about his services.";
-  }
-  if (lower.includes("mathpath") || lower.includes("edtech") || lower.includes("education")) {
-    return "MathPath is Shailesh's flagship EdTech product currently in active development. 📐\n\nIt's an AI-powered platform that reimagines how students learn mathematics through:\n\n✅ Adaptive difficulty engine\n✅ AI-powered tutoring\n✅ Interactive problem sets\n✅ Progress analytics dashboard\n✅ Gamified learning paths\n\nThe tech stack includes Next.js, TypeScript, and custom AI tutoring APIs. It's coming soon — follow along at /studio!";
-  }
-  if (lower.includes("education") || lower.includes("iit") || lower.includes("degree") || lower.includes("study")) {
-    return "Shailesh is currently pursuing his **Master's in Data Science & AI (MDSAI) from IIT Roorkee** — one of India's most prestigious technical institutions.\n\nBefore that, he worked as a Data Scientist at **Teleperformance**, where he built ML models for attrition prediction and credit risk, and engineered PySpark data pipelines on Azure.";
-  }
-  return "That's a great question! Shailesh is a Data Scientist and AI Engineer with 2+ years of experience, currently pursuing MDSAI at IIT Roorkee. He builds AI products, consults for clients through ZettaMetrics, and is passionate about EdTech.\n\nFeel free to ask me anything specific — about his projects, skills, availability, or any particular area of his work!";
+const greeting: Message = {
+  role: "assistant",
+  content:
+    "I am the ZettaMetrics concierge preview. I can route common questions about services, MathPath, ShaileshGPT, and fit. The production version should connect to the real ShaileshGPT RAG backend.",
 };
 
+function replyTo(input: string) {
+  const text = input.toLowerCase();
+  if (text.includes("mathpath") || text.includes("edtech")) {
+    return "MathPath is the clearest client/product proof: a full-stack EdTech platform with admin, teacher, and student flows, DPS assignments, server-side answer validation, timed attempts, and result review. It should become a full case study on ZettaMetrics.";
+  }
+  if (text.includes("shaileshgpt") || text.includes("backend") || text.includes("rag")) {
+    return "ShaileshGPT is the strongest AI product proof. The repo documents a full-stack RAG assistant with JD-fit analysis, lead capture, Supabase analytics, SendGrid/Pushover notifications, admin dashboard, and PDF reports. ZettaMetrics should reuse that architecture for a business-facing concierge.";
+  }
+  if (text.includes("4 week") || text.includes("mvp") || text.includes("build")) {
+    return "A realistic 4-week engagement should focus on one narrow product path: discovery, clickable UX, core backend workflow, one AI/data feature, deployment, analytics, and a short handoff document. Scope discipline is what makes the build credible.";
+  }
+  if (text.includes("chatbot") || text.includes("assistant") || text.includes("business")) {
+    return "For a business chatbot, ZettaMetrics should build grounded retrieval, source-aware answers, lead capture, analytics, rate limiting, and a clean admin view. A chatbot is valuable only when it plugs into a business workflow.";
+  }
+  return "ZettaMetrics is best positioned as a founder-led AI product studio. The strongest offers are AI assistants/RAG systems, AI MVP builds, EdTech platforms, and data science/ML consulting. For a serious inquiry, the contact page is the next step.";
+}
+
 export default function ChatPage() {
-  const [messages, setMessages] = useState<Message[]>([GREETING]);
+  const [messages, setMessages] = useState<Message[]>([greeting]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  }, [messages, loading]);
 
   const send = async (text: string) => {
     if (!text.trim() || loading) return;
     setInput("");
-    setMessages((prev) => [...prev, { role: "user", content: text }]);
+    setMessages((current) => [...current, { role: "user", content: text }]);
     setLoading(true);
-    try {
-      const reply = await getResponse(text);
-      setMessages((prev) => [...prev, { role: "assistant", content: reply }]);
-    } finally {
-      setLoading(false);
-    }
+    await new Promise((resolve) => setTimeout(resolve, 450));
+    setMessages((current) => [...current, { role: "assistant", content: replyTo(text) }]);
+    setLoading(false);
   };
 
-  const reset = () => setMessages([GREETING]);
-
   return (
-    <div className="pt-24 pb-10 h-screen flex flex-col">
-      <div className="container-custom flex flex-col flex-1 max-w-4xl">
-        {/* Header */}
-        <div className="flex items-center justify-between mb-6 shrink-0">
+    <div className="px-6 pb-10 pt-28">
+      <div className="container-custom max-w-5xl">
+        <section className="mb-6 grid gap-5 lg:grid-cols-[1fr_0.72fr]">
           <div>
-            <div className="flex items-center gap-2 mb-1">
-              <Sparkles size={16} className="text-blue-400" />
-              <h1 className="font-display font-bold text-2xl">ShaileshGPT</h1>
+            <p className="eyebrow">AI concierge</p>
+            <h1 className="font-display text-4xl font-bold text-white md:text-5xl">
+              Preview the assistant layer ZettaMetrics should ship.
+            </h1>
+          </div>
+          <div className="premium-card p-5">
+            <div className="flex gap-3">
+              <Info size={18} className="mt-0.5 shrink-0 text-cyan-300" />
+              <p className="text-sm leading-6 text-slate-400">
+                This page is intentionally marked as a preview. The production
+                version should connect to the real ShaileshGPT backend instead
+                of relying on canned routing.
+              </p>
             </div>
-            <p className="text-slate-400 text-sm">Ask me anything about Shailesh Gupta</p>
           </div>
-          <button
-            onClick={reset}
-            className="flex items-center gap-1.5 px-3 py-2 glass rounded-xl text-xs text-slate-400 hover:text-white transition-colors border border-white/5"
-          >
-            <RefreshCw size={12} />
-            Reset
-          </button>
-        </div>
+        </section>
 
-        {/* Chat window */}
-        <div className="flex-1 glass rounded-2xl border border-white/5 p-6 overflow-y-auto mb-4 space-y-4">
-          <AnimatePresence initial={false}>
-            {messages.map((msg, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                className={`flex gap-3 ${msg.role === "user" ? "flex-row-reverse" : ""}`}
-              >
-                <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 ${
-                  msg.role === "assistant" ? "bg-blue-600/20 border border-blue-500/30" : "bg-slate-700/50 border border-white/10"
-                }`}>
-                  {msg.role === "assistant" ? <Bot size={14} className="text-blue-400" /> : <User size={14} className="text-slate-300" />}
+        <div className="grid gap-5 lg:grid-cols-[1fr_320px]">
+          <div className="premium-card flex h-[620px] flex-col p-0">
+            <div className="flex items-center justify-between border-b border-white/8 p-5">
+              <div className="flex items-center gap-3">
+                <div className="rounded-2xl border border-cyan-400/15 bg-cyan-400/8 p-3 text-cyan-200">
+                  <Bot size={19} />
                 </div>
-                <div className={`max-w-[80%] rounded-2xl px-5 py-3.5 text-sm leading-relaxed whitespace-pre-line ${
-                  msg.role === "assistant"
-                    ? "glass border border-white/5 text-slate-200"
-                    : "bg-blue-600 text-white"
-                }`}>
-                  {msg.content}
+                <div>
+                  <h2 className="font-display text-lg font-semibold text-white">ZettaMetrics Concierge</h2>
+                  <p className="text-xs text-slate-500">Preview mode</p>
                 </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-
-          {loading && (
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="flex gap-3"
-            >
-              <div className="w-8 h-8 rounded-xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center">
-                <Bot size={14} className="text-blue-400" />
               </div>
-              <div className="glass border border-white/5 rounded-2xl px-5 py-4 flex items-center gap-1.5">
-                {[0, 1, 2].map((i) => (
-                  <motion.div
-                    key={i}
-                    animate={{ scale: [1, 1.3, 1], opacity: [0.4, 1, 0.4] }}
-                    transition={{ duration: 1, repeat: Infinity, delay: i * 0.2 }}
-                    className="w-1.5 h-1.5 rounded-full bg-blue-400"
-                  />
-                ))}
-              </div>
-            </motion.div>
-          )}
-          <div ref={bottomRef} />
-        </div>
-
-        {/* Suggestions */}
-        {messages.length <= 1 && (
-          <div className="flex flex-wrap gap-2 mb-4 shrink-0">
-            {SUGGESTED.map((s) => (
               <button
-                key={s}
-                onClick={() => send(s)}
-                className="px-3 py-2 glass rounded-xl text-xs text-slate-400 hover:text-white border border-white/5 hover:border-blue-500/25 transition-all"
+                onClick={() => setMessages([greeting])}
+                className="inline-flex items-center gap-2 rounded-xl border border-white/8 px-3 py-2 text-xs text-slate-400 hover:text-white"
               >
-                {s}
+                <RefreshCw size={12} /> Reset
               </button>
-            ))}
-          </div>
-        )}
+            </div>
 
-        {/* Input */}
-        <div className="shrink-0 flex gap-3">
-          <input
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && send(input)}
-            placeholder="Ask me anything about Shailesh..."
-            className="flex-1 glass rounded-xl px-5 py-3.5 text-sm text-white placeholder-slate-500 border border-white/5 focus:border-blue-500/30 focus:outline-none transition-colors bg-transparent"
-          />
-          <button
-            onClick={() => send(input)}
-            disabled={loading || !input.trim()}
-            className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center disabled:opacity-40 disabled:cursor-not-allowed hover:opacity-90 transition-opacity"
-          >
-            <Send size={16} className="text-white" />
-          </button>
+            <div className="flex-1 space-y-4 overflow-y-auto p-5">
+              {messages.map((message, index) => (
+                <motion.div
+                  key={`${message.role}-${index}`}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className={`flex gap-3 ${message.role === "user" ? "flex-row-reverse" : ""}`}
+                >
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] text-slate-300">
+                    {message.role === "assistant" ? <Bot size={15} /> : <User size={15} />}
+                  </div>
+                  <div
+                    className={`max-w-[82%] rounded-2xl px-4 py-3 text-sm leading-7 ${
+                      message.role === "assistant"
+                        ? "border border-white/8 bg-white/[0.035] text-slate-300"
+                        : "bg-cyan-400 text-slate-950"
+                    }`}
+                  >
+                    {message.content}
+                  </div>
+                </motion.div>
+              ))}
+              {loading && (
+                <div className="flex gap-3">
+                  <div className="h-9 w-9 rounded-2xl border border-white/10 bg-white/[0.04]" />
+                  <div className="rounded-2xl border border-white/8 bg-white/[0.035] px-4 py-3 text-sm text-slate-400">
+                    Thinking through the route...
+                  </div>
+                </div>
+              )}
+              <div ref={bottomRef} />
+            </div>
+
+            <div className="border-t border-white/8 p-4">
+              {messages.length === 1 && (
+                <div className="mb-3 flex flex-wrap gap-2">
+                  {clientFitQuestions.map((question) => (
+                    <button
+                      key={question}
+                      onClick={() => send(question)}
+                      className="rounded-full border border-white/8 bg-white/[0.03] px-3 py-1.5 text-xs text-slate-400 hover:text-white"
+                    >
+                      {question}
+                    </button>
+                  ))}
+                </div>
+              )}
+              <div className="flex gap-3">
+                <input
+                  value={input}
+                  onChange={(event) => setInput(event.target.value)}
+                  onKeyDown={(event) => event.key === "Enter" && send(input)}
+                  placeholder="Ask about services, MathPath, ShaileshGPT, or fit..."
+                  className="form-field"
+                />
+                <button
+                  onClick={() => send(input)}
+                  disabled={!input.trim() || loading}
+                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-cyan-400 text-slate-950 disabled:cursor-not-allowed disabled:opacity-40"
+                >
+                  <Send size={16} />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <aside className="space-y-5">
+            <div className="premium-card">
+              <p className="eyebrow">Production target</p>
+              <h2 className="font-display text-2xl font-semibold text-white">
+                Replace this with the real RAG product.
+              </h2>
+              <p className="mt-3 text-sm leading-7 text-slate-400">
+                ShaileshGPT already documents the backend patterns needed for
+                grounded answers, visitor analytics, leads, and JD-style fit reports.
+              </p>
+              <a
+                href="https://github.com/sg2499/ShaileshGPT"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-cyan-200 hover:text-white"
+              >
+                <GithubIcon size={15} /> View ShaileshGPT repo
+              </a>
+            </div>
+
+            <div className="premium-card">
+              <p className="eyebrow">Business CTA</p>
+              <p className="text-sm leading-7 text-slate-400">
+                For now, serious project conversations should route through the
+                contact page so no lead is lost.
+              </p>
+              <Link href="/contact" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-cyan-200 hover:text-white">
+                Start a project inquiry <ArrowRight size={15} />
+              </Link>
+            </div>
+          </aside>
         </div>
       </div>
     </div>

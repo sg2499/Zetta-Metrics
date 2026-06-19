@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://zetta-metrics.com/sitemap.xml",
+    sitemap: "https://www.zetta-metrics.com/sitemap.xml",
   };
 }

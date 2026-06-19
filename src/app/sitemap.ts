@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://zetta-metrics.com";
+  const baseUrl = "https://www.zetta-metrics.com";
   const routes = ["/", "/about", "/projects", "/studio", "/chat", "/blog", "/contact"];
 
   return routes.map((route) => ({

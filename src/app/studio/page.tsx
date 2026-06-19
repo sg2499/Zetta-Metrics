@@ -1,257 +1,202 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import type { Variants } from "framer-motion";
-import { Brain, Code2, BookOpen, BarChart3, ArrowRight, CheckCircle, Sparkles } from "lucide-react";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import type { Variants } from "framer-motion";
+import {
+  ArrowRight,
+  CheckCircle2,
+  ClipboardCheck,
+  DatabaseZap,
+  LockKeyhole,
+  PanelsTopLeft,
+  Timer,
+  UsersRound,
+} from "lucide-react";
+import { serviceLines } from "@/lib/content";
+
+const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
 const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i: number = 0) => ({
-    opacity: 1, y: 0,
-    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as [number,number,number,number], delay: i * 0.1 },
+  hidden: { opacity: 0, y: 26 },
+  visible: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, delay: i * 0.07, ease },
   }),
 };
 
-function Section({ children, className = "", id }: { children: React.ReactNode; className?: string; id?: string }) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
-  return (
-    <motion.div id={id} ref={ref} initial="hidden" animate={inView ? "visible" : "hidden"} variants={fadeUp} className={className}>
-      {children}
-    </motion.div>
-  );
-}
-
-const SERVICES = [
-  {
-    icon: Brain,
-    title: "AI & LLM Integration",
-    color: "text-blue-400",
-    bg: "bg-blue-500/10",
-    border: "border-blue-500/20",
-    desc: "I build custom AI assistants, RAG pipelines, multi-agent systems, and LLM-powered applications that integrate seamlessly into your existing products.",
-    deliverables: [
-      "Custom GPT-powered chatbots",
-      "RAG pipelines with vector databases",
-      "Multi-agent orchestration systems",
-      "OpenAI / HuggingFace integrations",
-      "Prompt engineering & fine-tuning",
-    ],
-  },
-  {
-    icon: Code2,
-    title: "Full-Stack AI Web Apps",
-    color: "text-cyan-400",
-    bg: "bg-cyan-500/10",
-    border: "border-cyan-500/20",
-    desc: "End-to-end development of AI-powered web applications — from database architecture to beautiful frontends to cloud deployment.",
-    deliverables: [
-      "Next.js + FastAPI full-stack apps",
-      "Streamlit & Gradio ML interfaces",
-      "Cloud deployment on Vercel / Azure",
-      "REST API design & development",
-      "Authentication & database integration",
-    ],
-  },
-  {
-    icon: BookOpen,
-    title: "EdTech Product Development",
-    color: "text-violet-400",
-    bg: "bg-violet-500/10",
-    border: "border-violet-500/20",
-    desc: "I design and build intelligent learning platforms that adapt to individual students. Think beyond static content — think interactive, AI-driven education.",
-    deliverables: [
-      "Adaptive learning algorithms",
-      "Interactive math & STEM platforms",
-      "AI tutoring integrations",
-      "Progress tracking dashboards",
-      "Gamification & engagement systems",
-    ],
-  },
-  {
-    icon: BarChart3,
-    title: "Data Science Consulting",
-    color: "text-emerald-400",
-    bg: "bg-emerald-500/10",
-    border: "border-emerald-500/20",
-    desc: "From raw data to board-level insights. I build ML models, predictive analytics systems, and data pipelines that drive real business decisions.",
-    deliverables: [
-      "ML model development & training",
-      "Predictive analytics systems",
-      "PySpark & Azure data pipelines",
-      "Model evaluation & monitoring",
-      "Data visualization dashboards",
-    ],
-  },
+const process = [
+  ["01", "Scope", "Clarify the users, business model, data, risk, and first release target."],
+  ["02", "Prototype", "Create a working interface and backend path quickly enough to test."],
+  ["03", "Harden", "Add validation, auth, analytics, rate limits, deployment, and docs."],
+  ["04", "Ship", "Launch with a clear handoff, monitoring path, and next-iteration backlog."],
 ];
 
-const PROCESS_STEPS = [
-  { step: "01", title: "Discovery", desc: "Deep-dive into your problem, goals, and constraints. We define success criteria clearly before writing a single line of code." },
-  { step: "02", title: "Design", desc: "Architecture planning, tech stack selection, wireframes, and system design. You see the plan before execution." },
-  { step: "03", title: "Build", desc: "Rapid, iterative development with continuous updates. You get working demos at every milestone." },
-  { step: "04", title: "Deploy", desc: "Production-grade deployment with monitoring, documentation, and a smooth handoff." },
-  { step: "05", title: "Iterate", desc: "Post-launch support, feedback integration, and continuous improvement. We don't disappear after delivery." },
+const mathPathFeatures = [
+  [UsersRound, "Role-based flows", "Admin, teacher, and student experiences with distinct operational needs."],
+  [ClipboardCheck, "DPS assignment engine", "Lessons, DPS configs, MCQs, assignment creation, and attempt review."],
+  [LockKeyhole, "Server-side validation", "Correct answers stay protected and scoring remains backend-controlled."],
+  [Timer, "Timed attempts", "Attempt timing and auto-submit logic are guarded by backend authority."],
+  [PanelsTopLeft, "Admin preview tools", "Curriculum browsing, MCQ preview, and assignment workflow support."],
+  [DatabaseZap, "Full-stack package", "FastAPI backend, Next.js frontend, schema references, and docs."],
 ];
 
 export default function StudioPage() {
   return (
-    <div className="pt-28 pb-20">
+    <div className="px-6 pb-20 pt-32">
       <div className="container-custom">
+        <section className="mb-20 grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
+          <motion.div initial="hidden" animate="visible">
+            <motion.p variants={fadeUp} className="eyebrow">
+              Studio
+            </motion.p>
+            <motion.h1 variants={fadeUp} custom={1} className="font-display text-5xl font-bold leading-tight text-white md:text-6xl">
+              AI product builds for founders and operators.
+            </motion.h1>
+          </motion.div>
+          <motion.p
+            initial={{ opacity: 0, y: 26 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.16 }}
+            className="max-w-2xl text-lg leading-8 text-slate-400"
+          >
+            ZettaMetrics is built for clients who need a serious technical partner:
+            someone who can understand the problem, design the product, build the
+            stack, and make it usable enough to sell, test, or operate.
+          </motion.p>
+        </section>
 
-        {/* Hero */}
-        <Section className="text-center mb-24">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border border-violet-500/20 text-xs font-medium text-violet-300 mb-8">
-            <Sparkles size={12} className="text-violet-400" />
-            Open for Projects · Response within 24h
+        <section className="section pt-0">
+          <div className="section-heading">
+            <p className="eyebrow">What we sell</p>
+            <h2>Clear service lines with product outcomes.</h2>
+            <p>
+              These offers are intentionally practical. Each one can become a
+              paid discovery, MVP, or production build.
+            </p>
           </div>
-          <h1 className="font-display font-bold leading-tight mb-6" style={{ fontSize: "clamp(2.5rem, 5vw, 4.5rem)" }}>
-            We Build{" "}
-            <span className="gradient-text">Intelligent</span>{" "}
-            Products.
-            <br />
-            <span className="text-slate-500">End to End.</span>
-          </h1>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">
-            ZettaMetrics is the studio behind ShaileshGPT, MathPath, and several other AI-powered products.
-            If you have a problem that data and intelligence can solve — this is where it gets built.
-          </p>
-        </Section>
 
-        {/* MathPath Flagship */}
-        <Section id="mathpath" className="mb-24">
-          <div className="relative rounded-3xl overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-cyan-600/20 via-blue-600/10 to-violet-600/20" />
-            <div className="absolute inset-0 glass" />
-            <div className="absolute inset-px rounded-3xl border border-cyan-500/20" />
-            <div className="relative px-8 md:px-14 py-12 md:py-16">
-              <div className="flex flex-col md:flex-row items-start gap-10">
-                <div className="flex-1">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/15 border border-cyan-500/25 text-cyan-300 text-xs font-medium mb-5">
-                    🚀 Flagship Product · In Development
+          <div className="grid gap-5 md:grid-cols-2">
+            {serviceLines.map((service, index) => {
+              const Icon = service.icon;
+              return (
+                <motion.article
+                  key={service.title}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-80px" }}
+                  variants={fadeUp}
+                  custom={index}
+                  className="premium-card"
+                >
+                  <div className="mb-5 flex items-start justify-between gap-4">
+                    <div className="rounded-2xl border border-cyan-400/15 bg-cyan-400/8 p-3 text-cyan-200">
+                      <Icon size={22} />
+                    </div>
+                    <span className="text-sm text-slate-500">0{index + 1}</span>
                   </div>
-                  <h2 className="font-display font-bold text-4xl md:text-5xl mb-5 text-white">
-                    Math<span className="text-cyan-400">Path</span>
-                  </h2>
-                  <p className="text-slate-300 text-lg leading-relaxed mb-6 max-w-xl">
-                    An AI-powered EdTech platform that reimagines how students learn mathematics.
-                    Adaptive, interactive, and intelligent — MathPath meets every student where they are
-                    and takes them further than they thought possible.
-                  </p>
-                  <div className="grid grid-cols-2 gap-3 mb-8">
-                    {[
-                      "Adaptive difficulty engine",
-                      "AI-powered tutoring",
-                      "Interactive problem sets",
-                      "Progress analytics",
-                      "Gamified learning paths",
-                      "Curriculum alignment",
-                    ].map((feat) => (
-                      <div key={feat} className="flex items-center gap-2 text-sm text-slate-300">
-                        <CheckCircle size={13} className="text-cyan-400 shrink-0" />
-                        {feat}
+                  <h3 className="font-display text-2xl font-semibold text-white">{service.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-slate-400">{service.summary}</p>
+                  <div className="mt-5 grid gap-2 sm:grid-cols-2">
+                    {service.deliverables.map((item) => (
+                      <div key={item} className="flex items-center gap-2 text-sm text-slate-300">
+                        <CheckCircle2 size={15} className="text-cyan-300" />
+                        {item}
                       </div>
                     ))}
                   </div>
-                  <div className="flex items-center gap-2 text-sm text-slate-500 italic">
-                    <span className="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-pulse" />
-                    Currently in active development — coming soon
-                  </div>
-                </div>
-                <div className="md:w-64 glass rounded-2xl p-6 border border-cyan-500/15 shrink-0">
-                  <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-4">Tech Stack</p>
-                  {["Next.js", "TypeScript", "AI Tutoring API", "PostgreSQL", "Vercel", "Tailwind CSS"].map((t) => (
-                    <div key={t} className="flex items-center gap-2 py-2 border-b border-white/5 last:border-0 text-sm text-slate-300">
-                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
-                      {t}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </Section>
-
-        {/* Services */}
-        <Section className="mb-24">
-          <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-3">Services</p>
-          <h2 className="font-display font-bold text-3xl md:text-4xl mb-12">
-            What We <span className="gradient-text">Deliver.</span>
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            {SERVICES.map((service, i) => {
-              const Icon = service.icon;
-              return (
-                <motion.div
-                  key={service.title}
-                  custom={i}
-                  variants={fadeUp}
-                  whileHover={{ y: -4, transition: { duration: 0.25 } }}
-                  className={`glass rounded-2xl p-8 border ${service.border} transition-all duration-300`}
-                >
-                  <div className={`w-11 h-11 rounded-xl ${service.bg} flex items-center justify-center mb-5`}>
-                    <Icon size={20} className={service.color} />
-                  </div>
-                  <h3 className="font-display font-bold text-xl text-white mb-3">{service.title}</h3>
-                  <p className="text-slate-400 text-sm leading-relaxed mb-5">{service.desc}</p>
-                  <ul className="space-y-2">
-                    {service.deliverables.map((d) => (
-                      <li key={d} className="flex items-center gap-2 text-sm text-slate-300">
-                        <CheckCircle size={13} className={service.color} />
-                        {d}
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
+                </motion.article>
               );
             })}
           </div>
-        </Section>
+        </section>
 
-        {/* Process */}
-        <Section className="mb-24">
-          <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-3">How We Work</p>
-          <h2 className="font-display font-bold text-3xl md:text-4xl mb-12">
-            The <span className="gradient-text">Process.</span>
-          </h2>
-          <div className="grid md:grid-cols-5 gap-4">
-            {PROCESS_STEPS.map((step, i) => (
+        <section id="mathpath" className="section">
+          <div className="cta-band">
+            <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+              <div>
+                <p className="eyebrow">Client/product proof</p>
+                <h2 className="font-display text-4xl font-semibold leading-tight text-white md:text-5xl">
+                  MathPath proves the studio can build operational software.
+                </h2>
+                <p className="mt-5 text-base leading-7 text-slate-400">
+                  MathPath is the strongest current proof asset: a full-stack
+                  EdTech platform with admin workflows, learner attempts,
+                  assignment logic, backend validation, and product documentation.
+                </p>
+                <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                  <a
+                    href="https://github.com/sg2499/MathPath-Platform"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-secondary"
+                  >
+                    View repository <ArrowRight size={15} />
+                  </a>
+                  <Link href="/contact" className="btn-primary">
+                    Build something similar <ArrowRight size={15} />
+                  </Link>
+                </div>
+              </div>
+
+              <div className="grid gap-3 sm:grid-cols-2">
+                {mathPathFeatures.map(([Icon, title, copy]) => {
+                  const Component = Icon as typeof UsersRound;
+                  return (
+                    <div key={title as string} className="rounded-2xl border border-white/8 bg-white/[0.035] p-4">
+                      <Component size={18} className="text-cyan-300" />
+                      <h3 className="mt-3 font-display text-base font-semibold text-white">{title as string}</h3>
+                      <p className="mt-2 text-sm leading-6 text-slate-400">{copy as string}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="section">
+          <div className="section-heading">
+            <p className="eyebrow">Process</p>
+            <h2>A calm path from idea to shipped v1.</h2>
+          </div>
+          <div className="grid gap-4 md:grid-cols-4">
+            {process.map(([step, title, copy], index) => (
               <motion.div
-                key={step.step}
-                custom={i}
+                key={step}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-80px" }}
                 variants={fadeUp}
-                className="glass rounded-2xl p-5 border border-white/5 hover:border-blue-500/15 transition-all duration-300 group"
+                custom={index}
+                className="premium-card"
               >
-                <div className="font-mono text-xs text-blue-400/60 mb-3 group-hover:text-blue-400 transition-colors">{step.step}</div>
-                <h3 className="font-display font-bold text-base text-white mb-2">{step.title}</h3>
-                <p className="text-slate-400 text-xs leading-relaxed">{step.desc}</p>
+                <div className="font-mono text-xs text-cyan-300">{step}</div>
+                <h3 className="font-display mt-4 text-xl font-semibold text-white">{title}</h3>
+                <p className="mt-3 text-sm leading-6 text-slate-400">{copy}</p>
               </motion.div>
             ))}
           </div>
-        </Section>
+        </section>
 
-        {/* CTA */}
-        <Section>
-          <div className="text-center glass rounded-3xl p-12 border border-white/5">
-            <h2 className="font-display font-bold text-3xl md:text-4xl mb-4">
-              Ready to Build?
+        <section className="section pb-0">
+          <div className="rounded-3xl border border-white/8 bg-white/[0.025] p-8 text-center md:p-12">
+            <p className="eyebrow">Next step</p>
+            <h2 className="font-display mx-auto max-w-3xl text-3xl font-semibold text-white md:text-5xl">
+              Bring a problem. Leave with a product plan.
             </h2>
-            <p className="text-slate-400 text-lg mb-8 max-w-lg mx-auto">
-              Share your idea. I&apos;ll tell you exactly how to bring it to life — and build it with you.
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-400">
+              Share what you want to build, the audience, the timeline, and the
+              business reason. ZettaMetrics can shape the first useful release.
             </p>
-            <Link href="/contact">
-              <button className="group relative px-8 py-3.5 rounded-xl overflow-hidden font-semibold text-sm inline-flex items-center gap-2">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-500" />
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-500 blur-xl opacity-0 group-hover:opacity-60 transition-opacity" />
-                <span className="relative text-white flex items-center gap-2">
-                  Start a Project
-                  <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
-                </span>
-              </button>
-            </Link>
+            <div className="mt-8 flex justify-center">
+              <Link href="/contact" className="btn-primary">
+                Start a project discussion <ArrowRight size={16} />
+              </Link>
+            </div>
           </div>
-        </Section>
+        </section>
       </div>
     </div>
   );

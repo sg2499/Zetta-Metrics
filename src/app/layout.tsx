@@ -6,13 +6,17 @@ import AmbientBackground from "@/components/AmbientBackground";
 import CosmicCanvas from "@/components/CosmicCanvas";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.zetta-metrics.com"),
   title: {
-    default: "ZettaMetrics | AI Engineer & Data Scientist",
+    default: "ZettaMetrics | AI Product Studio",
     template: "%s | ZettaMetrics",
   },
   description:
-    "ZettaMetrics — the studio of Shailesh Gupta. Data Scientist, AI/LLM Engineer, and EdTech product builder. MDSAI at IIT Roorkee.",
+    "Founder-led AI product studio by Shailesh Gupta, building LLM applications, intelligent data systems, and EdTech platforms for businesses.",
   keywords: [
+    "AI Product Studio",
+    "AI MVP Development",
+    "RAG Assistant",
     "Data Scientist",
     "AI Engineer",
     "LLM",
@@ -29,17 +33,16 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://zetta-metrics.com",
+    url: "https://www.zetta-metrics.com",
     siteName: "ZettaMetrics",
-    title: "ZettaMetrics | AI Engineer & Data Scientist",
+    title: "ZettaMetrics | AI Product Studio",
     description:
-      "Turning data into intelligence. Intelligence into products. AI/LLM Engineering, Data Science, and EdTech from IIT Roorkee.",
+      "Founder-led AI product studio building LLM applications, intelligent data systems, and EdTech platforms for businesses.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "ZettaMetrics | AI Engineer & Data Scientist",
-    description:
-      "Turning data into intelligence. Intelligence into products.",
+    title: "ZettaMetrics | AI Product Studio",
+    description: "AI product studio for LLM apps, data systems, and EdTech platforms.",
   },
   robots: {
     index: true,
@@ -54,21 +57,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
-          rel="stylesheet"
-        />
-      </head>
       <body className="antialiased">
-        {/* Cosmic background layers */}
         <AmbientBackground />
         <CosmicCanvas />
-
-        {/* App */}
-        <div className="relative z-10 flex flex-col min-h-screen">
+        <div className="relative z-10 flex min-h-screen flex-col">
           <Navbar />
           <main className="flex-1">{children}</main>
           <Footer />

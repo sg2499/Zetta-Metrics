@@ -1,185 +1,219 @@
 "use client";
 
-import { useState, useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { useState } from "react";
+import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
-import { Mail, BookOpen, Send, CheckCircle } from "lucide-react";
+import { ArrowRight, BookOpen, Mail, Send } from "lucide-react";
+import { brand, serviceLines } from "@/lib/content";
 import { GithubIcon, LinkedinIcon } from "@/components/BrandIcons";
 
+const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
+
 const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i: number = 0) => ({
-    opacity: 1, y: 0,
-    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as [number,number,number,number], delay: i * 0.1 },
+  hidden: { opacity: 0, y: 26 },
+  visible: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, delay: i * 0.07, ease },
   }),
 };
 
-const SUBJECTS = [
-  "Freelance / Client Project",
-  "AI & LLM Integration",
-  "EdTech Product Development",
-  "Data Science Consulting",
-  "Collaboration",
-  "General Inquiry",
-];
-
-const SOCIALS = [
-  { icon: GithubIcon, label: "GitHub", value: "github.com/sg2499", href: "https://github.com/sg2499", color: "hover:border-slate-400/30" },
-  { icon: LinkedinIcon, label: "LinkedIn", value: "Shailesh Gupta", href: "https://linkedin.com/in/shailesh-gupta-7b7278188", color: "hover:border-blue-400/30" },
-  { icon: BookOpen, label: "Blog", value: "Prismatic Metrics", href: "https://prismatic-metrics.blogspot.com", color: "hover:border-orange-400/30" },
-  { icon: Mail, label: "Email", value: "Open to contact", href: "mailto:contact@zetta-metrics.com", color: "hover:border-cyan-400/30" },
+const subjects = [
+  "AI assistant / RAG build",
+  "AI MVP development",
+  "EdTech platform build",
+  "Data science consulting",
+  "Partnership or collaboration",
+  "General inquiry",
 ];
 
 export default function ContactPage() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true });
-  const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({ name: "", email: "", subject: SUBJECTS[0], message: "" });
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    company: "",
+    subject: subjects[0],
+    budget: "",
+    message: "",
+  });
+  const [status, setStatus] = useState<"idle" | "drafted">("idle");
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // In production: integrate with EmailJS / Resend
-    setSubmitted(true);
+  const submit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const body = [
+      `Name: ${form.name}`,
+      `Email: ${form.email}`,
+      `Company: ${form.company || "Not provided"}`,
+      `Budget/timeline: ${form.budget || "Not provided"}`,
+      "",
+      form.message,
+    ].join("\n");
+    const mailto = `mailto:${brand.email}?subject=${encodeURIComponent(
+      `ZettaMetrics inquiry - ${form.subject}`
+    )}&body=${encodeURIComponent(body)}`;
+    setStatus("drafted");
+    window.location.href = mailto;
   };
 
   return (
-    <div className="pt-28 pb-20">
-      <div className="container-custom max-w-5xl" ref={ref}>
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-16"
-        >
-          <p className="text-xs font-semibold uppercase tracking-widest text-blue-400 mb-4">Get In Touch</p>
-          <h1 className="font-display font-bold leading-tight mb-4" style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)" }}>
-            Let&apos;s Build Something <span className="gradient-text">Great.</span>
-          </h1>
-          <p className="text-slate-400 text-lg max-w-xl mx-auto">
-            Have a project in mind? Want to collaborate? Or just want to say hello?
-            I respond to every message within 24 hours.
-          </p>
-        </motion.div>
-
-        <div className="grid md:grid-cols-5 gap-8">
-          {/* Left: Info */}
-          <motion.div
-            custom={0}
-            variants={fadeUp}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-            className="md:col-span-2 space-y-5"
-          >
-            {SOCIALS.map(({ icon: Icon, label, value, href, color }) => (
-              <a
-                key={label}
-                href={href}
-                target={href.startsWith("http") ? "_blank" : undefined}
-                rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className={`flex items-center gap-4 glass rounded-2xl p-5 border border-white/5 ${color} transition-all duration-200 group`}
-              >
-                <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center shrink-0">
-                  <Icon size={16} className="text-slate-300 group-hover:text-white transition-colors" />
-                </div>
-                <div>
-                  <div className="text-xs text-slate-500 mb-0.5">{label}</div>
-                  <div className="text-sm text-slate-200 font-medium">{value}</div>
-                </div>
-              </a>
-            ))}
-
-            <div className="glass rounded-2xl p-5 border border-white/5">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                <span className="text-xs text-slate-400">Currently available for new projects</span>
-              </div>
-              <p className="text-xs text-slate-500 leading-relaxed">
-                Based in India (IST, UTC+5:30). Typical response time: within 24 hours.
-                Happy to work with clients worldwide.
-              </p>
-            </div>
+    <div className="px-6 pb-20 pt-32">
+      <div className="container-custom">
+        <section className="mb-14 grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+          <motion.div initial="hidden" animate="visible">
+            <motion.p variants={fadeUp} className="eyebrow">
+              Contact
+            </motion.p>
+            <motion.h1 variants={fadeUp} custom={1} className="font-display text-5xl font-bold leading-tight text-white md:text-6xl">
+              Bring the problem. We will shape the product path.
+            </motion.h1>
           </motion.div>
-
-          {/* Right: Form */}
-          <motion.div
-            custom={1}
-            variants={fadeUp}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-            className="md:col-span-3"
+          <motion.p
+            initial={{ opacity: 0, y: 26 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.16 }}
+            className="max-w-2xl text-lg leading-8 text-slate-400"
           >
-            {submitted ? (
-              <div className="glass rounded-2xl border border-green-500/20 bg-green-500/5 p-12 text-center h-full flex flex-col items-center justify-center">
-                <CheckCircle size={40} className="text-green-400 mb-4" />
-                <h3 className="font-display font-bold text-2xl text-white mb-2">Message Sent!</h3>
-                <p className="text-slate-400 text-sm">Thanks for reaching out. I&apos;ll get back to you within 24 hours.</p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="glass rounded-2xl border border-white/5 p-8 space-y-5">
-                <div className="grid sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className="block text-xs font-medium text-slate-400 mb-2">Your Name</label>
-                    <input
-                      required
-                      value={form.name}
-                      onChange={(e) => setForm({ ...form, name: e.target.value })}
-                      placeholder="John Doe"
-                      className="w-full bg-white/3 border border-white/8 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-blue-500/40 transition-colors"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-medium text-slate-400 mb-2">Email Address</label>
-                    <input
-                      required
-                      type="email"
-                      value={form.email}
-                      onChange={(e) => setForm({ ...form, email: e.target.value })}
-                      placeholder="john@company.com"
-                      className="w-full bg-white/3 border border-white/8 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-blue-500/40 transition-colors"
-                    />
-                  </div>
-                </div>
+            Share what you want to build, who it is for, and what outcome you
+            need. The current form opens a real email draft; the next production
+            pass can wire this into Resend, Supabase, or a CRM.
+          </motion.p>
+        </section>
 
-                <div>
-                  <label className="block text-xs font-medium text-slate-400 mb-2">Subject</label>
-                  <select
-                    value={form.subject}
-                    onChange={(e) => setForm({ ...form, subject: e.target.value })}
-                    className="w-full bg-[#060f23] border border-white/8 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500/40 transition-colors"
-                  >
-                    {SUBJECTS.map((s) => <option key={s}>{s}</option>)}
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-medium text-slate-400 mb-2">Message</label>
-                  <textarea
-                    required
-                    rows={5}
-                    value={form.message}
-                    onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    placeholder="Tell me about your project, idea, or question..."
-                    className="w-full bg-white/3 border border-white/8 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-blue-500/40 transition-colors resize-none"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="group relative w-full py-3.5 rounded-xl overflow-hidden font-semibold text-sm flex items-center justify-center gap-2"
+        <div className="grid gap-6 lg:grid-cols-[0.78fr_1.22fr]">
+          <motion.aside initial="hidden" animate="visible" variants={fadeUp} className="space-y-4">
+            {[
+              [GithubIcon, "GitHub", "github.com/sg2499", brand.github],
+              [LinkedinIcon, "LinkedIn", "Shailesh Gupta", brand.linkedin],
+              [BookOpen, "Writing", "Prismatic Metrics", brand.blog],
+              [Mail, "Email", brand.email, `mailto:${brand.email}`],
+            ].map(([Icon, label, value, href]) => {
+              const Component = Icon as typeof BookOpen;
+              return (
+                <a
+                  key={label as string}
+                  href={href as string}
+                  target={(href as string).startsWith("http") ? "_blank" : undefined}
+                  rel={(href as string).startsWith("http") ? "noopener noreferrer" : undefined}
+                  className="premium-card flex items-center gap-4 p-5"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-500" />
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-500 blur-xl opacity-0 group-hover:opacity-50 transition-opacity" />
-                  <span className="relative text-white flex items-center gap-2">
-                    Send Message
-                    <Send size={14} className="group-hover:translate-x-1 transition-transform" />
-                  </span>
-                </button>
-              </form>
+                  <div className="rounded-2xl border border-cyan-400/15 bg-cyan-400/8 p-3 text-cyan-200">
+                    <Component size={18} />
+                  </div>
+                  <div>
+                    <p className="text-xs text-slate-500">{label as string}</p>
+                    <p className="mt-1 text-sm font-semibold text-white">{value as string}</p>
+                  </div>
+                </a>
+              );
+            })}
+
+            <div className="premium-card">
+              <p className="eyebrow">Best fit</p>
+              <div className="space-y-3">
+                {serviceLines.map((service) => (
+                  <div key={service.title} className="flex items-center gap-3 text-sm text-slate-300">
+                    <ArrowRight size={14} className="text-cyan-300" />
+                    {service.title}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.aside>
+
+          <motion.form
+            onSubmit={submit}
+            initial={{ opacity: 0, y: 26 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.12 }}
+            className="premium-card space-y-5"
+          >
+            <div className="grid gap-5 md:grid-cols-2">
+              <Field label="Your name">
+                <input
+                  required
+                  value={form.name}
+                  onChange={(event) => setForm({ ...form, name: event.target.value })}
+                  className="form-field"
+                  placeholder="Your name"
+                />
+              </Field>
+              <Field label="Email">
+                <input
+                  required
+                  type="email"
+                  value={form.email}
+                  onChange={(event) => setForm({ ...form, email: event.target.value })}
+                  className="form-field"
+                  placeholder="you@company.com"
+                />
+              </Field>
+            </div>
+
+            <div className="grid gap-5 md:grid-cols-2">
+              <Field label="Company or project">
+                <input
+                  value={form.company}
+                  onChange={(event) => setForm({ ...form, company: event.target.value })}
+                  className="form-field"
+                  placeholder="Company, startup, or idea"
+                />
+              </Field>
+              <Field label="Budget / timeline">
+                <input
+                  value={form.budget}
+                  onChange={(event) => setForm({ ...form, budget: event.target.value })}
+                  className="form-field"
+                  placeholder="Example: 4 weeks, MVP budget"
+                />
+              </Field>
+            </div>
+
+            <Field label="What do you need?">
+              <select
+                value={form.subject}
+                onChange={(event) => setForm({ ...form, subject: event.target.value })}
+                className="form-field bg-[#061022]"
+              >
+                {subjects.map((subject) => (
+                  <option key={subject}>{subject}</option>
+                ))}
+              </select>
+            </Field>
+
+            <Field label="Project context">
+              <textarea
+                required
+                value={form.message}
+                onChange={(event) => setForm({ ...form, message: event.target.value })}
+                rows={7}
+                className="form-field resize-none"
+                placeholder="Tell me about the users, problem, expected workflow, data, deadline, and what success looks like."
+              />
+            </Field>
+
+            {status === "drafted" && (
+              <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/8 p-4 text-sm text-cyan-100">
+                Your email client should be opening with the project details. No fake success state here - send the email from your client to complete the inquiry.
+              </div>
             )}
-          </motion.div>
+
+            <button type="submit" className="btn-primary w-full">
+              Open email draft <Send size={16} />
+            </button>
+          </motion.form>
         </div>
       </div>
     </div>
+  );
+}
+
+function Field({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <label className="block">
+      <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+        {label}
+      </span>
+      {children}
+    </label>
   );
 }

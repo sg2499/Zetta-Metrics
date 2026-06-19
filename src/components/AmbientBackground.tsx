@@ -1,79 +1,31 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-
 export default function AmbientBackground() {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const move = (e: MouseEvent) => {
-      const x = (e.clientX / window.innerWidth) * 100;
-      const y = (e.clientY / window.innerHeight) * 100;
-      el.style.setProperty("--mx", `${x}%`);
-      el.style.setProperty("--my", `${y}%`);
-    };
-    window.addEventListener("mousemove", move);
-    return () => window.removeEventListener("mousemove", move);
-  }, []);
-
   return (
-    <div ref={ref} className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-      {/* Deep void base */}
-      <div className="absolute inset-0 bg-[#020617]" />
-
-      {/* Static ambient orbs */}
+    <div className="fixed inset-0 z-0 overflow-hidden bg-[#020617] pointer-events-none">
       <div
-        className="absolute rounded-full opacity-20"
+        className="absolute inset-0 opacity-70"
         style={{
-          width: "600px",
-          height: "600px",
-          top: "-100px",
-          left: "-100px",
-          background: "radial-gradient(circle, rgba(59,130,246,0.4) 0%, transparent 70%)",
-          filter: "blur(80px)",
+          background:
+            "linear-gradient(115deg, rgba(2,6,23,1) 0%, rgba(8,20,38,0.94) 38%, rgba(3,37,55,0.82) 72%, rgba(2,6,23,1) 100%)",
         }}
       />
       <div
-        className="absolute rounded-full opacity-15"
+        className="absolute inset-0 opacity-[0.18]"
         style={{
-          width: "500px",
-          height: "500px",
-          bottom: "100px",
-          right: "-50px",
-          background: "radial-gradient(circle, rgba(139,92,246,0.4) 0%, transparent 70%)",
-          filter: "blur(80px)",
+          backgroundImage:
+            "linear-gradient(rgba(148,163,184,0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,0.14) 1px, transparent 1px)",
+          backgroundSize: "72px 72px",
+          maskImage: "linear-gradient(to bottom, transparent, black 16%, black 68%, transparent)",
         }}
       />
       <div
-        className="absolute rounded-full opacity-10"
+        className="absolute inset-0 opacity-40"
         style={{
-          width: "400px",
-          height: "400px",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          background: "radial-gradient(circle, rgba(6,182,212,0.3) 0%, transparent 70%)",
-          filter: "blur(80px)",
+          background:
+            "linear-gradient(180deg, rgba(6,182,212,0.08), transparent 28%), linear-gradient(90deg, transparent, rgba(59,130,246,0.08), transparent)",
         }}
       />
-
-      {/* Mouse-reactive glow */}
-      <div
-        className="absolute rounded-full opacity-10 transition-all duration-700 ease-out"
-        style={{
-          width: "300px",
-          height: "300px",
-          left: "var(--mx, 50%)",
-          top: "var(--my, 50%)",
-          transform: "translate(-50%, -50%)",
-          background: "radial-gradient(circle, rgba(59,130,246,0.5) 0%, transparent 70%)",
-          filter: "blur(60px)",
-        }}
-      />
-
-      {/* Noise texture */}
       <div className="noise-overlay" />
     </div>
   );

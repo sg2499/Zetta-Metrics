@@ -11,8 +11,8 @@ const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/projects", label: "Projects" },
-  { href: "/studio", label: "Studio" },
-  { href: "/blog", label: "Blog" },
+  { href: "/studio", label: "Services" },
+  { href: "/blog", label: "Insights" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -85,14 +85,14 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-3">
             <Link href="/chat">
               <button className="text-sm text-slate-400 hover:text-white transition-colors px-3 py-2">
-                ShaileshGPT
+                AI Concierge
               </button>
             </Link>
             <Link href="/contact">
               <button className="relative px-5 py-2 text-sm font-semibold rounded-lg overflow-hidden group">
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-500 transition-all duration-300 group-hover:opacity-90" />
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-500 blur-md opacity-0 group-hover:opacity-50 transition-opacity" />
-                <span className="relative text-white">Work With Me</span>
+                <span className="relative text-white">Start a Project</span>
               </button>
             </Link>
           </div>
@@ -135,7 +135,7 @@ export default function Navbar() {
               ))}
               <Link href="/contact" onClick={() => setMobileOpen(false)}>
                 <button className="mt-2 w-full py-3 rounded-lg bg-gradient-to-r from-blue-600 to-cyan-500 text-white text-sm font-semibold">
-                  Work With Me
+                  Start a Project
                 </button>
               </Link>
             </nav>
