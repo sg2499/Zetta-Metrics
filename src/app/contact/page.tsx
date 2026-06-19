@@ -1,22 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
-import type { Variants } from "framer-motion";
 import { ArrowRight, BookOpen, Mail, Send } from "lucide-react";
 import { brand, serviceLines } from "@/lib/content";
 import { GithubIcon, LinkedinIcon } from "@/components/BrandIcons";
-
-const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
-
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 26 },
-  visible: (i = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay: i * 0.07, ease },
-  }),
-};
 
 const subjects = [
   "AI assistant / RAG build",
@@ -56,30 +43,19 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="px-6 pb-20 pt-32">
+    <div className="site-page">
       <div className="container-custom">
-        <section className="mb-14 grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
-          <motion.div initial="hidden" animate="visible">
-            <motion.p variants={fadeUp} className="eyebrow">
-              Contact
-            </motion.p>
-            <motion.h1 variants={fadeUp} custom={1} className="font-display text-5xl font-bold leading-tight text-white md:text-6xl">
-              Bring the problem. We will shape the product path.
-            </motion.h1>
-          </motion.div>
-          <motion.p
-            initial={{ opacity: 0, y: 26 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.16 }}
-            className="max-w-2xl text-lg leading-8 text-slate-400"
-          >
-            Share what you want to build, who it is for, and what outcome you
-            need. A focused project note is enough to start the conversation.
-          </motion.p>
+        <section className="page-hero max-w-3xl">
+          <p className="eyebrow">Contact</p>
+          <h1 className="page-title">Bring the problem. We will shape the product path.</h1>
+          <p className="page-copy">
+            Share what you want to build, who it is for, and what business outcome
+            you need. A focused project note is enough to start the conversation.
+          </p>
         </section>
 
-        <div className="grid gap-6 lg:grid-cols-[0.78fr_1.22fr]">
-          <motion.aside initial="hidden" animate="visible" variants={fadeUp} className="space-y-4">
+        <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
+          <aside className="space-y-4">
             {[
               [GithubIcon, "GitHub", "github.com/sg2499", brand.github],
               [LinkedinIcon, "LinkedIn", "Shailesh Gupta", brand.linkedin],
@@ -95,7 +71,7 @@ export default function ContactPage() {
                   rel={(href as string).startsWith("http") ? "noopener noreferrer" : undefined}
                   className="premium-card flex items-center gap-4 p-5"
                 >
-                  <div className="rounded-2xl border border-cyan-400/15 bg-cyan-400/8 p-3 text-cyan-200">
+                  <div className="rounded-lg border border-cyan-400/15 bg-cyan-400/8 p-3 text-cyan-200">
                     <Component size={18} />
                   </div>
                   <div>
@@ -117,15 +93,9 @@ export default function ContactPage() {
                 ))}
               </div>
             </div>
-          </motion.aside>
+          </aside>
 
-          <motion.form
-            onSubmit={submit}
-            initial={{ opacity: 0, y: 26 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.12 }}
-            className="premium-card space-y-5"
-          >
+          <form onSubmit={submit} className="premium-card space-y-5">
             <div className="grid gap-5 md:grid-cols-2">
               <Field label="Your name">
                 <input
@@ -186,12 +156,12 @@ export default function ContactPage() {
                 onChange={(event) => setForm({ ...form, message: event.target.value })}
                 rows={7}
                 className="form-field resize-none"
-                placeholder="Tell me about the users, problem, expected workflow, data, deadline, and what success looks like."
+                placeholder="Tell me about the users, problem, workflow, data, deadline, and what success looks like."
               />
             </Field>
 
             {status === "drafted" && (
-              <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/8 p-4 text-sm text-cyan-100">
+              <div className="rounded-lg border border-cyan-400/20 bg-cyan-400/8 p-4 text-sm text-cyan-100">
                 Your email client should be opening with the project details. Send the draft to complete the inquiry.
               </div>
             )}
@@ -199,7 +169,7 @@ export default function ContactPage() {
             <button type="submit" className="btn-primary w-full">
               Open email draft <Send size={16} />
             </button>
-          </motion.form>
+          </form>
         </div>
       </div>
     </div>

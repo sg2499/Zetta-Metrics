@@ -51,6 +51,10 @@ body {
   min-height: 100vh;
 }
 
+main {
+  isolation: isolate;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
@@ -91,10 +95,10 @@ body {
 
 /* Glass Card */
 .glass {
-  background: var(--glass-bg);
+  background: rgba(5, 9, 20, 0.86);
   border: 1px solid var(--glass-border);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 }
 
 .glass:hover {
@@ -178,31 +182,57 @@ a {
 
 /* Section spacing */
 .section {
-  padding: 4.75rem 0;
+  padding: 4.5rem 0;
   position: relative;
   z-index: 10;
 }
 
 /* Container */
 .container-custom {
-  max-width: 1200px;
+  width: min(100% - 3rem, 1120px);
+  max-width: 1120px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+}
+
+.site-page {
+  padding: 8rem 1.5rem 5rem;
+}
+
+.page-hero {
+  margin-bottom: 4rem;
+}
+
+.page-title {
+  font-family: 'Outfit', sans-serif;
+  max-width: 56rem;
+  color: white;
+  font-size: clamp(2.85rem, 6vw, 5rem);
+  font-weight: 750;
+  line-height: 1.02;
+  letter-spacing: 0;
+}
+
+.page-copy {
+  margin-top: 1.35rem;
+  max-width: 42rem;
+  color: #cbd5e1;
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  line-height: 1.75;
 }
 
 .premium-card {
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: 0.5rem;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.052), rgba(255, 255, 255, 0.018)),
-    rgba(2, 6, 23, 0.72);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.018)),
+    rgba(6, 12, 26, 0.86);
   padding: 1.35rem;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.045), 0 18px 60px rgba(0, 0, 0, 0.18);
-  backdrop-filter: blur(22px);
-  -webkit-backdrop-filter: blur(22px);
-  transition: border-color 220ms ease, transform 220ms ease, background 220ms ease;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.055), 0 18px 55px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  transition: border-color 180ms ease, background 180ms ease;
 }
 
 .premium-card::before {
@@ -216,7 +246,7 @@ a {
 }
 
 .premium-card:hover {
-  border-color: rgba(103, 232, 249, 0.18);
+  border-color: rgba(103, 232, 249, 0.22);
 }
 
 .premium-card:hover::before {
@@ -227,7 +257,7 @@ a {
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(103, 232, 249, 0.14);
-  border-radius: 1.25rem;
+  border-radius: 0.5rem;
   background:
     linear-gradient(145deg, rgba(15, 23, 42, 0.9), rgba(2, 6, 23, 0.72)),
     rgba(2, 6, 23, 0.82);
@@ -253,7 +283,7 @@ a {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  border-radius: 0.9rem;
+  border-radius: 0.5rem;
   padding: 0.9rem 1.15rem;
   font-size: 0.9rem;
   font-weight: 700;
@@ -285,7 +315,7 @@ a {
 .metric-tile {
   min-height: 5.75rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 0.9rem;
+  border-radius: 0.5rem;
   background: rgba(255, 255, 255, 0.03);
   padding: 1rem;
 }
@@ -303,7 +333,7 @@ a {
 .section-heading h2 {
   font-family: 'Outfit', sans-serif;
   color: white;
-  font-size: clamp(2rem, 4vw, 3.4rem);
+  font-size: clamp(2rem, 4vw, 3.1rem);
   font-weight: 700;
   line-height: 1.06;
   letter-spacing: 0;
@@ -325,7 +355,7 @@ a {
 
 .tech-pill {
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 999px;
+  border-radius: 0.45rem;
   background: rgba(255, 255, 255, 0.035);
   padding: 0.35rem 0.65rem;
   color: #cbd5e1;
@@ -337,7 +367,7 @@ a {
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(103, 232, 249, 0.14);
-  border-radius: 1.2rem;
+  border-radius: 0.5rem;
   background:
     linear-gradient(135deg, rgba(8, 47, 73, 0.42), rgba(15, 23, 42, 0.64)),
     rgba(2, 6, 23, 0.76);
@@ -347,7 +377,7 @@ a {
 .form-field {
   width: 100%;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 0.9rem;
+  border-radius: 0.5rem;
   background: rgba(255, 255, 255, 0.035);
   padding: 0.85rem 1rem;
   color: white;
@@ -368,6 +398,15 @@ a {
 @media (max-width: 640px) {
   .section {
     padding: 4rem 0;
+  }
+
+  .container-custom {
+    width: min(100% - 2rem, 1120px);
+  }
+
+  .site-page {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   .btn-primary,

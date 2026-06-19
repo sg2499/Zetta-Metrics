@@ -29,13 +29,12 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="relative z-10 mt-24 border-t border-white/5">
-      <div className="container-custom py-16">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
+    <footer className="relative z-10 mt-20 border-t border-white/8 bg-[#050914]/80">
+      <div className="container-custom py-10">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           <div className="md:col-span-2">
             <Link href="/" className="mb-4 flex items-center gap-2">
-              <div className="relative h-8 w-8">
-                <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-400 opacity-80" />
+              <div className="relative h-8 w-8 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-400">
                 <Zap className="relative m-2 h-4 w-4 text-white" />
               </div>
               <span className="font-display text-lg font-bold tracking-tight">
@@ -45,7 +44,7 @@ export default function Footer() {
             <p className="max-w-sm text-sm leading-7 text-slate-400">
               {brand.positioning}
             </p>
-            <div className="mt-6 flex items-center gap-3">
+            <div className="mt-5 flex items-center gap-2">
               {socials.map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
@@ -79,7 +78,7 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 md:flex-row">
+        <div className="mt-9 flex flex-col items-center justify-between gap-4 border-t border-white/8 pt-6 md:flex-row">
           <p className="text-xs text-slate-500">
             &copy; {new Date().getFullYear()} ZettaMetrics. Designed and built by{" "}
             <span className="text-slate-300">Shailesh Gupta</span>.

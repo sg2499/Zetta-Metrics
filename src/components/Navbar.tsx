@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
@@ -15,44 +15,26 @@ const NAV_LINKS = [
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
     <>
-      <motion.header
-        initial={{ y: -80, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className={clsx(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-          scrolled
-            ? "py-3 glass border-b border-white/5 shadow-lg shadow-black/20"
-            : "py-5 bg-transparent"
-        )}
-      >
-        <div className="container-custom flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="relative w-8 h-8">
-              <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-400 opacity-80 group-hover:opacity-100 transition-opacity" />
-              <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-400 blur-md opacity-40 group-hover:opacity-70 transition-opacity" />
-              <Zap className="relative w-4 h-4 text-white m-2" />
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#050914]/92 backdrop-blur-xl">
+        <div className="container-custom flex h-20 items-center justify-between gap-4">
+          <Link href="/" className="group flex min-w-fit items-center gap-3">
+            <div className="relative h-9 w-9 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-400 shadow-[0_14px_45px_rgba(6,182,212,0.18)]">
+              <Zap className="absolute left-1/2 top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 text-white" />
             </div>
-            <span className="font-display font-bold text-lg tracking-tight">
+            <span className="font-display text-lg font-bold tracking-tight text-white">
               Zetta<span className="gradient-text">Metrics</span>
             </span>
           </Link>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav
+            className="hidden items-center rounded-lg border border-white/10 bg-white/[0.045] p-1 shadow-inner shadow-black/20 md:flex"
+            aria-label="Primary navigation"
+          >
             {NAV_LINKS.map((link) => {
               const isActive = pathname === link.href;
               return (
@@ -60,16 +42,16 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   className={clsx(
-                    "relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200",
+                    "relative rounded-md px-4 py-2.5 text-sm font-semibold transition-colors",
                     isActive
-                      ? "text-white"
-                      : "text-slate-400 hover:text-white"
+                      ? "text-slate-950"
+                      : "text-slate-300 hover:bg-white/[0.06] hover:text-white"
                   )}
                 >
                   {isActive && (
                     <motion.span
-                      layoutId="nav-pill"
-                      className="absolute inset-0 rounded-lg glass border border-blue-500/20 bg-blue-500/10"
+                      layoutId="nav-tab"
+                      className="absolute inset-0 rounded-md bg-white shadow-sm"
                       transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
                     />
                   )}
@@ -79,28 +61,23 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* CTA */}
-          <div className="hidden md:flex items-center gap-3">
-            <Link href="/contact">
-              <button className="relative px-5 py-2 text-sm font-semibold rounded-lg overflow-hidden group">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-500 transition-all duration-300 group-hover:opacity-90" />
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-500 blur-md opacity-0 group-hover:opacity-50 transition-opacity" />
-                <span className="relative text-white">Start a Project</span>
-              </button>
+          <div className="hidden items-center gap-3 md:flex">
+            <Link href="/contact" className="btn-primary px-4 py-2.5 text-sm">
+              Start a project
             </Link>
           </div>
 
-          {/* Mobile toggle */}
           <button
-            className="md:hidden text-slate-400 hover:text-white transition-colors"
+            className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/[0.045] text-slate-300 transition-colors hover:text-white md:hidden"
             onClick={() => setMobileOpen((v) => !v)}
+            aria-label="Toggle navigation menu"
+            aria-expanded={mobileOpen}
           >
             {mobileOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
-      </motion.header>
+      </header>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -108,7 +85,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-x-0 top-[65px] z-40 glass border-b border-white/5 px-6 py-4 md:hidden"
+            className="fixed inset-x-0 top-20 z-40 border-b border-white/10 bg-[#050914]/96 px-6 py-4 backdrop-blur-xl md:hidden"
           >
             <nav className="flex flex-col gap-1">
               {NAV_LINKS.map((link) => (
@@ -117,19 +94,17 @@ export default function Navbar() {
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
                   className={clsx(
-                    "px-4 py-3 rounded-lg text-sm font-medium transition-colors",
+                    "rounded-md px-4 py-3 text-sm font-semibold transition-colors",
                     pathname === link.href
-                      ? "text-white bg-blue-500/10 border border-blue-500/20"
+                      ? "bg-white text-slate-950"
                       : "text-slate-400 hover:text-white hover:bg-white/5"
                   )}
                 >
                   {link.label}
                 </Link>
               ))}
-              <Link href="/contact" onClick={() => setMobileOpen(false)}>
-                <button className="mt-2 w-full py-3 rounded-lg bg-gradient-to-r from-blue-600 to-cyan-500 text-white text-sm font-semibold">
-                  Start a Project
-                </button>
+              <Link href="/contact" onClick={() => setMobileOpen(false)} className="btn-primary mt-2 w-full py-3">
+                Start a project
               </Link>
             </nav>
           </motion.div>

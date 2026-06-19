@@ -3,7 +3,6 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AmbientBackground from "@/components/AmbientBackground";
-import CosmicCanvas from "@/components/CosmicCanvas";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.zetta-metrics.com"),
@@ -59,7 +58,6 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body className="antialiased">
         <AmbientBackground />
-        <CosmicCanvas />
         <div className="relative z-10 flex min-h-screen flex-col">
           <Navbar />
           <main className="flex-1">{children}</main>

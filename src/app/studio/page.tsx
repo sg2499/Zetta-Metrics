@@ -1,21 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
-import type { Variants } from "framer-motion";
 import { ArrowRight, CheckCircle2, ClipboardCheck, LockKeyhole, Timer, UsersRound } from "lucide-react";
 import { serviceLines } from "@/lib/content";
-
-const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
-
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (i: number = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay: i * 0.07, ease },
-  }),
-};
 
 const mathPath = [
   [UsersRound, "Admin, teacher, and student roles"],
@@ -26,33 +13,25 @@ const mathPath = [
 
 export default function StudioPage() {
   return (
-    <div className="px-6 pb-20 pt-32">
+    <div className="site-page">
       <div className="container-custom">
-        <section className="mx-auto mb-16 max-w-3xl text-center">
+        <section className="page-hero max-w-3xl">
           <p className="eyebrow">Services</p>
-          <h1 className="font-display text-5xl font-bold leading-tight text-white md:text-6xl">
-            Practical AI product development for business use cases.
-          </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-slate-400">
+          <h1 className="page-title">Practical AI product development for business use cases.</h1>
+          <p className="page-copy">
             ZettaMetrics works best when the goal is clear: build a useful AI,
-            EdTech, or data product that can be tested by real users.
+            EdTech, or data product that can be tested by real users and improved
+            from real feedback.
           </p>
         </section>
 
         <section className="grid gap-5 md:grid-cols-2">
-          {serviceLines.map((service, index) => {
+          {serviceLines.map((service) => {
             const Icon = service.icon;
             return (
-              <motion.article
-                key={service.title}
-                initial="hidden"
-                animate="visible"
-                variants={fadeUp}
-                custom={index}
-                className="premium-card"
-              >
+              <article key={service.title} className="premium-card">
                 <div className="mb-5 flex items-start gap-4">
-                  <div className="rounded-2xl border border-cyan-400/15 bg-cyan-400/8 p-3 text-cyan-200">
+                  <div className="rounded-lg border border-cyan-400/15 bg-cyan-400/8 p-3 text-cyan-200">
                     <Icon size={21} />
                   </div>
                   <div>
@@ -68,17 +47,17 @@ export default function StudioPage() {
                     </div>
                   ))}
                 </div>
-              </motion.article>
+              </article>
             );
           })}
         </section>
 
         <section id="mathpath" className="section">
-          <div className="grid gap-8 rounded-3xl border border-white/8 bg-white/[0.025] p-6 md:p-8 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="grid gap-8 rounded-lg border border-white/8 bg-white/[0.025] p-6 md:p-8 lg:grid-cols-[0.9fr_1.1fr]">
             <div>
               <p className="eyebrow">Product proof</p>
               <h2 className="font-display text-3xl font-semibold leading-tight text-white md:text-5xl">
-                MathPath shows the kind of operational product ZettaMetrics can build.
+                MathPath proves the studio can build operational software, not just demos.
               </h2>
               <p className="mt-5 text-base leading-7 text-slate-400">
                 It is a full-stack EdTech platform with protected assessment flows,
@@ -102,7 +81,7 @@ export default function StudioPage() {
               {mathPath.map(([Icon, label]) => {
                 const Component = Icon as typeof UsersRound;
                 return (
-                  <div key={label as string} className="rounded-2xl border border-white/8 bg-black/10 p-4">
+                  <div key={label as string} className="rounded-lg border border-white/8 bg-black/10 p-4">
                     <Component size={18} className="text-cyan-300" />
                     <p className="mt-3 text-sm font-semibold leading-6 text-slate-200">{label as string}</p>
                   </div>
