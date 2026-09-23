@@ -1,173 +1,161 @@
-"use client";
-
 import Link from "next/link";
-import { ArrowRight, Bot, BriefcaseBusiness, CheckCircle2, Layers3, LineChart, ShieldCheck } from "lucide-react";
-import { flagshipWork, proofPoints } from "@/lib/content";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { brand, platformPillars, proofPoints, products, processSteps } from "@/lib/content";
+import ProductCard from "@/components/sections/ProductCard";
 
-const services = [
-  {
-    icon: Bot,
-    title: "AI assistants",
-    copy: "Grounded chat, RAG knowledge bases, lead capture, analytics, and internal workflow copilots.",
-  },
-  {
-    icon: Layers3,
-    title: "AI MVPs",
-    copy: "A scoped product v1 with frontend, backend, AI logic, deployment, and handoff notes.",
-  },
-  {
-    icon: LineChart,
-    title: "Data products",
-    copy: "ML models, dashboards, pipelines, and decision systems built for operators, not demos.",
-  },
-];
-
-const process = [
-  ["01", "Define the business problem"],
-  ["02", "Design the smallest useful product"],
-  ["03", "Build, deploy, and document v1"],
-];
-
-export default function HomePage() {
+export default function Home() {
   return (
-    <div className="site-page">
-      <section className="container-custom grid min-h-[calc(100vh-8rem)] items-center gap-12 lg:grid-cols-[1fr_380px]">
-        <div>
-          <p className="eyebrow">AI product studio</p>
-          <h1 className="page-title">
-            AI systems that are useful, usable, and ready to ship.
-          </h1>
-          <p className="page-copy">
-            ZettaMetrics is Shailesh Gupta&apos;s founder-led studio for building
-            LLM applications, EdTech platforms, and data products with a clear
-            path from problem to production-ready v1.
-          </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link href="/contact" className="btn-primary">
-              Start a project <ArrowRight size={16} />
-            </Link>
-            <Link href="/projects" className="btn-secondary">
-              View proof
-            </Link>
+    <div>
+      {/* Hero */}
+      <section className="pt-40 pb-20 md:pt-48 md:pb-28">
+        <div className="container-custom">
+          <div className="grid gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+            <div>
+              <p className="eyebrow mb-5">AI-native automation platform</p>
+              <h1
+                className="font-display text-[2.6rem] font-extrabold leading-[1.08] tracking-tight sm:text-6xl"
+                style={{ color: "var(--text-primary)" }}
+              >
+                Turn manual work into
+                <span className="gradient-text"> intelligent workflows.</span>
+              </h1>
+              <p className="mt-6 max-w-xl text-lg leading-8" style={{ color: "var(--text-secondary)" }}>
+                {brand.positioning} We build one reusable AI platform engine and
+                apply it to real institutions — starting with two live products in
+                education, built to extend into any process-heavy business.
+              </p>
+              <div className="mt-9 flex flex-wrap items-center gap-3">
+                <Link href="/products" className="btn-primary px-6 py-3.5 text-sm">
+                  Explore our products <ArrowRight size={16} />
+                </Link>
+                <Link href="/company" className="btn-secondary px-6 py-3.5 text-sm">
+                  About Zetta Metrics
+                </Link>
+              </div>
+
+              <dl className="mt-14 grid grid-cols-2 gap-6 sm:grid-cols-4">
+                {proofPoints.map((p) => (
+                  <div key={p.label}>
+                    <dt className="font-display text-2xl font-bold" style={{ color: "var(--text-primary)" }}>
+                      {p.value}
+                    </dt>
+                    <dd className="mt-1 text-xs leading-5" style={{ color: "var(--text-muted)" }}>
+                      {p.label}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+
+            <div className="surface-card p-6">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em]" style={{ color: "var(--text-muted)" }}>
+                What Zetta actually builds
+              </p>
+              <ul className="mt-5 space-y-4">
+                {[
+                  "AI/ML embedded in the core product logic, not a bolt-on chat widget.",
+                  "One shared workflow engine — roles, assignments, approvals, scoring.",
+                  "Institution-grade security and data handling from day one.",
+                  "A platform designed to add the next product without rebuilding the last one.",
+                ].map((line) => (
+                  <li key={line} className="flex items-start gap-3 text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
+                    <CheckCircle2 size={17} className="mt-0.5 shrink-0" style={{ color: "var(--accent)" }} />
+                    {line}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
+      </section>
 
-        <aside className="premium-card">
-          <div className="flex items-center gap-3 border-b border-white/8 pb-5">
-            <div className="rounded-lg border border-cyan-400/15 bg-cyan-400/8 p-3 text-cyan-200">
-              <BriefcaseBusiness size={21} />
-            </div>
-            <div>
-              <p className="text-xs uppercase tracking-[0.18em] text-slate-500">Best fit</p>
-              <h2 className="font-display text-xl font-semibold text-white">Client-ready builds</h2>
-            </div>
-          </div>
-          <div className="mt-5 space-y-4">
-            {[
-              "You have an AI or product idea and need a working MVP.",
-              "You need a business assistant grounded in your own knowledge.",
-              "You want an EdTech or data platform built with product discipline.",
-            ].map((item) => (
-              <div key={item} className="flex gap-3 text-sm leading-6 text-slate-300">
-                <CheckCircle2 size={17} className="mt-0.5 shrink-0 text-cyan-300" />
-                {item}
+      {/* Platform pillars */}
+      <section className="py-20">
+        <div className="container-custom">
+          <p className="eyebrow mb-4">The platform</p>
+          <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: "var(--text-primary)" }}>
+            One engine. Built once, applied everywhere.
+          </h2>
+          <p className="mt-4 max-w-2xl text-base leading-7" style={{ color: "var(--text-secondary)" }}>
+            Every Zetta product runs on the same underlying platform — not
+            separate one-off builds. That's what lets us move from one
+            customer to the next without starting over.
+          </p>
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {platformPillars.map((pillar) => (
+              <div key={pillar.title} className="surface-card p-6">
+                <pillar.icon size={22} style={{ color: "var(--accent)" }} />
+                <h3 className="mt-4 font-display text-base font-bold" style={{ color: "var(--text-primary)" }}>
+                  {pillar.title}
+                </h3>
+                <p className="mt-2 text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
+                  {pillar.summary}
+                </p>
               </div>
             ))}
           </div>
-        </aside>
-      </section>
-
-      <section className="container-custom section">
-        <div className="section-heading">
-          <p className="eyebrow">What we build</p>
-          <h2>Three offers, one clean product path.</h2>
-          <p>
-            The site should make the work obvious in seconds: what ZettaMetrics
-            builds, why it is credible, and how a client starts.
-          </p>
-        </div>
-        <div className="grid gap-5 md:grid-cols-3">
-          {services.map((service) => {
-            const Icon = service.icon;
-            return (
-              <article key={service.title} className="premium-card">
-                <div className="mb-5 inline-flex rounded-lg border border-cyan-400/15 bg-cyan-400/8 p-3 text-cyan-200">
-                  <Icon size={20} />
-                </div>
-                <h3 className="font-display text-xl font-semibold text-white">{service.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-slate-400">{service.copy}</p>
-              </article>
-            );
-          })}
         </div>
       </section>
 
-      <section className="container-custom section">
-        <div className="grid gap-8 lg:grid-cols-[320px_1fr]">
-          <div>
-            <p className="eyebrow">Proof</p>
-            <h2 className="section-title">Real systems behind the brand.</h2>
-            <p className="section-copy">
-              ZettaMetrics is positioned around inspectable work: repositories,
-              product flows, architecture, writing, and deployed systems.
-            </p>
-            <div className="mt-7 grid grid-cols-2 gap-3">
-              {proofPoints.map((point) => (
-                <div key={point.label} className="metric-tile">
-                  <div className="font-display text-xl font-bold text-white">{point.value}</div>
-                  <div className="mt-1 text-xs leading-5 text-slate-500">{point.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="grid gap-5 md:grid-cols-2">
-            {flagshipWork.slice(0, 2).map((project) => {
-              const Icon = project.icon;
-              return (
-                <article key={project.title} className="premium-card">
-                  <div className="mb-5 flex items-center justify-between gap-4">
-                    <div className="rounded-lg border border-cyan-400/15 bg-cyan-400/8 p-3 text-cyan-200">
-                      <Icon size={20} />
-                    </div>
-                    <span className="text-xs text-slate-500">{project.eyebrow}</span>
-                  </div>
-                  <h3 className="font-display text-2xl font-semibold text-white">{project.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-slate-400">{project.summary}</p>
-                  <Link href={project.href} className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-cyan-200 hover:text-white">
-                    View details <ArrowRight size={14} />
-                  </Link>
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section className="container-custom section">
-        <div className="grid gap-3 rounded-lg border border-white/8 bg-white/[0.025] p-4 md:grid-cols-3">
-          {process.map(([step, label]) => (
-            <div key={step} className="flex items-center gap-4 rounded-lg border border-white/8 bg-black/10 p-4">
-              <div className="font-mono text-xs text-cyan-300">{step}</div>
-              <div className="text-sm font-semibold text-slate-200">{label}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="container-custom section pb-0">
-        <div className="cta-band text-center">
-          <ShieldCheck size={22} className="mx-auto text-cyan-300" />
-          <h2 className="font-display mx-auto mt-5 max-w-3xl text-3xl font-semibold leading-tight text-white md:text-5xl">
-            Start with one useful product, then scale from proof.
+      {/* Products */}
+      <section className="py-20">
+        <div className="container-custom">
+          <p className="eyebrow mb-4">Products</p>
+          <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: "var(--text-primary)" }}>
+            Two products. One platform.
           </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-400">
-            Share the problem, the user, and the business outcome. The first
-            conversation should produce a clear build path.
+          <p className="mt-4 max-w-2xl text-base leading-7" style={{ color: "var(--text-secondary)" }}>
+            Both are real, working systems — not concept decks.
           </p>
-          <div className="mt-8 flex justify-center">
-            <Link href="/contact" className="btn-primary">
-              Discuss the build <ArrowRight size={16} />
+          <div className="mt-12 grid gap-6 md:grid-cols-2">
+            {products.map((product) => (
+              <ProductCard key={product.slug} product={product} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Process */}
+      <section className="py-20">
+        <div className="container-custom">
+          <p className="eyebrow mb-4">How we build</p>
+          <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: "var(--text-primary)" }}>
+            From manual process to shipped product.
+          </h2>
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
+            {processSteps.map((step, i) => (
+              <div key={step.title} className="surface-card p-6">
+                <span className="font-mono text-xs" style={{ color: "var(--accent)" }}>
+                  0{i + 1}
+                </span>
+                <step.icon size={22} className="mt-3" style={{ color: "var(--accent)" }} />
+                <h3 className="mt-4 font-display text-base font-bold" style={{ color: "var(--text-primary)" }}>
+                  {step.title}
+                </h3>
+                <p className="mt-2 text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
+                  {step.detail}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20">
+        <div className="container-custom">
+          <div className="surface-card flex flex-col items-start gap-6 p-10 md:flex-row md:items-center md:justify-between">
+            <div>
+              <h2 className="font-display text-2xl font-bold sm:text-3xl" style={{ color: "var(--text-primary)" }}>
+                Want to see the platform in action?
+              </h2>
+              <p className="mt-3 max-w-xl text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
+                Walk through MathPath live, or talk to us about what School
+                Enrichment is building toward next.
+              </p>
+            </div>
+            <Link href="/contact" className="btn-primary shrink-0 px-6 py-3.5 text-sm">
+              Talk to us <ArrowRight size={16} />
             </Link>
           </div>
         </div>

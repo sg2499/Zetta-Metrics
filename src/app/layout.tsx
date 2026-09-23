@@ -3,45 +3,42 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AmbientBackground from "@/components/AmbientBackground";
+import { ThemeProvider, themeInitScript } from "@/components/ThemeProvider";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.zetta-metrics.com"),
   title: {
-    default: "ZettaMetrics | AI Product Studio",
-    template: "%s | ZettaMetrics",
+    default: "Zetta Metrics | AI-Native Automation Platform",
+    template: "%s | Zetta Metrics",
   },
   description:
-    "Founder-led AI product studio by Shailesh Gupta, building LLM applications, intelligent data systems, and EdTech platforms for businesses.",
+    "Zetta Metrics builds AI-driven automation platforms that turn manual, fragmented business processes into intelligent digital workflows — starting with MathPath and School Enrichment.",
   keywords: [
-    "AI Product Studio",
-    "AI MVP Development",
-    "RAG Assistant",
-    "Data Scientist",
-    "AI Engineer",
-    "LLM",
-    "Machine Learning",
-    "EdTech",
+    "Zetta Metrics",
+    "AI automation platform",
+    "SaaS",
+    "EdTech platform",
     "MathPath",
-    "Shailesh Gupta",
-    "IIT Roorkee",
-    "Python",
-    "Deep Learning",
+    "School Enrichment",
+    "AI workflow orchestration",
+    "machine learning",
+    "India startup",
   ],
-  authors: [{ name: "Shailesh Gupta" }],
-  creator: "Shailesh Gupta",
+  authors: [{ name: "Zetta Metrics Technologies Private Limited" }],
+  creator: "Zetta Metrics",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://www.zetta-metrics.com",
-    siteName: "ZettaMetrics",
-    title: "ZettaMetrics | AI Product Studio",
+    siteName: "Zetta Metrics",
+    title: "Zetta Metrics | AI-Native Automation Platform",
     description:
-      "Founder-led AI product studio building LLM applications, intelligent data systems, and EdTech platforms for businesses.",
+      "AI-driven automation platform company. Two products live: MathPath and School Enrichment.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "ZettaMetrics | AI Product Studio",
-    description: "AI product studio for LLM apps, data systems, and EdTech platforms.",
+    title: "Zetta Metrics | AI-Native Automation Platform",
+    description: "AI-native software for teams who are done doing things by hand.",
   },
   robots: {
     index: true,
@@ -55,14 +52,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body className="antialiased">
-        <AmbientBackground />
-        <div className="relative z-10 flex min-h-screen flex-col">
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </div>
+        <ThemeProvider>
+          <AmbientBackground />
+          <div className="relative z-10 flex min-h-screen flex-col">
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );

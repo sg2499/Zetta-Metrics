@@ -1,47 +1,43 @@
-"use client";
-
 import Link from "next/link";
-import { BookOpen, Mail, Zap } from "lucide-react";
+import Image from "next/image";
+import { Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/BrandIcons";
-import { brand } from "@/lib/content";
+import { brand, products } from "@/lib/content";
 
 const footerLinks = {
   Company: [
     { label: "Home", href: "/" },
-    { label: "Services", href: "/studio" },
-    { label: "Work", href: "/projects" },
-    { label: "About", href: "/about" },
+    { label: "Products", href: "/products" },
+    { label: "Company", href: "/company" },
     { label: "Contact", href: "/contact" },
   ],
-  Resources: [
-    { label: "MathPath", href: "/studio#mathpath" },
-    { label: "AI Concierge", href: "/chat" },
-    { label: "Insights", href: "/blog" },
-  ],
+  Products: products.map((p) => ({ label: p.name, href: p.href })),
 };
 
 const socials = [
   { icon: GithubIcon, href: brand.github, label: "GitHub" },
   { icon: LinkedinIcon, href: brand.linkedin, label: "LinkedIn" },
-  { icon: BookOpen, href: brand.blog, label: "Blog" },
   { icon: Mail, href: `mailto:${brand.email}`, label: "Email" },
 ];
 
 export default function Footer() {
   return (
-    <footer className="relative z-10 mt-20 border-t border-white/8 bg-[#050914]/80">
-      <div className="container-custom py-10">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
+    <footer
+      className="relative z-10 mt-20 border-t"
+      style={{ borderColor: "var(--border-subtle)", backgroundColor: "var(--bg-raised)" }}
+    >
+      <div className="container-custom py-12">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
           <div className="md:col-span-2">
-            <Link href="/" className="mb-4 flex items-center gap-2">
-              <div className="relative h-8 w-8 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-400">
-                <Zap className="relative m-2 h-4 w-4 text-white" />
+            <Link href="/" className="mb-4 flex items-center gap-2.5">
+              <div className="relative h-8 w-8 overflow-hidden rounded-lg bg-black">
+                <Image src="/logo-mark.png" alt="Zetta Metrics" fill className="object-cover" />
               </div>
-              <span className="font-display text-lg font-bold tracking-tight">
+              <span className="font-display text-lg font-bold tracking-tight" style={{ color: "var(--text-primary)" }}>
                 Zetta<span className="gradient-text">Metrics</span>
               </span>
             </Link>
-            <p className="max-w-sm text-sm leading-7 text-slate-400">
+            <p className="max-w-sm text-sm leading-7" style={{ color: "var(--text-secondary)" }}>
               {brand.positioning}
             </p>
             <div className="mt-5 flex items-center gap-2">
@@ -51,7 +47,8 @@ export default function Footer() {
                   href={href}
                   target={href.startsWith("http") ? "_blank" : undefined}
                   rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/8 bg-white/[0.03] text-slate-400 transition-colors hover:border-cyan-400/25 hover:text-white"
+                  className="flex h-9 w-9 items-center justify-center rounded-lg border transition-colors"
+                  style={{ borderColor: "var(--border-subtle)", color: "var(--text-secondary)" }}
                   aria-label={label}
                 >
                   <Icon size={15} />
@@ -62,13 +59,13 @@ export default function Footer() {
 
           {Object.entries(footerLinks).map(([section, links]) => (
             <div key={section}>
-              <h4 className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+              <h4 className="mb-4 text-xs font-semibold uppercase tracking-[0.18em]" style={{ color: "var(--text-muted)" }}>
                 {section}
               </h4>
               <ul className="space-y-2">
                 {links.map((link) => (
                   <li key={link.label}>
-                    <Link href={link.href} className="text-sm text-slate-400 transition-colors hover:text-white">
+                    <Link href={link.href} className="text-sm transition-colors" style={{ color: "var(--text-secondary)" }}>
                       {link.label}
                     </Link>
                   </li>
@@ -78,14 +75,16 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="mt-9 flex flex-col items-center justify-between gap-4 border-t border-white/8 pt-6 md:flex-row">
-          <p className="text-xs text-slate-500">
-            &copy; {new Date().getFullYear()} ZettaMetrics. Designed and built by{" "}
-            <span className="text-slate-300">Shailesh Gupta</span>.
+        <div
+          className="mt-10 flex flex-col items-center justify-between gap-4 border-t pt-6 md:flex-row"
+          style={{ borderColor: "var(--border-subtle)" }}
+        >
+          <p className="text-xs" style={{ color: "var(--text-muted)" }}>
+            &copy; {new Date().getFullYear()} {brand.legalName}. All rights reserved.
           </p>
-          <div className="flex items-center gap-2 text-xs text-slate-500">
-            <span className="h-1.5 w-1.5 rounded-full bg-cyan-300" />
-            Building from India for clients worldwide
+          <div className="flex items-center gap-2 text-xs" style={{ color: "var(--text-muted)" }}>
+            <span className="status-dot" style={{ backgroundColor: "var(--accent)" }} />
+            {brand.location}
           </div>
         </div>
       </div>

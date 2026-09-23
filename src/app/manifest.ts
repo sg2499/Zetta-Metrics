@@ -2,16 +2,15 @@ import { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "ZettaMetrics",
-    short_name: "ZettaMetrics",
-    description: "Turning Data Into Intelligence. Intelligence Into Products.",
+    name: "Zetta Metrics",
+    short_name: "Zetta Metrics",
+    description: "AI-native software for teams who are done doing things by hand.",
     start_url: "/",
     display: "standalone",
-    background_color: "#020617",
-    theme_color: "#3b82f6",
+    background_color: "#050b14",
+    theme_color: "#2fe1d6",
     icons: [
-      { src: "/favicon.png", sizes: "192x192", type: "image/png" },
-      { src: "/favicon.png", sizes: "512x512", type: "image/png" },
+      { src: "/logo-mark.png", sizes: "512x512", type: "image/png" },
     ],
   };
 }

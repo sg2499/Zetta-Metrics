@@ -1,283 +1,202 @@
 import {
-  BarChart3,
-  BookOpen,
-  Bot,
-  Brain,
-  BriefcaseBusiness,
-  Code2,
+  Boxes,
+  BrainCircuit,
+  Building2,
+  CheckCircle2,
+  ClipboardCheck,
+  Cpu,
   Database,
-  FileSearch,
+  FileSpreadsheet,
+  GaugeCircle,
   GraduationCap,
-  Layers3,
-  LineChart,
+  LayoutDashboard,
+  Lock,
   Network,
-  Rocket,
   ShieldCheck,
   Sparkles,
+  Timer,
+  Users,
   Workflow,
 } from "lucide-react";
 
 export const brand = {
-  name: "ZettaMetrics",
-  founder: "Shailesh Gupta",
+  name: "Zetta Metrics",
+  legalName: "Zetta Metrics Technologies Private Limited",
   email: "contact@zetta-metrics.com",
   github: "https://github.com/sg2499",
-  linkedin: "https://linkedin.com/in/shailesh-gupta-7b7278188",
-  blog: "https://prismatic-metrics.blogspot.com",
+  linkedin: "https://www.linkedin.com/in/shailesh-gupta-7b7278188",
   positioning:
-    "Founder-led AI product studio building LLM applications, intelligent data systems, and EdTech platforms for businesses.",
+    "Zetta Metrics builds AI-driven automation platforms that turn manual, fragmented business processes into intelligent digital workflows.",
   shortPositioning:
-    "AI product studio for LLM apps, data systems, and EdTech platforms.",
+    "AI-native software for teams who are done doing things by hand.",
+  location: "Kolkata & Pune, India — building for clients worldwide",
 };
 
+export const founders = [
+  {
+    name: "Shailesh Gupta",
+    role: "Founder & Director",
+    bio: "Data scientist turned AI product builder. Formerly built ML models for attrition and credit-risk at Teleperformance; now leads product and engineering at Zetta Metrics after an MDSAI at IIT Roorkee focused on applied AI and LLM systems.",
+    linkedin: "https://www.linkedin.com/in/shailesh-gupta-7b7278188",
+    github: "https://github.com/sg2499",
+  },
+  {
+    name: "Ashalatha Gupta",
+    role: "Founder & Director",
+    bio: "Co-founder and Director of Zetta Metrics, driving the company's operating foundation alongside its product direction.",
+  },
+];
+
 export const proofPoints = [
-  { value: "2+", label: "Years in applied data science" },
-  { value: "19+", label: "Public GitHub repositories" },
-  { value: "3", label: "Flagship product systems" },
-  { value: "IIT Roorkee", label: "MDSAI academic anchor" },
+  { value: "2", label: "Products in active development" },
+  { value: "1", label: "Platform, built to be reused" },
+  { value: "2026", label: "Founded in Kolkata, India" },
+  { value: "AI-native", label: "Every product, from day one" },
 ];
 
-export const serviceLines = [
+export const platformPillars = [
   {
-    icon: Bot,
-    title: "AI Assistants and RAG Systems",
+    icon: BrainCircuit,
+    title: "AI & ML at the core",
     summary:
-      "Grounded assistants, portfolio copilots, internal knowledge bots, and lead-capture AI workflows.",
-    deliverables: [
-      "Custom chatbot UX",
-      "RAG knowledge base",
-      "Streaming responses",
-      "Lead capture and analytics",
-    ],
-  },
-  {
-    icon: Rocket,
-    title: "AI MVP Development",
-    summary:
-      "Fast, polished product builds for founders who need a usable AI prototype or launch-ready v1.",
-    deliverables: [
-      "Product scoping",
-      "Next.js frontend",
-      "FastAPI backend",
-      "Cloud deployment",
-    ],
-  },
-  {
-    icon: BookOpen,
-    title: "EdTech Product Platforms",
-    summary:
-      "Learning systems with roles, assignments, scoring, dashboards, and adaptive product logic.",
-    deliverables: [
-      "Student and admin flows",
-      "Curriculum tooling",
-      "Assessment engines",
-      "Progress analytics",
-    ],
-  },
-  {
-    icon: BarChart3,
-    title: "Data Science and ML Consulting",
-    summary:
-      "Predictive models, analytics systems, PySpark pipelines, and dashboards that turn data into decisions.",
-    deliverables: [
-      "ML model development",
-      "PySpark and Azure pipelines",
-      "Predictive analytics",
-      "Executive dashboards",
-    ],
-  },
-];
-
-export const flagshipWork = [
-  {
-    icon: Bot,
-    title: "ShaileshGPT",
-    eyebrow: "Agentic RAG product",
-    summary:
-      "A full-stack AI portfolio system with grounded chat, recruiter JD-fit analysis, lead capture, analytics, notifications, and PDF reports.",
-    stack: ["React", "FastAPI", "OpenAI", "RAG", "Supabase", "SendGrid"],
-    href: "/chat",
-    repo: "https://github.com/sg2499/ShaileshGPT",
-    proof:
-      "Shows the ability to turn a static profile into an interactive AI product with real backend workflows.",
-  },
-  {
-    icon: Layers3,
-    title: "MathPath Platform",
-    eyebrow: "Client EdTech platform",
-    summary:
-      "A full-stack math learning platform with admin, teacher, and student flows, DPS assignments, server-side scoring, timers, and result review.",
-    stack: ["Next.js", "FastAPI", "SQL", "TanStack Query", "Role-based UX"],
-    href: "/studio#mathpath",
-    repo: "https://github.com/sg2499/MathPath-Platform",
-    proof:
-      "Demonstrates product engineering across curriculum tooling, protected assessment flow, and operational dashboards.",
-  },
-  {
-    icon: FileSearch,
-    title: "Deep Research Agent",
-    eyebrow: "Multi-agent research system",
-    summary:
-      "An orchestrated research assistant that clarifies queries, plans evidence gathering, searches, synthesizes, and can deliver reports by email.",
-    stack: ["OpenAI Agents SDK", "Gradio", "Pydantic", "Web Search", "SendGrid"],
-    href: "/projects",
-    repo: "https://github.com/sg2499/Deep-Research-Agent",
-    proof:
-      "Proves practical agent design beyond a simple prompt wrapper.",
-  },
-];
-
-export const projects = [
-  ...flagshipWork,
-  {
-    icon: Brain,
-    title: "OpenAI QA ChatBot",
-    eyebrow: "Applied GenAI",
-    summary:
-      "A LangChain and OpenAI-powered question-answering project focused on practical LLM integration patterns.",
-    stack: ["OpenAI", "LangChain", "Streamlit", "Python"],
-    href: "/projects",
-    repo: "https://github.com/sg2499/OpenAI-Enhanced-QA-ChatBot",
-    proof: "Demonstrates applied LLM integration and UX packaging.",
-  },
-  {
-    icon: LineChart,
-    title: "Stock Price Predictor",
-    eyebrow: "Time-series forecasting",
-    summary:
-      "LSTM-based forecasting project using historical stock data, trend visualization, and predicted-versus-actual comparison.",
-    stack: ["TensorFlow", "Keras", "LSTM", "Streamlit"],
-    href: "/projects",
-    repo: "https://github.com/sg2499/Stock-Price-Predictor",
-    proof: "Shows deep learning fundamentals applied to time-series workflows.",
-  },
-  {
-    icon: Network,
-    title: "Movie Recommender System",
-    eyebrow: "Recommendation system",
-    summary:
-      "Content-based recommender using metadata, vectorization, and similarity scoring to surface relevant movie suggestions.",
-    stack: ["Python", "TF-IDF", "Cosine Similarity", "Streamlit"],
-    href: "/projects",
-    repo: "https://github.com/sg2499/Movie-Recommender-System",
-    proof: "Shows classic recommender-system thinking packaged into a usable app.",
+      "Every product is built around models and automated reasoning, not bolted-on chat widgets — extraction, scoring, grading, and decisioning all run through the same AI layer.",
   },
   {
     icon: Workflow,
-    title: "Udemy Course Recommender",
-    eyebrow: "NLP recommendation",
+    title: "Workflow orchestration",
     summary:
-      "Course recommendation project using TF-IDF and cosine similarity over course descriptions and metadata.",
-    stack: ["Python", "NLP", "Pandas", "Streamlit"],
-    href: "/projects",
-    repo: "https://github.com/sg2499/Udemy-Course-Recommendation-System",
-    proof: "Applies language features to discovery and matching.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Campus Placement Predictor",
-    eyebrow: "Applied classification",
-    summary:
-      "Binary classification project predicting placement likelihood from academic and profile signals.",
-    stack: ["Python", "Classification", "EDA", "Streamlit"],
-    href: "/projects",
-    repo: "https://github.com/sg2499/Campus-Placement-Predictor",
-    proof: "Packages applied ML into a decision-support workflow.",
-  },
-];
-
-export const timeline = [
-  {
-    icon: GraduationCap,
-    period: "2024 - 2025",
-    role: "MDSAI, Data Science and AI",
-    org: "IIT Roorkee",
-    detail:
-      "Advanced postgraduate training across machine learning, artificial intelligence, modern AI workflows, and applied systems.",
-  },
-  {
-    icon: GraduationCap,
-    period: "2021 - 2022",
-    role: "Executive Program in Data Science",
-    org: "IIIT Bangalore",
-    detail:
-      "Structured data science program strengthening machine learning, analytics, and practical problem-solving foundations.",
-  },
-  {
-    icon: BriefcaseBusiness,
-    period: "2023 - 2024",
-    role: "Data Scientist",
-    org: "Teleperformance",
-    detail:
-      "Built ML models for attrition prediction and credit risk, with PySpark and Azure data pipeline work for business decision systems.",
-  },
-  {
-    icon: Sparkles,
-    period: "2024 - Present",
-    role: "Founder and AI Product Builder",
-    org: "ZettaMetrics",
-    detail:
-      "Building client-facing AI products, EdTech platforms, RAG systems, and productized data applications.",
-  },
-];
-
-export const skillGroups = [
-  {
-    icon: Code2,
-    title: "Core Engineering",
-    items: ["Python", "TypeScript", "SQL", "React", "Next.js", "FastAPI"],
-  },
-  {
-    icon: Brain,
-    title: "AI and ML",
-    items: ["OpenAI", "LangChain", "RAG", "Agents", "TensorFlow", "PyTorch"],
+      "A shared engine for role-based access, assignment/attempt lifecycles, approvals, and status transitions — built once at MathPath, reused and extended at School Enrichment.",
   },
   {
     icon: Database,
-    title: "Data and Cloud",
-    items: ["PySpark", "Azure", "PostgreSQL", "ETL", "Pandas", "Dashboards"],
+    title: "Data & analytics native",
+    summary:
+      "Structured data models, auditable scoring, and dashboards are first-class in every product — not an afterthought bolted on for a demo.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Built for institutions",
+    summary:
+      "Session hygiene, role separation, backend-authoritative scoring, and data-export/privacy handling are standard, not optional extras added later.",
   },
 ];
 
-export const insights = [
+export const products = [
   {
-    title: "ShaileshGPT - Building an AI-Powered Personal Portfolio Assistant",
-    date: "April 24, 2026",
+    slug: "mathpath",
+    name: "MathPath",
+    tagline: "A role-based math learning operations platform.",
+    status: "live" as const,
+    statusLabel: "Live product",
+    eyebrow: "Flagship product",
     summary:
-      "How a static portfolio became an interactive AI product with grounded answers, recruiter flows, and lead capture.",
-    tags: ["AI Portfolio", "RAG", "Product UX"],
-    href: "https://prismatic-metrics.blogspot.com/2026/04/shaileshgpt-building-ai-powered.html",
+      "MathPath gives schools and learning programs a full operating layer for math practice — admin, teacher, and student dashboards; structured curriculum delivery; server-authoritative assessment; and progress reporting parents can actually read.",
+    icon: LayoutDashboard,
+    highlights: [
+      {
+        icon: Users,
+        title: "Role-based dashboards",
+        detail:
+          "Dedicated Admin, Teacher, and Student experiences, each scoped to what that role actually needs to do.",
+      },
+      {
+        icon: ClipboardCheck,
+        title: "DPS practice workflows",
+        detail:
+          "Structured daily-practice-set delivery across lessons and levels, with randomized options and no answer leakage before submission.",
+      },
+      {
+        icon: Timer,
+        title: "Timed, backend-scored assessments",
+        detail:
+          "Timer authority and scoring both live server-side — the client never holds the answer key or the clock.",
+      },
+      {
+        icon: GaugeCircle,
+        title: "Readiness governance & progress tracking",
+        detail:
+          "Attempt status, results history, and readiness signals give teachers and admins a real read on where each student stands.",
+      },
+      {
+        icon: FileSpreadsheet,
+        title: "Parent-ready reporting",
+        detail:
+          "Progress rolls up into reports built for a parent to understand at a glance, not just an internal ops view.",
+      },
+      {
+        icon: Cpu,
+        title: "Production deployment architecture",
+        detail:
+          "FastAPI + Next.js + SQL, deployed and demo-ready — not a prototype sitting on a laptop.",
+      },
+    ],
+    stack: ["Next.js", "FastAPI", "PostgreSQL", "TanStack Query", "Role-based auth"],
+    screenshots: [], // populated once product screenshots are supplied
+    href: "/products/mathpath",
+    liveUrl: "https://math-path-platform.vercel.app",
+    repo: "https://github.com/sg2499/MathPath-Platform",
   },
   {
-    title: "Deep Research Agent - Agentic AI That Actually Thinks",
-    date: "April 23, 2026",
+    slug: "school-enrichment",
+    name: "School Enrichment",
+    tagline: "A CBSE/ICSE academic learning platform for Classes 5–10.",
+    status: "development" as const,
+    statusLabel: "In active development",
+    eyebrow: "Second product",
     summary:
-      "A look at clarification-first research workflows, specialist agents, and long-form report generation.",
-    tags: ["Agents", "Research", "OpenAI SDK"],
-    href: "https://prismatic-metrics.blogspot.com/2026/04/deep-research-agent-author-shailesh.html",
-  },
-  {
-    title: "Movie Recommender System - Content-Based Filtering",
-    date: "July 27, 2025",
-    summary:
-      "Building a recommender from movie metadata using TF-IDF and cosine similarity.",
-    tags: ["Recommendation", "NLP", "Streamlit"],
-    href: "https://prismatic-metrics.blogspot.com",
-  },
-  {
-    title: "Stock Price Predictor - LSTM for Time Series",
-    date: "July 27, 2025",
-    summary:
-      "A time-series forecasting project using LSTM networks, historical data, and trend visualization.",
-    tags: ["LSTM", "Forecasting", "TensorFlow"],
-    href: "https://prismatic-metrics.blogspot.com",
+      "School Enrichment applies the same platform engine to full CBSE/ICSE academic delivery — a School → Student/Teacher/Admin identity model, a curriculum studio for mapping and approving content, and a five-day guided learning loop with automated marking.",
+    icon: GraduationCap,
+    highlights: [
+      {
+        icon: Building2,
+        title: "School-first identity model",
+        detail:
+          "Built around a School → Student/Teacher/Admin structure from the ground up, with Super Admin controls to publish and map curriculum across schools.",
+      },
+      {
+        icon: Boxes,
+        title: "Curriculum Studio",
+        detail:
+          "Chapter/lesson/question status workflows, an Excel-based content import pipeline, and automated structural and math-pattern quality checks before anything reaches a student.",
+      },
+      {
+        icon: Sparkles,
+        title: "Five-day guided learning loop",
+        detail:
+          "A structured assignment-and-attempt lifecycle with auto-marking and a built-in 'Foundation Repair' path for students who need it.",
+      },
+      {
+        icon: Lock,
+        title: "Security hardened from the start",
+        detail:
+          "Session hygiene, role-scoped access control, and data-export/privacy handling are already in place at this stage — not deferred to a later phase.",
+      },
+    ],
+    stack: ["Next.js 15", "FastAPI", "SQLAlchemy", "Alembic", "PostgreSQL"],
+    screenshots: [],
+    href: "/products/school-enrichment",
+    liveUrl: "https://school-enrichment-frontend.vercel.app",
+    repo: null,
   },
 ];
 
-export const clientFitQuestions = [
-  "I need an AI chatbot for my business",
-  "Can you build an EdTech MVP?",
-  "Show me the MathPath proof",
-  "How strong is the ShaileshGPT backend?",
-  "What can you build in 4 weeks?",
+export const processSteps = [
+  {
+    icon: Network,
+    title: "Map the workflow",
+    detail:
+      "We start with the manual, repetitive process as it actually runs today — not an idealized version of it.",
+  },
+  {
+    icon: BrainCircuit,
+    title: "Design the AI layer",
+    detail:
+      "Extraction, scoring, decisioning, or orchestration logic is designed around that real workflow, on Zetta's shared platform engine.",
+  },
+  {
+    icon: CheckCircle2,
+    title: "Ship, measure, scale",
+    detail:
+      "A working product ships, gets used, and gets measured — then the same underlying engine extends to the next workflow or the next customer.",
+  },
 ];
