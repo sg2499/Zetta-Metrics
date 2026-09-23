@@ -43,14 +43,16 @@
   --shadow-color: 210 60% 2%;
 
   /* Atmosphere — background mesh/glow, tuned for dark mode's native bloom */
-  --glow-primary: rgba(47, 225, 214, 0.30);
-  --glow-secondary: rgba(122, 143, 255, 0.24);
-  --glow-tertiary: rgba(199, 210, 219, 0.10);
+  --glow-primary: rgba(47, 225, 214, 0.42);
+  --glow-secondary: rgba(122, 143, 255, 0.34);
+  --glow-tertiary: rgba(199, 210, 219, 0.16);
   --mesh-opacity: 1;
-  --mesh-line: rgba(255, 255, 255, 0.14);
-  --mesh-dot: rgba(47, 225, 214, 0.55);
-  --glass-bg: rgba(16, 27, 43, 0.55);
-  --glass-border: rgba(255, 255, 255, 0.10);
+  --mesh-line: rgba(255, 255, 255, 0.20);
+  --mesh-dot: rgba(47, 225, 214, 0.75);
+  --glass-bg: rgba(16, 27, 43, 0.5);
+  --glass-border: rgba(255, 255, 255, 0.14);
+  --orb-ring: conic-gradient(from 0deg, transparent, var(--accent), transparent 30%, transparent 60%, var(--glow-secondary), transparent 90%);
+  --orb-core: radial-gradient(circle, rgba(47, 225, 214, 0.55), rgba(47, 225, 214, 0) 70%);
 
   /* Depth */
   --shadow-soft: 0 8px 24px -12px rgba(0, 0, 0, 0.5);
@@ -83,15 +85,18 @@
   --status-live: #0d9c6f;
   --status-dev: #b3790a;
 
-  /* Atmosphere — much softer/airier in light mode: a tint, not a bloom */
-  --glow-primary: rgba(14, 179, 168, 0.16);
-  --glow-secondary: rgba(99, 121, 255, 0.12);
-  --glow-tertiary: rgba(91, 107, 125, 0.06);
-  --mesh-opacity: 0.55;
-  --mesh-line: rgba(15, 23, 42, 0.10);
-  --mesh-dot: rgba(14, 179, 168, 0.45);
-  --glass-bg: rgba(255, 255, 255, 0.6);
-  --glass-border: rgba(15, 23, 42, 0.08);
+  /* Atmosphere — airier than dark mode, but still a real, visible
+     presence: a wash of color and motion, not a hint of one. */
+  --glow-primary: rgba(14, 179, 168, 0.30);
+  --glow-secondary: rgba(99, 121, 255, 0.24);
+  --glow-tertiary: rgba(91, 107, 125, 0.12);
+  --mesh-opacity: 0.9;
+  --mesh-line: rgba(15, 23, 42, 0.16);
+  --mesh-dot: rgba(10, 144, 137, 0.6);
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-border: rgba(15, 23, 42, 0.10);
+  --orb-ring: conic-gradient(from 0deg, transparent, var(--accent-strong), transparent 30%, transparent 60%, var(--glow-secondary), transparent 90%);
+  --orb-core: radial-gradient(circle, rgba(14, 179, 168, 0.35), rgba(14, 179, 168, 0) 70%);
 
   /* Depth */
   --shadow-soft: 0 8px 24px -14px rgba(15, 23, 42, 0.18);
@@ -183,10 +188,22 @@ main {
 }
 
 .gradient-text {
-  background: linear-gradient(120deg, var(--accent) 0%, var(--accent-silver) 100%);
+  background: linear-gradient(100deg, var(--accent-strong) 0%, var(--accent) 30%, var(--accent-silver) 55%, var(--accent) 80%, var(--accent-strong) 100%);
+  background-size: 250% auto;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  animation: shimmer 7s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .gradient-text {
+    animation: none;
+  }
+}
+@keyframes shimmer {
+  to {
+    background-position: -250% center;
+  }
 }
 
 .surface-card {
@@ -196,12 +213,34 @@ main {
 }
 
 .glass-panel {
+  position: relative;
   background-color: var(--glass-bg);
   border: 1px solid var(--glass-border);
   border-radius: 1.25rem;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(24px) saturate(140%);
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
   box-shadow: var(--shadow-lifted);
+  overflow: hidden;
+}
+.glass-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--accent) 0%, transparent 30%, transparent 70%, var(--accent-silver) 100%);
+  opacity: 0.35;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+.glass-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.14), transparent 40%);
+  pointer-events: none;
 }
 
 .hover-card {

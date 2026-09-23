@@ -2,6 +2,7 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { brand, platformPillars, proofPoints, products, processSteps } from "@/lib/content";
 import ProductCard from "@/components/sections/ProductCard";
 import HeroBackground from "@/components/sections/HeroBackground";
+import HeroOrb from "@/components/sections/HeroOrb";
 import Reveal from "@/components/motion/Reveal";
 import MagneticLink from "@/components/motion/MagneticLink";
 
@@ -11,13 +12,14 @@ export default function Home() {
       {/* Hero */}
       <section className="relative overflow-hidden pt-40 pb-20 md:pt-48 md:pb-28">
         <HeroBackground />
+        <HeroOrb />
         <div className="container-custom relative z-10">
           <div className="grid gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
             <div>
               <Reveal>
                 <p className="eyebrow mb-5">AI-native automation platform</p>
                 <h1
-                  className="text-balance font-display text-[3rem] font-extrabold leading-[1.05] tracking-[-0.02em] sm:text-7xl"
+                  className="text-balance font-display text-[3.4rem] font-extrabold leading-[1.02] tracking-[-0.03em] sm:text-[5.5rem]"
                   style={{ color: "var(--text-primary)" }}
                 >
                   Turn manual work into

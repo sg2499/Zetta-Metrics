@@ -31,6 +31,18 @@ export default function AmbientBackground() {
           opacity: 0.9,
         }}
       />
+      {/* Film grain — a near-imperceptible texture that keeps flat color
+          fields from looking sterile/digital-flat. Standard trick on
+          premium sites (Linear, Vercel, Stripe, etc). */}
+      <div
+        className="absolute inset-0"
+        style={{
+          opacity: "var(--grain-opacity, 0.05)",
+          mixBlendMode: "overlay",
+          backgroundImage:
+            "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>\")",
+        }}
+      />
     </div>
   );
 }

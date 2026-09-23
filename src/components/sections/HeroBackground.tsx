@@ -29,9 +29,9 @@ export default function HeroBackground() {
 
   const blobs = useMemo(
     () => [
-      { size: 480, top: "-10%", left: "0%", color: "var(--glow-primary)", duration: 22 },
-      { size: 420, top: "20%", left: "62%", color: "var(--glow-secondary)", duration: 26 },
-      { size: 360, top: "58%", left: "20%", color: "var(--glow-tertiary)", duration: 30 },
+      { size: 620, top: "-16%", left: "-6%", color: "var(--glow-primary)", duration: 22 },
+      { size: 560, top: "10%", left: "58%", color: "var(--glow-secondary)", duration: 26 },
+      { size: 460, top: "55%", left: "16%", color: "var(--glow-tertiary)", duration: 30 },
     ],
     []
   );
@@ -86,7 +86,7 @@ export default function HeroBackground() {
             key={i}
             cx={`${node.x}%`}
             cy={`${node.y}%`}
-            r={2.5}
+            r={3.5}
             fill="var(--mesh-dot)"
             initial={{ opacity: 0.3 }}
             animate={{ opacity: shouldReduceMotion ? 0.6 : [0.3, 0.9, 0.3] }}
