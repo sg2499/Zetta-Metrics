@@ -87,10 +87,17 @@
   --font-mono: "JetBrains Mono", monospace;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+/* NOTE: this must stay inside @layer base — Tailwind v4's utility classes
+   (padding, margin, etc.) live in @layer utilities, and any UNLAYERED CSS
+   rule always wins over layered CSS regardless of specificity. An unlayered
+   `* { margin: 0; padding: 0 }` here would silently null out every
+   padding/margin utility class site-wide. */
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 }
 
 html {

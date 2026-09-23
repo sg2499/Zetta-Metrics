@@ -19,7 +19,7 @@ export default function CompanyPage() {
             We build the platform first, then the product.
           </h1>
           <p className="mt-5 text-base leading-7" style={{ color: "var(--text-secondary)" }}>
-            {brand.legalName} is an AI-native automation company. We don&apos;t
+            {brand.legalName} is an AI-native automation company. We don&apos;t{" "}
             take one-off projects and rebuild from zero each time — every
             product we ship extends the same underlying platform, so the work
             compounds instead of resetting.
