@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Mail, Send } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "@/components/BrandIcons";
+import { LinkedinIcon } from "@/components/BrandIcons";
 import { brand } from "@/lib/content";
 
 const subjects = [
@@ -62,13 +62,12 @@ export default function ContactPage() {
   const contactLinks = [
     { icon: Mail, label: "Email", value: brand.email, href: `mailto:${brand.email}` },
     { icon: LinkedinIcon, label: "LinkedIn", value: "Shailesh Gupta", href: brand.linkedin },
-    { icon: GithubIcon, label: "GitHub", value: "github.com/sg2499", href: brand.github },
   ];
 
   return (
     <div className="pt-40 pb-24">
       <div className="container-custom">
-        <div className="max-w-2xl">
+        <div>
           <p className="eyebrow mb-4">Contact</p>
           <h1 className="text-balance font-display text-4xl font-extrabold tracking-tight sm:text-5xl" style={{ color: "var(--text-primary)" }}>
             Let&apos;s talk.

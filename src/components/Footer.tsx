@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Mail } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "@/components/BrandIcons";
+import { Mail, Phone } from "lucide-react";
+import { LinkedinIcon } from "@/components/BrandIcons";
 import { brand, products } from "@/lib/content";
 
 const footerLinks = {
@@ -15,7 +15,6 @@ const footerLinks = {
 };
 
 const socials = [
-  { icon: GithubIcon, href: brand.github, label: "GitHub" },
   { icon: LinkedinIcon, href: brand.linkedin, label: "LinkedIn" },
   { icon: Mail, href: `mailto:${brand.email}`, label: "Email" },
 ];
@@ -33,12 +32,13 @@ export default function Footer() {
               <Image
                 src="/logo-lockup.png"
                 alt="Zetta Metrics — Engineering outcomes that matter"
-                width={1365}
-                height={495}
-                className="h-16 w-auto sm:h-20"
+                width={1321}
+                height={472}
+                quality={100}
+                className="h-20 w-auto sm:h-24"
               />
             </Link>
-            <p className="max-w-sm text-sm leading-7" style={{ color: "var(--text-secondary)" }}>
+            <p className="text-pretty text-sm leading-7" style={{ color: "var(--text-secondary)" }}>
               {brand.positioning}
             </p>
             <div className="mt-5 flex items-center gap-2">
@@ -56,11 +56,24 @@ export default function Footer() {
                 </a>
               ))}
             </div>
+            <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2">
+              {brand.phones.map((phone) => (
+                <a
+                  key={phone}
+                  href={`tel:+91${phone}`}
+                  className="flex items-center gap-2 text-sm transition-colors"
+                  style={{ color: "var(--text-secondary)" }}
+                >
+                  <Phone size={14} style={{ color: "var(--accent)" }} />
+                  +91 {phone}
+                </a>
+              ))}
+            </div>
           </div>
 
           {Object.entries(footerLinks).map(([section, links]) => (
             <div key={section}>
-              <h4 className="mb-4 text-xs font-semibold uppercase tracking-[0.18em]" style={{ color: "var(--text-muted)" }}>
+              <h4 className="mb-4 text-xs font-bold uppercase tracking-[0.18em]" style={{ color: "var(--accent)" }}>
                 {section}
               </h4>
               <ul className="space-y-2">

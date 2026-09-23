@@ -14,7 +14,7 @@ export default function ProductsPage() {
         >
           Built on one platform, applied to real institutions.
         </h1>
-        <p className="text-pretty mt-5 max-w-3xl text-base leading-7" style={{ color: "var(--text-secondary)" }}>
+        <p className="text-pretty mt-5 text-base leading-7" style={{ color: "var(--text-secondary)" }}>
           MathPath and School Enrichment aren&apos;t two separate side projects —
           they&apos;re two applications of the same underlying Zetta engine:
           role-based workflows, backend-authoritative scoring, and AI woven into
@@ -28,16 +28,16 @@ export default function ProductsPage() {
         </div>
 
         <div className="surface-card mt-16 flex flex-col items-start gap-6 p-10 md:flex-row md:items-center md:justify-between">
-          <div>
+          <div className="min-w-0 flex-1">
             <h2 className="text-balance font-display text-2xl font-bold" style={{ color: "var(--text-primary)" }}>
               Have a workflow that looks like this?
             </h2>
-            <p className="text-pretty mt-3 max-w-xl text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
+            <p className="text-pretty mt-3 text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
               If your process is manual, fragmented, and repetitive, it&apos;s
               probably a fit for the same platform.
             </p>
           </div>
-          <Link href="/contact" className="btn-primary shrink-0 px-6 py-3.5 text-sm">
+          <Link href="/contact" className="btn-primary shrink-0 whitespace-nowrap px-6 py-3.5 text-sm">
             Talk to us <ArrowRight size={16} />
           </Link>
         </div>

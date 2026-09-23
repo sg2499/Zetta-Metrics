@@ -14,7 +14,7 @@ export default function CompanyPage() {
   return (
     <div className="pt-40 pb-24">
       <div className="container-custom">
-        <div className="max-w-4xl">
+        <div>
           <p className="eyebrow mb-4">Company</p>
           <h1 className="text-balance font-display text-4xl font-extrabold tracking-tight sm:text-5xl" style={{ color: "var(--text-primary)" }}>
             We build the platform first, then the product.
@@ -112,16 +112,16 @@ export default function CompanyPage() {
         </div>
 
         <div className="surface-card mt-20 flex flex-col items-start gap-6 p-10 md:flex-row md:items-center md:justify-between">
-          <div>
+          <div className="min-w-0 flex-1">
             <h2 className="text-balance font-display text-2xl font-bold" style={{ color: "var(--text-primary)" }}>
               Want to work with us?
             </h2>
-            <p className="text-pretty mt-3 max-w-xl text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
+            <p className="text-pretty mt-3 text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
               Whether it&apos;s about our products or a partnership, we&apos;d
               like to hear from you.
             </p>
           </div>
-          <Link href="/contact" className="btn-primary shrink-0 px-6 py-3.5 text-sm">
+          <Link href="/contact" className="btn-primary shrink-0 whitespace-nowrap px-6 py-3.5 text-sm">
             Get in touch <ArrowRight size={16} />
           </Link>
         </div>

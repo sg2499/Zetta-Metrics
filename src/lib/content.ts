@@ -22,14 +22,15 @@ import {
 export const brand = {
   name: "Zetta Metrics",
   legalName: "Zetta Metrics Technologies Private Limited",
-  email: "contact@zetta-metrics.com",
+  email: "shaileshgupta@zetta-metrics.com",
+  phones: ["7980919518", "9831684229"],
   github: "https://github.com/sg2499",
   linkedin: "https://www.linkedin.com/in/shailesh-gupta-7b7278188",
   positioning:
     "We build one platform engine — role-based workflows, backend-authoritative scoring, and AI woven into the product logic — and apply it to real institutions, one product at a time.",
   shortPositioning:
     "One platform engine. Every product we ship extends it.",
-  location: "Kolkata & Pune, India — building for clients worldwide",
+  location: "Kolkata, India — building for clients worldwide",
 };
 
 export const founders = [
@@ -50,10 +51,10 @@ export const founders = [
 ];
 
 export const proofPoints = [
-  { value: "2", label: "Products, one shared engine" },
-  { value: "3", label: "Roles orchestrated per product — admin, teacher, student" },
-  { value: "2026", label: "Incorporated in Kolkata, India" },
-  { value: "5–10", label: "Classes served by School Enrichment" },
+  { value: "2026", label: "Founded in Kolkata, India" },
+  { value: "1", label: "Shared platform engine, every product" },
+  { value: "AI-native", label: "Every product, from day one" },
+  { value: "100%", label: "Backend-authoritative, auditable scoring" },
 ];
 
 // Used on the Home page ("The platform" section) — framed around what the
@@ -170,7 +171,6 @@ export const products = [
       { src: "/screenshots/mathpath/student-dashboard.png", caption: "Student — Learning Workspace" },
     ],
     href: "/products/mathpath",
-    repo: "https://github.com/sg2499/MathPath-Platform",
   },
   {
     slug: "school-enrichment",
@@ -210,7 +210,6 @@ export const products = [
     ],
     screenshots: [],
     href: "/products/school-enrichment",
-    repo: null,
   },
 ];
 

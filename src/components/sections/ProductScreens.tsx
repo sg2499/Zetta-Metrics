@@ -35,13 +35,16 @@ export default function ProductScreens({ screenshots, productName, placeholderNo
               <span className="h-2 w-2 rounded-full" style={{ backgroundColor: "var(--border-strong)" }} />
               <span className="h-2 w-2 rounded-full" style={{ backgroundColor: "var(--border-strong)" }} />
             </div>
-            <div className="relative aspect-[16/9] w-full overflow-hidden">
+            <div
+              className="relative aspect-[2/1] w-full overflow-hidden"
+              style={{ backgroundColor: "var(--bg-raised)" }}
+            >
               <Image
                 src={shot.src}
                 alt={`${productName} — ${shot.caption}`}
                 fill
-                sizes="(min-width: 640px) 50vw, 100vw"
-                className="object-cover object-top"
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                className="object-contain"
               />
             </div>
             <figcaption

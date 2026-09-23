@@ -19,7 +19,7 @@ export default function Home() {
                 Turn manual work into
                 <span className="gradient-text"> intelligent workflows.</span>
               </h1>
-              <p className="text-pretty mt-6 max-w-xl text-lg leading-8" style={{ color: "var(--text-secondary)" }}>
+              <p className="text-pretty mt-6 text-lg leading-8" style={{ color: "var(--text-secondary)" }}>
                 {brand.positioning} Education is where we proved it first — MathPath
                 is live in schools today, and School Enrichment is the same engine
                 built out for full academic delivery.
@@ -33,9 +33,13 @@ export default function Home() {
                 </Link>
               </div>
 
-              <dl className="mt-14 grid grid-cols-2 gap-6 sm:grid-cols-4">
+              <dl className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-4">
                 {proofPoints.map((p) => (
-                  <div key={p.label}>
+                  <div
+                    key={p.label}
+                    className="rounded-xl border p-4"
+                    style={{ borderColor: "var(--border-subtle)", backgroundColor: "var(--bg-raised)" }}
+                  >
                     <dt className="text-balance font-display text-2xl font-bold" style={{ color: "var(--text-primary)" }}>
                       {p.value}
                     </dt>
@@ -76,7 +80,7 @@ export default function Home() {
           <h2 className="text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: "var(--text-primary)" }}>
             One engine. Built once, applied everywhere.
           </h2>
-          <p className="text-pretty mt-4 max-w-3xl text-base leading-7" style={{ color: "var(--text-secondary)" }}>
+          <p className="text-pretty mt-4 text-base leading-7" style={{ color: "var(--text-secondary)" }}>
             Every Zetta product runs on the same underlying platform — not
             separate one-off builds. That's what lets us move from one
             customer to the next without starting over.
@@ -104,7 +108,7 @@ export default function Home() {
           <h2 className="text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: "var(--text-primary)" }}>
             Two products. One platform.
           </h2>
-          <p className="text-pretty mt-4 max-w-3xl text-base leading-7" style={{ color: "var(--text-secondary)" }}>
+          <p className="text-pretty mt-4 text-base leading-7" style={{ color: "var(--text-secondary)" }}>
             Both are real, working systems — not concept decks.
           </p>
           <div className="mt-12 grid gap-6 md:grid-cols-2">
@@ -122,7 +126,7 @@ export default function Home() {
           <h2 className="text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: "var(--text-primary)" }}>
             From manual process to shipped product.
           </h2>
-          <p className="text-pretty mt-4 max-w-3xl text-base leading-7" style={{ color: "var(--text-secondary)" }}>
+          <p className="text-pretty mt-4 text-base leading-7" style={{ color: "var(--text-secondary)" }}>
             The same three-stage approach, every time — it's what lets a second
             product start ahead of where the first one finished.
           </p>
@@ -154,16 +158,16 @@ export default function Home() {
       <section className="py-20">
         <div className="container-custom">
           <div className="surface-card flex flex-col items-start gap-6 p-10 md:flex-row md:items-center md:justify-between">
-            <div>
+            <div className="min-w-0 flex-1">
               <h2 className="text-balance font-display text-2xl font-bold sm:text-3xl" style={{ color: "var(--text-primary)" }}>
-                Want to see the platform in action?
+                Have a workflow like this?
               </h2>
-              <p className="text-pretty mt-3 max-w-xl text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
-                Walk through MathPath live, or talk to us about what School
-                Enrichment is building toward next.
+              <p className="text-pretty mt-3 text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
+                Tell us about the process you&apos;re trying to fix — we&apos;ll show
+                you how the platform applies to it.
               </p>
             </div>
-            <Link href="/contact" className="btn-primary shrink-0 px-6 py-3.5 text-sm">
+            <Link href="/contact" className="btn-primary shrink-0 whitespace-nowrap px-6 py-3.5 text-sm">
               Talk to us <ArrowRight size={16} />
             </Link>
           </div>

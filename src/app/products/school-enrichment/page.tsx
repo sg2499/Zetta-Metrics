@@ -29,7 +29,7 @@ export default function SchoolEnrichmentPage() {
   return (
     <div className="pt-40 pb-24">
       <div className="container-custom">
-        <div className="max-w-3xl">
+        <div>
           <span
             className="mb-5 inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[0.7rem] font-semibold"
             style={{ borderColor: "var(--border-subtle)", color: "var(--status-dev)" }}
@@ -61,7 +61,7 @@ export default function SchoolEnrichmentPage() {
           <h2 className="text-balance font-display text-2xl font-bold" style={{ color: "var(--text-primary)" }}>
             Build roadmap
           </h2>
-          <p className="text-pretty mt-2 max-w-2xl text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
+          <p className="text-pretty mt-2 text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
             Built on the same platform engine as MathPath — here&apos;s exactly
             where it stands today.
           </p>
@@ -111,11 +111,11 @@ export default function SchoolEnrichmentPage() {
         </div>
 
         <div className="surface-card mt-16 flex flex-col items-start gap-6 p-10 md:flex-row md:items-center md:justify-between">
-          <div>
+          <div className="min-w-0 flex-1">
             <h2 className="text-balance font-display text-2xl font-bold" style={{ color: "var(--text-primary)" }}>
               MathPath is live today
             </h2>
-            <p className="text-pretty mt-3 max-w-xl text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
+            <p className="text-pretty mt-3 text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
               See the same platform engine running in production.
             </p>
           </div>
