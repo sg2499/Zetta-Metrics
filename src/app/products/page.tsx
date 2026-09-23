@@ -14,7 +14,7 @@ export default function ProductsPage() {
         >
           Built on one platform, applied to real institutions.
         </h1>
-        <p className="text-pretty mt-5 max-w-2xl text-base leading-7" style={{ color: "var(--text-secondary)" }}>
+        <p className="text-pretty mt-5 max-w-3xl text-base leading-7" style={{ color: "var(--text-secondary)" }}>
           MathPath and School Enrichment aren&apos;t two separate side projects —
           they&apos;re two applications of the same underlying Zetta engine:
           role-based workflows, backend-authoritative scoring, and AI woven into

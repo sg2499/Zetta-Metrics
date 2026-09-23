@@ -20,7 +20,7 @@ interface Props {
 export default function ProductScreens({ screenshots, productName, placeholderNote }: Props) {
   if (screenshots.length > 0) {
     return (
-      <div className="grid gap-5 sm:grid-cols-2">
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {screenshots.map((shot) => (
           <figure
             key={shot.src}
@@ -35,13 +35,15 @@ export default function ProductScreens({ screenshots, productName, placeholderNo
               <span className="h-2 w-2 rounded-full" style={{ backgroundColor: "var(--border-strong)" }} />
               <span className="h-2 w-2 rounded-full" style={{ backgroundColor: "var(--border-strong)" }} />
             </div>
-            <Image
-              src={shot.src}
-              alt={`${productName} — ${shot.caption}`}
-              width={1200}
-              height={640}
-              className="h-auto w-full"
-            />
+            <div className="relative aspect-[16/9] w-full overflow-hidden">
+              <Image
+                src={shot.src}
+                alt={`${productName} — ${shot.caption}`}
+                fill
+                sizes="(min-width: 640px) 50vw, 100vw"
+                className="object-cover object-top"
+              />
+            </div>
             <figcaption
               className="border-t px-4 py-2.5 text-xs font-medium"
               style={{ borderColor: "var(--border-subtle)", color: "var(--text-secondary)" }}

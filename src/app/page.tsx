@@ -76,7 +76,7 @@ export default function Home() {
           <h2 className="text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: "var(--text-primary)" }}>
             One engine. Built once, applied everywhere.
           </h2>
-          <p className="text-pretty mt-4 max-w-2xl text-base leading-7" style={{ color: "var(--text-secondary)" }}>
+          <p className="text-pretty mt-4 max-w-3xl text-base leading-7" style={{ color: "var(--text-secondary)" }}>
             Every Zetta product runs on the same underlying platform — not
             separate one-off builds. That's what lets us move from one
             customer to the next without starting over.
@@ -104,7 +104,7 @@ export default function Home() {
           <h2 className="text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: "var(--text-primary)" }}>
             Two products. One platform.
           </h2>
-          <p className="text-pretty mt-4 max-w-2xl text-base leading-7" style={{ color: "var(--text-secondary)" }}>
+          <p className="text-pretty mt-4 max-w-3xl text-base leading-7" style={{ color: "var(--text-secondary)" }}>
             Both are real, working systems — not concept decks.
           </p>
           <div className="mt-12 grid gap-6 md:grid-cols-2">
@@ -122,13 +122,22 @@ export default function Home() {
           <h2 className="text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: "var(--text-primary)" }}>
             From manual process to shipped product.
           </h2>
+          <p className="text-pretty mt-4 max-w-3xl text-base leading-7" style={{ color: "var(--text-secondary)" }}>
+            The same three-stage approach, every time — it's what lets a second
+            product start ahead of where the first one finished.
+          </p>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {processSteps.map((step, i) => (
               <div key={step.title} className="surface-card p-6">
-                <span className="font-mono text-xs" style={{ color: "var(--accent)" }}>
-                  0{i + 1}
-                </span>
-                <step.icon size={22} className="mt-3" style={{ color: "var(--accent)" }} />
+                <div className="flex items-center gap-3">
+                  <div
+                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full font-display text-sm font-bold"
+                    style={{ backgroundColor: "var(--accent-soft)", color: "var(--accent)" }}
+                  >
+                    {i + 1}
+                  </div>
+                  <step.icon size={20} style={{ color: "var(--accent)" }} />
+                </div>
                 <h3 className="mt-4 font-display text-base font-bold" style={{ color: "var(--text-primary)" }}>
                   {step.title}
                 </h3>

@@ -37,6 +37,7 @@ export const founders = [
     name: "Shailesh Gupta",
     role: "Founder & Director",
     bio: "Started out building attrition and credit-risk models at Teleperformance, then spent two years on applied AI and LLM systems during an MDSAI at IIT Roorkee. Leads product and engineering at Zetta Metrics — the one writing the code the platform runs on.",
+    image: "/founder-shailesh.jpg",
     linkedin: "https://www.linkedin.com/in/shailesh-gupta-7b7278188",
     github: "https://github.com/sg2499",
   },
@@ -44,6 +45,7 @@ export const founders = [
     name: "Ashalatha Gupta",
     role: "Founder & Director",
     bio: "Co-founder and Director, running the operating and business side of Zetta Metrics so product and engineering can stay focused on what ships.",
+    image: null,
   },
 ];
 
@@ -54,6 +56,8 @@ export const proofPoints = [
   { value: "5–10", label: "Classes served by School Enrichment" },
 ];
 
+// Used on the Home page ("The platform" section) — framed around what the
+// platform engine technically does.
 export const platformPillars = [
   {
     icon: BrainCircuit,
@@ -65,19 +69,49 @@ export const platformPillars = [
     icon: Workflow,
     title: "One engine, reused on purpose",
     summary:
-      "Roles, assignments, approvals, and status transitions were built once for MathPath. School Enrichment runs on the same engine instead of a second one.",
+      "Roles, assignments, approvals, and status transitions are built once on the platform engine, then configured for the next product instead of rebuilt from scratch.",
   },
   {
     icon: Database,
     title: "Scoring you can audit",
     summary:
-      "Every score and status change traces back to a server-side decision, not a client guess — so a teacher or admin can always see why a result is what it is.",
+      "Every score and status change traces back to a server-side decision, not a client guess — so whoever's reviewing it can always see why a result is what it is.",
   },
   {
     icon: ShieldCheck,
-    title: "Built for schools, not demos",
+    title: "Built for institutions, not demos",
     summary:
-      "Role separation, session handling, and data-export controls were part of the first build, because the users are real students and teachers, not a pitch audience.",
+      "Role separation, session handling, and data-export controls are part of the first build, because the people using it are real, not a pitch audience.",
+  },
+];
+
+// Used on the Company page (mission recap) — same underlying principles as
+// platformPillars, framed around how we operate as a company rather than
+// what the engine does technically. Keep this distinct in wording.
+export const companyPillars = [
+  {
+    icon: BrainCircuit,
+    title: "AI is the default, not an add-on",
+    summary:
+      "We don't design a product and then look for a place to fit AI in — the intelligent layer is part of the first draft of every system we build.",
+  },
+  {
+    icon: Workflow,
+    title: "We build platforms, not projects",
+    summary:
+      "Every engagement adds to the same underlying engine instead of starting a fresh codebase, so the second product ships faster than the first.",
+  },
+  {
+    icon: Database,
+    title: "Decisions have to be explainable",
+    summary:
+      "If a system scores, grades, or approves something, the reasoning has to be traceable — we don't ship logic nobody can account for.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "We build for the people who'll actually use it",
+    summary:
+      "Access control, data handling, and session hygiene are standard from day one, because what we ship reaches real users, not a demo audience.",
   },
 ];
 
@@ -131,10 +165,9 @@ export const products = [
       },
     ],
     screenshots: [
-      { src: "/screenshots/mathpath/admin-dashboard.jpg", caption: "Admin — Control Centre" },
-      { src: "/screenshots/mathpath/admin-students.jpg", caption: "Admin — Student Management" },
-      { src: "/screenshots/mathpath/teacher-dashboard.jpg", caption: "Teacher — Teaching Workspace" },
-      { src: "/screenshots/mathpath/student-dashboard.jpg", caption: "Student — Learning Workspace" },
+      { src: "/screenshots/mathpath/admin-dashboard.png", caption: "Admin — Control Centre" },
+      { src: "/screenshots/mathpath/teacher-dashboard.png", caption: "Teacher — Teaching Workspace" },
+      { src: "/screenshots/mathpath/student-dashboard.png", caption: "Student — Learning Workspace" },
     ],
     href: "/products/mathpath",
     repo: "https://github.com/sg2499/MathPath-Platform",

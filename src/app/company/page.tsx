@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import { brand, founders, platformPillars } from "@/lib/content";
+import { brand, founders, companyPillars } from "@/lib/content";
 import { GithubIcon, LinkedinIcon } from "@/components/BrandIcons";
 
 export const metadata: Metadata = {
@@ -13,7 +14,7 @@ export default function CompanyPage() {
   return (
     <div className="pt-40 pb-24">
       <div className="container-custom">
-        <div className="max-w-3xl">
+        <div className="max-w-4xl">
           <p className="eyebrow mb-4">Company</p>
           <h1 className="text-balance font-display text-4xl font-extrabold tracking-tight sm:text-5xl" style={{ color: "var(--text-primary)" }}>
             We build the platform first, then the product.
@@ -28,7 +29,7 @@ export default function CompanyPage() {
 
         {/* Mission / pillars recap */}
         <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {platformPillars.map((pillar) => (
+          {companyPillars.map((pillar) => (
             <div key={pillar.title} className="surface-card p-6">
               <pillar.icon size={20} style={{ color: "var(--accent)" }} />
               <h3 className="mt-3 font-display text-sm font-bold" style={{ color: "var(--text-primary)" }}>
@@ -50,15 +51,24 @@ export default function CompanyPage() {
           <div className="mt-8 grid gap-6 sm:grid-cols-2">
             {founders.map((f) => (
               <div key={f.name} className="surface-card p-7">
-                <div
-                  className="flex h-12 w-12 items-center justify-center rounded-full font-display text-lg font-bold"
-                  style={{ backgroundColor: "var(--accent-soft)", color: "var(--accent)" }}
-                >
-                  {f.name
-                    .split(" ")
-                    .map((n) => n[0])
-                    .join("")}
-                </div>
+                {f.image ? (
+                  <div
+                    className="relative h-14 w-14 overflow-hidden rounded-full border-2"
+                    style={{ borderColor: "var(--accent)" }}
+                  >
+                    <Image src={f.image} alt={f.name} fill className="object-cover" />
+                  </div>
+                ) : (
+                  <div
+                    className="flex h-14 w-14 items-center justify-center rounded-full font-display text-lg font-bold"
+                    style={{ backgroundColor: "var(--accent-soft)", color: "var(--accent)" }}
+                  >
+                    {f.name
+                      .split(" ")
+                      .map((n) => n[0])
+                      .join("")}
+                  </div>
+                )}
                 <h3 className="mt-4 font-display text-lg font-bold" style={{ color: "var(--text-primary)" }}>
                   {f.name}
                 </h3>
