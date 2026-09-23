@@ -30,9 +30,9 @@ export default function CompanyPage() {
         </div>
 
         {/* Mission / pillars recap */}
-        <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-16 grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {companyPillars.map((pillar) => (
-            <div key={pillar.title} className="surface-card p-6">
+            <div key={pillar.title} className="surface-card flex h-full flex-col p-6">
               <pillar.icon size={20} style={{ color: "var(--accent)" }} />
               <h3 className="mt-3 font-display text-sm font-bold" style={{ color: "var(--text-primary)" }}>
                 {pillar.title}
@@ -50,9 +50,9 @@ export default function CompanyPage() {
           <h2 className="text-balance font-display text-2xl font-bold" style={{ color: "var(--text-primary)" }}>
             Founders & Directors
           </h2>
-          <div className="mt-8 grid gap-6 sm:grid-cols-2">
+          <div className="mt-8 grid items-stretch gap-6 sm:grid-cols-2">
             {founders.map((f) => (
-              <div key={f.name} className="surface-card p-7">
+              <div key={f.name} className="surface-card flex h-full flex-col p-7">
                 {f.image ? (
                   <div
                     className="relative h-14 w-14 overflow-hidden rounded-full border-2"

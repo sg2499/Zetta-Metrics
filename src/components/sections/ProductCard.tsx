@@ -5,7 +5,7 @@ import type { products } from "@/lib/content";
 export default function ProductCard({ product }: { product: (typeof products)[number] }) {
   const isLive = product.status === "live";
   return (
-    <Link href={product.href} className="group surface-card flex flex-col p-7 transition-colors hover:border-[var(--accent)]">
+    <Link href={product.href} className="group surface-card flex h-full flex-col p-7 transition-colors hover:border-[var(--accent)]">
       <div className="flex items-center justify-between">
         <div
           className="flex h-11 w-11 items-center justify-center rounded-xl"
@@ -37,7 +37,7 @@ export default function ProductCard({ product }: { product: (typeof products)[nu
       </p>
 
       <span
-        className="mt-7 inline-flex items-center gap-1.5 text-sm font-semibold"
+        className="mt-auto inline-flex items-center gap-1.5 pt-7 text-sm font-semibold"
         style={{ color: "var(--accent)" }}
       >
         View product <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />

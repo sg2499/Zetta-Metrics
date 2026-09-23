@@ -62,11 +62,11 @@ export default function ProductScreens({ screenshots, productName, placeholderNo
   if (screenshots.length > 0) {
     return (
       <>
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {screenshots.map((shot, i) => (
             <figure
               key={shot.src}
-              className="overflow-hidden rounded-xl border"
+              className="flex h-full flex-col overflow-hidden rounded-xl border"
               style={{ borderColor: "var(--border-subtle)" }}
             >
               <div

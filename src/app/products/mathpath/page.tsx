@@ -55,9 +55,9 @@ export default function MathPathPage() {
           <h2 className="text-balance font-display text-2xl font-bold" style={{ color: "var(--text-primary)" }}>
             What&apos;s in the platform
           </h2>
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {product.highlights.map((h) => (
-              <div key={h.title} className="surface-card p-6">
+              <div key={h.title} className="surface-card flex h-full flex-col p-6">
                 <h.icon size={20} style={{ color: "var(--accent)" }} />
                 <h3 className="mt-3 font-display text-base font-bold" style={{ color: "var(--text-primary)" }}>
                   {h.title}

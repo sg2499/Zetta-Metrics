@@ -46,11 +46,11 @@ export default function Home() {
               </Reveal>
 
               <Reveal delay={0.24}>
-                <dl className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-4">
+                <dl className="mt-14 grid grid-cols-2 items-stretch gap-4 sm:grid-cols-4">
                   {proofPoints.map((p) => (
                     <div
                       key={p.label}
-                      className="hover-card rounded-xl border p-4"
+                      className="hover-card flex h-full flex-col rounded-xl border p-4"
                       style={{ borderColor: "var(--border-subtle)", backgroundColor: "var(--bg-raised)" }}
                     >
                       <dt className="text-balance font-display text-2xl font-bold" style={{ color: "var(--text-primary)" }}>
@@ -102,10 +102,10 @@ export default function Home() {
               carry from one product, one client, and one industry to the next.
             </p>
           </Reveal>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {platformPillars.map((pillar, i) => (
-              <Reveal key={pillar.title} delay={i * 0.06}>
-                <div className="hover-card surface-card p-6">
+              <Reveal key={pillar.title} delay={i * 0.06} className="h-full">
+                <div className="hover-card surface-card flex h-full flex-col p-6">
                   <pillar.icon size={22} style={{ color: "var(--accent)" }} />
                   <h3 className="mt-4 font-display text-base font-bold" style={{ color: "var(--text-primary)" }}>
                     {pillar.title}
@@ -133,9 +133,9 @@ export default function Home() {
               as a SaaS company.
             </p>
           </Reveal>
-          <div className="mt-12 grid gap-6 md:grid-cols-2">
+          <div className="mt-12 grid items-stretch gap-6 md:grid-cols-2">
             {products.map((product, i) => (
-              <Reveal key={product.slug} delay={i * 0.08}>
+              <Reveal key={product.slug} delay={i * 0.08} className="h-full">
                 <ProductCard product={product} />
               </Reveal>
             ))}
@@ -156,10 +156,10 @@ export default function Home() {
               product start ahead of where the first one finished.
             </p>
           </Reveal>
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
+          <div className="mt-12 grid items-stretch gap-5 md:grid-cols-3">
             {processSteps.map((step, i) => (
-              <Reveal key={step.title} delay={i * 0.08}>
-                <div className="hover-card surface-card p-6">
+              <Reveal key={step.title} delay={i * 0.08} className="h-full">
+                <div className="hover-card surface-card flex h-full flex-col p-6">
                   <div className="flex items-center gap-3">
                     <div
                       className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full font-display text-sm font-bold"
