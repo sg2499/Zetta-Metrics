@@ -131,7 +131,12 @@ export const products = [
       },
     ],
     stack: ["Next.js", "FastAPI", "PostgreSQL", "TanStack Query", "Role-based auth"],
-    screenshots: [], // populated once product screenshots are supplied
+    screenshots: [
+      { src: "/screenshots/mathpath/admin-dashboard.jpg", caption: "Admin — Control Centre" },
+      { src: "/screenshots/mathpath/admin-students.jpg", caption: "Admin — Student Management" },
+      { src: "/screenshots/mathpath/teacher-dashboard.jpg", caption: "Teacher — Teaching Workspace" },
+      { src: "/screenshots/mathpath/student-dashboard.jpg", caption: "Student — Learning Workspace" },
+    ],
     href: "/products/mathpath",
     liveUrl: "https://math-path-platform.vercel.app",
     repo: "https://github.com/sg2499/MathPath-Platform",

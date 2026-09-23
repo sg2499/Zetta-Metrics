@@ -1,8 +1,13 @@
 import Image from "next/image";
 import { ImageOff, LayoutDashboard } from "lucide-react";
 
+export interface ProductScreenshot {
+  src: string;
+  caption: string;
+}
+
 interface Props {
-  screenshots: string[];
+  screenshots: ProductScreenshot[];
   productName: string;
   placeholderNote: string;
 }
@@ -16,10 +21,34 @@ export default function ProductScreens({ screenshots, productName, placeholderNo
   if (screenshots.length > 0) {
     return (
       <div className="grid gap-5 sm:grid-cols-2">
-        {screenshots.map((src) => (
-          <div key={src} className="overflow-hidden rounded-xl border" style={{ borderColor: "var(--border-subtle)" }}>
-            <Image src={src} alt={`${productName} screenshot`} width={960} height={600} className="h-auto w-full" />
-          </div>
+        {screenshots.map((shot) => (
+          <figure
+            key={shot.src}
+            className="overflow-hidden rounded-xl border"
+            style={{ borderColor: "var(--border-subtle)" }}
+          >
+            <div
+              className="flex items-center gap-1.5 border-b px-3.5 py-2.5"
+              style={{ borderColor: "var(--border-subtle)", backgroundColor: "var(--bg-raised)" }}
+            >
+              <span className="h-2 w-2 rounded-full" style={{ backgroundColor: "var(--border-strong)" }} />
+              <span className="h-2 w-2 rounded-full" style={{ backgroundColor: "var(--border-strong)" }} />
+              <span className="h-2 w-2 rounded-full" style={{ backgroundColor: "var(--border-strong)" }} />
+            </div>
+            <Image
+              src={shot.src}
+              alt={`${productName} — ${shot.caption}`}
+              width={1200}
+              height={640}
+              className="h-auto w-full"
+            />
+            <figcaption
+              className="border-t px-4 py-2.5 text-xs font-medium"
+              style={{ borderColor: "var(--border-subtle)", color: "var(--text-secondary)" }}
+            >
+              {shot.caption}
+            </figcaption>
+          </figure>
         ))}
       </div>
     );
@@ -30,19 +59,13 @@ export default function ProductScreens({ screenshots, productName, placeholderNo
       className="relative overflow-hidden rounded-2xl border"
       style={{ borderColor: "var(--border-subtle)", backgroundColor: "var(--bg-raised)" }}
     >
-      <div
-        className="flex items-center gap-1.5 border-b px-4 py-3"
-        style={{ borderColor: "var(--border-subtle)" }}
-      >
+      <div className="flex items-center gap-1.5 border-b px-4 py-3" style={{ borderColor: "var(--border-subtle)" }}>
         <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: "var(--border-strong)" }} />
         <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: "var(--border-strong)" }} />
         <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: "var(--border-strong)" }} />
       </div>
       <div className="flex flex-col items-center justify-center gap-4 px-8 py-24 text-center">
-        <div
-          className="flex h-14 w-14 items-center justify-center rounded-2xl"
-          style={{ backgroundColor: "var(--accent-soft)" }}
-        >
+        <div className="flex h-14 w-14 items-center justify-center rounded-2xl" style={{ backgroundColor: "var(--accent-soft)" }}>
           <LayoutDashboard size={26} style={{ color: "var(--accent)" }} />
         </div>
         <p className="max-w-sm text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
