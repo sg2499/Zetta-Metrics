@@ -23,14 +23,13 @@ export default function ProductsPage() {
                 className="text-balance font-display text-4xl font-extrabold tracking-tight sm:text-5xl"
                 style={{ color: "var(--text-primary)" }}
               >
-                Our first products — not the last.
+                Built on one platform.
               </h1>
               <p className="text-pretty mt-5 text-base leading-7" style={{ color: "var(--text-secondary)" }}>
-                MathPath and School Enrichment are where Zetta Metrics started —
-                real, working products built on role-based workflows,
-                backend-authoritative logic, and AI woven into the product itself.
-                They&apos;re proof of how we build, not the limit of what we build —
-                we&apos;re taking on whatever fits under the SaaS umbrella next.
+                MathPath and School Enrichment are real, working products built
+                on role-based workflows, backend-authoritative logic, and AI
+                woven into the product itself — the same approach we bring to
+                any institution or business ready to modernize.
               </p>
             </div>
           </Reveal>

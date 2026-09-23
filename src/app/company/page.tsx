@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { brand, founders, companyPillars } from "@/lib/content";
 import { GithubIcon, LinkedinIcon } from "@/components/BrandIcons";
 import SectionGlow from "@/components/sections/SectionGlow";
+import IconBadge from "@/components/sections/IconBadge";
 import Reveal from "@/components/motion/Reveal";
 import MagneticLink from "@/components/motion/MagneticLink";
 
@@ -31,11 +32,10 @@ export default function CompanyPage() {
               </h1>
               <p className="text-pretty mt-5 text-base leading-7" style={{ color: "var(--text-secondary)" }}>
                 {brand.legalName}{" "}
-                is an AI-native SaaS company. We started with two products in
-                education, but that&apos;s where we started, not where we stop —
-                we&apos;re built to take on any SaaS product that fits an
-                institution&apos;s or business&apos;s need, engineering each one
-                so the work compounds instead of resetting.
+                is an AI-native SaaS company, engineering systems for
+                education today and for any institution or business whose
+                manual process is ready to become software — each engagement
+                built so the work compounds instead of resetting.
               </p>
             </div>
           </Reveal>
@@ -45,7 +45,7 @@ export default function CompanyPage() {
             {companyPillars.map((pillar, i) => (
               <Reveal key={pillar.title} delay={i * 0.06} className="h-full">
                 <div className="hover-card surface-card flex h-full flex-col p-6">
-                  <pillar.icon size={20} style={{ color: "var(--accent)" }} />
+                  <IconBadge icon={pillar.icon} />
                   <h3 className="mt-3 font-display text-sm font-bold" style={{ color: "var(--text-primary)" }}>
                     {pillar.title}
                   </h3>
@@ -78,7 +78,7 @@ export default function CompanyPage() {
                     className="relative h-14 w-14 overflow-hidden rounded-full border-2"
                     style={{ borderColor: "var(--accent)" }}
                   >
-                    <Image src={f.image} alt={f.name} fill className="object-cover" />
+                    <Image src={f.image} alt={f.name} fill sizes="56px" className="object-cover" />
                   </div>
                 ) : (
                   <div

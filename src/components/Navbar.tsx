@@ -31,7 +31,7 @@ export default function Navbar() {
               className="relative h-10 w-10 shrink-0 overflow-hidden rounded-lg"
               style={{ backgroundColor: "#060a0b" }}
             >
-              <Image src="/logo-mark.png" alt="Zetta Metrics" fill className="object-cover" priority />
+              <Image src="/logo-mark.png" alt="Zetta Metrics" fill sizes="40px" className="object-cover" priority />
             </div>
             <span className="text-balance font-display text-lg font-bold tracking-tight" style={{ color: "var(--text-primary)" }}>
               Zetta<span className="gradient-text">Metrics</span>

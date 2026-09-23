@@ -1,18 +1,14 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import type { products } from "@/lib/content";
+import IconBadge from "@/components/sections/IconBadge";
 
 export default function ProductCard({ product }: { product: (typeof products)[number] }) {
   const isLive = product.status === "live";
   return (
     <Link href={product.href} className="group surface-card flex h-full flex-col p-7 transition-colors hover:border-[var(--accent)]">
       <div className="flex items-center justify-between">
-        <div
-          className="flex h-11 w-11 items-center justify-center rounded-xl"
-          style={{ backgroundColor: "var(--accent-soft)" }}
-        >
-          <product.icon size={20} style={{ color: "var(--accent)" }} />
-        </div>
+        <IconBadge icon={product.icon} />
         <span
           className="flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border px-2.5 py-1 text-[0.7rem] font-semibold"
           style={{

@@ -3,6 +3,7 @@ import { ArrowRight, Lock } from "lucide-react";
 import { products } from "@/lib/content";
 import ProductScreens from "@/components/sections/ProductScreens";
 import SectionGlow from "@/components/sections/SectionGlow";
+import IconBadge from "@/components/sections/IconBadge";
 import Reveal from "@/components/motion/Reveal";
 import MagneticLink from "@/components/motion/MagneticLink";
 
@@ -74,7 +75,7 @@ export default function MathPathPage() {
               {product.highlights.map((h, i) => (
                 <Reveal key={h.title} delay={i * 0.06} className="h-full">
                   <div className="hover-card surface-card flex h-full flex-col p-6">
-                    <h.icon size={20} style={{ color: "var(--accent)" }} />
+                    <IconBadge icon={h.icon} />
                     <h3 className="mt-3 font-display text-base font-bold" style={{ color: "var(--text-primary)" }}>
                       {h.title}
                     </h3>
@@ -91,10 +92,10 @@ export default function MathPathPage() {
             <div className="cta-panel hover-card mt-16 flex flex-col items-start gap-6 p-10 md:flex-row md:items-center md:justify-between">
               <div className="min-w-0 flex-1">
                 <h2 className="text-balance font-display text-2xl font-bold" style={{ color: "var(--text-primary)" }}>
-                  See School Enrichment, our second product
+                  See School Enrichment
                 </h2>
                 <p className="text-pretty mt-3 text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
-                  Built the same way, now in active development.
+                  Built the same way, extending the platform to full academic delivery.
                 </p>
               </div>
               <MagneticLink href="/products/school-enrichment" className="btn-primary shrink-0 whitespace-nowrap px-6 py-3.5 text-sm">

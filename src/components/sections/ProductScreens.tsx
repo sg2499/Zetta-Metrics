@@ -66,16 +66,22 @@ export default function ProductScreens({ screenshots, productName, placeholderNo
           {screenshots.map((shot, i) => (
             <figure
               key={shot.src}
-              className="flex h-full flex-col overflow-hidden rounded-xl border"
-              style={{ borderColor: "var(--border-subtle)" }}
+              className="hover-card flex h-full flex-col overflow-hidden rounded-xl border"
+              style={{ borderColor: "var(--border-subtle)", boxShadow: "var(--shadow-soft)" }}
             >
               <div
-                className="flex items-center gap-1.5 border-b px-3.5 py-2.5"
+                className="flex items-center gap-2 border-b px-3.5 py-2.5"
                 style={{ borderColor: "var(--border-subtle)", backgroundColor: "var(--bg-raised)" }}
               >
                 <span className="h-2 w-2 rounded-full" style={{ backgroundColor: "var(--border-strong)" }} />
                 <span className="h-2 w-2 rounded-full" style={{ backgroundColor: "var(--border-strong)" }} />
                 <span className="h-2 w-2 rounded-full" style={{ backgroundColor: "var(--border-strong)" }} />
+                <span
+                  className="ml-2 flex-1 truncate rounded-full px-2.5 py-0.5 text-center font-mono text-[0.65rem]"
+                  style={{ backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}
+                >
+                  {productName.toLowerCase().replace(/\s+/g, "")}.app
+                </span>
               </div>
               <button
                 type="button"

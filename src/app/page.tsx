@@ -4,8 +4,10 @@ import ProductCard from "@/components/sections/ProductCard";
 import HeroBackground from "@/components/sections/HeroBackground";
 import HeroOrb from "@/components/sections/HeroOrb";
 import SectionGlow from "@/components/sections/SectionGlow";
+import IconBadge from "@/components/sections/IconBadge";
 import Reveal from "@/components/motion/Reveal";
 import MagneticLink from "@/components/motion/MagneticLink";
+import AnimatedStat from "@/components/motion/AnimatedStat";
 
 export default function Home() {
   return (
@@ -30,9 +32,8 @@ export default function Home() {
               <Reveal delay={0.08}>
                 <p className="text-pretty mt-6 text-lg leading-8" style={{ color: "var(--text-secondary)" }}>
                   {brand.positioning}{" "}
-                  Education is where we started — MathPath is live in schools
-                  today, and School Enrichment is our second product built the
-                  same way. Neither is the ceiling on what we&apos;re building next.
+                  MathPath runs live in schools today, and School Enrichment
+                  brings the same approach to full academic delivery.
                 </p>
               </Reveal>
               <Reveal delay={0.16}>
@@ -55,7 +56,7 @@ export default function Home() {
                       style={{ borderColor: "var(--border-subtle)", backgroundColor: "var(--bg-raised)" }}
                     >
                       <dt className="text-balance font-display text-2xl font-bold" style={{ color: "var(--text-primary)" }}>
-                        {p.value}
+                        <AnimatedStat value={p.value} />
                       </dt>
                       <dd className="text-pretty mt-1 text-xs leading-5" style={{ color: "var(--text-muted)" }}>
                         {p.label}
@@ -109,15 +110,29 @@ export default function Home() {
               carry from one product, one client, and one industry to the next.
             </p>
           </Reveal>
-          <div className="mt-12 grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2">
             {platformPillars.map((pillar, i) => (
-              <Reveal key={pillar.title} delay={i * 0.06} className="h-full">
-                <div className="hover-card surface-card flex h-full flex-col p-6">
-                  <pillar.icon size={22} style={{ color: "var(--accent)" }} />
-                  <h3 className="mt-4 font-display text-base font-bold" style={{ color: "var(--text-primary)" }}>
+              <Reveal
+                key={pillar.title}
+                delay={i * 0.06}
+                className={i === 0 ? "h-full lg:col-span-2 lg:row-span-2" : i === 1 ? "h-full lg:col-span-2" : "h-full"}
+              >
+                <div
+                  className={`hover-card surface-card flex h-full flex-col ${
+                    i === 0 ? "justify-center p-8" : "p-6"
+                  }`}
+                >
+                  <IconBadge icon={pillar.icon} size={i === 0 ? "lg" : "md"} />
+                  <h3
+                    className={`mt-4 font-display font-bold ${i === 0 ? "text-2xl" : "text-base"}`}
+                    style={{ color: "var(--text-primary)" }}
+                  >
                     {pillar.title}
                   </h3>
-                  <p className="text-pretty mt-2 text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
+                  <p
+                    className={`text-pretty mt-2 leading-6 ${i === 0 ? "text-base" : "text-sm"}`}
+                    style={{ color: "var(--text-secondary)" }}
+                  >
                     {pillar.summary}
                   </p>
                 </div>
@@ -139,11 +154,11 @@ export default function Home() {
           <Reveal>
             <p className="eyebrow mb-4">Products</p>
             <h2 className="text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: "var(--text-primary)" }}>
-              Where we&apos;ve started.
+              What we&apos;ve built.
             </h2>
             <p className="text-pretty mt-4 text-base leading-7" style={{ color: "var(--text-secondary)" }}>
-              Two real, working products — the first of many we plan to build
-              as a SaaS company.
+              Real, working products built on role-based workflows,
+              backend-authoritative logic, and AI woven into the product itself.
             </p>
           </Reveal>
           <div className="mt-12 grid items-stretch gap-6 md:grid-cols-2">
@@ -153,6 +168,24 @@ export default function Home() {
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Statement */}
+      <section className="relative overflow-hidden py-28">
+        <SectionGlow blobs={[{ size: 560, top: "-20%", left: "50%", color: "secondary" }]} />
+        <div className="container-custom relative z-10">
+          <Reveal>
+            <p
+              className="text-balance mx-auto max-w-3xl text-center font-display text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl"
+              style={{ color: "var(--text-primary)" }}
+            >
+              We don&apos;t build dashboards that sit on top of how you work.
+              <br />
+              We build the system you actually{" "}
+              <span className="gradient-text">run on</span>.
+            </p>
+          </Reveal>
         </div>
       </section>
 
@@ -170,8 +203,8 @@ export default function Home() {
               From manual process to shipped product.
             </h2>
             <p className="text-pretty mt-4 text-base leading-7" style={{ color: "var(--text-secondary)" }}>
-              The same three-stage approach, every time — it&apos;s what lets a second
-              product start ahead of where the first one finished.
+              The same three-stage approach, every time — it&apos;s what lets every
+              new build start ahead of where the last one left off.
             </p>
           </Reveal>
           <div className="mt-12 grid items-stretch gap-5 md:grid-cols-3">
@@ -185,7 +218,7 @@ export default function Home() {
                     >
                       {i + 1}
                     </div>
-                    <step.icon size={20} style={{ color: "var(--accent)" }} />
+                    <IconBadge icon={step.icon} />
                   </div>
                   <h3 className="mt-4 font-display text-base font-bold" style={{ color: "var(--text-primary)" }}>
                     {step.title}

@@ -13,19 +13,32 @@ export const metadata: Metadata = {
   description: product.summary,
 };
 
-const roadmap = [
-  { phase: "Phase 0", label: "Product separation & bootstrap", status: "done" as const },
-  { phase: "Phase 1", label: "Auth, roles, and three-role dashboard shell", status: "done" as const },
-  { phase: "Phase 2", label: "Curriculum Studio — content pipeline & quality checks", status: "done" as const },
-  { phase: "Phase 3", label: "Five-day learning loop, assignments & auto-marking", status: "active" as const },
-  { phase: "Phase 4", label: "Public launch readiness", status: "upcoming" as const },
+const howItWorks = [
+  {
+    step: "01",
+    title: "Every school gets its own structure",
+    detail:
+      "A School → Student/Teacher/Admin identity model from the ground up, with Super Admin controls to publish and map curriculum across schools — so access and content stay scoped correctly from day one.",
+  },
+  {
+    step: "02",
+    title: "Curriculum goes through the Studio",
+    detail:
+      "Chapters, lessons, and questions move through a status workflow with an Excel-based import pipeline, and automated structural and math-pattern quality checks catch problems before a student ever sees the content.",
+  },
+  {
+    step: "03",
+    title: "Students move through a five-day learning loop",
+    detail:
+      "A structured assignment-and-attempt lifecycle with auto-marking, plus a built-in 'Foundation Repair' path for students who need to close gaps before moving forward.",
+  },
+  {
+    step: "04",
+    title: "Access and data are locked down throughout",
+    detail:
+      "Session hygiene, role-scoped access control, and data-export/privacy handling apply to every step of the loop above — not layered on at the end.",
+  },
 ];
-
-const statusStyles = {
-  done: { color: "var(--status-live)", label: "Done" },
-  active: { color: "var(--status-dev)", label: "In progress" },
-  upcoming: { color: "var(--text-muted)", label: "Upcoming" },
-};
 
 export default function SchoolEnrichmentPage() {
   return (
@@ -64,63 +77,37 @@ export default function SchoolEnrichmentPage() {
               <ProductScreens
                 screenshots={product.screenshots}
                 productName={product.name}
-                placeholderNote="School Enrichment is still under active development — the curriculum engine, role-based dashboards, and learning loop are live in the backend, but the product isn't ready to show publicly yet. Screenshots will be added here as it nears release."
+                placeholderNote="Screens for School Enrichment aren't public yet. Here's how the platform works — screenshots will follow as schools come on board."
               />
             </div>
           </Reveal>
 
-          {/* Roadmap */}
+          {/* How it works */}
           <div className="mt-16">
             <Reveal>
               <h2 className="text-balance font-display text-2xl font-bold" style={{ color: "var(--text-primary)" }}>
-                Build roadmap
+                How School Enrichment works
               </h2>
               <p className="text-pretty mt-2 text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
-                Built the same way we build everything — here&apos;s exactly
-                where it stands today.
+                Four parts, working together as one system — from curriculum
+                to classroom to reporting.
               </p>
             </Reveal>
-            <div className="mt-8 space-y-3">
-              {roadmap.map((step, i) => {
-                const style = statusStyles[step.status];
-                return (
-                  <Reveal key={step.phase} delay={i * 0.04}>
-                    <div className="hover-card surface-card flex items-center justify-between gap-4 px-6 py-4">
-                      <div className="flex items-center gap-4">
-                        <span className="font-mono text-xs" style={{ color: "var(--text-muted)" }}>
-                          {step.phase}
-                        </span>
-                        <span className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>
-                          {step.label}
-                        </span>
-                      </div>
-                      <span className="flex items-center gap-1.5 text-xs font-semibold" style={{ color: style.color }}>
-                        <span className="status-dot" style={{ backgroundColor: style.color }} />
-                        {style.label}
-                      </span>
-                    </div>
-                  </Reveal>
-                );
-              })}
-            </div>
-          </div>
-
-          <div className="mt-16">
-            <Reveal>
-              <h2 className="text-balance font-display text-2xl font-bold" style={{ color: "var(--text-primary)" }}>
-                What&apos;s already built
-              </h2>
-            </Reveal>
-            <div className="mt-8 grid items-stretch gap-5 sm:grid-cols-2">
-              {product.highlights.map((h, i) => (
-                <Reveal key={h.title} delay={i * 0.06} className="h-full">
+            <div className="mt-8 grid gap-5 sm:grid-cols-2">
+              {howItWorks.map((item, i) => (
+                <Reveal key={item.step} delay={i * 0.06} className="h-full">
                   <div className="hover-card surface-card flex h-full flex-col p-6">
-                    <h.icon size={20} style={{ color: "var(--accent)" }} />
+                    <span
+                      className="font-display text-sm font-bold"
+                      style={{ color: "var(--accent)" }}
+                    >
+                      {item.step}
+                    </span>
                     <h3 className="mt-3 font-display text-base font-bold" style={{ color: "var(--text-primary)" }}>
-                      {h.title}
+                      {item.title}
                     </h3>
                     <p className="text-pretty mt-2 text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
-                      {h.detail}
+                      {item.detail}
                     </p>
                   </div>
                 </Reveal>

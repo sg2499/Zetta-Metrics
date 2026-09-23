@@ -3,6 +3,8 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AmbientBackground from "@/components/AmbientBackground";
+import ScrollProgress from "@/components/ScrollProgress";
+import PageTransition from "@/components/PageTransition";
 import { ThemeProvider, themeInitScript } from "@/components/ThemeProvider";
 
 export const metadata: Metadata = {
@@ -12,7 +14,7 @@ export const metadata: Metadata = {
     template: "%s | Zetta Metrics",
   },
   description:
-    "Zetta Metrics builds AI-driven automation platforms that turn manual, fragmented business processes into intelligent digital workflows — starting with MathPath and School Enrichment.",
+    "Zetta Metrics builds AI-driven automation platforms that turn manual, fragmented business processes into intelligent digital workflows, including MathPath and School Enrichment.",
   keywords: [
     "Zetta Metrics",
     "AI automation platform",
@@ -22,7 +24,7 @@ export const metadata: Metadata = {
     "School Enrichment",
     "AI workflow orchestration",
     "machine learning",
-    "India startup",
+    "India SaaS company",
   ],
   authors: [{ name: "Zetta Metrics Technologies Private Limited" }],
   creator: "Zetta Metrics",
@@ -33,7 +35,7 @@ export const metadata: Metadata = {
     siteName: "Zetta Metrics",
     title: "Zetta Metrics | AI-Native Automation Platform",
     description:
-      "AI-driven automation platform company. Two products live: MathPath and School Enrichment.",
+      "AI-driven automation platform company. MathPath and School Enrichment run on the same underlying platform.",
   },
   twitter: {
     card: "summary_large_image",
@@ -46,6 +48,17 @@ export const metadata: Metadata = {
   },
 };
 
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Zetta Metrics",
+  legalName: "Zetta Metrics Technologies Private Limited",
+  url: "https://www.zetta-metrics.com",
+  logo: "https://www.zetta-metrics.com/logo-mark.png",
+  description:
+    "Zetta Metrics builds AI-driven automation platforms that turn manual, fragmented business processes into intelligent digital workflows.",
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -55,13 +68,20 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
       </head>
       <body className="antialiased">
         <ThemeProvider>
           <AmbientBackground />
+          <ScrollProgress />
           <div className="relative z-10 flex min-h-screen flex-col">
             <Navbar />
-            <main className="flex-1">{children}</main>
+            <main className="flex-1">
+              <PageTransition>{children}</PageTransition>
+            </main>
             <Footer />
           </div>
         </ThemeProvider>

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Mail, Phone } from "lucide-react";
 import { LinkedinIcon } from "@/components/BrandIcons";
 import { brand, products } from "@/lib/content";
+import SectionGlow from "@/components/sections/SectionGlow";
 
 const footerLinks = {
   Company: [
@@ -22,9 +23,10 @@ const socials = [
 export default function Footer() {
   return (
     <footer
-      className="relative z-10 mt-20 border-t"
+      className="relative z-10 mt-20 overflow-hidden border-t"
       style={{ borderColor: "var(--border-subtle)", backgroundColor: "var(--bg-raised)" }}
     >
+      <SectionGlow blobs={[{ size: 440, bottom: "-24%", left: "8%", color: "primary" }]} />
       <div className="container-custom py-12">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
           <div className="md:col-span-2">

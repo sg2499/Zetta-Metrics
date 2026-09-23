@@ -27,9 +27,9 @@ export const brand = {
   github: "https://github.com/sg2499",
   linkedin: "https://www.linkedin.com/in/shailesh-gupta-7b7278188",
   positioning:
-    "We're an AI-native SaaS company: role-based workflows, backend-authoritative logic, and AI built into the product from day one, not bolted on after. MathPath and School Enrichment are where we started — we build for any institution or business whose manual process is ready to become software.",
+    "We're an AI-native SaaS company: role-based workflows, backend-authoritative logic, and AI built into the product from day one, not bolted on after. MathPath and School Enrichment are how we bring that to education, and the same approach extends to any institution or business whose manual process is ready to become software.",
   shortPositioning:
-    "An AI-native SaaS company, built to keep shipping past our first two products.",
+    "An AI-native SaaS company building the systems institutions and businesses run on.",
   location: "Kolkata, India — building for clients worldwide",
 };
 
@@ -37,7 +37,7 @@ export const founders = [
   {
     name: "Shailesh Gupta",
     role: "Founder & Director",
-    bio: "Started out building attrition and credit-risk models at Teleperformance, then spent two years on applied AI and LLM systems during an MDSAI at IIT Roorkee. Leads product and engineering at Zetta Metrics — the one writing the code everything runs on.",
+    bio: "Started out as a Data Scientist at Teleperformance, building attrition and credit-risk models, then spent two years on applied AI and LLM systems during a Master's in Data Science and AI at IIT Roorkee. Leads product and engineering at Zetta Metrics — the one writing the code everything runs on.",
     image: "/founder-shailesh.jpg",
     linkedin: "https://www.linkedin.com/in/shailesh-gupta-7b7278188",
     github: "https://github.com/sg2499",
@@ -178,8 +178,8 @@ export const products = [
     name: "School Enrichment",
     tagline: "CBSE/ICSE academic delivery for Classes 5–10, built the same way we build everything.",
     status: "development" as const,
-    statusLabel: "In active development",
-    eyebrow: "Second product",
+    statusLabel: "Rolling out to schools",
+    eyebrow: "Academic delivery platform",
     summary:
       "School Enrichment is built the same way as MathPath, pointed at full academic delivery — a School → Student/Teacher/Admin identity model, a curriculum studio for mapping and approving content, and a five-day guided learning loop with automated marking.",
     icon: GraduationCap,
