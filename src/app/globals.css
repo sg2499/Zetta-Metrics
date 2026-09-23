@@ -41,6 +41,21 @@
   --status-dev: #f5b942;
 
   --shadow-color: 210 60% 2%;
+
+  /* Atmosphere — background mesh/glow, tuned for dark mode's native bloom */
+  --glow-primary: rgba(47, 225, 214, 0.30);
+  --glow-secondary: rgba(122, 143, 255, 0.24);
+  --glow-tertiary: rgba(199, 210, 219, 0.10);
+  --mesh-opacity: 1;
+  --mesh-line: rgba(255, 255, 255, 0.14);
+  --mesh-dot: rgba(47, 225, 214, 0.55);
+  --glass-bg: rgba(16, 27, 43, 0.55);
+  --glass-border: rgba(255, 255, 255, 0.10);
+
+  /* Depth */
+  --shadow-soft: 0 8px 24px -12px rgba(0, 0, 0, 0.5);
+  --shadow-lifted: 0 20px 48px -16px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 0 0 1px rgba(47, 225, 214, 0.18), 0 16px 48px -12px rgba(47, 225, 214, 0.28);
 }
 
 :root[data-theme="light"] {
@@ -67,6 +82,21 @@
 
   --status-live: #0d9c6f;
   --status-dev: #b3790a;
+
+  /* Atmosphere — much softer/airier in light mode: a tint, not a bloom */
+  --glow-primary: rgba(14, 179, 168, 0.16);
+  --glow-secondary: rgba(99, 121, 255, 0.12);
+  --glow-tertiary: rgba(91, 107, 125, 0.06);
+  --mesh-opacity: 0.55;
+  --mesh-line: rgba(15, 23, 42, 0.10);
+  --mesh-dot: rgba(14, 179, 168, 0.45);
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(15, 23, 42, 0.08);
+
+  /* Depth */
+  --shadow-soft: 0 8px 24px -14px rgba(15, 23, 42, 0.18);
+  --shadow-lifted: 0 20px 48px -18px rgba(15, 23, 42, 0.22);
+  --shadow-glow: 0 0 0 1px rgba(14, 179, 168, 0.14), 0 16px 40px -14px rgba(14, 179, 168, 0.20);
 }
 
 @theme inline {
@@ -163,6 +193,24 @@ main {
   background-color: var(--bg-raised);
   border: 1px solid var(--border-subtle);
   border-radius: 1rem;
+}
+
+.glass-panel {
+  background-color: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 1.25rem;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-lifted);
+}
+
+.hover-card {
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.28s ease;
+}
+.hover-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-glow);
+  border-color: var(--glow-primary);
 }
 
 .btn-primary {
