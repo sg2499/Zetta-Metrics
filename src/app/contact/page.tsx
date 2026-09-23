@@ -4,6 +4,8 @@ import { useState } from "react";
 import { Mail, Send } from "lucide-react";
 import { LinkedinIcon } from "@/components/BrandIcons";
 import { brand } from "@/lib/content";
+import SectionGlow from "@/components/sections/SectionGlow";
+import Reveal from "@/components/motion/Reveal";
 
 const subjects = [
   "Product inquiry",
@@ -65,105 +67,119 @@ export default function ContactPage() {
 
   return (
     <div className="pt-40 pb-24">
-      <div className="container-custom">
-        <div>
-          <p className="eyebrow mb-4">Contact</p>
-          <h1 className="text-balance font-display text-4xl font-extrabold tracking-tight sm:text-5xl" style={{ color: "var(--text-primary)" }}>
-            Let&apos;s talk.
-          </h1>
-          <p className="text-pretty mt-5 text-base leading-7" style={{ color: "var(--text-secondary)" }}>
-            Whether it&apos;s about a product inquiry, a partnership, or
-            investment — tell us what you need and we&apos;ll get back to you.
-          </p>
-        </div>
-
-        <div className="mt-14 grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
-          <aside className="space-y-3">
-            {contactLinks.map(({ icon: Icon, label, value, href }) => (
-              <a
-                key={label}
-                href={href}
-                target={href.startsWith("http") ? "_blank" : undefined}
-                rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="surface-card flex items-center gap-4 p-5"
-              >
-                <div
-                  className="rounded-lg p-2.5"
-                  style={{ backgroundColor: "var(--accent-soft)", color: "var(--accent)" }}
-                >
-                  <Icon size={17} />
-                </div>
-                <div>
-                  <p className="text-xs" style={{ color: "var(--text-muted)" }}>{label}</p>
-                  <p className="mt-0.5 text-sm font-semibold" style={{ color: "var(--text-primary)" }}>{value}</p>
-                </div>
-              </a>
-            ))}
-          </aside>
-
-          <form onSubmit={submit} className="surface-card space-y-5 p-7">
-            <div className="grid gap-5 md:grid-cols-2">
-              <Field label="Your name">
-                <input
-                  required
-                  value={form.name}
-                  onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  style={fieldStyle}
-                  placeholder="Your name"
-                />
-              </Field>
-              <Field label="Email">
-                <input
-                  required
-                  type="email"
-                  value={form.email}
-                  onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  style={fieldStyle}
-                  placeholder="you@company.com"
-                />
-              </Field>
+      <section className="relative overflow-hidden">
+        <SectionGlow
+          blobs={[
+            { size: 460, top: "-22%", left: "-8%", color: "primary" },
+            { size: 300, top: "8%", right: "-10%", color: "secondary", delay: 5 },
+          ]}
+        />
+        <div className="container-custom">
+          <Reveal>
+            <div>
+              <p className="eyebrow mb-4">Contact</p>
+              <h1 className="text-balance font-display text-4xl font-extrabold tracking-tight sm:text-5xl" style={{ color: "var(--text-primary)" }}>
+                Let&apos;s talk.
+              </h1>
+              <p className="text-pretty mt-5 text-base leading-7" style={{ color: "var(--text-secondary)" }}>
+                Whether it&apos;s about a product inquiry, a partnership, or
+                investment — tell us what you need and we&apos;ll get back to you.
+              </p>
             </div>
+          </Reveal>
 
-            <Field label="Company / organization">
-              <input
-                value={form.company}
-                onChange={(e) => setForm({ ...form, company: e.target.value })}
-                style={fieldStyle}
-                placeholder="Optional"
-              />
-            </Field>
-
-            <Field label="What's this about?">
-              <select
-                value={form.subject}
-                onChange={(e) => setForm({ ...form, subject: e.target.value })}
-                style={fieldStyle}
-              >
-                {subjects.map((s) => (
-                  <option key={s} value={s}>
-                    {s}
-                  </option>
+          <div className="mt-14 grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
+            <Reveal delay={0.06}>
+              <aside className="space-y-3">
+                {contactLinks.map(({ icon: Icon, label, value, href }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target={href.startsWith("http") ? "_blank" : undefined}
+                    rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    className="hover-card surface-card flex items-center gap-4 p-5"
+                  >
+                    <div
+                      className="rounded-lg p-2.5"
+                      style={{ backgroundColor: "var(--accent-soft)", color: "var(--accent)" }}
+                    >
+                      <Icon size={17} />
+                    </div>
+                    <div>
+                      <p className="text-xs" style={{ color: "var(--text-muted)" }}>{label}</p>
+                      <p className="mt-0.5 text-sm font-semibold" style={{ color: "var(--text-primary)" }}>{value}</p>
+                    </div>
+                  </a>
                 ))}
-              </select>
-            </Field>
+              </aside>
+            </Reveal>
 
-            <Field label="Message">
-              <textarea
-                required
-                rows={5}
-                value={form.message}
-                onChange={(e) => setForm({ ...form, message: e.target.value })}
-                style={{ ...fieldStyle, resize: "vertical" }}
-                placeholder="Tell us a bit about what you need..."
-              />
-            </Field>
+            <Reveal delay={0.12}>
+              <form onSubmit={submit} className="glass-panel space-y-5 p-7">
+                <div className="grid gap-5 md:grid-cols-2">
+                  <Field label="Your name">
+                    <input
+                      required
+                      value={form.name}
+                      onChange={(e) => setForm({ ...form, name: e.target.value })}
+                      style={fieldStyle}
+                      placeholder="Your name"
+                    />
+                  </Field>
+                  <Field label="Email">
+                    <input
+                      required
+                      type="email"
+                      value={form.email}
+                      onChange={(e) => setForm({ ...form, email: e.target.value })}
+                      style={fieldStyle}
+                      placeholder="you@company.com"
+                    />
+                  </Field>
+                </div>
 
-            <button type="submit" className="btn-primary w-full py-3.5 text-sm sm:w-auto sm:px-6">
-              Send message <Send size={15} />
-            </button>
-          </form>
+                <Field label="Company / organization">
+                  <input
+                    value={form.company}
+                    onChange={(e) => setForm({ ...form, company: e.target.value })}
+                    style={fieldStyle}
+                    placeholder="Optional"
+                  />
+                </Field>
+
+                <Field label="What's this about?">
+                  <select
+                    value={form.subject}
+                    onChange={(e) => setForm({ ...form, subject: e.target.value })}
+                    style={fieldStyle}
+                  >
+                    {subjects.map((s) => (
+                      <option key={s} value={s}>
+                        {s}
+                      </option>
+                    ))}
+                  </select>
+                </Field>
+
+                <Field label="Message">
+                  <textarea
+                    required
+                    rows={5}
+                    value={form.message}
+                    onChange={(e) => setForm({ ...form, message: e.target.value })}
+                    style={{ ...fieldStyle, resize: "vertical" }}
+                    placeholder="Tell us a bit about what you need..."
+                  />
+                </Field>
+
+                <button type="submit" className="btn-primary w-full py-3.5 text-sm sm:w-auto sm:px-6">
+                  Send message <Send size={15} />
+                </button>
+              </form>
+            </Reveal>
+          </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

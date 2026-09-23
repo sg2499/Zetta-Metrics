@@ -3,6 +3,7 @@ import { brand, platformPillars, proofPoints, products, processSteps } from "@/l
 import ProductCard from "@/components/sections/ProductCard";
 import HeroBackground from "@/components/sections/HeroBackground";
 import HeroOrb from "@/components/sections/HeroOrb";
+import SectionGlow from "@/components/sections/SectionGlow";
 import Reveal from "@/components/motion/Reveal";
 import MagneticLink from "@/components/motion/MagneticLink";
 
@@ -90,7 +91,13 @@ export default function Home() {
       </section>
 
       {/* Platform pillars */}
-      <section className="py-20">
+      <section className="relative overflow-hidden py-20">
+        <SectionGlow
+          blobs={[
+            { size: 420, top: "-10%", left: "-8%", color: "primary" },
+            { size: 360, bottom: "-14%", right: "-6%", color: "secondary", delay: 4 },
+          ]}
+        />
         <div className="container-custom">
           <Reveal>
             <p className="eyebrow mb-4">The platform</p>
@@ -121,7 +128,13 @@ export default function Home() {
       </section>
 
       {/* Products */}
-      <section className="py-20">
+      <section className="relative overflow-hidden py-20">
+        <SectionGlow
+          blobs={[
+            { size: 460, top: "-16%", right: "-10%", color: "tertiary" },
+            { size: 320, bottom: "-10%", left: "-6%", color: "primary", delay: 6 },
+          ]}
+        />
         <div className="container-custom">
           <Reveal>
             <p className="eyebrow mb-4">Products</p>
@@ -144,7 +157,12 @@ export default function Home() {
       </section>
 
       {/* Process */}
-      <section className="py-20">
+      <section className="relative overflow-hidden py-20">
+        <SectionGlow
+          blobs={[
+            { size: 400, top: "-12%", left: "30%", color: "secondary" },
+          ]}
+        />
         <div className="container-custom">
           <Reveal>
             <p className="eyebrow mb-4">How we build</p>
@@ -183,10 +201,11 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="py-20">
+      <section className="relative overflow-hidden py-20">
+        <SectionGlow blobs={[{ size: 520, top: "-30%", left: "20%", color: "primary" }]} />
         <div className="container-custom">
           <Reveal>
-            <div className="surface-card flex flex-col items-start gap-6 p-10 md:flex-row md:items-center md:justify-between">
+            <div className="cta-panel hover-card flex flex-col items-start gap-6 p-10 md:flex-row md:items-center md:justify-between">
               <div className="min-w-0 flex-1">
                 <h2 className="text-balance font-display text-2xl font-bold sm:text-3xl" style={{ color: "var(--text-primary)" }}>
                   Have a workflow like this?

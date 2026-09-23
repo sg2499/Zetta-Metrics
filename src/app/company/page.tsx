@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { brand, founders, companyPillars } from "@/lib/content";
 import { GithubIcon, LinkedinIcon } from "@/components/BrandIcons";
+import SectionGlow from "@/components/sections/SectionGlow";
+import Reveal from "@/components/motion/Reveal";
+import MagneticLink from "@/components/motion/MagneticLink";
 
 export const metadata: Metadata = {
   title: "Company",
@@ -13,46 +15,64 @@ export const metadata: Metadata = {
 export default function CompanyPage() {
   return (
     <div className="pt-40 pb-24">
-      <div className="container-custom">
-        <div>
-          <p className="eyebrow mb-4">Company</p>
-          <h1 className="text-balance font-display text-4xl font-extrabold tracking-tight sm:text-5xl" style={{ color: "var(--text-primary)" }}>
-            We build reusable systems, then the products that need them.
-          </h1>
-          <p className="text-pretty mt-5 text-base leading-7" style={{ color: "var(--text-secondary)" }}>
-            {brand.legalName}{" "}
-            is an AI-native SaaS company. We started with two products in
-            education, but that&apos;s where we started, not where we stop —
-            we&apos;re built to take on any SaaS product that fits an
-            institution&apos;s or business&apos;s need, engineering each one
-            so the work compounds instead of resetting.
-          </p>
-        </div>
-
-        {/* Mission / pillars recap */}
-        <div className="mt-16 grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {companyPillars.map((pillar) => (
-            <div key={pillar.title} className="surface-card flex h-full flex-col p-6">
-              <pillar.icon size={20} style={{ color: "var(--accent)" }} />
-              <h3 className="mt-3 font-display text-sm font-bold" style={{ color: "var(--text-primary)" }}>
-                {pillar.title}
-              </h3>
-              <p className="text-pretty mt-2 text-xs leading-5" style={{ color: "var(--text-secondary)" }}>
-                {pillar.summary}
+      <section className="relative overflow-hidden">
+        <SectionGlow
+          blobs={[
+            { size: 480, top: "-22%", right: "-10%", color: "primary" },
+            { size: 340, top: "10%", left: "-8%", color: "secondary", delay: 5 },
+          ]}
+        />
+        <div className="container-custom">
+          <Reveal>
+            <div>
+              <p className="eyebrow mb-4">Company</p>
+              <h1 className="text-balance font-display text-4xl font-extrabold tracking-tight sm:text-5xl" style={{ color: "var(--text-primary)" }}>
+                We build reusable systems, then the products that need them.
+              </h1>
+              <p className="text-pretty mt-5 text-base leading-7" style={{ color: "var(--text-secondary)" }}>
+                {brand.legalName}{" "}
+                is an AI-native SaaS company. We started with two products in
+                education, but that&apos;s where we started, not where we stop —
+                we&apos;re built to take on any SaaS product that fits an
+                institution&apos;s or business&apos;s need, engineering each one
+                so the work compounds instead of resetting.
               </p>
             </div>
-          ))}
+          </Reveal>
+
+          {/* Mission / pillars recap */}
+          <div className="mt-16 grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {companyPillars.map((pillar, i) => (
+              <Reveal key={pillar.title} delay={i * 0.06} className="h-full">
+                <div className="hover-card surface-card flex h-full flex-col p-6">
+                  <pillar.icon size={20} style={{ color: "var(--accent)" }} />
+                  <h3 className="mt-3 font-display text-sm font-bold" style={{ color: "var(--text-primary)" }}>
+                    {pillar.title}
+                  </h3>
+                  <p className="text-pretty mt-2 text-xs leading-5" style={{ color: "var(--text-secondary)" }}>
+                    {pillar.summary}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
+      </section>
+
+      <div className="container-custom">
 
         {/* Founders */}
         <div className="mt-20">
-          <p className="eyebrow mb-4">Leadership</p>
-          <h2 className="text-balance font-display text-2xl font-bold" style={{ color: "var(--text-primary)" }}>
-            Founders & Directors
-          </h2>
+          <Reveal>
+            <p className="eyebrow mb-4">Leadership</p>
+            <h2 className="text-balance font-display text-2xl font-bold" style={{ color: "var(--text-primary)" }}>
+              Founders & Directors
+            </h2>
+          </Reveal>
           <div className="mt-8 grid items-stretch gap-6 sm:grid-cols-2">
-            {founders.map((f) => (
-              <div key={f.name} className="surface-card flex h-full flex-col p-7">
+            {founders.map((f, i) => (
+              <Reveal key={f.name} delay={i * 0.08} className="h-full">
+              <div className="hover-card surface-card flex h-full flex-col p-7">
                 {f.image ? (
                   <div
                     className="relative h-14 w-14 overflow-hidden rounded-full border-2"
@@ -109,24 +129,27 @@ export default function CompanyPage() {
                   </div>
                 )}
               </div>
+              </Reveal>
             ))}
           </div>
         </div>
 
-        <div className="surface-card mt-20 flex flex-col items-start gap-6 p-10 md:flex-row md:items-center md:justify-between">
-          <div className="min-w-0 flex-1">
-            <h2 className="text-balance font-display text-2xl font-bold" style={{ color: "var(--text-primary)" }}>
-              Want to work with us?
-            </h2>
-            <p className="text-pretty mt-3 text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
-              Whether it&apos;s about our products or a partnership, we&apos;d
-              like to hear from you.
-            </p>
+        <Reveal>
+          <div className="cta-panel hover-card mt-20 flex flex-col items-start gap-6 p-10 md:flex-row md:items-center md:justify-between">
+            <div className="min-w-0 flex-1">
+              <h2 className="text-balance font-display text-2xl font-bold" style={{ color: "var(--text-primary)" }}>
+                Want to work with us?
+              </h2>
+              <p className="text-pretty mt-3 text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
+                Whether it&apos;s about our products or a partnership, we&apos;d
+                like to hear from you.
+              </p>
+            </div>
+            <MagneticLink href="/contact" className="btn-primary shrink-0 whitespace-nowrap px-6 py-3.5 text-sm">
+              Get in touch <ArrowRight size={16} />
+            </MagneticLink>
           </div>
-          <Link href="/contact" className="btn-primary shrink-0 whitespace-nowrap px-6 py-3.5 text-sm">
-            Get in touch <ArrowRight size={16} />
-          </Link>
-        </div>
+        </Reveal>
       </div>
     </div>
   );

@@ -207,9 +207,19 @@ main {
 }
 
 .surface-card {
-  background-color: var(--bg-raised);
+  position: relative;
+  background: linear-gradient(165deg, var(--bg-raised) 0%, var(--bg-elevated) 100%);
   border: 1px solid var(--border-subtle);
   border-radius: 1rem;
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+}
+.surface-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.05), transparent 45%);
+  pointer-events: none;
 }
 
 .glass-panel {
@@ -243,6 +253,33 @@ main {
   pointer-events: none;
 }
 
+/* CTA banners — every "talk to us" style prompt site-wide, elevated to
+   the same glass treatment as the hero panel so these conversion
+   moments read as deliberate, not like a leftover flat box. */
+.cta-panel {
+  position: relative;
+  background-color: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 1.5rem;
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  box-shadow: var(--shadow-lifted);
+  overflow: hidden;
+}
+.cta-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(120deg, var(--accent) 0%, transparent 35%, transparent 65%, var(--accent-silver) 100%);
+  opacity: 0.3;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
 .hover-card {
   transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.28s ease;
 }
@@ -250,6 +287,32 @@ main {
   transform: translateY(-4px);
   box-shadow: var(--shadow-glow);
   border-color: var(--glow-primary);
+}
+
+/* Section-level atmosphere — a soft, slowly-drifting glow blob dropped
+   into a section (via the SectionGlow component) so every part of the
+   site carries the same ambient presence the hero has, not just the
+   very top of the page. Pure CSS (no per-frame JS) since these appear
+   many times per page. */
+.section-glow {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  pointer-events: none;
+  animation: section-glow-drift 26s ease-in-out infinite alternate;
+}
+@keyframes section-glow-drift {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+  to {
+    transform: translate(3%, -4%) scale(1.08);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .section-glow {
+    animation: none;
+  }
 }
 
 .btn-primary {
