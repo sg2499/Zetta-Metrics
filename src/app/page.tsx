@@ -13,16 +13,16 @@ export default function Home() {
             <div>
               <p className="eyebrow mb-5">AI-native automation platform</p>
               <h1
-                className="font-display text-[2.6rem] font-extrabold leading-[1.08] tracking-tight sm:text-6xl"
+                className="text-balance font-display text-[2.6rem] font-extrabold leading-[1.08] tracking-tight sm:text-6xl"
                 style={{ color: "var(--text-primary)" }}
               >
                 Turn manual work into
                 <span className="gradient-text"> intelligent workflows.</span>
               </h1>
-              <p className="mt-6 max-w-xl text-lg leading-8" style={{ color: "var(--text-secondary)" }}>
-                {brand.positioning} We build one reusable AI platform engine and
-                apply it to real institutions — starting with two live products in
-                education, built to extend into any process-heavy business.
+              <p className="text-pretty mt-6 max-w-xl text-lg leading-8" style={{ color: "var(--text-secondary)" }}>
+                {brand.positioning} Education is where we proved it first — MathPath
+                is live in schools today, and School Enrichment is the same engine
+                built out for full academic delivery.
               </p>
               <div className="mt-9 flex flex-wrap items-center gap-3">
                 <Link href="/products" className="btn-primary px-6 py-3.5 text-sm">
@@ -36,10 +36,10 @@ export default function Home() {
               <dl className="mt-14 grid grid-cols-2 gap-6 sm:grid-cols-4">
                 {proofPoints.map((p) => (
                   <div key={p.label}>
-                    <dt className="font-display text-2xl font-bold" style={{ color: "var(--text-primary)" }}>
+                    <dt className="text-balance font-display text-2xl font-bold" style={{ color: "var(--text-primary)" }}>
                       {p.value}
                     </dt>
-                    <dd className="mt-1 text-xs leading-5" style={{ color: "var(--text-muted)" }}>
+                    <dd className="text-pretty mt-1 text-xs leading-5" style={{ color: "var(--text-muted)" }}>
                       {p.label}
                     </dd>
                   </div>
@@ -73,10 +73,10 @@ export default function Home() {
       <section className="py-20">
         <div className="container-custom">
           <p className="eyebrow mb-4">The platform</p>
-          <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: "var(--text-primary)" }}>
+          <h2 className="text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: "var(--text-primary)" }}>
             One engine. Built once, applied everywhere.
           </h2>
-          <p className="mt-4 max-w-2xl text-base leading-7" style={{ color: "var(--text-secondary)" }}>
+          <p className="text-pretty mt-4 max-w-2xl text-base leading-7" style={{ color: "var(--text-secondary)" }}>
             Every Zetta product runs on the same underlying platform — not
             separate one-off builds. That's what lets us move from one
             customer to the next without starting over.
@@ -88,7 +88,7 @@ export default function Home() {
                 <h3 className="mt-4 font-display text-base font-bold" style={{ color: "var(--text-primary)" }}>
                   {pillar.title}
                 </h3>
-                <p className="mt-2 text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
+                <p className="text-pretty mt-2 text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
                   {pillar.summary}
                 </p>
               </div>
@@ -101,10 +101,10 @@ export default function Home() {
       <section className="py-20">
         <div className="container-custom">
           <p className="eyebrow mb-4">Products</p>
-          <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: "var(--text-primary)" }}>
+          <h2 className="text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: "var(--text-primary)" }}>
             Two products. One platform.
           </h2>
-          <p className="mt-4 max-w-2xl text-base leading-7" style={{ color: "var(--text-secondary)" }}>
+          <p className="text-pretty mt-4 max-w-2xl text-base leading-7" style={{ color: "var(--text-secondary)" }}>
             Both are real, working systems — not concept decks.
           </p>
           <div className="mt-12 grid gap-6 md:grid-cols-2">
@@ -119,7 +119,7 @@ export default function Home() {
       <section className="py-20">
         <div className="container-custom">
           <p className="eyebrow mb-4">How we build</p>
-          <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: "var(--text-primary)" }}>
+          <h2 className="text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: "var(--text-primary)" }}>
             From manual process to shipped product.
           </h2>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
@@ -132,7 +132,7 @@ export default function Home() {
                 <h3 className="mt-4 font-display text-base font-bold" style={{ color: "var(--text-primary)" }}>
                   {step.title}
                 </h3>
-                <p className="mt-2 text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
+                <p className="text-pretty mt-2 text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
                   {step.detail}
                 </p>
               </div>
@@ -146,10 +146,10 @@ export default function Home() {
         <div className="container-custom">
           <div className="surface-card flex flex-col items-start gap-6 p-10 md:flex-row md:items-center md:justify-between">
             <div>
-              <h2 className="font-display text-2xl font-bold sm:text-3xl" style={{ color: "var(--text-primary)" }}>
+              <h2 className="text-balance font-display text-2xl font-bold sm:text-3xl" style={{ color: "var(--text-primary)" }}>
                 Want to see the platform in action?
               </h2>
-              <p className="mt-3 max-w-xl text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
+              <p className="text-pretty mt-3 max-w-xl text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
                 Walk through MathPath live, or talk to us about what School
                 Enrichment is building toward next.
               </p>

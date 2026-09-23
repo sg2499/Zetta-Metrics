@@ -29,13 +29,14 @@ export default function Footer() {
       <div className="container-custom py-12">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
           <div className="md:col-span-2">
-            <Link href="/" className="mb-4 flex items-center gap-2.5">
-              <div className="relative h-8 w-8 overflow-hidden rounded-lg bg-black">
-                <Image src="/logo-mark.png" alt="Zetta Metrics" fill className="object-cover" />
-              </div>
-              <span className="font-display text-lg font-bold tracking-tight" style={{ color: "var(--text-primary)" }}>
-                Zetta<span className="gradient-text">Metrics</span>
-              </span>
+            <Link href="/" className="mb-5 block">
+              <Image
+                src="/logo-lockup.png"
+                alt="Zetta Metrics — Engineering outcomes that matter"
+                width={1365}
+                height={495}
+                className="h-11 w-auto rounded-md"
+              />
             </Link>
             <p className="max-w-sm text-sm leading-7" style={{ color: "var(--text-secondary)" }}>
               {brand.positioning}

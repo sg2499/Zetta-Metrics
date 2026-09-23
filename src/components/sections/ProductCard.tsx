@@ -14,39 +14,27 @@ export default function ProductCard({ product }: { product: (typeof products)[nu
           <product.icon size={20} style={{ color: "var(--accent)" }} />
         </div>
         <span
-          className="flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[0.7rem] font-semibold"
+          className="flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border px-2.5 py-1 text-[0.7rem] font-semibold"
           style={{
             borderColor: "var(--border-subtle)",
             color: isLive ? "var(--status-live)" : "var(--status-dev)",
           }}
         >
-          <span className="status-dot" style={{ backgroundColor: isLive ? "var(--status-live)" : "var(--status-dev)" }} />
+          <span className="status-dot shrink-0" style={{ backgroundColor: isLive ? "var(--status-live)" : "var(--status-dev)" }} />
           {product.statusLabel}
         </span>
       </div>
 
       <p className="eyebrow mt-6 mb-1">{product.eyebrow}</p>
-      <h3 className="font-display text-xl font-bold" style={{ color: "var(--text-primary)" }}>
+      <h3 className="text-balance font-display text-xl font-bold" style={{ color: "var(--text-primary)" }}>
         {product.name}
       </h3>
-      <p className="mt-1 text-sm font-medium" style={{ color: "var(--text-secondary)" }}>
+      <p className="text-pretty mt-1 text-sm font-medium" style={{ color: "var(--text-secondary)" }}>
         {product.tagline}
       </p>
-      <p className="mt-4 text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
+      <p className="text-pretty mt-4 text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
         {product.summary}
       </p>
-
-      <div className="mt-6 flex flex-wrap gap-2">
-        {product.stack.slice(0, 4).map((t) => (
-          <span
-            key={t}
-            className="rounded-md border px-2 py-1 text-[0.7rem] font-medium"
-            style={{ borderColor: "var(--border-subtle)", color: "var(--text-muted)" }}
-          >
-            {t}
-          </span>
-        ))}
-      </div>
 
       <span
         className="mt-7 inline-flex items-center gap-1.5 text-sm font-semibold"

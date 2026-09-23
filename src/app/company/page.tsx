@@ -15,10 +15,10 @@ export default function CompanyPage() {
       <div className="container-custom">
         <div className="max-w-3xl">
           <p className="eyebrow mb-4">Company</p>
-          <h1 className="font-display text-4xl font-extrabold tracking-tight sm:text-5xl" style={{ color: "var(--text-primary)" }}>
+          <h1 className="text-balance font-display text-4xl font-extrabold tracking-tight sm:text-5xl" style={{ color: "var(--text-primary)" }}>
             We build the platform first, then the product.
           </h1>
-          <p className="mt-5 text-base leading-7" style={{ color: "var(--text-secondary)" }}>
+          <p className="text-pretty mt-5 text-base leading-7" style={{ color: "var(--text-secondary)" }}>
             {brand.legalName} is an AI-native automation company. We don&apos;t{" "}
             take one-off projects and rebuild from zero each time — every
             product we ship extends the same underlying platform, so the work
@@ -34,7 +34,7 @@ export default function CompanyPage() {
               <h3 className="mt-3 font-display text-sm font-bold" style={{ color: "var(--text-primary)" }}>
                 {pillar.title}
               </h3>
-              <p className="mt-2 text-xs leading-5" style={{ color: "var(--text-secondary)" }}>
+              <p className="text-pretty mt-2 text-xs leading-5" style={{ color: "var(--text-secondary)" }}>
                 {pillar.summary}
               </p>
             </div>
@@ -44,7 +44,7 @@ export default function CompanyPage() {
         {/* Founders */}
         <div className="mt-20">
           <p className="eyebrow mb-4">Leadership</p>
-          <h2 className="font-display text-2xl font-bold" style={{ color: "var(--text-primary)" }}>
+          <h2 className="text-balance font-display text-2xl font-bold" style={{ color: "var(--text-primary)" }}>
             Founders & Directors
           </h2>
           <div className="mt-8 grid gap-6 sm:grid-cols-2">
@@ -65,7 +65,7 @@ export default function CompanyPage() {
                 <p className="text-xs font-semibold uppercase tracking-[0.14em]" style={{ color: "var(--accent)" }}>
                   {f.role}
                 </p>
-                <p className="mt-3 text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
+                <p className="text-pretty mt-3 text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
                   {f.bio}
                 </p>
                 {(f.linkedin || f.github) && (
@@ -103,10 +103,10 @@ export default function CompanyPage() {
 
         <div className="surface-card mt-20 flex flex-col items-start gap-6 p-10 md:flex-row md:items-center md:justify-between">
           <div>
-            <h2 className="font-display text-2xl font-bold" style={{ color: "var(--text-primary)" }}>
+            <h2 className="text-balance font-display text-2xl font-bold" style={{ color: "var(--text-primary)" }}>
               Want to work with us?
             </h2>
-            <p className="mt-3 max-w-xl text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
+            <p className="text-pretty mt-3 max-w-xl text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
               Whether it&apos;s about our products or a partnership, we&apos;d
               like to hear from you.
             </p>

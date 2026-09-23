@@ -26,9 +26,9 @@ export const brand = {
   github: "https://github.com/sg2499",
   linkedin: "https://www.linkedin.com/in/shailesh-gupta-7b7278188",
   positioning:
-    "Zetta Metrics builds AI-driven automation platforms that turn manual, fragmented business processes into intelligent digital workflows.",
+    "We build one platform engine — role-based workflows, backend-authoritative scoring, and AI woven into the product logic — and apply it to real institutions, one product at a time.",
   shortPositioning:
-    "AI-native software for teams who are done doing things by hand.",
+    "One platform engine. Every product we ship extends it.",
   location: "Kolkata & Pune, India — building for clients worldwide",
 };
 
@@ -36,48 +36,48 @@ export const founders = [
   {
     name: "Shailesh Gupta",
     role: "Founder & Director",
-    bio: "Data scientist turned AI product builder. Formerly built ML models for attrition and credit-risk at Teleperformance; now leads product and engineering at Zetta Metrics after an MDSAI at IIT Roorkee focused on applied AI and LLM systems.",
+    bio: "Started out building attrition and credit-risk models at Teleperformance, then spent two years on applied AI and LLM systems during an MDSAI at IIT Roorkee. Leads product and engineering at Zetta Metrics — the one writing the code the platform runs on.",
     linkedin: "https://www.linkedin.com/in/shailesh-gupta-7b7278188",
     github: "https://github.com/sg2499",
   },
   {
     name: "Ashalatha Gupta",
     role: "Founder & Director",
-    bio: "Co-founder and Director of Zetta Metrics, driving the company's operating foundation alongside its product direction.",
+    bio: "Co-founder and Director, running the operating and business side of Zetta Metrics so product and engineering can stay focused on what ships.",
   },
 ];
 
 export const proofPoints = [
-  { value: "2", label: "Products in active development" },
-  { value: "1", label: "Platform, built to be reused" },
-  { value: "2026", label: "Founded in Kolkata, India" },
-  { value: "AI-native", label: "Every product, from day one" },
+  { value: "2", label: "Products, one shared engine" },
+  { value: "3", label: "Roles orchestrated per product — admin, teacher, student" },
+  { value: "2026", label: "Incorporated in Kolkata, India" },
+  { value: "5–10", label: "Classes served by School Enrichment" },
 ];
 
 export const platformPillars = [
   {
     icon: BrainCircuit,
-    title: "AI & ML at the core",
+    title: "AI inside the product, not bolted on",
     summary:
-      "Every product is built around models and automated reasoning, not bolted-on chat widgets — extraction, scoring, grading, and decisioning all run through the same AI layer.",
+      "Scoring, grading, and content checks run through the same AI layer as the rest of the product — not a chat widget dropped in afterward.",
   },
   {
     icon: Workflow,
-    title: "Workflow orchestration",
+    title: "One engine, reused on purpose",
     summary:
-      "A shared engine for role-based access, assignment/attempt lifecycles, approvals, and status transitions — built once at MathPath, reused and extended at School Enrichment.",
+      "Roles, assignments, approvals, and status transitions were built once for MathPath. School Enrichment runs on the same engine instead of a second one.",
   },
   {
     icon: Database,
-    title: "Data & analytics native",
+    title: "Scoring you can audit",
     summary:
-      "Structured data models, auditable scoring, and dashboards are first-class in every product — not an afterthought bolted on for a demo.",
+      "Every score and status change traces back to a server-side decision, not a client guess — so a teacher or admin can always see why a result is what it is.",
   },
   {
     icon: ShieldCheck,
-    title: "Built for institutions",
+    title: "Built for schools, not demos",
     summary:
-      "Session hygiene, role separation, backend-authoritative scoring, and data-export/privacy handling are standard, not optional extras added later.",
+      "Role separation, session handling, and data-export controls were part of the first build, because the users are real students and teachers, not a pitch audience.",
   },
 ];
 
@@ -85,12 +85,12 @@ export const products = [
   {
     slug: "mathpath",
     name: "MathPath",
-    tagline: "A role-based math learning operations platform.",
+    tagline: "The operating layer schools use to run math practice.",
     status: "live" as const,
     statusLabel: "Live product",
     eyebrow: "Flagship product",
     summary:
-      "MathPath gives schools and learning programs a full operating layer for math practice — admin, teacher, and student dashboards; structured curriculum delivery; server-authoritative assessment; and progress reporting parents can actually read.",
+      "MathPath runs the daily mechanics of math practice for a school: admin, teacher, and student dashboards, structured curriculum delivery, server-scored assessments, and progress reports a parent can actually read at a glance.",
     icon: LayoutDashboard,
     highlights: [
       {
@@ -130,7 +130,6 @@ export const products = [
           "FastAPI + Next.js + SQL, deployed and demo-ready — not a prototype sitting on a laptop.",
       },
     ],
-    stack: ["Next.js", "FastAPI", "PostgreSQL", "TanStack Query", "Role-based auth"],
     screenshots: [
       { src: "/screenshots/mathpath/admin-dashboard.jpg", caption: "Admin — Control Centre" },
       { src: "/screenshots/mathpath/admin-students.jpg", caption: "Admin — Student Management" },
@@ -143,12 +142,12 @@ export const products = [
   {
     slug: "school-enrichment",
     name: "School Enrichment",
-    tagline: "A CBSE/ICSE academic learning platform for Classes 5–10.",
+    tagline: "CBSE/ICSE academic delivery for Classes 5–10, built on the same engine.",
     status: "development" as const,
     statusLabel: "In active development",
     eyebrow: "Second product",
     summary:
-      "School Enrichment applies the same platform engine to full CBSE/ICSE academic delivery — a School → Student/Teacher/Admin identity model, a curriculum studio for mapping and approving content, and a five-day guided learning loop with automated marking.",
+      "School Enrichment takes the platform MathPath runs on and points it at full academic delivery — a School → Student/Teacher/Admin identity model, a curriculum studio for mapping and approving content, and a five-day guided learning loop with automated marking.",
     icon: GraduationCap,
     highlights: [
       {
@@ -176,7 +175,6 @@ export const products = [
           "Session hygiene, role-scoped access control, and data-export/privacy handling are already in place at this stage — not deferred to a later phase.",
       },
     ],
-    stack: ["Next.js 15", "FastAPI", "SQLAlchemy", "Alembic", "PostgreSQL"],
     screenshots: [],
     href: "/products/school-enrichment",
     repo: null,
@@ -186,20 +184,20 @@ export const products = [
 export const processSteps = [
   {
     icon: Network,
-    title: "Map the workflow",
+    title: "Start with the real process",
     detail:
-      "We start with the manual, repetitive process as it actually runs today — not an idealized version of it.",
+      "We map the workflow as it actually runs today — the roles, the handoffs, the manual steps — before writing a line of product code.",
   },
   {
     icon: BrainCircuit,
-    title: "Design the AI layer",
+    title: "Build on the shared engine",
     detail:
-      "Extraction, scoring, decisioning, or orchestration logic is designed around that real workflow, on Zetta's shared platform engine.",
+      "Scoring, roles, and workflow logic are built once on Zetta's platform engine, then configured for the specific process instead of rebuilt from scratch.",
   },
   {
     icon: CheckCircle2,
-    title: "Ship, measure, scale",
+    title: "Ship it, then extend it",
     detail:
-      "A working product ships, gets used, and gets measured — then the same underlying engine extends to the next workflow or the next customer.",
+      "The product goes into real use with real users. What we learn feeds back into the engine, so the next product starts further ahead than the last one did.",
   },
 ];

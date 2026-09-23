@@ -27,10 +27,13 @@ export default function Navbar() {
       >
         <div className="container-custom flex h-20 items-center justify-between gap-4">
           <Link href="/" className="group flex min-w-fit items-center gap-2.5">
-            <div className="relative h-9 w-9 overflow-hidden rounded-lg bg-black">
+            <div
+              className="relative h-10 w-10 shrink-0 overflow-hidden rounded-lg"
+              style={{ backgroundColor: "#060a0b" }}
+            >
               <Image src="/logo-mark.png" alt="Zetta Metrics" fill className="object-cover" priority />
             </div>
-            <span className="font-display text-lg font-bold tracking-tight" style={{ color: "var(--text-primary)" }}>
+            <span className="text-balance font-display text-lg font-bold tracking-tight" style={{ color: "var(--text-primary)" }}>
               Zetta<span className="gradient-text">Metrics</span>
             </span>
           </Link>

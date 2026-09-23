@@ -9,12 +9,12 @@ export default function ProductsPage() {
       <div className="container-custom">
         <p className="eyebrow mb-4">Products</p>
         <h1
-          className="font-display text-4xl font-extrabold tracking-tight sm:text-5xl"
+          className="text-balance font-display text-4xl font-extrabold tracking-tight sm:text-5xl"
           style={{ color: "var(--text-primary)" }}
         >
           Built on one platform, applied to real institutions.
         </h1>
-        <p className="mt-5 max-w-2xl text-base leading-7" style={{ color: "var(--text-secondary)" }}>
+        <p className="text-pretty mt-5 max-w-2xl text-base leading-7" style={{ color: "var(--text-secondary)" }}>
           MathPath and School Enrichment aren&apos;t two separate side projects —
           they&apos;re two applications of the same underlying Zetta engine:
           role-based workflows, backend-authoritative scoring, and AI woven into
@@ -29,10 +29,10 @@ export default function ProductsPage() {
 
         <div className="surface-card mt-16 flex flex-col items-start gap-6 p-10 md:flex-row md:items-center md:justify-between">
           <div>
-            <h2 className="font-display text-2xl font-bold" style={{ color: "var(--text-primary)" }}>
+            <h2 className="text-balance font-display text-2xl font-bold" style={{ color: "var(--text-primary)" }}>
               Have a workflow that looks like this?
             </h2>
-            <p className="mt-3 max-w-xl text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
+            <p className="text-pretty mt-3 max-w-xl text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
               If your process is manual, fragmented, and repetitive, it&apos;s
               probably a fit for the same platform.
             </p>

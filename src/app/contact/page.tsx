@@ -70,10 +70,10 @@ export default function ContactPage() {
       <div className="container-custom">
         <div className="max-w-2xl">
           <p className="eyebrow mb-4">Contact</p>
-          <h1 className="font-display text-4xl font-extrabold tracking-tight sm:text-5xl" style={{ color: "var(--text-primary)" }}>
+          <h1 className="text-balance font-display text-4xl font-extrabold tracking-tight sm:text-5xl" style={{ color: "var(--text-primary)" }}>
             Let&apos;s talk.
           </h1>
-          <p className="mt-5 text-base leading-7" style={{ color: "var(--text-secondary)" }}>
+          <p className="text-pretty mt-5 text-base leading-7" style={{ color: "var(--text-secondary)" }}>
             Whether it&apos;s about MathPath, School Enrichment, a partnership,
             or investment — tell us what you need and we&apos;ll get back to you.
           </p>
