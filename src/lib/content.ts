@@ -138,7 +138,6 @@ export const products = [
       { src: "/screenshots/mathpath/student-dashboard.jpg", caption: "Student — Learning Workspace" },
     ],
     href: "/products/mathpath",
-    liveUrl: "https://math-path-platform.vercel.app",
     repo: "https://github.com/sg2499/MathPath-Platform",
   },
   {
@@ -180,7 +179,6 @@ export const products = [
     stack: ["Next.js 15", "FastAPI", "SQLAlchemy", "Alembic", "PostgreSQL"],
     screenshots: [],
     href: "/products/school-enrichment",
-    liveUrl: "https://school-enrichment-frontend.vercel.app",
     repo: null,
   },
 ];

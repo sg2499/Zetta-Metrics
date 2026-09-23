@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { ArrowRight, ExternalLink } from "lucide-react";
+import { ArrowRight, Lock } from "lucide-react";
 import { products } from "@/lib/content";
 import ProductScreens from "@/components/sections/ProductScreens";
 import { GithubIcon } from "@/components/BrandIcons";
@@ -35,20 +35,23 @@ export default function MathPathPage() {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <a href={product.liveUrl} target="_blank" rel="noopener noreferrer" className="btn-primary px-5 py-3 text-sm">
-              View live product <ExternalLink size={15} />
-            </a>
+            <Link href="/contact" className="btn-primary px-5 py-3 text-sm">
+              Request a demo <ArrowRight size={15} />
+            </Link>
             <a href={product.repo!} target="_blank" rel="noopener noreferrer" className="btn-secondary px-5 py-3 text-sm">
               <GithubIcon size={15} /> Source
             </a>
           </div>
+          <p className="mt-4 flex items-center gap-1.5 text-xs" style={{ color: "var(--text-muted)" }}>
+            <Lock size={12} /> MathPath is a private platform for enrolled schools, teachers, and students — access isn&apos;t public.
+          </p>
         </div>
 
         <div className="mt-14">
           <ProductScreens
             screenshots={product.screenshots}
             productName={product.name}
-            placeholderNote="Product screenshots are being finalized and will be published here shortly. In the meantime, the live product is fully browsable at the link above."
+            placeholderNote="Product screenshots are being finalized and will be published here shortly."
           />
         </div>
 
