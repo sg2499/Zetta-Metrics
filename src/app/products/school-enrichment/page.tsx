@@ -62,7 +62,7 @@ export default function SchoolEnrichmentPage() {
             Build roadmap
           </h2>
           <p className="text-pretty mt-2 text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
-            Built on the same platform engine as MathPath — here&apos;s exactly
+            Built the same way we build everything — here&apos;s exactly
             where it stands today.
           </p>
           <div className="mt-8 space-y-3">
@@ -116,7 +116,7 @@ export default function SchoolEnrichmentPage() {
               MathPath is live today
             </h2>
             <p className="text-pretty mt-3 text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
-              See the same platform engine running in production.
+              See how the same approach runs in production today.
             </p>
           </div>
           <Link href="/products/mathpath" className="btn-primary shrink-0 whitespace-nowrap px-6 py-3.5 text-sm">

@@ -27,9 +27,9 @@ export const brand = {
   github: "https://github.com/sg2499",
   linkedin: "https://www.linkedin.com/in/shailesh-gupta-7b7278188",
   positioning:
-    "We build one platform engine — role-based workflows, backend-authoritative scoring, and AI woven into the product logic — and apply it to real institutions, one product at a time.",
+    "We're an AI-native SaaS company: role-based workflows, backend-authoritative logic, and AI built into the product from day one, not bolted on after. MathPath and School Enrichment are where we started — we build for any institution or business whose manual process is ready to become software.",
   shortPositioning:
-    "One platform engine. Every product we ship extends it.",
+    "An AI-native SaaS company, built to keep shipping past our first two products.",
   location: "Kolkata, India — building for clients worldwide",
 };
 
@@ -37,7 +37,7 @@ export const founders = [
   {
     name: "Shailesh Gupta",
     role: "Founder & Director",
-    bio: "Started out building attrition and credit-risk models at Teleperformance, then spent two years on applied AI and LLM systems during an MDSAI at IIT Roorkee. Leads product and engineering at Zetta Metrics — the one writing the code the platform runs on.",
+    bio: "Started out building attrition and credit-risk models at Teleperformance, then spent two years on applied AI and LLM systems during an MDSAI at IIT Roorkee. Leads product and engineering at Zetta Metrics — the one writing the code everything runs on.",
     image: "/founder-shailesh.jpg",
     linkedin: "https://www.linkedin.com/in/shailesh-gupta-7b7278188",
     github: "https://github.com/sg2499",
@@ -52,43 +52,44 @@ export const founders = [
 
 export const proofPoints = [
   { value: "2026", label: "Founded in Kolkata, India" },
-  { value: "1", label: "Shared platform engine, every product" },
+  { value: "SaaS", label: "That's the business we're in" },
   { value: "AI-native", label: "Every product, from day one" },
-  { value: "100%", label: "Backend-authoritative, auditable scoring" },
+  { value: "100%", label: "Backend-authoritative, auditable logic" },
 ];
 
-// Used on the Home page ("The platform" section) — framed around what the
-// platform engine technically does.
+// Used on the Home page ("The platform" section) — framed around the
+// engineering principles we apply to whatever we build, not around any one
+// product or a single fixed "engine."
 export const platformPillars = [
   {
     icon: BrainCircuit,
     title: "AI inside the product, not bolted on",
     summary:
-      "Scoring, grading, and content checks run through the same AI layer as the rest of the product — not a chat widget dropped in afterward.",
+      "Scoring, decisions, and content checks run through AI as part of the product itself — never a chat widget dropped on top afterward.",
   },
   {
     icon: Workflow,
-    title: "One engine, reused on purpose",
+    title: "Built to be reused, not rebuilt",
     summary:
-      "Roles, assignments, approvals, and status transitions are built once on the platform engine, then configured for the next product instead of rebuilt from scratch.",
+      "Roles, approvals, and workflow logic are designed as reusable building blocks, so the next product we build starts ahead of the last one instead of from zero.",
   },
   {
     icon: Database,
     title: "Scoring you can audit",
     summary:
-      "Every score and status change traces back to a server-side decision, not a client guess — so whoever's reviewing it can always see why a result is what it is.",
+      "Every decision and status change traces back to a server-side rule, not a client guess — so it's always auditable.",
   },
   {
     icon: ShieldCheck,
-    title: "Built for institutions, not demos",
+    title: "Built for production, not demos",
     summary:
-      "Role separation, session handling, and data-export controls are part of the first build, because the people using it are real, not a pitch audience.",
+      "Role separation, session handling, and data controls are part of the first build for any client we take on — because what we ship reaches real users, not a pitch audience.",
   },
 ];
 
 // Used on the Company page (mission recap) — same underlying principles as
 // platformPillars, framed around how we operate as a company rather than
-// what the engine does technically. Keep this distinct in wording.
+// what any one product does technically. Keep this distinct in wording.
 export const companyPillars = [
   {
     icon: BrainCircuit,
@@ -98,9 +99,9 @@ export const companyPillars = [
   },
   {
     icon: Workflow,
-    title: "We build platforms, not projects",
+    title: "We build reusable systems, not one-offs",
     summary:
-      "Every engagement adds to the same underlying engine instead of starting a fresh codebase, so the second product ships faster than the first.",
+      "Every engagement is designed so what we learn and build carries into the next one — that's what lets us keep expanding into new products and new industries.",
   },
   {
     icon: Database,
@@ -175,12 +176,12 @@ export const products = [
   {
     slug: "school-enrichment",
     name: "School Enrichment",
-    tagline: "CBSE/ICSE academic delivery for Classes 5–10, built on the same engine.",
+    tagline: "CBSE/ICSE academic delivery for Classes 5–10, built the same way we build everything.",
     status: "development" as const,
     statusLabel: "In active development",
     eyebrow: "Second product",
     summary:
-      "School Enrichment takes the platform MathPath runs on and points it at full academic delivery — a School → Student/Teacher/Admin identity model, a curriculum studio for mapping and approving content, and a five-day guided learning loop with automated marking.",
+      "School Enrichment is built the same way as MathPath, pointed at full academic delivery — a School → Student/Teacher/Admin identity model, a curriculum studio for mapping and approving content, and a five-day guided learning loop with automated marking.",
     icon: GraduationCap,
     highlights: [
       {
@@ -222,14 +223,14 @@ export const processSteps = [
   },
   {
     icon: BrainCircuit,
-    title: "Build on the shared engine",
+    title: "Build it right, not just fast",
     detail:
-      "Scoring, roles, and workflow logic are built once on Zetta's platform engine, then configured for the specific process instead of rebuilt from scratch.",
+      "Roles, workflows, and logic are engineered as reusable pieces from the start, so the next thing we build doesn't start from zero.",
   },
   {
     icon: CheckCircle2,
     title: "Ship it, then extend it",
     detail:
-      "The product goes into real use with real users. What we learn feeds back into the engine, so the next product starts further ahead than the last one did.",
+      "The product goes into real use with real users. What we learn feeds the next build, so every product we ship starts further ahead than the last one.",
   },
 ];

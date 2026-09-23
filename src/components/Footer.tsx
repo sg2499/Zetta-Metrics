@@ -28,16 +28,22 @@ export default function Footer() {
       <div className="container-custom py-12">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
           <div className="md:col-span-2">
-            <Link href="/" className="mb-6 block">
+            <Link href="/" className="mb-4 block">
               <Image
-                src="/logo-lockup.png"
-                alt="Zetta Metrics — Engineering outcomes that matter"
-                width={1321}
-                height={472}
+                src="/logo-wordmark.png"
+                alt="Zetta Metrics"
+                width={1307}
+                height={461}
                 quality={100}
-                className="h-20 w-auto sm:h-24"
+                className="h-16 w-auto sm:h-20"
               />
             </Link>
+            <p
+              className="mb-6 text-[0.65rem] font-medium uppercase leading-none"
+              style={{ color: "var(--text-muted)", letterSpacing: "0.28em" }}
+            >
+              Engineering outcomes that matter
+            </p>
             <p className="text-pretty text-sm leading-7" style={{ color: "var(--text-secondary)" }}>
               {brand.positioning}
             </p>

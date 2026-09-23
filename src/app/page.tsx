@@ -20,9 +20,10 @@ export default function Home() {
                 <span className="gradient-text"> intelligent workflows.</span>
               </h1>
               <p className="text-pretty mt-6 text-lg leading-8" style={{ color: "var(--text-secondary)" }}>
-                {brand.positioning} Education is where we proved it first — MathPath
-                is live in schools today, and School Enrichment is the same engine
-                built out for full academic delivery.
+                {brand.positioning}{" "}
+                Education is where we started — MathPath is live in schools
+                today, and School Enrichment is our second product built the
+                same way. Neither is the ceiling on what we&apos;re building next.
               </p>
               <div className="mt-9 flex flex-wrap items-center gap-3">
                 <Link href="/products" className="btn-primary px-6 py-3.5 text-sm">
@@ -58,8 +59,8 @@ export default function Home() {
               <ul className="mt-5 space-y-4">
                 {[
                   "AI/ML embedded in the core product logic, not a bolt-on chat widget.",
-                  "One shared workflow engine — roles, assignments, approvals, scoring.",
-                  "Institution-grade security and data handling from day one.",
+                  "Reusable workflow foundations — roles, assignments, approvals, scoring — built once, adapted per product.",
+                  "Production-grade security and data handling from day one, for any client we build for.",
                   "A platform designed to add the next product without rebuilding the last one.",
                 ].map((line) => (
                   <li key={line} className="flex items-start gap-3 text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
@@ -78,12 +79,11 @@ export default function Home() {
         <div className="container-custom">
           <p className="eyebrow mb-4">The platform</p>
           <h2 className="text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: "var(--text-primary)" }}>
-            One engine. Built once, applied everywhere.
+            Built once, reused on purpose.
           </h2>
           <p className="text-pretty mt-4 text-base leading-7" style={{ color: "var(--text-secondary)" }}>
-            Every Zetta product runs on the same underlying platform — not
-            separate one-off builds. That's what lets us move from one
-            customer to the next without starting over.
+            We engineer for reuse, not one-off builds — the same foundations
+            carry from one product, one client, and one industry to the next.
           </p>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {platformPillars.map((pillar) => (
@@ -106,10 +106,11 @@ export default function Home() {
         <div className="container-custom">
           <p className="eyebrow mb-4">Products</p>
           <h2 className="text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: "var(--text-primary)" }}>
-            Two products. One platform.
+            Where we&apos;ve started.
           </h2>
           <p className="text-pretty mt-4 text-base leading-7" style={{ color: "var(--text-secondary)" }}>
-            Both are real, working systems — not concept decks.
+            Two real, working products — the first of many we plan to build
+            as a SaaS company.
           </p>
           <div className="mt-12 grid gap-6 md:grid-cols-2">
             {products.map((product) => (
@@ -163,8 +164,8 @@ export default function Home() {
                 Have a workflow like this?
               </h2>
               <p className="text-pretty mt-3 text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
-                Tell us about the process you&apos;re trying to fix — we&apos;ll show
-                you how the platform applies to it.
+                Tell us about the process you&apos;re trying to fix — it&apos;s
+                probably a fit for what we build.
               </p>
             </div>
             <Link href="/contact" className="btn-primary shrink-0 whitespace-nowrap px-6 py-3.5 text-sm">

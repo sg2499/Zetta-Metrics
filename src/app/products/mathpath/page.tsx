@@ -76,7 +76,7 @@ export default function MathPathPage() {
               See School Enrichment, our second product
             </h2>
             <p className="text-pretty mt-3 text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
-              Built on the same platform engine, now in active development.
+              Built the same way, now in active development.
             </p>
           </div>
           <Link href="/products/school-enrichment" className="btn-primary shrink-0 whitespace-nowrap px-6 py-3.5 text-sm">

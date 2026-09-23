@@ -17,13 +17,15 @@ export default function CompanyPage() {
         <div>
           <p className="eyebrow mb-4">Company</p>
           <h1 className="text-balance font-display text-4xl font-extrabold tracking-tight sm:text-5xl" style={{ color: "var(--text-primary)" }}>
-            We build the platform first, then the product.
+            We build reusable systems, then the products that need them.
           </h1>
           <p className="text-pretty mt-5 text-base leading-7" style={{ color: "var(--text-secondary)" }}>
-            {brand.legalName} is an AI-native automation company. We don&apos;t{" "}
-            take one-off projects and rebuild from zero each time — every
-            product we ship extends the same underlying platform, so the work
-            compounds instead of resetting.
+            {brand.legalName}{" "}
+            is an AI-native SaaS company. We started with two products in
+            education, but that&apos;s where we started, not where we stop —
+            we&apos;re built to take on any SaaS product that fits an
+            institution&apos;s or business&apos;s need, engineering each one
+            so the work compounds instead of resetting.
           </p>
         </div>
 

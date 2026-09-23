@@ -6,8 +6,7 @@ import { LinkedinIcon } from "@/components/BrandIcons";
 import { brand } from "@/lib/content";
 
 const subjects = [
-  "MathPath — product inquiry",
-  "School Enrichment — product inquiry",
+  "Product inquiry",
   "Partnership or investment",
   "Careers",
   "General inquiry",
@@ -73,8 +72,8 @@ export default function ContactPage() {
             Let&apos;s talk.
           </h1>
           <p className="text-pretty mt-5 text-base leading-7" style={{ color: "var(--text-secondary)" }}>
-            Whether it&apos;s about MathPath, School Enrichment, a partnership,
-            or investment — tell us what you need and we&apos;ll get back to you.
+            Whether it&apos;s about a product inquiry, a partnership, or
+            investment — tell us what you need and we&apos;ll get back to you.
           </p>
         </div>
 
