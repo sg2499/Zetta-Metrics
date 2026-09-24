@@ -742,36 +742,17 @@ main {
   }
 }
 
-/* 3D hero stage. In dark mode the particle scene floats directly on the
-   page; in light mode it sits in a deep navy "window" so the glowing
-   particles stay vivid and crisp against a light page. */
-.hero-stage {
-  position: relative;
-  border-radius: 2rem;
+/* 3D hero: a soft glow behind the floating Z and a contact shadow under it,
+   tuned per theme (no backing panel — the solid, lit Z reads on both). */
+.hero-glow {
+  background: radial-gradient(circle at 50% 45%, rgba(47, 225, 214, 0.32), rgba(122, 143, 255, 0.16) 45%, transparent 70%);
 }
-/* Dark mode: no panel — fade the scene's edges into the page so particles
-   never stop at a hard canvas boundary. */
-:root:not([data-theme="light"]) .hero-stage {
-  mask-image: radial-gradient(ellipse 72% 70% at 50% 50%, black 55%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse 72% 70% at 50% 50%, black 55%, transparent 100%);
+:root[data-theme="light"] .hero-glow {
+  background: radial-gradient(circle at 50% 45%, rgba(20, 184, 166, 0.2), rgba(99, 102, 241, 0.12) 45%, transparent 70%);
 }
-:root[data-theme="light"] .hero-stage {
-  overflow: hidden;
-  background:
-    radial-gradient(85% 75% at 55% 45%, #12304a 0%, #0a1728 50%, #050b14 100%);
-  box-shadow:
-    0 50px 100px -40px rgba(15, 23, 42, 0.55),
-    0 24px 48px -24px rgba(14, 116, 144, 0.35),
-    inset 0 1px 0 rgba(255, 255, 255, 0.09),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+.hero-shadow {
+  background: radial-gradient(ellipse at center, rgba(47, 225, 214, 0.35), transparent 70%);
 }
-:root[data-theme="light"] .hero-stage::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
-  background-size: 22px 22px;
-  mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
-  -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
-  pointer-events: none;
+:root[data-theme="light"] .hero-shadow {
+  background: radial-gradient(ellipse at center, rgba(15, 23, 42, 0.28), transparent 70%);
 }
