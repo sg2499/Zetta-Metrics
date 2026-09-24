@@ -66,7 +66,7 @@ function SharedBlocks() {
   return (
     <div className="flex w-full max-w-sm flex-col">
       <div className="flex justify-center gap-2">
-        {["MathPath", "School Enrichment"].map((p) => (
+        {["MathPath Platform", "School Enrichment"].map((p) => (
           <span key={p} className="rounded-md px-2.5 py-1 text-[0.7rem] font-semibold" style={{ background: "var(--accent-soft)", color: "var(--accent)" }}>
             {p}
           </span>

@@ -11,7 +11,7 @@ import ScreenshotLightbox from "@/components/sections/ScreenshotLightbox";
 const AUTO_ADVANCE_MS = 5500;
 
 /**
- * The real MathPath product, front and center: a browser-framed screenshot
+ * The real MathPath Platform, front and center: a browser-framed screenshot
  * with Student / Teacher / Admin tabs. Tabs auto-advance (driven by the
  * progress bar's own CSS animation, which pauses on hover) until the
  * visitor picks one themselves. The frame tilts back in 3D and flattens as
@@ -44,7 +44,7 @@ export default function ProductShowcase({ tilt = true }: { tilt?: boolean }) {
       <div className="flex justify-center">
         <div
           role="tablist"
-          aria-label="MathPath workspaces"
+          aria-label="MathPath Platform workspaces"
           className="inline-flex items-center gap-1 rounded-full border p-1"
           style={{ borderColor: "var(--glass-border)", background: "var(--glass-bg)", backdropFilter: "blur(12px)" }}
         >
@@ -155,7 +155,7 @@ export default function ProductShowcase({ tilt = true }: { tilt?: boolean }) {
               >
                 <Image
                   src={workspace.screenshot.src}
-                  alt={`MathPath — ${workspace.screenshot.caption}`}
+                  alt={`MathPath Platform — ${workspace.screenshot.caption}`}
                   fill
                   quality={90}
                   sizes="(min-width: 1280px) 1180px, 100vw"
@@ -174,7 +174,7 @@ export default function ProductShowcase({ tilt = true }: { tilt?: boolean }) {
         </motion.div>
       </div>
 
-      <ScreenshotLightbox shots={shots} index={lightbox} onChange={setLightbox} productName="MathPath" />
+      <ScreenshotLightbox shots={shots} index={lightbox} onChange={setLightbox} productName="MathPath Platform" />
     </div>
   );
 }

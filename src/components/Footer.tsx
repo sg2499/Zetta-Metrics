@@ -57,7 +57,7 @@ export default function Footer() {
 
           {Object.entries(footerLinks).map(([section, links]) => (
             <div key={section}>
-              <h4 className="mb-5 text-xs font-bold uppercase tracking-[0.18em]" style={{ color: "var(--text-muted)" }}>
+              <h4 className="footer-heading">
                 {section}
               </h4>
               <ul className="space-y-3">
@@ -73,7 +73,7 @@ export default function Footer() {
           ))}
 
           <div>
-            <h4 className="mb-5 text-xs font-bold uppercase tracking-[0.18em]" style={{ color: "var(--text-muted)" }}>
+            <h4 className="footer-heading">
               Get in touch
             </h4>
             <ul className="space-y-3">

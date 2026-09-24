@@ -145,9 +145,9 @@ export default function SchoolEnrichmentPage() {
             <div className="cta-panel relative flex flex-col items-start gap-8 overflow-hidden p-10 sm:p-14 md:flex-row md:items-center md:justify-between">
               <SectionGlow blobs={[{ size: 420, top: "-40%", right: "-5%", color: "secondary" }]} />
               <div className="min-w-0 flex-1">
-                <h2 className="section-title">Built on the same core as MathPath.</h2>
+                <h2 className="section-title">Built on the same core as the MathPath Platform.</h2>
                 <p className="mt-4 text-base leading-7" style={{ color: "var(--text-secondary)" }}>
-                  The same role model, server-side logic, and security posture that already run MathPath for its students today.
+                  The same role model, server-side logic, and security posture that already run the MathPath Platform for MathPath&apos;s students today.
                 </p>
               </div>
               <div className="flex shrink-0 flex-wrap gap-3">
@@ -155,7 +155,7 @@ export default function SchoolEnrichmentPage() {
                   Talk to us <ArrowRight size={16} />
                 </MagneticLink>
                 <MagneticLink href="/products/mathpath" className="btn-secondary whitespace-nowrap px-7 py-4 text-sm">
-                  See MathPath
+                  See the MathPath Platform
                 </MagneticLink>
               </div>
             </div>

@@ -35,7 +35,7 @@ export default function MathPathPage() {
                 {product.statusLabel} · {product.eyebrow}
               </span>
               <h1 className="mt-7 font-display text-[3.4rem] font-extrabold leading-[0.95] tracking-[-0.05em] sm:text-7xl lg:text-8xl" style={{ color: "var(--text-primary)" }}>
-                Math<span className="gradient-text">Path</span>
+                MathPath <span className="gradient-text">Platform</span>
               </h1>
               <p className="mt-6 font-display text-xl font-bold leading-snug tracking-tight sm:text-2xl" style={{ color: "var(--text-primary)" }}>
                 {product.tagline}
@@ -105,7 +105,7 @@ export default function MathPathPage() {
           <SectionHeader
             eyebrow="Under the hood"
             title="What's in the platform."
-            description="The mechanics that make the platform trustworthy enough to run MathPath's daily math practice."
+            description="The mechanics that make the platform trustworthy enough to run MathPath's abacus program every day."
           />
           <div className="mt-14 grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {product.highlights.map((h, i) => (
@@ -134,7 +134,7 @@ export default function MathPathPage() {
               <div className="min-w-0 flex-1">
                 <h2 className="section-title">Want a platform like this built for you?</h2>
                 <p className="mt-4 text-base leading-7" style={{ color: "var(--text-secondary)" }}>
-                  MathPath&apos;s platform is private to MathPath&apos;s students, but the approach behind it isn&apos;t. Tell us about the process you want to turn into software.
+                  The MathPath Platform is private to MathPath&apos;s students, but the approach behind it isn&apos;t. Tell us about the process you want to turn into software.
                 </p>
               </div>
               <div className="flex shrink-0 flex-wrap gap-3">

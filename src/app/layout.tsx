@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s | Zetta Metrics",
   },
   description:
-    "Zetta Metrics specialises in AI-native Ed-Tech platforms and workflow automation, including MathPath and School Enrichment, turning manual, fragmented processes into intelligent digital workflows.",
+    "Zetta Metrics specialises in AI-native Ed-Tech platforms and workflow automation, including the MathPath Platform and School Enrichment, turning manual, fragmented processes into intelligent digital workflows.",
   keywords: [
     "Zetta Metrics",
     "AI automation platform",
@@ -33,6 +33,8 @@ export const metadata: Metadata = {
     "learning platform",
     "workflow automation",
     "MathPath",
+    "MathPath Platform",
+    "abacus learning platform",
     "School Enrichment",
     "AI workflow orchestration",
     "machine learning",
@@ -47,7 +49,7 @@ export const metadata: Metadata = {
     siteName: "Zetta Metrics",
     title: "Zetta Metrics | AI-Native Ed-Tech Platforms & Automation",
     description:
-      "AI-native Ed-Tech platforms and workflow automation. MathPath and School Enrichment run on the same underlying platform.",
+      "AI-native Ed-Tech platforms and workflow automation. The MathPath Platform and School Enrichment run on the same underlying foundation.",
   },
   twitter: {
     card: "summary_large_image",

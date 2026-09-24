@@ -29,7 +29,7 @@ export const brand = {
   github: "https://github.com/sg2499",
   linkedin: "https://www.linkedin.com/in/shailesh-gupta-7b7278188",
   positioning:
-    "We're an AI-native SaaS company specialising in Ed-Tech platforms and workflow automation: role-based workflows, backend-authoritative logic, and AI built into the product from day one, not bolted on after. MathPath — built for our client of the same name — and School Enrichment are how we bring that to education, and the same approach extends to any institution or business whose manual process is ready to become software.",
+    "We're an AI-native SaaS company specialising in Ed-Tech platforms and workflow automation: role-based workflows, backend-authoritative logic, and AI built into the product from day one, not bolted on after. The MathPath Platform, built for our client MathPath's abacus program, and School Enrichment are how we bring that to education, and the same approach extends to any institution or business whose manual process is ready to become software.",
   shortPositioning:
     "AI-native Ed-Tech platforms and workflow automation, built for the institutions and businesses that run on them.",
   location: "Kolkata, India — building for clients worldwide",
@@ -115,13 +115,13 @@ export const companyPillars = [
 export const products = [
   {
     slug: "mathpath",
-    name: "MathPath",
-    tagline: "The learning platform we built for our client, MathPath.",
+    name: "MathPath Platform",
+    tagline: "The platform that runs our client MathPath's abacus program.",
     status: "live" as const,
-    statusLabel: "Live with client",
-    eyebrow: "Client platform",
+    statusLabel: "Live",
+    eyebrow: "Built for MathPath",
     summary:
-      "Zetta Metrics designed and built MathPath's learning platform, which now runs the daily mechanics of math practice for MathPath's students: admin, teacher, and student dashboards, structured curriculum delivery, server-scored assessments, and progress reports a parent can actually read at a glance.",
+      "MathPath runs an abacus learning program. Zetta Metrics designed and built the MathPath Platform to automate that program, then took it well beyond what was run by hand: admin, teacher, and student workspaces, structured practice across the program's lessons and levels, server-scored timed assessments, readiness tracking, and progress reports a parent can read at a glance.",
     icon: LayoutDashboard,
     highlights: [
       {
@@ -134,7 +134,7 @@ export const products = [
         icon: ClipboardCheck,
         title: "DPS practice workflows",
         detail:
-          "Structured daily-practice-set delivery across lessons and levels, with randomized options and no answer leakage before submission.",
+          "Structured daily-practice-set delivery across the abacus program's lessons and levels, with randomized options and no answer leakage before submission.",
       },
       {
         icon: Timer,
@@ -173,10 +173,10 @@ export const products = [
     name: "School Enrichment",
     tagline: "CBSE/ICSE academic delivery for Classes 5⁠–⁠10, built the same way we build everything.",
     status: "development" as const,
-    statusLabel: "Rolling out to schools",
+    statusLabel: "In Development",
     eyebrow: "Academic delivery platform",
     summary:
-      "School Enrichment is built the same way as MathPath, pointed at full academic delivery — a School → Student/Teacher/Admin identity model, a curriculum studio for mapping and approving content, and a five-day guided learning loop with automated marking.",
+      "School Enrichment is being built the same way as the MathPath Platform, pointed at full academic delivery — a School → Student/Teacher/Admin identity model, a curriculum studio for mapping and approving content, and a five-day guided learning loop with automated marking.",
     icon: GraduationCap,
     highlights: [
       {
@@ -209,8 +209,8 @@ export const products = [
   },
 ];
 
-// The three role-based workspaces inside MathPath — drives the home page
-// product showcase and the "three workspaces" section on the MathPath page.
+// The three role-based workspaces inside the MathPath Platform — drives the
+// home page product showcase and the "three workspaces" section on its page.
 export const mathpathWorkspaces = [
   {
     id: "student",

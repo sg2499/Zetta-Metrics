@@ -558,6 +558,33 @@ main {
   background-size: 18px 18px;
 }
 
+/* Footer column headings: brand teal, full weight, with a short accent
+   rule, so they read as headings rather than as one more link. */
+.footer-heading {
+  position: relative;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.7rem;
+  font-family: var(--font-manrope), "Manrope", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.footer-heading::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 1.75rem;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+}
+:root[data-theme="light"] .footer-heading {
+  color: var(--accent-strong, var(--accent));
+}
+
 /* Giant brand wordmark at the foot of every page. */
 .footer-wordmark {
   font-family: var(--font-manrope), "Manrope", sans-serif;

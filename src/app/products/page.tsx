@@ -10,11 +10,11 @@ import MagneticLink from "@/components/motion/MagneticLink";
 // Side-by-side facts — every cell restates something already described on
 // the product pages; nothing here is new or aspirational.
 const comparison = [
-  { label: "Built for", mathpath: "Our client MathPath's daily math practice and assessment", enrichment: "Full CBSE/ICSE academic delivery, Classes 5⁠–⁠10" },
+  { label: "Built for", mathpath: "Our client MathPath's abacus program: daily practice and assessment", enrichment: "Full CBSE/ICSE academic delivery, Classes 5⁠–⁠10" },
   { label: "Workspaces", mathpath: "Admin, Teacher, Student", enrichment: "Super Admin, Admin, Teacher, Student" },
   { label: "Core loop", mathpath: "Daily practice sets and timed assessments", enrichment: "Five-day guided learning loop" },
   { label: "Scoring", mathpath: "Server-side scoring and timing", enrichment: "Auto-marking, with a Foundation Repair path" },
-  { label: "Content", mathpath: "Structured curriculum across lessons and levels", enrichment: "Curriculum Studio with Excel import and quality checks" },
+  { label: "Content", mathpath: "Abacus curriculum across lessons and levels", enrichment: "Curriculum Studio with Excel import and quality checks" },
   { label: "Tracking", mathpath: "Readiness governance and parent-ready reports", enrichment: "Assignment-and-attempt lifecycle per student" },
   { label: "Security", mathpath: "Answer keys and timers never leave the server", enrichment: "Session hygiene, role-scoped access, data-export and privacy controls" },
 ];
@@ -39,7 +39,7 @@ export default function ProductsPage() {
                 Two platforms. <span className="gradient-text">One foundation.</span>
               </>
             }
-            description="Our Ed-Tech platforms: MathPath, built for our client of the same name and live with their students, and School Enrichment. Both are real, working products. Both run on role-based workflows, backend-authoritative logic, and AI woven into the product itself: the same approach we bring to any institution or business ready to modernize."
+            description="Our Ed-Tech platforms: the MathPath Platform, which automates our client MathPath's abacus program and is live with their students, and School Enrichment, now in development. Both run on role-based workflows, backend-authoritative logic, and AI woven into the product itself: the same approach we bring to any institution or business ready to modernize."
           />
           <div className="mt-16 grid items-stretch gap-6 md:grid-cols-2">
             {products.map((product, i) => (

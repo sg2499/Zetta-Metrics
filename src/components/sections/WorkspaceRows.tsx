@@ -8,7 +8,7 @@ import ScreenshotLightbox from "@/components/sections/ScreenshotLightbox";
 import Reveal from "@/components/motion/Reveal";
 
 /**
- * One row per MathPath workspace (Student / Teacher / Admin): a large
+ * One row per MathPath Platform workspace (Student / Teacher / Admin): a large
  * framed screenshot beside what that role actually does, alternating
  * sides down the page. Every screenshot opens the full-size viewer.
  */
@@ -41,7 +41,7 @@ export default function WorkspaceRows() {
                 <div className="relative overflow-hidden" style={{ background: "#edeefe", aspectRatio: `${w.screenshot.width} / ${w.screenshot.height}` }}>
                   <Image
                     src={w.screenshot.src}
-                    alt={`MathPath — ${w.screenshot.caption}`}
+                    alt={`MathPath Platform — ${w.screenshot.caption}`}
                     fill
                     quality={90}
                     sizes="(min-width: 1024px) 720px, 100vw"
@@ -85,7 +85,7 @@ export default function WorkspaceRows() {
         );
       })}
 
-      <ScreenshotLightbox shots={shots} index={lightbox} onChange={setLightbox} productName="MathPath" />
+      <ScreenshotLightbox shots={shots} index={lightbox} onChange={setLightbox} productName="MathPath Platform" />
     </div>
   );
 }
