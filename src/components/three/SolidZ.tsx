@@ -245,7 +245,7 @@ export default function SolidZ({ reduceMotion }: { reduceMotion: boolean }) {
     } catch {
       return; // No WebGL: the hero keeps its CSS glow + shadow backdrop.
     }
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
     renderer.setClearColor(0x000000, 0);
     renderer.toneMapping = THREE.NeutralToneMapping; // keeps brand teal true
     renderer.toneMappingExposure = 1.0;
@@ -254,8 +254,14 @@ export default function SolidZ({ reduceMotion }: { reduceMotion: boolean }) {
     renderer.domElement.style.height = "100%";
     host.appendChild(renderer.domElement);
 
-    const envDark = buildStudio(renderer, false);
-    const envLight = buildStudio(renderer, true);
+    // Only the current theme's studio is built up front; the other is built
+    // the first time the theme switches, keeping page load light.
+    const envs: { dark?: THREE.Texture; light?: THREE.Texture } = {};
+    const studioFor = (light: boolean) => {
+      const k = light ? "light" : "dark";
+      if (!envs[k]) envs[k] = buildStudio(renderer, light);
+      return envs[k]!;
+    };
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(28, 1, 0.1, 100);
@@ -283,9 +289,6 @@ export default function SolidZ({ reduceMotion }: { reduceMotion: boolean }) {
       roughness: 0.3,
       clearcoat: 1,
       clearcoatRoughness: 0.05,
-      iridescence: 0.18,
-      iridescenceIOR: 1.35,
-      iridescenceThicknessRange: [180, 420],
       envMapIntensity: 1.25,
     });
     const chrome = new THREE.MeshPhysicalMaterial({
@@ -374,7 +377,7 @@ export default function SolidZ({ reduceMotion }: { reduceMotion: boolean }) {
     let isLight = false;
     const applyTheme = () => {
       isLight = document.documentElement.getAttribute("data-theme") === "light";
-      scene.environment = isLight ? envLight : envDark;
+      scene.environment = studioFor(isLight);
       teal.color.set(isLight ? "#0fb3a6" : "#14c4b7");
       for (const [i, t] of trails.entries()) {
         const u = t.mat.uniforms;
@@ -413,12 +416,16 @@ export default function SolidZ({ reduceMotion }: { reduceMotion: boolean }) {
 
     // ---- sizing ----
     let baseZ = 11;
+    let hostH = 1;
+    let hostDocTop = 0; // the canvas's offset from the top of the page
     const resize = () => {
+      hostDocTop = host.getBoundingClientRect().top + window.scrollY;
       const w = host.clientWidth;
       const h = host.clientHeight;
       if (!w || !h) return;
       renderer.setSize(w, h, false);
       camera.aspect = w / h;
+      hostH = h;
       baseZ = w / h < 0.95 ? 11.8 : 9.3;
       camera.updateProjectionMatrix();
     };
@@ -438,7 +445,7 @@ export default function SolidZ({ reduceMotion }: { reduceMotion: boolean }) {
     window.addEventListener("pointermove", onPointer, { passive: true });
     const lean = new THREE.Vector2();
 
-    const pace = reduceMotion ? 0.35 : 1;
+    const pace = reduceMotion ? 0.5 : 1;
     const GLINT_EVERY = 6.5;
     // Studio angle where the chrome reads brightest in both themes; the sway
     // and glint move around it.
@@ -495,7 +502,7 @@ export default function SolidZ({ reduceMotion }: { reduceMotion: boolean }) {
       // cursor lean and scroll turn (not with reduced motion)
       // (the turn starts only once the mark itself begins to leave the screen,
       // so on phones, where it sits below the fold, it arrives facing forward)
-      const sc = reduceMotion ? 0 : clamp01(-host.getBoundingClientRect().top / (host.clientHeight * 0.85));
+      const sc = reduceMotion ? 0 : clamp01((window.scrollY - hostDocTop) / (hostH * 0.85));
       lean.x += ((pointerIn && !reduceMotion ? ndc.x : 0) - lean.x) * 0.05;
       lean.y += ((pointerIn && !reduceMotion ? ndc.y : 0) - lean.y) * 0.05;
       rig.rotation.y = lean.x * 0.4 + sc * 0.9;
@@ -511,14 +518,35 @@ export default function SolidZ({ reduceMotion }: { reduceMotion: boolean }) {
     // The intro clock starts on the first painted frame, after shaders compile,
     // so the assembly is never missed on slower devices.
     let t0 = -1;
+    // Adaptive resolution: if this device can't hold a smooth frame rate at
+    // full pixel density, step down once to 1x rather than stutter.
+    const deltas: number[] = [];
+    let prevNow = 0;
+    let adapted = window.devicePixelRatio <= 1;
     const loop = (now: number) => {
       if (t0 < 0) t0 = now;
-      frame((now - t0) / 1000);
+      const t = (now - t0) / 1000;
+      if (!adapted && prevNow && t > 2.2) {
+        deltas.push(now - prevNow);
+        if (deltas.length === 90) {
+          deltas.sort((a, b) => a - b);
+          if (deltas[45] > 22) {
+            renderer.setPixelRatio(1);
+            resize();
+          }
+          adapted = true;
+        }
+      }
+      prevNow = now;
+      frame(t);
       raf = requestAnimationFrame(loop);
     };
+    let ready = false; // set once shaders are compiled
+    let disposed = false;
     const startLoop = () => {
-      if (!raf && onScreen && document.visibilityState === "visible") {
+      if (ready && !raf && onScreen && document.visibilityState === "visible") {
         last = 0;
+        prevNow = 0;
         raf = requestAnimationFrame(loop);
       }
     };
@@ -534,10 +562,22 @@ export default function SolidZ({ reduceMotion }: { reduceMotion: boolean }) {
     io.observe(host);
     const onVis = () => (document.visibilityState === "visible" ? startLoop() : stopLoop());
     document.addEventListener("visibilitychange", onVis);
-    frame(reduceMotion ? 3 : 0);
-    startLoop();
+    // Compile every shader in the background (parallel compile where the GPU
+    // driver supports it) so the first frames don't hitch.
+    const warmUp = renderer.extensions.has("KHR_parallel_shader_compile")
+      ? renderer.compileAsync(scene, camera)
+      : Promise.resolve(renderer.compile(scene, camera));
+    warmUp
+      .catch(() => undefined)
+      .then(() => {
+        if (disposed) return;
+        ready = true;
+        frame(reduceMotion ? 3 : 0);
+        startLoop();
+      });
 
     return () => {
+      disposed = true;
       stopLoop();
       io.disconnect();
       ro.disconnect();
@@ -553,8 +593,8 @@ export default function SolidZ({ reduceMotion }: { reduceMotion: boolean }) {
       });
       glowTex.dispose();
       glowTex0.dispose();
-      envDark.dispose();
-      envLight.dispose();
+      envs.dark?.dispose();
+      envs.light?.dispose();
       renderer.dispose();
       renderer.domElement.remove();
     };

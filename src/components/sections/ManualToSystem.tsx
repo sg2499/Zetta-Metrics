@@ -142,7 +142,7 @@ function Core({ small = false }: { small?: boolean }) {
     <div className="relative flex flex-col items-center">
       <div className={`relative ${size}`}>
         <div className="core-ring absolute -inset-4 rounded-full" aria-hidden="true" />
-        <div className="absolute -inset-10 rounded-full blur-2xl" style={{ background: "radial-gradient(circle, var(--glow-primary), transparent 70%)" }} aria-hidden="true" />
+        <div className="absolute -inset-12 rounded-full" style={{ background: "radial-gradient(closest-side, var(--glow-primary), transparent)" }} aria-hidden="true" />
         <div className="relative h-full w-full overflow-hidden rounded-[1.6rem] border" style={{ borderColor: "var(--glass-border)", background: "#060a0b", boxShadow: "0 20px 50px -12px var(--accent-glow)" }}>
           <Image src="/logo-mark.png" alt="" fill sizes="112px" className="object-cover" />
         </div>

@@ -29,8 +29,8 @@ export default function HeroScene() {
 
   return (
     <div className="relative h-full w-full">
-      <div className="hero-glow pointer-events-none absolute inset-[6%] rounded-full blur-2xl" aria-hidden="true" />
-      <div className="hero-shadow pointer-events-none absolute bottom-[7%] left-1/2 h-[9%] w-[46%] -translate-x-1/2 rounded-full blur-xl" aria-hidden="true" />
+      <div className="hero-glow pointer-events-none absolute inset-[2%] rounded-full" aria-hidden="true" />
+      <div className="hero-shadow pointer-events-none absolute bottom-[7%] left-1/2 h-[11%] w-[52%] -translate-x-1/2 rounded-full" aria-hidden="true" />
       {ready && <SolidZ reduceMotion={reduce} />}
     </div>
   );

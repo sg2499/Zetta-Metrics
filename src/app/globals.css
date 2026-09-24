@@ -318,22 +318,12 @@ main {
 .section-glow {
   position: absolute;
   border-radius: 9999px;
-  filter: blur(90px);
+  /* The soft edge is drawn by the gradient itself, not a blur filter: large
+     blur filters are among the most expensive things a browser paints. The
+     glows stay still here; their motion comes from the scroll parallax on
+     .glow-layer, which runs on the compositor only while scrolling. */
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--blob) 82%, transparent) 0%, color-mix(in srgb, var(--blob) 44%, transparent) 40%, color-mix(in srgb, var(--blob) 13%, transparent) 70%, transparent 100%);
   pointer-events: none;
-  animation: section-glow-drift 26s ease-in-out infinite alternate;
-}
-@keyframes section-glow-drift {
-  from {
-    transform: translate(0, 0) scale(1);
-  }
-  to {
-    transform: translate(3%, -4%) scale(1.08);
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .section-glow {
-    animation: none;
-  }
 }
 
 .btn-primary {
@@ -745,14 +735,14 @@ main {
 /* 3D hero: a soft glow behind the floating Z and a contact shadow under it,
    tuned per theme (no backing panel — the solid, lit Z reads on both). */
 .hero-glow {
-  background: radial-gradient(circle at 50% 45%, rgba(47, 225, 214, 0.32), rgba(122, 143, 255, 0.16) 45%, transparent 70%);
+  background: radial-gradient(closest-side, rgba(47, 225, 214, 0.3), rgba(122, 143, 255, 0.14) 50%, rgba(122, 143, 255, 0.04) 78%, transparent 100%);
 }
 :root[data-theme="light"] .hero-glow {
-  background: radial-gradient(circle at 50% 45%, rgba(20, 184, 166, 0.2), rgba(99, 102, 241, 0.12) 45%, transparent 70%);
+  background: radial-gradient(closest-side, rgba(20, 184, 166, 0.19), rgba(99, 102, 241, 0.11) 50%, rgba(99, 102, 241, 0.03) 78%, transparent 100%);
 }
 .hero-shadow {
-  background: radial-gradient(ellipse at center, rgba(47, 225, 214, 0.35), transparent 70%);
+  background: radial-gradient(closest-side, rgba(47, 225, 214, 0.32), rgba(47, 225, 214, 0.1) 55%, transparent 100%);
 }
 :root[data-theme="light"] .hero-shadow {
-  background: radial-gradient(ellipse at center, rgba(15, 23, 42, 0.28), transparent 70%);
+  background: radial-gradient(closest-side, rgba(15, 23, 42, 0.26), rgba(15, 23, 42, 0.08) 55%, transparent 100%);
 }

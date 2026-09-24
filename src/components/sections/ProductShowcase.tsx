@@ -108,8 +108,8 @@ export default function ProductShowcase({ tilt = true }: { tilt?: boolean }) {
       {/* Framed screenshot */}
       <div className="relative mt-10" style={{ perspective: "1800px" }}>
         <div
-          className="pointer-events-none absolute -inset-x-10 -bottom-10 top-16 rounded-[3rem] opacity-70 blur-3xl"
-          style={{ background: "radial-gradient(60% 60% at 50% 60%, var(--glow-primary), transparent 70%)" }}
+          className="pointer-events-none absolute -inset-x-10 -bottom-10 top-16 rounded-[3rem] opacity-70"
+          style={{ background: "radial-gradient(60% 55% at 50% 55%, var(--glow-primary), transparent 72%)" }}
           aria-hidden="true"
         />
         <motion.div
