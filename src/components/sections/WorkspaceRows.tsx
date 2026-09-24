@@ -38,14 +38,14 @@ export default function WorkspaceRows() {
                     mathpath.app/{w.path}
                   </span>
                 </div>
-                <div className="relative aspect-[1920/869] overflow-hidden" style={{ background: "#f4f6fb" }}>
+                <div className="relative overflow-hidden" style={{ background: "#edeefe", aspectRatio: `${w.screenshot.width} / ${w.screenshot.height}` }}>
                   <Image
                     src={w.screenshot.src}
                     alt={`MathPath — ${w.screenshot.caption}`}
                     fill
                     quality={90}
                     sizes="(min-width: 1024px) 720px, 100vw"
-                    className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+                    className="object-contain transition-transform duration-700 ease-out group-hover:scale-[1.02]"
                   />
                   <span
                     className="absolute bottom-3 right-3 flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold opacity-0 shadow-lg transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100"

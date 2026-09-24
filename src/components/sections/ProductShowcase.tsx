@@ -132,11 +132,16 @@ export default function ProductShowcase({ tilt = true }: { tilt?: boolean }) {
             </span>
             <span className="hidden w-[42px] sm:block" />
           </div>
-          <button
+          <motion.button
             type="button"
             onClick={() => setLightbox(active)}
-            className="group relative block aspect-[1920/869] w-full cursor-zoom-in overflow-hidden"
-            style={{ background: "#f4f6fb" }}
+            className="group relative block w-full cursor-zoom-in overflow-hidden"
+            style={{ background: "#edeefe" }}
+            // Height follows each screenshot's real proportions (they differ),
+            // animating between them, so no screenshot is ever cropped.
+            initial={false}
+            animate={{ paddingBottom: `${(workspace.screenshot.height / workspace.screenshot.width) * 100}%` }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.5, ease: [0.16, 1, 0.3, 1] }}
             aria-label={`Expand screenshot: ${workspace.screenshot.caption}`}
           >
             <AnimatePresence initial={false}>
@@ -155,7 +160,7 @@ export default function ProductShowcase({ tilt = true }: { tilt?: boolean }) {
                   quality={90}
                   sizes="(min-width: 1280px) 1180px, 100vw"
                   loading={active === 0 ? "eager" : "lazy"}
-                  className="object-cover object-top"
+                  className="object-contain object-top"
                 />
               </motion.div>
             </AnimatePresence>
@@ -165,7 +170,7 @@ export default function ProductShowcase({ tilt = true }: { tilt?: boolean }) {
             >
               <Maximize2 size={12} /> View full size
             </span>
-          </button>
+          </motion.button>
         </motion.div>
       </div>
 

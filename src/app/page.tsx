@@ -70,7 +70,7 @@ export default function Home() {
                 </div>
               </Reveal>
             </div>
-            <div className="relative -mx-6 h-[340px] sm:h-[420px] lg:mx-0 lg:h-[min(640px,calc(100vh-9rem))]">
+            <div className="relative h-[360px] sm:h-[440px] lg:h-[min(640px,calc(100vh-9rem))]">
               <HeroScene />
             </div>
           </div>

@@ -221,7 +221,7 @@ export const mathpathWorkspaces = [
     summary:
       "Practice, assessments, mock exams, progress, and achievements in one place — with ranks, XP, and a trophy room that turn daily practice into a habit.",
     points: ["Daily practice sets and timed assessments", "Ranks, XP, and achievements", "Progress a student can see for themselves"],
-    screenshot: { src: "/screenshots/mathpath/student-dashboard.png", caption: "Student — Learning Workspace" },
+    screenshot: { src: "/screenshots/mathpath/student-dashboard.png", caption: "Student — Learning Workspace", width: 1920, height: 946 },
   },
   {
     id: "teacher",
@@ -232,7 +232,7 @@ export const mathpathWorkspaces = [
     summary:
       "Teachers assign practice and assessments, track readiness, and review practice before anything counts — all scoped to their own students.",
     points: ["Assign practice and assessments", "Practice and assessment trackers", "Readiness checks before assessment"],
-    screenshot: { src: "/screenshots/mathpath/teacher-dashboard.png", caption: "Teacher — Teaching Workspace" },
+    screenshot: { src: "/screenshots/mathpath/teacher-dashboard.png", caption: "Teacher — Teaching Workspace", width: 1920, height: 869 },
   },
   {
     id: "admin",
@@ -243,7 +243,7 @@ export const mathpathWorkspaces = [
     summary:
       "Admins govern the learning path, users, assessment readiness, and performance reporting — with a live view of who's active right now.",
     points: ["Learning path and user management", "Assessment studio and control", "Performance reports and live activity"],
-    screenshot: { src: "/screenshots/mathpath/admin-dashboard.png", caption: "Admin — Control Centre" },
+    screenshot: { src: "/screenshots/mathpath/admin-dashboard.png", caption: "Admin — Control Centre", width: 1920, height: 869 },
   },
 ];
 

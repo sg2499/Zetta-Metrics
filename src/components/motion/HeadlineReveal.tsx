@@ -24,9 +24,12 @@ export default function HeadlineReveal({ segments, delay = 0 }: { segments: Head
           const isLast = w === arr.length - 1 && s === segments.length - 1;
           return (
             <span key={`${s}-${w}`}>
-              <span className="-mb-[0.14em] inline-block overflow-hidden pb-[0.14em] align-bottom">
+              {/* The mask and the word both extend below the line (padding cancelled
+                  by negative margin) so descenders like the "g" in "intelligent"
+                  are neither clipped by the mask nor left outside the gradient fill. */}
+              <span className="-mb-[0.3em] inline-block overflow-hidden pb-[0.3em] align-bottom">
                 <motion.span
-                  className={`inline-block ${seg.gradient ? "gradient-text" : ""}`}
+                  className={`-mb-[0.24em] inline-block pb-[0.24em] ${seg.gradient ? "gradient-text" : ""}`}
                   initial={{ y: "110%" }}
                   animate={{ y: "0%" }}
                   transition={{ duration: reduce ? 0 : 0.9, delay: reduce ? 0 : delay + i * 0.06, ease: [0.16, 1, 0.3, 1] }}
