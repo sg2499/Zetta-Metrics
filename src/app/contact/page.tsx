@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowUpRight, Mail, Phone, Send } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, Loader2, Mail, Phone, Send, XCircle } from "lucide-react";
 import { LinkedinIcon } from "@/components/BrandIcons";
 import { brand } from "@/lib/content";
 import SectionGlow from "@/components/sections/SectionGlow";
@@ -27,14 +27,33 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
   );
 }
 
-export default function ContactPage() {
-  const [form, setForm] = useState({ name: "", email: "", company: "", subject: subjects[0], message: "" });
+type SubmitState = "idle" | "sending" | "sent" | "error";
 
-  const submit = (event: React.FormEvent<HTMLFormElement>) => {
+export default function ContactPage() {
+  const [form, setForm] = useState({ name: "", email: "", company: "", phone: "", subject: subjects[0], message: "" });
+  const [status, setStatus] = useState<SubmitState>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const submit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const body = [`Name: ${form.name}`, `Email: ${form.email}`, `Company: ${form.company || "Not provided"}`, "", form.message].join("\n");
-    const mailto = `mailto:${brand.email}?subject=${encodeURIComponent(`Zetta Metrics — ${form.subject}`)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailto;
+    setStatus("sending");
+    setErrorMessage("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        throw new Error(data?.error || "Something went wrong. Please try again.");
+      }
+      setStatus("sent");
+      setForm({ name: "", email: "", company: "", phone: "", subject: subjects[0], message: "" });
+    } catch (err) {
+      setStatus("error");
+      setErrorMessage(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    }
   };
 
   const contactLinks = [
@@ -128,7 +147,7 @@ export default function ContactPage() {
                     Send us a message
                   </h2>
                   <p className="mt-1 text-sm" style={{ color: "var(--text-secondary)" }}>
-                    Opens in your email app, ready to send.
+                    Sent straight to our inbox — we&apos;ll get back to you personally.
                   </p>
                 </div>
                 <div className="grid gap-5 md:grid-cols-2">
@@ -140,9 +159,14 @@ export default function ContactPage() {
                   </Field>
                 </div>
 
-                <Field label="Company / organization">
-                  <input className="field" value={form.company} onChange={(e) => setForm({ ...form, company: e.target.value })} placeholder="Optional" autoComplete="organization" />
-                </Field>
+                <div className="grid gap-5 md:grid-cols-2">
+                  <Field label="Company / organization">
+                    <input className="field" value={form.company} onChange={(e) => setForm({ ...form, company: e.target.value })} placeholder="Optional" autoComplete="organization" />
+                  </Field>
+                  <Field label="Contact number">
+                    <input type="tel" className="field" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} placeholder="Optional" autoComplete="tel" />
+                  </Field>
+                </div>
 
                 <fieldset>
                   <legend className="mb-2 block text-xs font-semibold uppercase tracking-[0.12em]" style={{ color: "var(--text-muted)" }}>
@@ -175,9 +199,38 @@ export default function ContactPage() {
                   <textarea required rows={5} className="field" style={{ resize: "vertical" }} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} placeholder="Tell us a bit about what you need..." />
                 </Field>
 
-                <button type="submit" className="btn-primary w-full py-4 text-sm sm:w-auto sm:px-7">
-                  Send message <Send size={15} />
+                <button
+                  type="submit"
+                  disabled={status === "sending"}
+                  className="btn-primary w-full py-4 text-sm disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto sm:px-7"
+                >
+                  {status === "sending" ? (
+                    <>
+                      Sending <Loader2 size={15} className="animate-spin" />
+                    </>
+                  ) : (
+                    <>
+                      Send message <Send size={15} />
+                    </>
+                  )}
                 </button>
+
+                {status === "sent" && (
+                  <p className="flex items-center gap-2 text-sm font-medium" style={{ color: "var(--accent)" }}>
+                    <CheckCircle2 size={16} /> Message sent — we&apos;ll be in touch soon.
+                  </p>
+                )}
+                {status === "error" && (
+                  <p className="flex items-start gap-2 text-sm font-medium" style={{ color: "#e0554f" }}>
+                    <XCircle size={16} className="mt-0.5 shrink-0" />
+                    {errorMessage || "Something went wrong. Please try again, or email us directly at "}
+                    {!errorMessage && (
+                      <a href={`mailto:${brand.email}`} className="underline">
+                        {brand.email}
+                      </a>
+                    )}
+                  </p>
+                )}
               </form>
             </Reveal>
           </div>
