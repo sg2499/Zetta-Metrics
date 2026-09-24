@@ -22,7 +22,7 @@ export default function SectionHeader({ eyebrow, title, description, align = "le
   const Heading = as;
   const centered = align === "center";
   return (
-    <Reveal>
+    <Reveal immediate={as === "h1"}>
       <div className={centered ? "text-center" : undefined}>
         <p className="eyebrow mb-4">{eyebrow}</p>
         <Heading className="section-title">{title}</Heading>

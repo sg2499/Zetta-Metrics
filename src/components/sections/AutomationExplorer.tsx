@@ -6,26 +6,56 @@ import { ArrowDown, Check, X } from "lucide-react";
 import { automationAreas } from "@/lib/content";
 import { useSafeReducedMotion } from "@/components/motion/useSafeReducedMotion";
 
-function BeforeAfter({ area }: { area: (typeof automationAreas)[number] }) {
+/**
+ * Before → after card pair. With `play`, it performs the transformation:
+ * the "before" gets struck through and fades back, the arrow pulses, and
+ * the "after" rises in with a glow. Without it (mobile cards, reduced
+ * motion) both simply show.
+ */
+function BeforeAfter({ area, play = false }: { area: (typeof automationAreas)[number]; play?: boolean }) {
+  const ease = [0.16, 1, 0.3, 1] as const;
   return (
     <div className="space-y-3">
-      <div className="rounded-2xl border p-5" style={{ borderColor: "color-mix(in srgb, var(--status-dev) 35%, transparent)", background: "color-mix(in srgb, var(--status-dev) 7%, transparent)" }}>
+      <motion.div
+        className="rounded-2xl border p-5"
+        style={{ borderColor: "color-mix(in srgb, var(--status-dev) 35%, transparent)", background: "color-mix(in srgb, var(--status-dev) 7%, transparent)" }}
+        initial={play ? { opacity: 0, y: 10 } : false}
+        animate={play ? { opacity: [0, 1, 1, 0.55], y: 0 } : { opacity: 1, y: 0 }}
+        transition={play ? { duration: 1.3, times: [0, 0.25, 0.55, 1], ease } : { duration: 0 }}
+      >
         <p className="mb-2 flex items-center gap-2 text-[0.68rem] font-bold uppercase tracking-[0.16em]" style={{ color: "var(--status-dev)" }}>
           <span className="flex h-5 w-5 items-center justify-center rounded-full" style={{ background: "color-mix(in srgb, var(--status-dev) 18%, transparent)" }}>
             <X size={11} />
           </span>
           Before
         </p>
-        <p className="text-base leading-7" style={{ color: "var(--text-secondary)" }}>
+        <motion.p
+          className="text-base leading-7"
+          style={{ color: "var(--text-secondary)", textDecorationLine: "line-through", textDecorationThickness: "2px" }}
+          initial={{ textDecorationColor: "rgba(245,185,66,0)" }}
+          animate={{ textDecorationColor: play ? "rgba(245,185,66,0.85)" : "rgba(245,185,66,0)" }}
+          transition={{ delay: play ? 0.55 : 0, duration: 0.5 }}
+        >
           {area.before}
-        </p>
-      </div>
+        </motion.p>
+      </motion.div>
       <div className="flex justify-center" aria-hidden="true">
-        <span className="flex h-9 w-9 items-center justify-center rounded-full border" style={{ borderColor: "var(--glass-border)", background: "var(--bg-raised)", color: "var(--accent)" }}>
+        <motion.span
+          className="flex h-9 w-9 items-center justify-center rounded-full border"
+          style={{ borderColor: "var(--glass-border)", background: "var(--bg-raised)", color: "var(--accent)" }}
+          animate={play ? { scale: [1, 1.25, 1], boxShadow: ["0 0 0 0 transparent", "0 0 0 8px var(--accent-soft)", "0 0 0 0 transparent"] } : undefined}
+          transition={play ? { delay: 0.8, duration: 0.6 } : undefined}
+        >
           <ArrowDown size={16} />
-        </span>
+        </motion.span>
       </div>
-      <div className="rounded-2xl border p-5" style={{ borderColor: "var(--glow-primary)", background: "var(--accent-soft)", boxShadow: "0 16px 40px -20px var(--accent-glow)" }}>
+      <motion.div
+        className="rounded-2xl border p-5"
+        style={{ borderColor: "var(--glow-primary)", background: "var(--accent-soft)", boxShadow: "0 16px 40px -20px var(--accent-glow)" }}
+        initial={play ? { opacity: 0, y: 18, scale: 0.98 } : false}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={play ? { delay: 1.0, duration: 0.6, ease } : { duration: 0 }}
+      >
         <p className="mb-2 flex items-center gap-2 text-[0.68rem] font-bold uppercase tracking-[0.16em]" style={{ color: "var(--accent)" }}>
           <span className="flex h-5 w-5 items-center justify-center rounded-full" style={{ background: "linear-gradient(150deg, var(--accent-strong), var(--accent))", color: "var(--text-on-accent)" }}>
             <Check size={11} />
@@ -35,7 +65,7 @@ function BeforeAfter({ area }: { area: (typeof automationAreas)[number] }) {
         <p className="text-base font-semibold leading-7" style={{ color: "var(--text-primary)" }}>
           {area.after}
         </p>
-      </div>
+      </motion.div>
     </div>
   );
 }
@@ -115,7 +145,7 @@ export default function AutomationExplorer() {
               <h3 className="mb-6 font-display text-3xl font-extrabold tracking-[-0.03em]" style={{ color: "var(--text-primary)" }}>
                 {area.title}
               </h3>
-              <BeforeAfter area={area} />
+              <BeforeAfter area={area} play={!reduce} />
             </motion.div>
           </AnimatePresence>
         </div>

@@ -1,6 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+/* Fonts are self-hosted via next/font/local in layout.tsx, which exposes
+   --font-manrope / --font-inter / --font-jetbrains on <html>. */
 
 @import "tailwindcss";
+
+/* Desktop screens tall enough for the pinned scroll story; shorter screens
+   (and all phones/tablets) get the stacked version instead. */
+@custom-variant pin (@media (min-width: 1024px) and (min-height: 600px));
 
 /* ---------------------------------------------------------------
    Design tokens
@@ -117,9 +122,9 @@
   --color-accent-strong: var(--accent-strong);
   --color-accent-soft: var(--accent-soft);
   --color-accent-silver: var(--accent-silver);
-  --font-display: "Manrope", sans-serif;
-  --font-sans: "Inter", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
+  --font-display: var(--font-manrope), "Manrope", sans-serif;
+  --font-sans: var(--font-inter), "Inter", sans-serif;
+  --font-mono: var(--font-jetbrains), "JetBrains Mono", monospace;
 }
 
 /* NOTE: this must stay inside @layer base — Tailwind v4's utility classes
@@ -144,7 +149,7 @@ html {
 body {
   background-color: var(--bg-base);
   color: var(--text-primary);
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-inter), "Inter", system-ui, sans-serif;
   overflow-x: hidden;
   min-height: 100vh;
   transition: background-color 0.25s ease, color 0.25s ease;
@@ -169,10 +174,10 @@ main {
 }
 
 .font-display {
-  font-family: "Manrope", sans-serif;
+  font-family: var(--font-manrope), "Manrope", sans-serif;
 }
 .font-mono {
-  font-family: "JetBrains Mono", monospace;
+  font-family: var(--font-jetbrains), "JetBrains Mono", monospace;
 }
 
 .container-custom {
@@ -214,12 +219,26 @@ main {
   box-shadow: var(--shadow-soft);
   overflow: hidden;
 }
+/* Glowing edge that follows the cursor around the card's border (the
+   position comes from SpotlightTracker). A 1px ring masked out of a radial
+   gradient, so only the border near the pointer lights up. */
 .surface-card::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.05), transparent 45%);
+  padding: 1px;
+  border-radius: inherit;
+  background: radial-gradient(260px circle at var(--spot-x, 50%) var(--spot-y, 50%), var(--accent), transparent 70%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
   pointer-events: none;
+  z-index: 2;
+}
+.surface-card:hover::after {
+  opacity: 0.9;
 }
 
 .glass-panel {
@@ -280,11 +299,13 @@ main {
   pointer-events: none;
 }
 
+/* Hover: lift + a few degrees of 3D tilt toward the cursor (--rx/--ry are
+   set by SpotlightTracker; they stay 0 for touch and reduced motion). */
 .hover-card {
-  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.28s ease;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease;
 }
 .hover-card:hover {
-  transform: translateY(-4px);
+  transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(-4px);
   box-shadow: var(--shadow-glow);
   border-color: var(--glow-primary);
 }
@@ -424,7 +445,7 @@ main {
 
 /* Section headings — one consistent, larger display scale site-wide. */
 .section-title {
-  font-family: "Manrope", sans-serif;
+  font-family: var(--font-manrope), "Manrope", sans-serif;
   font-weight: 800;
   letter-spacing: -0.035em;
   line-height: 1.05;
@@ -536,7 +557,7 @@ main {
 
 /* Giant brand wordmark at the foot of every page. */
 .footer-wordmark {
-  font-family: "Manrope", sans-serif;
+  font-family: var(--font-manrope), "Manrope", sans-serif;
   font-weight: 800;
   letter-spacing: -0.06em;
   line-height: 0.8;
@@ -616,6 +637,107 @@ main {
 }
 @media (prefers-reduced-motion: reduce) {
   .core-ring {
+    animation: none;
+  }
+}
+
+/* Parallax depth: section glows drift slower than the content as the
+   section scrolls through view (native scroll-driven animation; browsers
+   without support keep static glows). */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .glow-layer {
+      animation: glow-parallax linear both;
+      animation-timeline: view();
+    }
+  }
+}
+@keyframes glow-parallax {
+  from {
+    transform: translateY(14%);
+  }
+  to {
+    transform: translateY(-14%);
+  }
+}
+
+/* Distinct section band — breaks the uniform navy with a deep indigo wash
+   and hairline gradient edges (a soft tinted band in light mode). */
+.band {
+  position: relative;
+  isolation: isolate; /* keep the section's glow layer above the band background */
+  background:
+    radial-gradient(80% 60% at 50% 0%, color-mix(in srgb, var(--glow-secondary) 55%, transparent), transparent 70%),
+    linear-gradient(180deg, color-mix(in srgb, #1b1f4a 60%, var(--bg-base)), var(--bg-base));
+}
+:root[data-theme="light"] .band {
+  background:
+    radial-gradient(80% 60% at 50% 0%, color-mix(in srgb, var(--glow-secondary) 40%, transparent), transparent 70%),
+    linear-gradient(180deg, #eef0ff, var(--bg-base));
+}
+.band::before,
+.band::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--glow-secondary), var(--accent), var(--glow-secondary), transparent);
+  opacity: 0.7;
+}
+.band::before {
+  top: 0;
+}
+.band::after {
+  bottom: 0;
+}
+
+/* Sequential highlight used by the bento diagrams: each item lights up in
+   turn (delay set per item), looping. */
+.seq-light {
+  animation: seq-light 6s ease-in-out infinite;
+}
+@keyframes seq-light {
+  0%, 22%, 100% {
+    border-color: var(--border-subtle);
+    box-shadow: none;
+    color: var(--text-secondary);
+  }
+  8%, 14% {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft), 0 8px 24px -10px var(--accent-glow);
+    color: var(--text-primary);
+  }
+}
+.seq-type {
+  animation: seq-type 6s steps(1) infinite;
+}
+@keyframes seq-type {
+  0% {
+    opacity: 0;
+  }
+  8%, 88% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.core-pulse {
+  animation: core-pulse 2.4s ease-in-out infinite;
+}
+@keyframes core-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 var(--accent-soft), 0 0 40px -6px var(--accent-glow);
+  }
+  50% {
+    box-shadow: 0 0 0 10px transparent, 0 0 60px -2px var(--accent-glow);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .seq-light,
+  .seq-type,
+  .core-pulse {
     animation: none;
   }
 }

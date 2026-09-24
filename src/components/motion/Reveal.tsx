@@ -10,6 +10,8 @@ interface RevealProps {
   y?: number;
   className?: string;
   as?: "div" | "span";
+  /** Animate in on page load instead of waiting to scroll into view (for hero content). */
+  immediate?: boolean;
 }
 
 /**
@@ -17,7 +19,7 @@ interface RevealProps {
  * prefers-reduced-motion (renders instantly, no transform) and only
  * animates once (won't re-trigger on scroll back up).
  */
-export default function Reveal({ children, delay = 0, y = 22, className, as = "div" }: RevealProps) {
+export default function Reveal({ children, delay = 0, y = 22, className, as = "div", immediate = false }: RevealProps) {
   const shouldReduceMotion = useSafeReducedMotion();
   const Component = as === "span" ? motion.span : motion.div;
 
@@ -30,8 +32,9 @@ export default function Reveal({ children, delay = 0, y = 22, className, as = "d
     <Component
       className={className}
       initial={{ opacity: shouldReduceMotion ? 1 : 0, y: shouldReduceMotion ? 0 : y }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px 0px" }}
+      {...(immediate
+        ? { animate: { opacity: 1, y: 0 } }
+        : { whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: "0px 0px -60px 0px" } })}
       transition={{ duration: shouldReduceMotion ? 0 : 0.6, delay: shouldReduceMotion ? 0 : delay, ease: [0.16, 1, 0.3, 1] }}
     >
       {children}

@@ -38,6 +38,7 @@ export default function ScreenshotLightbox({ shots, index, onChange, productName
   useEffect(() => {
     if (index === null) return;
     document.body.style.overflow = "hidden";
+    window.__lenis?.stop();
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") close();
       if (e.key === "ArrowLeft") prev();
@@ -46,6 +47,7 @@ export default function ScreenshotLightbox({ shots, index, onChange, productName
     window.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = "";
+      window.__lenis?.start();
       window.removeEventListener("keydown", onKey);
     };
   }, [index, close, prev, next]);

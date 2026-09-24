@@ -124,19 +124,22 @@ export default function ScrollStory() {
   return (
     <>
       {/* Desktop: pinned, scroll-driven */}
-      <div ref={ref} className="relative hidden lg:block" style={{ height: `${processSteps.length * 70 + 40}vh` }}>
-        <div className="sticky top-0 flex h-screen items-center">
+      <div ref={ref} className="relative hidden pin:block" style={{ height: `${processSteps.length * 70 + 40}vh` }}>
+        {/* Pinned just below the floating navbar (88px), sized to what's left of the screen. */}
+        <div className="sticky top-[88px] flex h-[calc(100vh-88px)] items-center">
           <div className="container-custom grid w-full grid-cols-[0.95fr_1.05fr] items-center gap-16">
             <div>
               <p className="eyebrow mb-4">How we build</p>
-              <h2 className="section-title">From manual process to shipped product.</h2>
-              <div className="relative mt-12 pl-8">
+              <h2 className="font-display text-[clamp(2rem,5.2vh,3rem)] font-extrabold leading-[1.05] tracking-[-0.035em]" style={{ color: "var(--text-primary)" }}>
+                From manual process to shipped product.
+              </h2>
+              <div className="relative mt-[4vh] pl-8">
                 <div className="absolute left-0 top-1 bottom-1 w-[2px] rounded-full" style={{ background: "var(--border-subtle)" }} />
                 <motion.div
                   className="absolute left-0 top-1 bottom-1 w-[2px] origin-top rounded-full"
                   style={{ scaleY: rail, background: "linear-gradient(180deg, var(--accent-strong), var(--accent))" }}
                 />
-                <ol className="space-y-7">
+                <ol className="space-y-[2.6vh]">
                   {processSteps.map((step, i) => {
                     const on = i === active;
                     return (
@@ -147,9 +150,12 @@ export default function ScrollStory() {
                         <h3 className="mt-1.5 font-display text-2xl font-bold tracking-tight" style={{ color: "var(--text-primary)" }}>
                           {step.title}
                         </h3>
-                        <p className="mt-2 text-base leading-7" style={{ color: "var(--text-secondary)" }}>
-                          {step.detail}
-                        </p>
+                        {/* Only the active step shows its description, so the pinned view always fits. */}
+                        <div className="grid transition-[grid-template-rows] duration-500" style={{ gridTemplateRows: on ? "1fr" : "0fr" }}>
+                          <p className="overflow-hidden text-base leading-7" style={{ color: "var(--text-secondary)" }}>
+                            <span className="block pt-2">{step.detail}</span>
+                          </p>
+                        </div>
                       </li>
                     );
                   })}
@@ -157,9 +163,9 @@ export default function ScrollStory() {
               </div>
             </div>
 
-            <div className="glass-panel relative min-h-[440px] overflow-hidden p-10">
+            <div className="glass-panel relative overflow-hidden p-8 xl:p-10">
               <div className="dot-grid pointer-events-none absolute inset-0 opacity-40" aria-hidden="true" />
-              <p className="relative mb-6 font-display text-6xl font-extrabold tracking-[-0.05em]" style={{ color: "var(--border-strong)" }}>
+              <p className="relative mb-5 font-display text-5xl font-extrabold tracking-[-0.05em]" style={{ color: "var(--border-strong)" }}>
                 0{active + 1}
               </p>
               <AnimatePresence mode="wait">
@@ -180,7 +186,7 @@ export default function ScrollStory() {
       </div>
 
       {/* Mobile / tablet: stacked */}
-      <div className="container-custom lg:hidden">
+      <div className="container-custom pin:hidden">
         <p className="eyebrow mb-4">How we build</p>
         <h2 className="section-title">From manual process to shipped product.</h2>
         <div className="mt-12 space-y-12">

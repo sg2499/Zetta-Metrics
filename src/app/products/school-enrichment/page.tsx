@@ -52,7 +52,7 @@ export default function SchoolEnrichmentPage() {
         <HeroBackground />
         <div className="container-custom relative z-10">
           <div className="text-center">
-            <Reveal>
+            <Reveal immediate>
               <span
                 className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold"
                 style={{ borderColor: "var(--glass-border)", background: "var(--glass-bg)", color: "var(--status-dev)" }}
@@ -70,7 +70,7 @@ export default function SchoolEnrichmentPage() {
                 {product.summary}
               </p>
             </Reveal>
-            <Reveal delay={0.1}>
+            <Reveal immediate delay={0.1}>
               <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
                 <MagneticLink href="/contact" className="btn-primary px-7 py-4 text-sm">
                   Talk to us <ArrowRight size={16} />

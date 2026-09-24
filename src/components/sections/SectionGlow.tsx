@@ -31,7 +31,7 @@ const COLOR_VAR: Record<Blob["color"], string> = {
 export default function SectionGlow({ blobs }: { blobs: Blob[] }) {
   return (
     <div
-      className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
+      className="glow-layer pointer-events-none absolute inset-0 -z-10 overflow-hidden"
       style={{ maskImage: FADE, WebkitMaskImage: FADE }}
       aria-hidden="true"
     >
