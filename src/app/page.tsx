@@ -22,7 +22,7 @@ const bentoSpan = ["lg:col-span-2", "lg:col-span-1", "lg:col-span-1", "lg:col-sp
 export default function Home() {
   return (
     <div>
-      {/* Hero — split: message on the left, the 3D particle "Z" on the right */}
+      {/* Hero — split: message on the left, the 3D studio-lit "Z" on the right */}
       <section className="relative overflow-hidden pt-24 pb-10 md:pt-28 lg:pb-16">
         <SectionGlow
           blobs={[

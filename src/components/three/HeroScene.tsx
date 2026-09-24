@@ -8,7 +8,7 @@ import { useSafeReducedMotion } from "@/components/motion/useSafeReducedMotion";
 const SolidZ = dynamic(() => import("@/components/three/SolidZ"), { ssr: false });
 
 /**
- * Hosts the 3D "Z". The 3D code is requested once the page is idle (so it
+ * Hosts the 3D "Z" (see SolidZ). The 3D code is requested once the page is idle (so it
  * never competes with the headline for first paint). A soft glow sits behind
  * and a contact shadow beneath, so the object feels grounded in both themes.
  */
