@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import AmbientBackground from "@/components/AmbientBackground";
 import ScrollProgress from "@/components/ScrollProgress";
 import PageTransition from "@/components/PageTransition";
+import SpotlightTracker from "@/components/SpotlightTracker";
 import { ThemeProvider, themeInitScript } from "@/components/ThemeProvider";
 
 export const metadata: Metadata = {
@@ -77,6 +78,7 @@ export default function RootLayout({
         <ThemeProvider>
           <AmbientBackground />
           <ScrollProgress />
+          <SpotlightTracker />
           <div className="relative z-10 flex min-h-screen flex-col">
             <Navbar />
             <main className="flex-1">

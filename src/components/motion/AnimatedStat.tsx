@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useInView, useReducedMotion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useSafeReducedMotion } from "@/components/motion/useSafeReducedMotion";
 
 /**
  * Counts a numeric stat value up from 0 when it scrolls into view (e.g.
@@ -12,7 +13,7 @@ import { useInView, useReducedMotion } from "framer-motion";
 export default function AnimatedStat({ value }: { value: string }) {
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useSafeReducedMotion();
   const match = value.match(/^(\d{1,4})(%?)$/);
   const [display, setDisplay] = useState(match ? `0${match[2]}` : value);
 

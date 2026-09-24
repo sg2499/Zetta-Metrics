@@ -50,13 +50,6 @@ export const founders = [
   },
 ];
 
-export const proofPoints = [
-  { value: "2026", label: "Founded in Kolkata, India" },
-  { value: "SaaS", label: "That's the business we're in" },
-  { value: "AI-native", label: "Every product, from day one" },
-  { value: "100%", label: "Backend-authoritative, auditable logic" },
-];
-
 // Used on the Home page ("The platform" section) — framed around the
 // engineering principles we apply to whatever we build, not around any one
 // product or a single fixed "engine."
@@ -176,7 +169,7 @@ export const products = [
   {
     slug: "school-enrichment",
     name: "School Enrichment",
-    tagline: "CBSE/ICSE academic delivery for Classes 5–10, built the same way we build everything.",
+    tagline: "CBSE/ICSE academic delivery for Classes 5⁠–⁠10, built the same way we build everything.",
     status: "development" as const,
     statusLabel: "Rolling out to schools",
     eyebrow: "Academic delivery platform",
@@ -212,6 +205,69 @@ export const products = [
     screenshots: [],
     href: "/products/school-enrichment",
   },
+];
+
+// The three role-based workspaces inside MathPath — drives the home page
+// product showcase and the "three workspaces" section on the MathPath page.
+export const mathpathWorkspaces = [
+  {
+    id: "student",
+    label: "Student",
+    icon: GraduationCap,
+    path: "student",
+    title: "A daily workspace students actually open",
+    summary:
+      "Practice, assessments, mock exams, progress, and achievements in one place — with ranks, XP, and a trophy room that turn daily practice into a habit.",
+    points: ["Daily practice sets and timed assessments", "Ranks, XP, and achievements", "Progress a student can see for themselves"],
+    screenshot: { src: "/screenshots/mathpath/student-dashboard.png", caption: "Student — Learning Workspace" },
+  },
+  {
+    id: "teacher",
+    label: "Teacher",
+    icon: Users,
+    path: "teacher",
+    title: "Guidance for every assigned learner",
+    summary:
+      "Teachers assign practice and assessments, track readiness, and review practice before anything counts — all scoped to their own students.",
+    points: ["Assign practice and assessments", "Practice and assessment trackers", "Readiness checks before assessment"],
+    screenshot: { src: "/screenshots/mathpath/teacher-dashboard.png", caption: "Teacher — Teaching Workspace" },
+  },
+  {
+    id: "admin",
+    label: "Admin",
+    icon: LayoutDashboard,
+    path: "admin",
+    title: "One control centre for the whole school",
+    summary:
+      "Admins govern the learning path, users, assessment readiness, and performance reporting — with a live view of who's active right now.",
+    points: ["Learning path and user management", "Assessment studio and control", "Performance reports and live activity"],
+    screenshot: { src: "/screenshots/mathpath/admin-dashboard.png", caption: "Admin — Control Centre" },
+  },
+];
+
+// Concrete engineering facts for the home page stat row — every one is
+// true of the shipped product, no vanity numbers.
+export const platformFacts = [
+  { value: "3", label: "Role-based workspaces in every MathPath school" },
+  { value: "100%", label: "Scoring and timing enforced server-side" },
+  { value: "0", label: "Answer keys ever sent to the browser" },
+  { value: "5-day", label: "Guided learning loop in School Enrichment" },
+];
+
+// Capability strip on the home page — real features across both products.
+export const capabilities = [
+  { icon: Users, label: "Role-based access" },
+  { icon: Timer, label: "Server-timed assessments" },
+  { icon: ClipboardCheck, label: "Auto-marking" },
+  { icon: Boxes, label: "Curriculum Studio" },
+  { icon: FileSpreadsheet, label: "Excel content import" },
+  { icon: GaugeCircle, label: "Readiness governance" },
+  { icon: Sparkles, label: "Foundation Repair path" },
+  { icon: Database, label: "Auditable decisions" },
+  { icon: Lock, label: "Session hygiene" },
+  { icon: Building2, label: "Multi-school identity" },
+  { icon: LayoutDashboard, label: "Parent-ready reports" },
+  { icon: ShieldCheck, label: "Data-export & privacy controls" },
 ];
 
 export const processSteps = [

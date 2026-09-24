@@ -8,6 +8,11 @@ interface Blob {
   delay?: number;
 }
 
+// Fade the glow layer out toward the top and bottom of its section, so a
+// blurred blob never gets sliced into a hard horizontal seam where the
+// section (which clips overflow) ends.
+const FADE = "linear-gradient(to bottom, transparent 0%, black 22%, black 78%, transparent 100%)";
+
 const COLOR_VAR: Record<Blob["color"], string> = {
   primary: "var(--glow-primary)",
   secondary: "var(--glow-secondary)",
@@ -25,7 +30,11 @@ const COLOR_VAR: Record<Blob["color"], string> = {
  */
 export default function SectionGlow({ blobs }: { blobs: Blob[] }) {
   return (
-    <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
+    <div
+      className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
+      style={{ maskImage: FADE, WebkitMaskImage: FADE }}
+      aria-hidden="true"
+    >
       {blobs.map((blob, i) => (
         <div
           key={i}

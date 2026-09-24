@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useSafeReducedMotion } from "@/components/motion/useSafeReducedMotion";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { useRef } from "react";
@@ -18,7 +19,7 @@ interface MagneticLinkProps {
  */
 export default function MagneticLink({ href, className, children }: MagneticLinkProps) {
   const ref = useRef<HTMLAnchorElement>(null);
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useSafeReducedMotion();
 
   const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (shouldReduceMotion || !ref.current) return;

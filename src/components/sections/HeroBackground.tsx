@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useSafeReducedMotion } from "@/components/motion/useSafeReducedMotion";
 import { useMemo } from "react";
 
 // Deterministic node layout (percent coordinates) — same on server and
@@ -25,7 +26,7 @@ for (let i = 0; i < NODES.length; i++) {
 }
 
 export default function HeroBackground() {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useSafeReducedMotion();
 
   const blobs = useMemo(
     () => [

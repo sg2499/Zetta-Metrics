@@ -366,3 +366,238 @@ main {
   height: 0.4rem;
   border-radius: 999px;
 }
+
+/* ---------------------------------------------------------------
+   Accessibility — a visible, on-brand focus ring for keyboard users
+   everywhere (buttons, links, form fields). Mouse clicks don't show it.
+------------------------------------------------------------------*/
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ---------------------------------------------------------------
+   Spotlight — a soft radial highlight that follows the cursor across
+   cards (the SpotlightTracker component sets --spot-x / --spot-y on
+   whichever card is under the pointer). Uses ::before because
+   .surface-card::after is already the static sheen.
+------------------------------------------------------------------*/
+.surface-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(420px circle at var(--spot-x, 50%) var(--spot-y, 50%), var(--accent-soft), transparent 45%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.surface-card:hover::before {
+  opacity: 1;
+}
+/* Layered so Tailwind utilities (e.g. `absolute`) on a child still win. */
+@layer components {
+  .surface-card > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+/* Primary button — a single light sweep across the face on hover. */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.45) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-primary:hover::after {
+  transform: translateX(120%);
+}
+
+/* Section headings — one consistent, larger display scale site-wide. */
+.section-title {
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  color: var(--text-primary);
+  font-size: clamp(2.1rem, 1.3rem + 2.6vw, 3.4rem);
+}
+
+/* Announcement pill above the hero headline. */
+.announce-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  border-radius: 999px;
+  padding: 0.35rem 0.4rem 0.35rem 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.announce-pill:hover {
+  border-color: var(--accent);
+  color: var(--text-primary);
+}
+
+/* Product frame — the browser-window chrome around real screenshots. */
+.product-frame {
+  position: relative;
+  border-radius: 1rem;
+  border: 1px solid var(--glass-border);
+  background: var(--bg-raised);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.03),
+    0 40px 80px -24px rgba(0, 0, 0, 0.55),
+    0 0 120px -40px var(--glow-primary);
+  overflow: hidden;
+}
+:root[data-theme="light"] .product-frame {
+  box-shadow:
+    0 0 0 1px rgba(15, 23, 42, 0.02),
+    0 40px 80px -28px rgba(15, 23, 42, 0.28),
+    0 0 120px -40px var(--glow-primary);
+}
+
+/* Marquee — infinitely scrolling capability strip, edge-faded. */
+.marquee {
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 48s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+    flex-wrap: wrap;
+    width: auto;
+    justify-content: center;
+    row-gap: 0.75rem;
+  }
+  .marquee-dup {
+    display: none;
+  }
+}
+
+/* Progress bar under the active showcase tab (its end advances the tab). */
+@keyframes tab-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Marching dashes along diagram connectors. */
+.flow-dash {
+  animation: flow-dash 1.2s linear infinite;
+}
+@keyframes flow-dash {
+  to {
+    stroke-dashoffset: -16;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .flow-dash {
+    animation: none;
+  }
+}
+
+/* Faint dot grid used behind diagrams and visuals. */
+.dot-grid {
+  background-image: radial-gradient(var(--border-strong) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+/* Giant brand wordmark at the foot of every page. */
+.footer-wordmark {
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.06em;
+  line-height: 0.8;
+  font-size: clamp(3.5rem, 15vw, 13.5rem);
+  background: linear-gradient(180deg, var(--border-strong) 0%, transparent 95%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  user-select: none;
+  white-space: nowrap;
+}
+
+/* Soft pulse for "live" indicators. */
+.pulse-dot {
+  position: relative;
+}
+.pulse-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: inherit;
+  animation: pulse-ring 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+@keyframes pulse-ring {
+  from {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  to {
+    transform: scale(2.8);
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pulse-dot::after {
+    animation: none;
+  }
+}
+
+/* Form fields — one shared style with a clear, on-brand focus state. */
+.field {
+  width: 100%;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border-strong);
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  padding: 0.8rem 1rem;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+}
+.field::placeholder {
+  color: var(--text-muted);
+}
+.field:hover {
+  border-color: var(--text-muted);
+}
+.field:focus,
+.field:focus-visible {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+  outline: none;
+}

@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useSafeReducedMotion } from "@/components/motion/useSafeReducedMotion";
 import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 
@@ -11,7 +12,7 @@ import type { ReactNode } from "react";
  */
 export default function PageTransition({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useSafeReducedMotion();
 
   return (
     <motion.div

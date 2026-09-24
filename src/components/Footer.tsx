@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, Phone } from "lucide-react";
+import { ArrowUpRight, Mail, Phone } from "lucide-react";
 import { LinkedinIcon } from "@/components/BrandIcons";
 import { brand, products } from "@/lib/content";
 import SectionGlow from "@/components/sections/SectionGlow";
@@ -8,11 +8,10 @@ import SectionGlow from "@/components/sections/SectionGlow";
 const footerLinks = {
   Company: [
     { label: "Home", href: "/" },
-    { label: "Products", href: "/products" },
     { label: "Company", href: "/company" },
     { label: "Contact", href: "/contact" },
   ],
-  Products: products.map((p) => ({ label: p.name, href: p.href })),
+  Products: [{ label: "All products", href: "/products" }, ...products.map((p) => ({ label: p.name, href: p.href }))],
 };
 
 const socials = [
@@ -23,57 +22,31 @@ const socials = [
 export default function Footer() {
   return (
     <footer
-      className="relative z-10 mt-20 overflow-hidden border-t"
+      className="relative z-10 mt-12 overflow-hidden border-t"
       style={{ borderColor: "var(--border-subtle)", backgroundColor: "var(--bg-raised)" }}
     >
-      <SectionGlow blobs={[{ size: 440, bottom: "-24%", left: "8%", color: "primary" }]} />
-      <div className="container-custom py-12">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
-          <div className="md:col-span-2">
-            <Link href="/" className="mb-4 block">
-              <Image
-                src="/logo-wordmark.png"
-                alt="Zetta Metrics"
-                width={1307}
-                height={461}
-                quality={100}
-                className="h-16 w-auto sm:h-20"
-              />
+      <SectionGlow blobs={[{ size: 520, bottom: "-30%", left: "4%", color: "primary" }, { size: 380, top: "-30%", right: "6%", color: "secondary", delay: 5 }]} />
+      <div className="container-custom pt-16">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-[1.4fr_0.8fr_0.8fr_1fr]">
+          <div>
+            <Link href="/" className="inline-block" aria-label="Zetta Metrics home">
+              <Image src="/logo-wordmark.png" alt="Zetta Metrics" width={1307} height={461} quality={100} className="h-14 w-auto rounded-md sm:h-16" />
             </Link>
-            <p
-              className="mb-6 text-[0.65rem] font-medium uppercase leading-none"
-              style={{ color: "var(--text-muted)", letterSpacing: "0.28em" }}
-            >
-              Engineering outcomes that matter
+            <p className="text-pretty mt-5 max-w-sm text-sm leading-7" style={{ color: "var(--text-secondary)" }}>
+              {brand.shortPositioning}
             </p>
-            <p className="text-pretty text-sm leading-7" style={{ color: "var(--text-secondary)" }}>
-              {brand.positioning}
-            </p>
-            <div className="mt-5 flex items-center gap-2">
+            <div className="mt-6 flex items-center gap-2">
               {socials.map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
                   href={href}
                   target={href.startsWith("http") ? "_blank" : undefined}
                   rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="flex h-9 w-9 items-center justify-center rounded-lg border transition-colors"
+                  className="flex h-10 w-10 items-center justify-center rounded-xl border transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
                   style={{ borderColor: "var(--border-subtle)", color: "var(--text-secondary)" }}
                   aria-label={label}
                 >
-                  <Icon size={15} />
-                </a>
-              ))}
-            </div>
-            <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2">
-              {brand.phones.map((phone) => (
-                <a
-                  key={phone}
-                  href={`tel:+91${phone}`}
-                  className="flex items-center gap-2 text-sm transition-colors"
-                  style={{ color: "var(--text-secondary)" }}
-                >
-                  <Phone size={14} style={{ color: "var(--accent)" }} />
-                  +91 {phone}
+                  <Icon size={16} />
                 </a>
               ))}
             </div>
@@ -81,13 +54,13 @@ export default function Footer() {
 
           {Object.entries(footerLinks).map(([section, links]) => (
             <div key={section}>
-              <h4 className="mb-4 text-xs font-bold uppercase tracking-[0.18em]" style={{ color: "var(--accent)" }}>
+              <h4 className="mb-5 text-xs font-bold uppercase tracking-[0.18em]" style={{ color: "var(--text-muted)" }}>
                 {section}
               </h4>
-              <ul className="space-y-2">
+              <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link.label}>
-                    <Link href={link.href} className="text-sm transition-colors" style={{ color: "var(--text-secondary)" }}>
+                    <Link href={link.href} className="text-sm font-medium transition-colors hover:text-[var(--text-primary)]" style={{ color: "var(--text-secondary)" }}>
                       {link.label}
                     </Link>
                   </li>
@@ -95,20 +68,43 @@ export default function Footer() {
               </ul>
             </div>
           ))}
+
+          <div>
+            <h4 className="mb-5 text-xs font-bold uppercase tracking-[0.18em]" style={{ color: "var(--text-muted)" }}>
+              Get in touch
+            </h4>
+            <ul className="space-y-3">
+              <li>
+                <a href={`mailto:${brand.email}`} className="group inline-flex items-center gap-1.5 break-all text-sm font-medium transition-colors hover:text-[var(--accent)]" style={{ color: "var(--text-secondary)" }}>
+                  {brand.email}
+                  <ArrowUpRight size={13} className="shrink-0 opacity-0 transition-opacity group-hover:opacity-100" />
+                </a>
+              </li>
+              {brand.phones.map((phone) => (
+                <li key={phone}>
+                  <a href={`tel:+91${phone}`} className="inline-flex items-center gap-2 text-sm font-medium transition-colors hover:text-[var(--accent)]" style={{ color: "var(--text-secondary)" }}>
+                    <Phone size={13} style={{ color: "var(--accent)" }} />
+                    +91 {phone}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
-        <div
-          className="mt-10 flex flex-col items-center justify-between gap-4 border-t pt-6 md:flex-row"
-          style={{ borderColor: "var(--border-subtle)" }}
-        >
+        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t pt-6 md:flex-row" style={{ borderColor: "var(--border-subtle)" }}>
           <p className="text-xs" style={{ color: "var(--text-muted)" }}>
             &copy; {new Date().getFullYear()} {brand.legalName}. All rights reserved.
           </p>
           <div className="flex items-center gap-2 text-xs" style={{ color: "var(--text-muted)" }}>
-            <span className="status-dot" style={{ backgroundColor: "var(--accent)" }} />
+            <span className="status-dot pulse-dot" style={{ backgroundColor: "var(--accent)" }} />
             {brand.location}
           </div>
         </div>
+      </div>
+
+      <div className="pointer-events-none mt-6 flex justify-center overflow-hidden" aria-hidden="true">
+        <span className="footer-wordmark translate-y-[18%]">Zetta Metrics</span>
       </div>
     </footer>
   );

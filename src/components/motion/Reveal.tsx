@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useSafeReducedMotion } from "@/components/motion/useSafeReducedMotion";
 import type { ReactNode } from "react";
 
 interface RevealProps {
@@ -17,7 +18,7 @@ interface RevealProps {
  * animates once (won't re-trigger on scroll back up).
  */
 export default function Reveal({ children, delay = 0, y = 22, className, as = "div" }: RevealProps) {
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useSafeReducedMotion();
   const Component = as === "span" ? motion.span : motion.div;
 
   // Always pass concrete initial/whileInView values (never undefined) —
