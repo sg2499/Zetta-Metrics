@@ -10,12 +10,12 @@ import MagneticLink from "@/components/motion/MagneticLink";
 // Side-by-side facts — every cell restates something already described on
 // the product pages; nothing here is new or aspirational.
 const comparison = [
-  { label: "Built for", mathpath: "Our client MathPath's abacus program: daily practice and assessment", enrichment: "Full CBSE/ICSE academic delivery, Classes 5⁠–⁠10" },
+  { label: "Built for", mathpath: "Our client MathPath's abacus program and its Annual Competition", enrichment: "Full CBSE/ICSE academic delivery, Classes 5⁠–⁠10" },
   { label: "Workspaces", mathpath: "Admin, Teacher, Student", enrichment: "Super Admin, Admin, Teacher, Student" },
-  { label: "Core loop", mathpath: "Daily practice sets and timed assessments", enrichment: "Five-day guided learning loop" },
-  { label: "Scoring", mathpath: "Server-side scoring and timing", enrichment: "Auto-marking, with a Foundation Repair path" },
-  { label: "Content", mathpath: "Abacus curriculum across lessons and levels", enrichment: "Curriculum Studio with Excel import and quality checks" },
-  { label: "Tracking", mathpath: "Readiness governance and parent-ready reports", enrichment: "Assignment-and-attempt lifecycle per student" },
+  { label: "Core loop", mathpath: "Daily practice, level assessments, and competition preparation", enrichment: "Five-day guided learning loop" },
+  { label: "Scoring", mathpath: "Server-side scoring; competitions ranked by accuracy, then time", enrichment: "Auto-marking, with a Foundation Repair path" },
+  { label: "Content", mathpath: "Abacus curriculum across five modules and their levels", enrichment: "Curriculum Studio with Excel import and quality checks" },
+  { label: "Tracking", mathpath: "Readiness, promotions, practice reports, and parent reports", enrichment: "Assignment-and-attempt lifecycle per student" },
   { label: "Security", mathpath: "Answer keys and timers never leave the server", enrichment: "Session hygiene, role-scoped access, data-export and privacy controls" },
 ];
 

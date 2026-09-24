@@ -12,6 +12,7 @@ import Reveal from "@/components/motion/Reveal";
 import MagneticLink from "@/components/motion/MagneticLink";
 
 const product = products.find((p) => p.slug === "mathpath")!;
+const competitionPath = ("competitionPath" in product && product.competitionPath) || [];
 
 export const metadata: Metadata = {
   title: product.name,
@@ -37,7 +38,7 @@ export default function MathPathPage() {
               <h1 className="mt-7 font-display text-[3.4rem] font-extrabold leading-[0.95] tracking-[-0.05em] sm:text-7xl lg:text-8xl" style={{ color: "var(--text-primary)" }}>
                 MathPath <span className="gradient-text">Platform</span>
               </h1>
-              <p className="mt-6 font-display text-xl font-bold leading-snug tracking-tight sm:text-2xl" style={{ color: "var(--text-primary)" }}>
+              <p className="mt-6 text-balance font-display text-xl font-bold leading-snug tracking-tight sm:text-2xl" style={{ color: "var(--text-primary)" }}>
                 {product.tagline}
               </p>
               <p className="mt-5 text-base leading-7 sm:text-lg sm:leading-8" style={{ color: "var(--text-secondary)" }}>
@@ -74,6 +75,59 @@ export default function MathPathPage() {
         </div>
       </section>
 
+      {/* The competition path: mock exams → practice papers → the Annual Competition */}
+      <section className="band relative overflow-hidden py-24">
+        <SectionGlow
+          blobs={[
+            { size: 460, top: "0%", left: "-8%", color: "primary" },
+            { size: 400, bottom: "0%", right: "-8%", color: "secondary", delay: 4 },
+          ]}
+        />
+        <div className="container-custom">
+          <SectionHeader
+            eyebrow="The competition path"
+            title={
+              <>
+                From the first mock <span className="gradient-text">to the main event.</span>
+              </>
+            }
+            description="MathPath's Annual Competition is the highlight of every student's year. The platform prepares each student for it step by step, then runs the event itself."
+          />
+          <ol className="relative mt-14 grid items-stretch gap-5 md:grid-cols-3">
+            {/* connecting rule behind the step markers (desktop) */}
+            <div
+              className="pointer-events-none absolute left-[16%] right-[16%] top-[2.1rem] hidden h-px md:block"
+              style={{ background: "linear-gradient(90deg, transparent, var(--accent), var(--glow-secondary), var(--accent), transparent)" }}
+              aria-hidden="true"
+            />
+            {competitionPath.map((step, i) => {
+              const finale = i === competitionPath.length - 1;
+              return (
+                <Reveal key={step.title} delay={i * 0.08} className="h-full">
+                  <li
+                    className="surface-card hover-card relative flex h-full flex-col p-7"
+                    style={finale ? { borderColor: "var(--accent)", boxShadow: "var(--shadow-glow)" } : undefined}
+                  >
+                    <div className="flex items-center gap-3">
+                      <IconBadge icon={step.icon} />
+                      <span className="font-display text-xs font-extrabold uppercase tracking-[0.18em]" style={{ color: "var(--accent)" }}>
+                        {finale ? "The main event" : `Step ${String(i + 1).padStart(2, "0")}`}
+                      </span>
+                    </div>
+                    <h3 className="mt-5 font-display text-xl font-bold tracking-tight" style={{ color: "var(--text-primary)" }}>
+                      {step.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
+                      {step.detail}
+                    </p>
+                  </li>
+                </Reveal>
+              );
+            })}
+          </ol>
+        </div>
+      </section>
+
       {/* Workspaces */}
       <section id="workspaces" className="relative scroll-mt-24 overflow-hidden py-24">
         <SectionGlow
@@ -105,7 +159,7 @@ export default function MathPathPage() {
           <SectionHeader
             eyebrow="Under the hood"
             title="What's in the platform."
-            description="The mechanics that make the platform trustworthy enough to run MathPath's abacus program every day."
+            description="The mechanics that make the platform trustworthy enough to run MathPath's abacus program every day, and its Annual Competition once a year."
           />
           <div className="mt-14 grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {product.highlights.map((h, i) => (

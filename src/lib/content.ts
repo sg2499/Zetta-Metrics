@@ -13,10 +13,13 @@ import {
   Layers,
   Lock,
   MapPin,
+  Medal,
   Network,
   ShieldCheck,
   Sparkles,
+  Target,
   Timer,
+  Trophy,
   Users,
   Workflow,
 } from "lucide-react";
@@ -116,49 +119,88 @@ export const products = [
   {
     slug: "mathpath",
     name: "MathPath Platform",
-    tagline: "The platform that runs our client MathPath's abacus program.",
+    tagline: "The platform that runs our client MathPath's abacus program, from daily practice to its Annual Competition.",
     status: "live" as const,
     statusLabel: "Live",
     eyebrow: "Built for MathPath",
     summary:
-      "MathPath runs an abacus learning program. Zetta Metrics designed and built the MathPath Platform to automate that program, then took it well beyond what was run by hand: admin, teacher, and student workspaces, structured practice across the program's lessons and levels, server-scored timed assessments, readiness tracking, and progress reports a parent can read at a glance.",
+      "MathPath runs an abacus and mental-math program whose high point is its Annual Competition, a premier once-a-year event where hundreds of students compete. Zetta Metrics built the MathPath Platform to run that entire journey: daily practice generated from MathPath's own curriculum, readiness-checked assessments and level promotions, unlimited competition-format mock exams and practice papers, and the Annual Competition itself, with gamified progress that keeps students practising every day.",
     icon: LayoutDashboard,
-    highlights: [
+    // The road to MathPath's Annual Competition: practice, then the event itself.
+    competitionPath: [
       {
-        icon: Users,
-        title: "Role-based dashboards",
+        icon: Target,
+        title: "Competition mock exams",
         detail:
-          "Dedicated Admin, Teacher, and Student experiences, each scoped to what that role actually needs to do.",
+          "Unlimited mock exams in the exact format of the real event: the same sections, per-section timers, and instructions, with a fresh randomised paper on every attempt, so students keep beating their own best score.",
       },
       {
         icon: ClipboardCheck,
-        title: "DPS practice workflows",
+        title: "Annual Competition practice papers",
         detail:
-          "Structured daily-practice-set delivery across the abacus program's lessons and levels, with randomized options and no answer leakage before submission.",
+          "Level-wise practice papers for the event, assigned in bulk by admins and teachers, with a practice leaderboard and reports that show each student's toughest section.",
       },
       {
-        icon: Timer,
-        title: "Timed, backend-scored assessments",
+        icon: Trophy,
+        title: "The Annual Competition",
         detail:
-          "Timer authority and scoring both live server-side — the client never holds the answer key or the clock.",
+          "MathPath's premier event runs on the platform: every student is placed at the right competition level automatically, sits the same paper as everyone at that level, and is ranked fairly once results are released.",
+      },
+    ],
+    highlights: [
+      {
+        icon: Layers,
+        title: "Curriculum-faithful practice engine",
+        detail:
+          "Daily practice sets generated from MathPath's own curriculum workbooks across five modules, from Young Learners to the Master Module, with abacus and visual methods kept exactly as they are taught.",
+      },
+      {
+        icon: Target,
+        title: "Competition-format mock exams",
+        detail:
+          "Mocks that mirror the real event section by section, with independent section timers and a fresh randomised paper on every attempt.",
+      },
+      {
+        icon: Trophy,
+        title: "Annual Competition, end to end",
+        detail:
+          "Automatic level placement, one identical paper per level, section timers that pause on a genuine disconnect and resume to the second, and one attempt per student.",
+      },
+      {
+        icon: Medal,
+        title: "Fair ranking, sealed results, certificates",
+        detail:
+          "Ranked by accuracy, then completion time, with ties going to whoever made their first mistake later. Results stay sealed until the announcement, then certificates download from each student's portal.",
       },
       {
         icon: GaugeCircle,
-        title: "Readiness governance & progress tracking",
+        title: "Assessments, readiness, and promotions",
         detail:
-          "Attempt status, results history, and readiness signals give teachers and admins a real read on where each student stands.",
+          "Teachers check readiness before a level assessment; timed, server-scored assessments then drive level promotions, with a full promotion history.",
+      },
+      {
+        icon: Sparkles,
+        title: "Gamification students come back for",
+        detail:
+          "Ranks from Copper to Champion, XP, a trophy room of badges, practice heatmaps, and podium leaderboards turn daily practice into a habit.",
       },
       {
         icon: FileSpreadsheet,
-        title: "Parent-ready reporting",
+        title: "Practice and parent reports",
         detail:
-          "Progress rolls up into reports built for a parent to understand at a glance, not just an internal ops view.",
+          "Practice reports and analytics for admins and teachers, and progress reports teachers deliver to parents, readable at a glance.",
+      },
+      {
+        icon: Lock,
+        title: "Server-authoritative by design",
+        detail:
+          "Answer keys and timers never leave the server, and every score is calculated server-side, so results can be trusted.",
       },
       {
         icon: Cpu,
-        title: "Production deployment architecture",
+        title: "Production deployment",
         detail:
-          "FastAPI + Next.js + SQL, deployed and running for real students — not a prototype sitting on a laptop.",
+          "FastAPI, Next.js, and SQL, deployed and in daily use by MathPath's students, teachers, and admins.",
       },
     ],
     screenshots: [
@@ -219,8 +261,8 @@ export const mathpathWorkspaces = [
     path: "student",
     title: "A daily workspace students actually open",
     summary:
-      "Practice, assessments, mock exams, progress, and achievements in one place — with ranks, XP, and a trophy room that turn daily practice into a habit.",
-    points: ["Daily practice sets and timed assessments", "Ranks, XP, and achievements", "Progress a student can see for themselves"],
+      "Daily practice, assessments, competition mock exams and practice papers, progress, and achievements in one place, with ranks, XP, and a trophy room that turn daily practice into a habit.",
+    points: ["Daily practice sets and timed assessments", "Competition mocks and practice papers", "Ranks, XP, and achievements"],
     screenshot: { src: "/screenshots/mathpath/student-dashboard.png", caption: "Student — Learning Workspace", width: 1920, height: 946 },
   },
   {
@@ -230,8 +272,8 @@ export const mathpathWorkspaces = [
     path: "teacher",
     title: "Guidance for every assigned learner",
     summary:
-      "Teachers assign practice and assessments, track readiness, and review practice before anything counts — all scoped to their own students.",
-    points: ["Assign practice and assessments", "Practice and assessment trackers", "Readiness checks before assessment"],
+      "Teachers assign practice, assessments, and competition practice papers, check readiness, and follow every assigned student's progress, all scoped to their own students.",
+    points: ["Assign practice, assessments, and competition papers", "Readiness checks before assessment", "Competition progress and parent reports"],
     screenshot: { src: "/screenshots/mathpath/teacher-dashboard.png", caption: "Teacher — Teaching Workspace", width: 1920, height: 869 },
   },
   {
@@ -241,8 +283,8 @@ export const mathpathWorkspaces = [
     path: "admin",
     title: "One control centre for everything",
     summary:
-      "Admins govern the learning path, users, assessment readiness, and performance reporting — with a live view of who's active right now.",
-    points: ["Learning path and user management", "Assessment studio and control", "Performance reports and live activity"],
+      "Admins govern the learning path, users, assessments, and the Annual Competition, from the mock and event studios to live monitoring and performance reports.",
+    points: ["Learning path and user management", "Mock Studio and Annual Competition Studio", "Live monitoring and performance reports"],
     screenshot: { src: "/screenshots/mathpath/admin-dashboard.png", caption: "Admin — Control Centre", width: 1920, height: 869 },
   },
 ];
@@ -259,9 +301,9 @@ export const companyStats = [
 // Product-specific facts, shown only on that product's page.
 export const productFacts: Record<string, { value: string; label: string }[]> = {
   mathpath: [
+    { value: "5", label: "Abacus curriculum modules, from Young Learners to the Master Module" },
     { value: "3", label: "Role-based workspaces: Admin, Teacher, and Student" },
-    { value: "100%", label: "Scoring and timing enforced server-side" },
-    { value: "0", label: "Answer keys ever sent to the browser" },
+    { value: "100%", label: "Scoring and timing enforced server-side, including the Annual Competition" },
   ],
   "school-enrichment": [
     { value: "5-day", label: "Guided learning loop with auto-marking" },
