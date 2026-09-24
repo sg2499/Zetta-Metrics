@@ -459,6 +459,19 @@ main {
   -webkit-backdrop-filter: blur(12px);
   transition: border-color 0.2s ease, color 0.2s ease;
 }
+/* "Our focus" chips under the hero CTAs. */
+.focus-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border-radius: 999px;
+  padding: 0.38rem 0.8rem 0.38rem 0.65rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: linear-gradient(135deg, var(--accent-soft), transparent 70%), var(--bg-elevated);
+  border: 1px solid var(--glass-border);
+}
 .announce-pill:hover {
   border-color: var(--accent);
   color: var(--text-primary);

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, GraduationCap, Workflow } from "lucide-react";
 import { companyStats, platformPillars, products } from "@/lib/content";
 import ProductCard from "@/components/sections/ProductCard";
 import ManualToSystem from "@/components/sections/ManualToSystem";
@@ -39,9 +39,9 @@ export default function Home() {
                     className="rounded-full px-2.5 py-0.5 text-[0.7rem] font-bold uppercase tracking-wider"
                     style={{ background: "var(--accent-soft)", color: "var(--accent)" }}
                   >
-                    Products
+                    Ed-Tech
                   </span>
-                  Two platforms, one foundation
+                  Specialists in education platforms
                   <ArrowRight size={14} className="mr-1.5" />
                 </Link>
               </Reveal>
@@ -56,7 +56,7 @@ export default function Home() {
               </h1>
               <Reveal immediate delay={0.35}>
                 <p className="mt-6 leading-[1.6]" style={{ color: "var(--text-secondary)", fontSize: "clamp(1.02rem, 2.6vh, 1.25rem)" }}>
-                  Zetta Metrics builds AI-native platforms that replace spreadsheets, paperwork, and manual hand-offs with software your people actually run on.
+                  Zetta Metrics specialises in Ed-Tech platforms and workflow automation: AI-native software that replaces spreadsheets, paperwork, and manual hand-offs with systems your people actually run on.
                 </p>
               </Reveal>
               <Reveal immediate delay={0.45}>
@@ -67,6 +67,23 @@ export default function Home() {
                   <MagneticLink href="/products" className="btn-secondary px-7 py-4 text-sm">
                     Explore our products
                   </MagneticLink>
+                </div>
+              </Reveal>
+              <Reveal immediate delay={0.55}>
+                {/* Our focus: the two things we specialise in, stated plainly. */}
+                <div className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-2">
+                  <span className="text-[0.68rem] font-bold uppercase tracking-[0.18em]" style={{ color: "var(--text-muted)" }}>
+                    Our focus
+                  </span>
+                  {[
+                    { icon: GraduationCap, label: "Ed-Tech platforms" },
+                    { icon: Workflow, label: "Workflow automation" },
+                  ].map(({ icon: Icon, label }) => (
+                    <span key={label} className="focus-chip">
+                      <Icon size={14} strokeWidth={2.2} style={{ color: "var(--accent)" }} />
+                      {label}
+                    </span>
+                  ))}
                 </div>
               </Reveal>
             </div>
@@ -222,7 +239,7 @@ export default function Home() {
           <SectionHeader
             eyebrow="Products"
             title="What we've built."
-            description="Two platforms on one foundation: role-based workflows, backend-authoritative logic, and AI woven into the product itself."
+            description="Two Ed-Tech platforms on one foundation: role-based workflows, backend-authoritative logic, and AI woven into the product itself."
           />
           <div className="mt-14 grid items-stretch gap-6 md:grid-cols-2">
             {products.map((product, i) => (

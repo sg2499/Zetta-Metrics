@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "Zetta Metrics",
     short_name: "Zetta Metrics",
-    description: "AI-native software for teams who are done doing things by hand.",
+    description: "AI-native Ed-Tech platforms and workflow automation.",
     start_url: "/",
     display: "standalone",
     background_color: "#050b14",

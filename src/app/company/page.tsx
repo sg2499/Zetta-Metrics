@@ -19,7 +19,7 @@ const companyFacts = [
   { label: "Company", value: brand.legalName },
   { label: "Headquarters", value: "Kolkata, India" },
   { label: "Founded", value: "2026" },
-  { label: "Focus", value: "AI-native SaaS platforms" },
+  { label: "Focus", value: "Ed-Tech platforms & automation" },
 ];
 
 // Dividers for the facts strip: stacked on mobile, 2×2 on tablet, 1×4 on desktop.
@@ -52,7 +52,7 @@ export default function CompanyPage() {
                 We build reusable systems, <span className="gradient-text">then the products that need them.</span>
               </>
             }
-            description={`${brand.legalName} is an AI-native SaaS company, engineering systems for education today and for any institution or business whose manual process is ready to become software — each engagement built so the work compounds instead of resetting.`}
+            description={`${brand.legalName} is an AI-native SaaS company specialising in Ed-Tech platforms and workflow automation: engineering systems for education today, and for any institution or business whose manual process is ready to become software — each engagement built so the work compounds instead of resetting.`}
           />
 
           <Reveal delay={0.1}>

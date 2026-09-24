@@ -29,9 +29,9 @@ export const brand = {
   github: "https://github.com/sg2499",
   linkedin: "https://www.linkedin.com/in/shailesh-gupta-7b7278188",
   positioning:
-    "We're an AI-native SaaS company: role-based workflows, backend-authoritative logic, and AI built into the product from day one, not bolted on after. MathPath — built for our client of the same name — and School Enrichment are how we bring that to education, and the same approach extends to any institution or business whose manual process is ready to become software.",
+    "We're an AI-native SaaS company specialising in Ed-Tech platforms and workflow automation: role-based workflows, backend-authoritative logic, and AI built into the product from day one, not bolted on after. MathPath — built for our client of the same name — and School Enrichment are how we bring that to education, and the same approach extends to any institution or business whose manual process is ready to become software.",
   shortPositioning:
-    "An AI-native SaaS company building the systems institutions and businesses run on.",
+    "AI-native Ed-Tech platforms and workflow automation, built for the institutions and businesses that run on them.",
   location: "Kolkata, India — building for clients worldwide",
 };
 
@@ -252,7 +252,7 @@ export const mathpathWorkspaces = [
 export const companyStats = [
   { icon: MapPin, value: "2026", label: "Founded in Kolkata, India", animate: false },
   { icon: Layers, value: "2", label: "Platforms built on one foundation", animate: true },
-  { icon: BrainCircuit, value: "AI-native", label: "In every product we build", animate: false },
+  { icon: GraduationCap, value: "Ed-Tech", label: "Our core specialisation, with AI in every product", animate: false },
   { icon: ShieldCheck, value: "100%", label: "Backend-authoritative, auditable logic", animate: true },
 ];
 

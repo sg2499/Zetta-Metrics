@@ -39,7 +39,7 @@ export default function ProductsPage() {
                 Two platforms. <span className="gradient-text">One foundation.</span>
               </>
             }
-            description="MathPath, built for our client of the same name and live with their students, and School Enrichment are real, working platforms. Both run on role-based workflows, backend-authoritative logic, and AI woven into the product itself: the same approach we bring to any institution or business ready to modernize."
+            description="Our Ed-Tech platforms: MathPath, built for our client of the same name and live with their students, and School Enrichment. Both are real, working products. Both run on role-based workflows, backend-authoritative logic, and AI woven into the product itself: the same approach we bring to any institution or business ready to modernize."
           />
           <div className="mt-16 grid items-stretch gap-6 md:grid-cols-2">
             {products.map((product, i) => (

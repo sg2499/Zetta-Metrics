@@ -18,16 +18,20 @@ const jetbrains = localFont({ src: "./fonts/jetbrains-mono-latin-wght-normal.wof
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.zetta-metrics.com"),
   title: {
-    default: "Zetta Metrics | AI-Native Automation Platform",
+    default: "Zetta Metrics | AI-Native Ed-Tech Platforms & Automation",
     template: "%s | Zetta Metrics",
   },
   description:
-    "Zetta Metrics builds AI-driven automation platforms that turn manual, fragmented business processes into intelligent digital workflows, including MathPath and School Enrichment.",
+    "Zetta Metrics specialises in AI-native Ed-Tech platforms and workflow automation, including MathPath and School Enrichment, turning manual, fragmented processes into intelligent digital workflows.",
   keywords: [
     "Zetta Metrics",
     "AI automation platform",
     "SaaS",
-    "EdTech platform",
+    "Ed-Tech platform",
+    "EdTech",
+    "education technology",
+    "learning platform",
+    "workflow automation",
     "MathPath",
     "School Enrichment",
     "AI workflow orchestration",
@@ -41,14 +45,14 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://www.zetta-metrics.com",
     siteName: "Zetta Metrics",
-    title: "Zetta Metrics | AI-Native Automation Platform",
+    title: "Zetta Metrics | AI-Native Ed-Tech Platforms & Automation",
     description:
-      "AI-driven automation platform company. MathPath and School Enrichment run on the same underlying platform.",
+      "AI-native Ed-Tech platforms and workflow automation. MathPath and School Enrichment run on the same underlying platform.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Zetta Metrics | AI-Native Automation Platform",
-    description: "AI-native software for teams who are done doing things by hand.",
+    title: "Zetta Metrics | AI-Native Ed-Tech Platforms & Automation",
+    description: "AI-native Ed-Tech platforms and workflow automation, for teams who are done doing things by hand.",
   },
   robots: {
     index: true,
@@ -64,7 +68,7 @@ const organizationJsonLd = {
   url: "https://www.zetta-metrics.com",
   logo: "https://www.zetta-metrics.com/logo-mark.png",
   description:
-    "Zetta Metrics builds AI-driven automation platforms that turn manual, fragmented business processes into intelligent digital workflows.",
+    "Zetta Metrics specialises in AI-native Ed-Tech platforms and workflow automation, turning manual, fragmented processes into intelligent digital workflows.",
 };
 
 export default function RootLayout({

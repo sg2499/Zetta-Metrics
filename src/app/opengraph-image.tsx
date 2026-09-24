@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Zetta Metrics — AI-native automation platform";
+export const alt = "Zetta Metrics: AI-native Ed-Tech platforms and workflow automation";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -97,7 +97,7 @@ export default async function Image() {
             color: "#a3b1c2",
           }}
         >
-          AI-native automation platform
+          AI-native Ed-Tech platforms &amp; workflow automation
         </div>
       </div>
     ),
