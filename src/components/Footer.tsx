@@ -32,7 +32,10 @@ export default function Footer() {
             <Link href="/" className="inline-block" aria-label="Zetta Metrics home">
               <Image src="/logo-wordmark.png" alt="Zetta Metrics" width={1307} height={461} quality={100} className="h-14 w-auto rounded-md sm:h-16" />
             </Link>
-            <p className="text-pretty mt-5 max-w-sm text-sm leading-7" style={{ color: "var(--text-secondary)" }}>
+            <p className="mt-4 text-[0.68rem] font-semibold uppercase leading-none" style={{ color: "var(--text-muted)", letterSpacing: "0.28em" }}>
+              Engineering outcomes that matter
+            </p>
+            <p className="mt-5 text-sm leading-7" style={{ color: "var(--text-secondary)" }}>
               {brand.shortPositioning}
             </p>
             <div className="mt-6 flex items-center gap-2">

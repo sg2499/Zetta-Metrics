@@ -601,3 +601,21 @@ main {
   box-shadow: 0 0 0 4px var(--accent-soft);
   outline: none;
 }
+
+/* Rotating conic ring around the Zetta core in the hero centerpiece. */
+.core-ring {
+  background: var(--orb-ring);
+  -webkit-mask: radial-gradient(closest-side, transparent 86%, black 88%, black 94%, transparent 96%);
+  mask: radial-gradient(closest-side, transparent 86%, black 88%, black 94%, transparent 96%);
+  animation: core-spin 9s linear infinite;
+}
+@keyframes core-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .core-ring {
+    animation: none;
+  }
+}

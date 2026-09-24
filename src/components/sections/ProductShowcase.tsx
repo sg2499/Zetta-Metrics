@@ -95,7 +95,7 @@ export default function ProductShowcase({ tilt = true }: { tilt?: boolean }) {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -6 }}
           transition={{ duration: 0.25 }}
-          className="text-pretty mx-auto mt-5 max-w-xl text-center text-sm leading-6"
+          className="mt-5 text-center text-sm leading-6"
           style={{ color: "var(--text-secondary)" }}
         >
           <span className="font-semibold" style={{ color: "var(--text-primary)" }}>

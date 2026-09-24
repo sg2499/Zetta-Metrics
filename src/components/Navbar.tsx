@@ -9,15 +9,14 @@ import { Menu, X, ArrowRight } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
 
 const NAV_LINKS = [
+  { href: "/", label: "Home" },
   { href: "/products", label: "Products" },
-  { href: "/products/mathpath", label: "MathPath" },
   { href: "/company", label: "Company" },
   { href: "/contact", label: "Contact" },
 ];
 
 function isActivePath(pathname: string, href: string) {
-  // "Products" covers every product page except MathPath, which has its own link.
-  if (href === "/products") return pathname.startsWith("/products") && !pathname.startsWith("/products/mathpath");
+  if (href === "/") return pathname === "/";
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 

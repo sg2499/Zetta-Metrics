@@ -10,7 +10,7 @@ import MagneticLink from "@/components/motion/MagneticLink";
 // Side-by-side facts — every cell restates something already described on
 // the product pages; nothing here is new or aspirational.
 const comparison = [
-  { label: "Built for", mathpath: "Running a school's daily math practice and assessment", enrichment: "Full CBSE/ICSE academic delivery, Classes 5⁠–⁠10" },
+  { label: "Built for", mathpath: "Our client MathPath's daily math practice and assessment", enrichment: "Full CBSE/ICSE academic delivery, Classes 5⁠–⁠10" },
   { label: "Workspaces", mathpath: "Admin, Teacher, Student", enrichment: "Super Admin, Admin, Teacher, Student" },
   { label: "Core loop", mathpath: "Daily practice sets and timed assessments", enrichment: "Five-day guided learning loop" },
   { label: "Scoring", mathpath: "Server-side scoring and timing", enrichment: "Auto-marking, with a Foundation Repair path" },
@@ -39,7 +39,7 @@ export default function ProductsPage() {
                 Two platforms. <span className="gradient-text">One foundation.</span>
               </>
             }
-            description="MathPath and School Enrichment are real, working products built on role-based workflows, backend-authoritative logic, and AI woven into the product itself — the same approach we bring to any institution or business ready to modernize."
+            description="MathPath, built for our client of the same name and live with their students, and School Enrichment are real, working platforms. Both run on role-based workflows, backend-authoritative logic, and AI woven into the product itself: the same approach we bring to any institution or business ready to modernize."
           />
           <div className="mt-16 grid items-stretch gap-6 md:grid-cols-2">
             {products.map((product, i) => (
@@ -115,8 +115,8 @@ export default function ProductsPage() {
             <div className="cta-panel relative flex flex-col items-start gap-8 overflow-hidden p-10 sm:p-14 md:flex-row md:items-center md:justify-between">
               <SectionGlow blobs={[{ size: 420, top: "-40%", right: "-5%", color: "primary" }]} />
               <div className="min-w-0 flex-1">
-                <h2 className="section-title text-balance">Have a workflow that looks like this?</h2>
-                <p className="text-pretty mt-4 max-w-xl text-base leading-7" style={{ color: "var(--text-secondary)" }}>
+                <h2 className="section-title">Have a workflow that looks like this?</h2>
+                <p className="mt-4 text-base leading-7" style={{ color: "var(--text-secondary)" }}>
                   If your process is manual, fragmented, and repetitive, it&apos;s probably a fit for what we build.
                 </p>
               </div>

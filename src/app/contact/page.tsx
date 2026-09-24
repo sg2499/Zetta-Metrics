@@ -111,7 +111,7 @@ export default function ContactPage() {
                         <p className="font-display text-base font-bold" style={{ color: "var(--text-primary)" }}>
                           {s.title}
                         </p>
-                        <p className="text-pretty mt-1 text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
+                        <p className="mt-1 text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
                           {s.detail}
                         </p>
                       </li>

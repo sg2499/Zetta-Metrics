@@ -12,7 +12,7 @@ import { useSafeReducedMotion } from "@/components/motion/useSafeReducedMotion";
  */
 export default function AnimatedStat({ value }: { value: string }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const isInView = useInView(ref, { once: true, margin: "-80px 0px" });
   const shouldReduceMotion = useSafeReducedMotion();
   const match = value.match(/^(\d{1,4})(%?)$/);
   const [display, setDisplay] = useState(match ? `0${match[2]}` : value);

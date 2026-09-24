@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
 import { products } from "@/lib/content";
 import EnrichmentDiagram from "@/components/sections/EnrichmentDiagram";
+import ProductFacts from "@/components/sections/ProductFacts";
 import SectionHeader from "@/components/sections/SectionHeader";
 import SectionGlow from "@/components/sections/SectionGlow";
 import HeroBackground from "@/components/sections/HeroBackground";
@@ -50,7 +51,7 @@ export default function SchoolEnrichmentPage() {
       <section className="relative overflow-hidden pt-36 pb-16 md:pt-44 md:pb-24">
         <HeroBackground />
         <div className="container-custom relative z-10">
-          <div className="mx-auto max-w-3xl text-center">
+          <div className="text-center">
             <Reveal>
               <span
                 className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold"
@@ -59,13 +60,13 @@ export default function SchoolEnrichmentPage() {
                 <span className="status-dot" style={{ backgroundColor: "var(--status-dev)" }} />
                 {product.statusLabel} · {product.eyebrow}
               </span>
-              <h1 className="text-balance mt-7 font-display text-[3rem] font-extrabold leading-[0.98] tracking-[-0.045em] sm:text-7xl" style={{ color: "var(--text-primary)" }}>
+              <h1 className="mt-7 font-display text-[3rem] font-extrabold leading-[0.98] tracking-[-0.045em] sm:text-7xl" style={{ color: "var(--text-primary)" }}>
                 School <span className="gradient-text">Enrichment</span>
               </h1>
-              <p className="text-balance mt-6 font-display text-xl font-bold leading-snug tracking-tight sm:text-2xl" style={{ color: "var(--text-primary)" }}>
+              <p className="mt-6 font-display text-xl font-bold leading-snug tracking-tight sm:text-2xl" style={{ color: "var(--text-primary)" }}>
                 {product.tagline}
               </p>
-              <p className="text-pretty mx-auto mt-5 max-w-2xl text-base leading-7 sm:text-lg sm:leading-8" style={{ color: "var(--text-secondary)" }}>
+              <p className="mt-5 text-base leading-7 sm:text-lg sm:leading-8" style={{ color: "var(--text-secondary)" }}>
                 {product.summary}
               </p>
             </Reveal>
@@ -82,10 +83,17 @@ export default function SchoolEnrichmentPage() {
           </div>
 
           <Reveal delay={0.2} y={40}>
-            <div className="mx-auto mt-16 max-w-6xl">
+            <div className="mt-16">
               <EnrichmentDiagram />
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      {/* Product facts */}
+      <section className="relative pb-8">
+        <div className="container-custom">
+          <ProductFacts slug="school-enrichment" />
         </div>
       </section>
 
@@ -120,7 +128,7 @@ export default function SchoolEnrichmentPage() {
                   <h3 className="mt-6 font-display text-xl font-bold tracking-tight" style={{ color: "var(--text-primary)" }}>
                     {item.title}
                   </h3>
-                  <p className="text-pretty mt-3 text-sm leading-7" style={{ color: "var(--text-secondary)" }}>
+                  <p className="mt-3 text-sm leading-7" style={{ color: "var(--text-secondary)" }}>
                     {item.detail}
                   </p>
                 </div>
@@ -137,9 +145,9 @@ export default function SchoolEnrichmentPage() {
             <div className="cta-panel relative flex flex-col items-start gap-8 overflow-hidden p-10 sm:p-14 md:flex-row md:items-center md:justify-between">
               <SectionGlow blobs={[{ size: 420, top: "-40%", right: "-5%", color: "secondary" }]} />
               <div className="min-w-0 flex-1">
-                <h2 className="section-title text-balance">Built on the same core as MathPath.</h2>
-                <p className="text-pretty mt-4 max-w-xl text-base leading-7" style={{ color: "var(--text-secondary)" }}>
-                  The same role model, server-side logic, and security posture that already run MathPath in schools today.
+                <h2 className="section-title">Built on the same core as MathPath.</h2>
+                <p className="mt-4 text-base leading-7" style={{ color: "var(--text-secondary)" }}>
+                  The same role model, server-side logic, and security posture that already run MathPath for its students today.
                 </p>
               </div>
               <div className="flex shrink-0 flex-wrap gap-3">

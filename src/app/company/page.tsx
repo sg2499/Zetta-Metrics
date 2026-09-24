@@ -8,6 +8,7 @@ import SectionHeader from "@/components/sections/SectionHeader";
 import IconBadge from "@/components/sections/IconBadge";
 import Reveal from "@/components/motion/Reveal";
 import MagneticLink from "@/components/motion/MagneticLink";
+import ScrollLitText from "@/components/motion/ScrollLitText";
 
 export const metadata: Metadata = {
   title: "Company",
@@ -65,7 +66,7 @@ export default function CompanyPage() {
                   <dt className="text-xs font-bold uppercase tracking-[0.14em]" style={{ color: "var(--text-muted)" }}>
                     {f.label}
                   </dt>
-                  <dd className="text-pretty mt-2 font-display text-base font-bold" style={{ color: "var(--text-primary)" }}>
+                  <dd className="mt-2 font-display text-base font-bold" style={{ color: "var(--text-primary)" }}>
                     {f.value}
                   </dd>
                 </div>
@@ -81,14 +82,15 @@ export default function CompanyPage() {
         <div className="container-custom relative z-10">
           <Reveal>
             <p className="eyebrow mb-8 text-center">Our mission</p>
-            <p
-              className="text-balance mx-auto max-w-4xl text-center font-display text-[2rem] font-extrabold leading-[1.12] tracking-[-0.035em] sm:text-5xl"
-              style={{ color: "var(--text-primary)" }}
-            >
-              Turn the manual processes institutions depend on into software that is{" "}
-              <span className="gradient-text">intelligent, auditable, and built to last.</span>
-            </p>
           </Reveal>
+          <ScrollLitText
+            className="text-center font-display text-[2rem] font-extrabold leading-[1.12] tracking-[-0.035em] sm:text-5xl"
+            style={{ color: "var(--text-primary)" }}
+            segments={[
+              { text: "Turn the manual processes institutions depend on into software that is" },
+              { text: "intelligent, auditable, and built to last.", accent: true },
+            ]}
+          />
         </div>
       </section>
 
@@ -110,7 +112,7 @@ export default function CompanyPage() {
                   <h3 className="mt-6 font-display text-xl font-bold tracking-tight" style={{ color: "var(--text-primary)" }}>
                     {pillar.title}
                   </h3>
-                  <p className="text-pretty mt-3 text-sm leading-7" style={{ color: "var(--text-secondary)" }}>
+                  <p className="mt-3 text-sm leading-7" style={{ color: "var(--text-secondary)" }}>
                     {pillar.summary}
                   </p>
                 </div>
@@ -154,7 +156,7 @@ export default function CompanyPage() {
                       </p>
                     </div>
                   </div>
-                  <p className="text-pretty mt-6 text-sm leading-7" style={{ color: "var(--text-secondary)" }}>
+                  <p className="mt-6 text-sm leading-7" style={{ color: "var(--text-secondary)" }}>
                     {f.bio}
                   </p>
                   {(f.linkedin || f.github) && (
@@ -185,8 +187,8 @@ export default function CompanyPage() {
             <div className="cta-panel relative flex flex-col items-start gap-8 overflow-hidden p-10 sm:p-14 md:flex-row md:items-center md:justify-between">
               <SectionGlow blobs={[{ size: 420, top: "-40%", right: "-5%", color: "primary" }]} />
               <div className="min-w-0 flex-1">
-                <h2 className="section-title text-balance">Want to work with us?</h2>
-                <p className="text-pretty mt-4 max-w-xl text-base leading-7" style={{ color: "var(--text-secondary)" }}>
+                <h2 className="section-title">Want to work with us?</h2>
+                <p className="mt-4 text-base leading-7" style={{ color: "var(--text-secondary)" }}>
                   Whether it&apos;s about our products or a partnership, we&apos;d like to hear from you.
                 </p>
               </div>

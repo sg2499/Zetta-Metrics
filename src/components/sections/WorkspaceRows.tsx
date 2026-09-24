@@ -65,10 +65,10 @@ export default function WorkspaceRows() {
                 >
                   <Icon size={14} /> {w.label} workspace
                 </span>
-                <h3 className="text-balance mt-5 font-display text-3xl font-extrabold leading-tight tracking-[-0.03em] sm:text-4xl" style={{ color: "var(--text-primary)" }}>
+                <h3 className="mt-5 font-display text-3xl font-extrabold leading-tight tracking-[-0.03em] sm:text-4xl" style={{ color: "var(--text-primary)" }}>
                   {w.title}
                 </h3>
-                <p className="text-pretty mt-4 text-base leading-7" style={{ color: "var(--text-secondary)" }}>
+                <p className="mt-4 text-base leading-7" style={{ color: "var(--text-secondary)" }}>
                   {w.summary}
                 </p>
                 <ul className="mt-6 space-y-3">

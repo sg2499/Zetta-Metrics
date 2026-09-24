@@ -10,7 +10,9 @@ import {
   GaugeCircle,
   GraduationCap,
   LayoutDashboard,
+  Layers,
   Lock,
+  MapPin,
   Network,
   ShieldCheck,
   Sparkles,
@@ -27,7 +29,7 @@ export const brand = {
   github: "https://github.com/sg2499",
   linkedin: "https://www.linkedin.com/in/shailesh-gupta-7b7278188",
   positioning:
-    "We're an AI-native SaaS company: role-based workflows, backend-authoritative logic, and AI built into the product from day one, not bolted on after. MathPath and School Enrichment are how we bring that to education, and the same approach extends to any institution or business whose manual process is ready to become software.",
+    "We're an AI-native SaaS company: role-based workflows, backend-authoritative logic, and AI built into the product from day one, not bolted on after. MathPath — built for our client of the same name — and School Enrichment are how we bring that to education, and the same approach extends to any institution or business whose manual process is ready to become software.",
   shortPositioning:
     "An AI-native SaaS company building the systems institutions and businesses run on.",
   location: "Kolkata, India — building for clients worldwide",
@@ -114,12 +116,12 @@ export const products = [
   {
     slug: "mathpath",
     name: "MathPath",
-    tagline: "The operating layer schools use to run math practice.",
+    tagline: "The learning platform we built for our client, MathPath.",
     status: "live" as const,
-    statusLabel: "Live product",
-    eyebrow: "Flagship product",
+    statusLabel: "Live with client",
+    eyebrow: "Client platform",
     summary:
-      "MathPath runs the daily mechanics of math practice for a school: admin, teacher, and student dashboards, structured curriculum delivery, server-scored assessments, and progress reports a parent can actually read at a glance.",
+      "Zetta Metrics designed and built MathPath's learning platform, which now runs the daily mechanics of math practice for MathPath's students: admin, teacher, and student dashboards, structured curriculum delivery, server-scored assessments, and progress reports a parent can actually read at a glance.",
     icon: LayoutDashboard,
     highlights: [
       {
@@ -156,7 +158,7 @@ export const products = [
         icon: Cpu,
         title: "Production deployment architecture",
         detail:
-          "FastAPI + Next.js + SQL, deployed and demo-ready — not a prototype sitting on a laptop.",
+          "FastAPI + Next.js + SQL, deployed and running for real students — not a prototype sitting on a laptop.",
       },
     ],
     screenshots: [
@@ -237,7 +239,7 @@ export const mathpathWorkspaces = [
     label: "Admin",
     icon: LayoutDashboard,
     path: "admin",
-    title: "One control centre for the whole school",
+    title: "One control centre for everything",
     summary:
       "Admins govern the learning path, users, assessment readiness, and performance reporting — with a live view of who's active right now.",
     points: ["Learning path and user management", "Assessment studio and control", "Performance reports and live activity"],
@@ -245,14 +247,28 @@ export const mathpathWorkspaces = [
   },
 ];
 
-// Concrete engineering facts for the home page stat row — every one is
-// true of the shipped product, no vanity numbers.
-export const platformFacts = [
-  { value: "3", label: "Role-based workspaces in every MathPath school" },
-  { value: "100%", label: "Scoring and timing enforced server-side" },
-  { value: "0", label: "Answer keys ever sent to the browser" },
-  { value: "5-day", label: "Guided learning loop in School Enrichment" },
+// Home page stat cards — facts about Zetta Metrics as a company, never
+// about one product (product facts live on each product's own page).
+export const companyStats = [
+  { icon: MapPin, value: "2026", label: "Founded in Kolkata, India", animate: false },
+  { icon: Layers, value: "2", label: "Platforms built on one foundation", animate: true },
+  { icon: BrainCircuit, value: "AI-native", label: "In every product we build", animate: false },
+  { icon: ShieldCheck, value: "100%", label: "Backend-authoritative, auditable logic", animate: true },
 ];
+
+// Product-specific facts, shown only on that product's page.
+export const productFacts: Record<string, { value: string; label: string }[]> = {
+  mathpath: [
+    { value: "3", label: "Role-based workspaces: Admin, Teacher, and Student" },
+    { value: "100%", label: "Scoring and timing enforced server-side" },
+    { value: "0", label: "Answer keys ever sent to the browser" },
+  ],
+  "school-enrichment": [
+    { value: "5-day", label: "Guided learning loop with auto-marking" },
+    { value: "4", label: "Role levels, from Super Admin to Student" },
+    { value: "2", label: "Automated content checks before anything is published" },
+  ],
+};
 
 // Capability strip on the home page — real features across both products.
 export const capabilities = [
@@ -288,5 +304,47 @@ export const processSteps = [
     title: "Ship it, then extend it",
     detail:
       "The product goes into real use with real users. What we learn feeds the next build, so every product we ship starts further ahead than the last one.",
+  },
+];
+
+// "What we automate" on the home page — the kinds of manual work Zetta turns
+// into software, each shown as a plain before/after. Framed as capabilities
+// (all proven inside our own platforms), not as claimed clients.
+export const automationAreas = [
+  {
+    icon: ClipboardCheck,
+    title: "Assessments & scoring",
+    before: "Paper tests, hand marking, and marks typed into spreadsheets.",
+    after: "Timed online assessments, auto-marked and scored on the server.",
+  },
+  {
+    icon: Workflow,
+    title: "Approvals & sign-offs",
+    before: "Email threads and the constant question of who approved what.",
+    after: "Role-based approval steps with every decision on record.",
+  },
+  {
+    icon: FileSpreadsheet,
+    title: "Content pipelines",
+    before: "Copy-pasting between files and checking everything by eye.",
+    after: "Excel import with automated structural and quality checks.",
+  },
+  {
+    icon: Users,
+    title: "Assignments & follow-ups",
+    before: "Chasing people on chat for status updates and submissions.",
+    after: "Assignments with tracked attempts and automatic status.",
+  },
+  {
+    icon: GaugeCircle,
+    title: "Reporting & readiness",
+    before: "Someone compiles the same report by hand every week.",
+    after: "Live reports anyone authorized can read at a glance.",
+  },
+  {
+    icon: Lock,
+    title: "Access & data control",
+    before: "Shared logins and spreadsheets anyone can open or forward.",
+    after: "Role-scoped access, session hygiene, and export controls.",
   },
 ];

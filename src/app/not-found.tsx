@@ -13,13 +13,13 @@ export default function NotFound() {
       <div className="container-custom relative z-10 text-center">
         <p className="eyebrow mb-4">Error 404</p>
         <h1
-          className="text-balance font-display text-5xl font-extrabold tracking-tight sm:text-7xl"
+          className="font-display text-5xl font-extrabold tracking-tight sm:text-7xl"
           style={{ color: "var(--text-primary)" }}
         >
           This page didn&apos;t <span className="gradient-text">make the cut</span>.
         </h1>
         <p
-          className="text-pretty mx-auto mt-5 max-w-md text-base leading-7"
+          className="mt-5 text-base leading-7"
           style={{ color: "var(--text-secondary)" }}
         >
           The page you&apos;re looking for doesn&apos;t exist or has moved. Let&apos;s get you back

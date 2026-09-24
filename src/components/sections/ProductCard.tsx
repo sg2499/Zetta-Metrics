@@ -83,10 +83,10 @@ export default function ProductCard({ product }: { product: (typeof products)[nu
             {product.statusLabel}
           </span>
         </div>
-        <p className="text-pretty mt-4 text-base font-medium" style={{ color: "var(--text-primary)" }}>
+        <p className="mt-4 text-base font-medium" style={{ color: "var(--text-primary)" }}>
           {product.tagline}
         </p>
-        <p className="text-pretty mt-3 text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
+        <p className="mt-3 text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
           {product.summary}
         </p>
         <span className="mt-auto inline-flex items-center gap-1.5 pt-7 text-sm font-semibold" style={{ color: "var(--accent)" }}>
