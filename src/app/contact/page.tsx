@@ -91,8 +91,8 @@ export default function ContactPage() {
                     <a
                       key={`${label}-${value}`}
                       href={href}
-                      target={href.startsWith("http") ? "_blank" : undefined}
-                      rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="group surface-card hover-card flex items-center gap-4 p-5"
                     >
                       <div
@@ -225,7 +225,7 @@ export default function ContactPage() {
                     <XCircle size={16} className="mt-0.5 shrink-0" />
                     {errorMessage || "Something went wrong. Please try again, or email us directly at "}
                     {!errorMessage && (
-                      <a href={`mailto:${brand.email}`} className="underline">
+                      <a href={`mailto:${brand.email}`} target="_blank" rel="noopener noreferrer" className="underline">
                         {brand.email}
                       </a>
                     )}
