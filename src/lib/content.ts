@@ -1,10 +1,10 @@
 import {
+  Activity,
   Boxes,
   BrainCircuit,
   Building2,
   CheckCircle2,
   ClipboardCheck,
-  Cpu,
   Database,
   FileSpreadsheet,
   GaugeCircle,
@@ -197,10 +197,10 @@ export const products = [
           "Answer keys and timers never leave the server, and every score is calculated server-side, so results can be trusted.",
       },
       {
-        icon: Cpu,
-        title: "Production deployment",
+        icon: Activity,
+        title: "Live competition monitoring",
         detail:
-          "FastAPI, Next.js, and SQL, deployed and in daily use by MathPath's students, teachers, and admins.",
+          "Admins watch the Annual Competition unfold in real time — per-student progress, section completion, and timer status across every level, as it happens.",
       },
     ],
     screenshots: [
