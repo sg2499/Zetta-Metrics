@@ -58,7 +58,7 @@ export default function ContactPage() {
 
   const contactLinks = [
     { icon: Mail, label: "Email", value: brand.email, href: `mailto:${brand.email}` },
-    { icon: LinkedinIcon, label: "LinkedIn", value: "Shailesh Gupta", href: brand.linkedin },
+    { icon: LinkedinIcon, label: "LinkedIn", value: "Zetta Metrics", href: brand.linkedin },
     ...brand.phones.map((p) => ({ icon: Phone, label: "Phone", value: `+91 ${p}`, href: `tel:+91${p}` })),
   ];
 

@@ -30,7 +30,7 @@ export const brand = {
   email: "shaileshgupta@zetta-metrics.com",
   phones: ["7980919518", "9831684229"],
   github: "https://github.com/sg2499",
-  linkedin: "https://www.linkedin.com/in/shailesh-gupta-7b7278188",
+  linkedin: "https://www.linkedin.com/company/zetta-metrics/",
   positioning:
     "We're an AI-native SaaS company specialising in Ed-Tech platforms and workflow automation: role-based workflows, backend-authoritative logic, and AI built into the product from day one, not bolted on after. The MathPath Platform, built for our client MathPath's abacus program, and School Enrichment are how we bring that to education, and the same approach extends to any institution or business whose manual process is ready to become software.",
   shortPositioning:
