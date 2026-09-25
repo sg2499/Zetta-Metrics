@@ -45,8 +45,7 @@ export default function Footer() {
                   href={href}
                   target={href.startsWith("http") ? "_blank" : undefined}
                   rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="flex h-10 w-10 items-center justify-center rounded-xl border transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
-                  style={{ borderColor: "var(--border-subtle)", color: "var(--text-secondary)" }}
+                  className="flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--border-subtle)] text-[var(--text-secondary)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
                   aria-label={label}
                 >
                   <Icon size={16} />
@@ -63,7 +62,7 @@ export default function Footer() {
               <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link.label}>
-                    <Link href={link.href} className="text-sm font-medium transition-colors hover:text-[var(--text-primary)]" style={{ color: "var(--text-secondary)" }}>
+                    <Link href={link.href} className="text-sm font-medium text-[var(--text-secondary)] transition-colors hover:text-[var(--accent)]">
                       {link.label}
                     </Link>
                   </li>
@@ -78,16 +77,17 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3">
               <li>
-                <a href={`mailto:${brand.email}`} className="group inline-flex items-center gap-1.5 break-all text-sm font-medium transition-colors hover:text-[var(--accent)]" style={{ color: "var(--text-secondary)" }}>
+                <a href={`mailto:${brand.email}`} className="group inline-flex items-center gap-1.5 break-all text-sm font-medium text-[var(--text-secondary)] transition-colors hover:text-[var(--accent)]">
                   {brand.email}
                   <ArrowUpRight size={13} className="shrink-0 opacity-0 transition-opacity group-hover:opacity-100" />
                 </a>
               </li>
               {brand.phones.map((phone) => (
                 <li key={phone}>
-                  <a href={`tel:+91${phone}`} className="inline-flex items-center gap-2 text-sm font-medium transition-colors hover:text-[var(--accent)]" style={{ color: "var(--text-secondary)" }}>
+                  <a href={`tel:+91${phone}`} className="group inline-flex items-center gap-2 text-sm font-medium text-[var(--text-secondary)] transition-colors hover:text-[var(--accent)]">
                     <Phone size={13} style={{ color: "var(--accent)" }} />
                     +91 {phone}
+                    <ArrowUpRight size={13} className="shrink-0 opacity-0 transition-opacity group-hover:opacity-100" />
                   </a>
                 </li>
               ))}

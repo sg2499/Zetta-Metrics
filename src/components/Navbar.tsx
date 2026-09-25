@@ -73,8 +73,9 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   aria-current={active ? "page" : undefined}
-                  className="relative rounded-full px-4 py-2 text-sm font-semibold transition-colors hover:text-[var(--text-primary)]"
-                  style={{ color: active ? "var(--text-primary)" : "var(--text-secondary)" }}
+                  className={`relative rounded-full px-4 py-2 text-sm font-semibold transition-colors hover:text-[var(--accent)] ${
+                    active ? "text-[var(--text-primary)]" : "text-[var(--text-secondary)]"
+                  }`}
                 >
                   {active && (
                     <motion.span
@@ -130,11 +131,10 @@ export default function Navbar() {
                     key={link.href}
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="rounded-xl px-4 py-3 text-base font-semibold transition-colors"
-                    style={{
-                      backgroundColor: active ? "var(--accent-soft)" : "transparent",
-                      color: active ? "var(--text-primary)" : "var(--text-secondary)",
-                    }}
+                    className={`rounded-xl px-4 py-3 text-base font-semibold transition-colors hover:text-[var(--accent)] ${
+                      active ? "text-[var(--text-primary)]" : "text-[var(--text-secondary)]"
+                    }`}
+                    style={{ backgroundColor: active ? "var(--accent-soft)" : "transparent" }}
                   >
                     {link.label}
                   </Link>

@@ -30,7 +30,7 @@ const FACT_BORDERS = [
   "border-t sm:border-l lg:border-t-0",
 ];
 
-const socialBtn = "flex h-10 w-10 items-center justify-center rounded-xl border transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]";
+const socialBtn = "flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--border-subtle)] text-[var(--text-secondary)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]";
 
 export default function CompanyPage() {
   return (
@@ -162,12 +162,12 @@ export default function CompanyPage() {
                   {(f.linkedin || f.github) && (
                     <div className="mt-auto flex gap-2 pt-6">
                       {f.linkedin && (
-                        <a href={f.linkedin} target="_blank" rel="noopener noreferrer" className={socialBtn} style={{ borderColor: "var(--border-subtle)", color: "var(--text-secondary)" }} aria-label={`${f.name} on LinkedIn`}>
+                        <a href={f.linkedin} target="_blank" rel="noopener noreferrer" className={socialBtn} aria-label={`${f.name} on LinkedIn`}>
                           <LinkedinIcon size={16} />
                         </a>
                       )}
                       {f.github && (
-                        <a href={f.github} target="_blank" rel="noopener noreferrer" className={socialBtn} style={{ borderColor: "var(--border-subtle)", color: "var(--text-secondary)" }} aria-label={`${f.name} on GitHub`}>
+                        <a href={f.github} target="_blank" rel="noopener noreferrer" className={socialBtn} aria-label={`${f.name} on GitHub`}>
                           <GithubIcon size={16} />
                         </a>
                       )}
