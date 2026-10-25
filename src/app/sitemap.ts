@@ -6,7 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/",
     "/products",
     "/products/mathpath",
-    "/products/school-enrichment",
+    "/products/krama",
     "/company",
     "/contact",
   ];

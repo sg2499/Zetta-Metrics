@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
-import { ArrowRight, Lock } from "lucide-react";
+import { ArrowRight, Gift, Lock, Medal, Sparkles } from "lucide-react";
 import { products } from "@/lib/content";
 import ProductShowcase from "@/components/sections/ProductShowcase";
 import WorkspaceRows from "@/components/sections/WorkspaceRows";
 import ProductFacts from "@/components/sections/ProductFacts";
+import RankLadder from "@/components/sections/RankLadder";
+import PaymentsFlow from "@/components/sections/PaymentsFlow";
 import SectionHeader from "@/components/sections/SectionHeader";
 import SectionGlow from "@/components/sections/SectionGlow";
 import HeroBackground from "@/components/sections/HeroBackground";
@@ -152,6 +154,66 @@ export default function MathPathPage() {
         </div>
       </section>
 
+      {/* Ranks and rewards */}
+      <section className="band relative overflow-hidden py-24">
+        <SectionGlow
+          blobs={[
+            { size: 480, top: "0%", right: "-10%", color: "secondary" },
+            { size: 400, bottom: "0%", left: "-8%", color: "primary", delay: 4 },
+          ]}
+        />
+        <div className="container-custom">
+          <SectionHeader
+            eyebrow="Ranks and rewards"
+            title={
+              <>
+                Practice that students <span className="gradient-text">want to come back to.</span>
+              </>
+            }
+            description="Every question earns XP and MathCoins. XP climbs a 34-division rank ladder from Copper to Champion, and coins unlock real rewards in the store."
+          />
+          <Reveal delay={0.1} y={30}>
+            <div className="mt-14">
+              <RankLadder />
+            </div>
+          </Reveal>
+          <div className="mt-8 grid gap-5 md:grid-cols-3">
+            {[
+              { icon: Medal, title: "A rank-up is an event", detail: "Each new division plays its own cut scene with a forged 3D medallion and a soundtrack, so progress feels earned." },
+              { icon: Gift, title: "A store for MathCoins", detail: "Students spend what they earn on real rewards. Prices climb gradually, so there is always another one to aim for." },
+              { icon: Sparkles, title: "Small moments that count", detail: "Podium leaderboards, practice heatmaps, badges in a trophy room, and a birthday greeting waiting on the dashboard." },
+            ].map((c, i) => (
+              <Reveal key={c.title} delay={i * 0.07} className="h-full">
+                <div className="surface-card hover-card flex h-full flex-col p-7">
+                  <IconBadge icon={c.icon} />
+                  <h3 className="mt-5 font-display text-lg font-bold tracking-tight" style={{ color: "var(--text-primary)" }}>{c.title}</h3>
+                  <p className="mt-2 text-sm leading-6" style={{ color: "var(--text-secondary)" }}>{c.detail}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Fees and payments */}
+      <section className="relative overflow-hidden py-24">
+        <SectionGlow blobs={[{ size: 460, top: "10%", left: "-10%", color: "primary" }]} />
+        <div className="container-custom">
+          <SectionHeader
+            eyebrow="Fees and payments"
+            title={
+              <>
+                The business side runs <span className="gradient-text">on the same platform.</span>
+              </>
+            }
+            description="Fee setup, monthly billing, counter and online payments, and follow-ups, for admins who would rather not keep a notebook of who owes what."
+          />
+          <div className="mt-14">
+            <PaymentsFlow />
+          </div>
+        </div>
+      </section>
+
       {/* Platform highlights */}
       <section className="relative overflow-hidden py-24">
         <SectionGlow blobs={[{ size: 460, top: "0%", left: "30%", color: "tertiary" }]} />
@@ -195,8 +257,8 @@ export default function MathPathPage() {
                 <MagneticLink href="/contact" className="btn-primary whitespace-nowrap px-7 py-4 text-sm">
                   Talk to us <ArrowRight size={16} />
                 </MagneticLink>
-                <MagneticLink href="/products/school-enrichment" className="btn-secondary whitespace-nowrap px-7 py-4 text-sm">
-                  See School Enrichment
+                <MagneticLink href="/products/krama" className="btn-secondary whitespace-nowrap px-7 py-4 text-sm">
+                  See Krama
                 </MagneticLink>
               </div>
             </div>

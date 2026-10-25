@@ -3,38 +3,15 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import type { products } from "@/lib/content";
 import IconBadge from "@/components/sections/IconBadge";
+import KramaStair from "@/components/sections/KramaStair";
 
-/** Five-day loop schematic, used where a product has no public screens. */
-function LoopPreview() {
-  const days = ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5"];
+/** Krama's own cover: its stair on its indigo-and-gold ground. */
+function KramaCover() {
   return (
-    <div className="dot-grid flex h-full flex-col justify-center gap-4 p-6">
-      <div className="flex items-center justify-between gap-1.5">
-        {days.map((d, i) => (
-          <div key={d} className="flex flex-1 items-center gap-1.5">
-            <span
-              className="flex h-9 flex-1 items-center justify-center rounded-lg border text-[0.68rem] font-semibold"
-              style={{
-                borderColor: i === 4 ? "var(--accent)" : "var(--border-subtle)",
-                background: i === 4 ? "var(--accent-soft)" : "var(--bg-base)",
-                color: i === 4 ? "var(--accent)" : "var(--text-secondary)",
-              }}
-            >
-              {d}
-            </span>
-          </div>
-        ))}
-      </div>
-      <div className="grid grid-cols-3 gap-2 text-[0.68rem] font-medium">
-        {["Assign", "Attempt", "Auto-mark"].map((s) => (
-          <span key={s} className="rounded-md border px-2 py-1.5 text-center" style={{ borderColor: "var(--border-subtle)", background: "var(--bg-base)", color: "var(--text-muted)" }}>
-            {s}
-          </span>
-        ))}
-      </div>
-      <div className="flex items-center gap-2 text-[0.68rem] font-medium" style={{ color: "var(--status-dev)" }}>
-        <span className="status-dot" style={{ background: "var(--status-dev)" }} />
-        Foundation Repair path for students who need it
+    <div className="krama-zone relative flex h-full items-end overflow-hidden px-6 pt-8" style={{ background: "radial-gradient(90% 80% at 20% 0%, #2a2380, #0c0925 70%)" }}>
+      <div className="krama-stars pointer-events-none absolute inset-0 opacity-80" aria-hidden="true" />
+      <div className="relative w-full">
+        <KramaStair compact />
       </div>
     </div>
   );
@@ -60,7 +37,7 @@ export default function ProductCard({ product }: { product: (typeof products)[nu
             <div className="absolute inset-x-0 bottom-0 h-16" style={{ background: "linear-gradient(to top, var(--bg-raised), transparent)" }} />
           </>
         ) : (
-          <LoopPreview />
+          <KramaCover />
         )}
       </div>
 

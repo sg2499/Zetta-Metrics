@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import FooterShell from "@/components/FooterShell";
 import AmbientBackground from "@/components/AmbientBackground";
 import ScrollProgress from "@/components/ScrollProgress";
 import PageTransition from "@/components/PageTransition";
@@ -15,6 +16,16 @@ const manrope = localFont({ src: "./fonts/manrope-latin-wght-normal.woff2", vari
 const inter = localFont({ src: "./fonts/inter-latin-wght-normal.woff2", variable: "--font-inter", weight: "100 900", display: "swap" });
 const jetbrains = localFont({ src: "./fonts/jetbrains-mono-latin-wght-normal.woff2", variable: "--font-jetbrains", weight: "100 800", display: "swap" });
 
+// Krama's own display serif (self-hosted, used only inside the Krama page's themed zone).
+const fraunces = localFont({
+  src: [
+    { path: "./fonts/fraunces-latin-wght-normal.woff2", style: "normal", weight: "100 900" },
+    { path: "./fonts/fraunces-latin-wght-italic.woff2", style: "italic", weight: "100 900" },
+  ],
+  variable: "--font-fraunces",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.zetta-metrics.com"),
   title: {
@@ -22,7 +33,7 @@ export const metadata: Metadata = {
     template: "%s | Zetta Metrics",
   },
   description:
-    "Zetta Metrics specialises in AI-native Ed-Tech platforms and workflow automation, including the MathPath Platform and School Enrichment, turning manual, fragmented processes into intelligent digital workflows.",
+    "Zetta Metrics specialises in AI-native Ed-Tech platforms and workflow automation, including the MathPath Platform and Krama, turning manual, fragmented processes into intelligent digital workflows.",
   keywords: [
     "Zetta Metrics",
     "AI automation platform",
@@ -35,7 +46,7 @@ export const metadata: Metadata = {
     "MathPath",
     "MathPath Platform",
     "abacus learning platform",
-    "School Enrichment",
+    "Krama",
     "AI workflow orchestration",
     "machine learning",
     "India SaaS company",
@@ -49,7 +60,7 @@ export const metadata: Metadata = {
     siteName: "Zetta Metrics",
     title: "Zetta Metrics | AI-Native Ed-Tech Platforms & Automation",
     description:
-      "AI-native Ed-Tech platforms and workflow automation. The MathPath Platform and School Enrichment run on the same underlying foundation.",
+      "AI-native Ed-Tech platforms and workflow automation. The MathPath Platform and Krama run on the same underlying foundation.",
   },
   twitter: {
     card: "summary_large_image",
@@ -79,7 +90,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${manrope.variable} ${inter.variable} ${jetbrains.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${manrope.variable} ${inter.variable} ${jetbrains.variable} ${fraunces.variable}`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <script
@@ -98,7 +109,9 @@ export default function RootLayout({
             <main className="flex-1">
               <PageTransition>{children}</PageTransition>
             </main>
-            <Footer />
+            <FooterShell>
+              <Footer />
+            </FooterShell>
           </div>
         </ThemeProvider>
       </body>

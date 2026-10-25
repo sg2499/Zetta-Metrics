@@ -1,5 +1,7 @@
 import {
   Activity,
+  Award,
+  Banknote,
   Boxes,
   BrainCircuit,
   Building2,
@@ -11,15 +13,20 @@ import {
   GraduationCap,
   LayoutDashboard,
   Layers,
+  ListChecks,
   Lock,
   MapPin,
   Medal,
   Network,
+  Receipt,
+  ScrollText,
   ShieldCheck,
   Sparkles,
   Target,
   Timer,
   Trophy,
+  Gift,
+  PenLine,
   Users,
   Workflow,
 } from "lucide-react";
@@ -32,7 +39,7 @@ export const brand = {
   github: "https://github.com/sg2499",
   linkedin: "https://www.linkedin.com/company/zetta-metrics/",
   positioning:
-    "We're an AI-native SaaS company specialising in Ed-Tech platforms and workflow automation: role-based workflows, backend-authoritative logic, and AI built into the product from day one, not bolted on after. The MathPath Platform, built for our client MathPath's abacus program, and School Enrichment are how we bring that to education, and the same approach extends to any institution or business whose manual process is ready to become software.",
+    "We're an AI-native SaaS company specialising in Ed-Tech platforms and workflow automation: role-based workflows, backend-authoritative logic, and AI built into the product from day one, not bolted on after. The MathPath Platform, built for our client MathPath's abacus program, and Krama, our CBSE and ICSE learning platform for Classes 5–10, are how we bring that to education, and the same approach extends to any institution or business whose manual process is ready to become software.",
   shortPositioning:
     "AI-native Ed-Tech platforms and workflow automation, built for the institutions and businesses that run on them.",
   location: "Kolkata, India — building for clients worldwide",
@@ -119,12 +126,12 @@ export const products = [
   {
     slug: "mathpath",
     name: "MathPath Platform",
-    tagline: "The platform that runs our client MathPath's abacus program, from daily practice to its Annual Competition.",
+    tagline: "The platform that runs our client MathPath's abacus program, from daily practice to its Annual Competition and the fees behind it.",
     status: "live" as const,
     statusLabel: "Live",
     eyebrow: "Built for MathPath",
     summary:
-      "MathPath runs an abacus and mental-math program whose high point is its Annual Competition, a premier once-a-year event where hundreds of students compete. Zetta Metrics built the MathPath Platform to run that entire journey: daily practice generated from MathPath's own curriculum, readiness-checked assessments and level promotions, unlimited competition-format mock exams and practice papers, and the Annual Competition itself, with gamified progress that keeps students practising every day.",
+      "MathPath runs an abacus and mental-math program whose high point is its Annual Competition, a premier once-a-year event where hundreds of students compete. Zetta Metrics built the MathPath Platform to run the whole journey: daily practice generated from MathPath's own curriculum, readiness-checked assessments and level promotions, competition-format mock exams, the Annual Competition itself, and the business side too, from fee collection to parent reports, with a rank-and-rewards system that keeps students practising every day.",
     icon: LayoutDashboard,
     // The road to MathPath's Annual Competition: practice, then the event itself.
     competitionPath: [
@@ -158,7 +165,7 @@ export const products = [
         icon: Target,
         title: "Competition-format mock exams",
         detail:
-          "Mocks that mirror the real event section by section, with independent section timers and a fresh randomised paper on every attempt.",
+          "Mocks that mirror the real event section by section, with independent section timers, a fresh randomised paper on every attempt, and marks that always add up to 100.",
       },
       {
         icon: Trophy,
@@ -176,25 +183,43 @@ export const products = [
         icon: GaugeCircle,
         title: "Assessments, readiness, and promotions",
         detail:
-          "Teachers check readiness before a level assessment; timed, server-scored assessments then drive level promotions, with a full promotion history.",
+          "Teachers check readiness before a level assessment; timed, server-scored assessments then drive level promotions, with a full history and an approval queue for re-attempts.",
       },
       {
         icon: Sparkles,
-        title: "Gamification students come back for",
+        title: "A rank ladder students want to climb",
         detail:
-          "Ranks from Copper to Champion, XP, a trophy room of badges, practice heatmaps, and podium leaderboards turn daily practice into a habit.",
+          "Ranks from Copper to Champion across a 34-division roadmap, with forged 3D medallions, a cut scene with its own soundtrack on every rank-up, XP, badges, practice heatmaps, and podium leaderboards.",
+      },
+      {
+        icon: Gift,
+        title: "Rewards worth practising for",
+        detail:
+          "A reward store where students spend the MathCoins they earn on real rewards, priced to climb gradually so there is always the next one to work toward.",
+      },
+      {
+        icon: Banknote,
+        title: "Fees and payments, handled",
+        detail:
+          "Fee setup, invoices, receipts and monthly billing, counter and online payments, parent pay links, follow-ups and promises to pay, and a cash count to close each day.",
       },
       {
         icon: FileSpreadsheet,
-        title: "Practice and parent reports",
+        title: "Performance and parent reports",
         detail:
-          "Practice reports and analytics for admins and teachers, and progress reports teachers deliver to parents, readable at a glance.",
+          "One set of numbers across an overview, a drill-down, and a student summary for admins and teachers, plus progress reports teachers deliver to parents.",
+      },
+      {
+        icon: ListChecks,
+        title: "A teacher's day, made lighter",
+        detail:
+          "Assign Practice shows each student's status for every lesson and says plainly why one can't be taken yet. Review opens the exact sheet, and birthdays surface so no student is missed.",
       },
       {
         icon: Lock,
         title: "Server-authoritative by design",
         detail:
-          "Answer keys and timers never leave the server, and every score is calculated server-side, so results can be trusted.",
+          "Answer keys and timers never leave the server and every score is calculated there. Admins sign in with two-factor verification, and idle sessions end on their own.",
       },
       {
         icon: Activity,
@@ -211,43 +236,67 @@ export const products = [
     href: "/products/mathpath",
   },
   {
-    slug: "school-enrichment",
-    name: "School Enrichment",
-    tagline: "CBSE/ICSE academic delivery for Classes 5⁠–⁠10, built the same way we build everything.",
+    slug: "krama",
+    name: "Krama",
+    tagline: "CBSE and ICSE learning for Classes 5–10, practised until it sticks.",
     status: "development" as const,
     statusLabel: "In Development",
-    eyebrow: "Academic delivery platform",
+    eyebrow: "School learning platform",
     summary:
-      "School Enrichment is being built the same way as the MathPath Platform, pointed at full academic delivery — a School → Student/Teacher/Admin identity model, a curriculum studio for mapping and approving content, and a five-day guided learning loop with automated marking.",
+      "Krama is the school learning platform Zetta Metrics is building for CBSE and ICSE, Classes 5–10. Every chapter runs on a five-day loop of learn, practise, apply, fix and master, with practice set by the teacher and marked the moment it is submitted. The foundations are already built and working end to end: school-by-school accounts, a Curriculum Studio holding all 15 Class 5 CBSE Maths chapters, marking that understands units, and the school's own assessment scheme and report cards.",
     icon: GraduationCap,
     highlights: [
       {
         icon: Building2,
-        title: "School-first identity model",
+        title: "School-first from the ground up",
         detail:
-          "Built around a School → Student/Teacher/Admin structure from the ground up, with Super Admin controls to publish and map curriculum across schools.",
+          "Every school gets its own structure of Admin, Teacher and Student, with a Super Admin above them. Each role has its own sign-in and its own workspace.",
       },
       {
         icon: Boxes,
-        title: "Curriculum Studio",
+        title: "A Curriculum Studio, already stocked",
         detail:
-          "Chapter/lesson/question status workflows, an Excel-based content import pipeline, and automated structural and math-pattern quality checks before anything reaches a student.",
+          "Board, class, subject, chapter and concept lessons move through draft, review and publish. All 15 Class 5 CBSE Maths chapters are in and live, behind automated quality checks.",
       },
       {
         icon: Sparkles,
-        title: "Five-day guided learning loop",
+        title: "The five-day chapter loop",
         detail:
-          "A structured assignment-and-attempt lifecycle with auto-marking and a built-in 'Foundation Repair' path for students who need it.",
+          "Teachers assign practice to chosen students of a section; students work through Today's Practice; results arrive the moment they submit, with per-question review for the teacher.",
+      },
+      {
+        icon: ClipboardCheck,
+        title: "Marking that understands answers",
+        detail:
+          "Numbers, words and ordering are all marked automatically. Units, currency and signs are understood, tolerance and rounding are respected, and multi-part answers get a box for each part.",
+      },
+      {
+        icon: PenLine,
+        title: "Part and method marks",
+        detail:
+          "On questions worth two marks or more, students show their working. Teachers review the automatic marks and award part marks with a reason the student can read.",
+      },
+      {
+        icon: Award,
+        title: "Each school's own assessment scheme",
+        detail:
+          "School years and a versioned scheme per class, subject and year, built from weighted components, either marks entered by the teacher or the platform's own practice, with grades and a worked example.",
+      },
+      {
+        icon: ScrollText,
+        title: "Report cards the school issues",
+        detail:
+          "Co-scholastic areas, attendance, grades and remarks per student per term, rolled into Term 1 and Year-End cards from the school's published scheme.",
       },
       {
         icon: Lock,
-        title: "Security hardened from the start",
+        title: "Secure from the first sign-in",
         detail:
-          "Session hygiene, role-scoped access control, and data-export/privacy handling are already in place at this stage — not deferred to a later phase.",
+          "Administrators sign in with two-factor verification, every first password must be replaced, and each sign-in tab accepts only its own role's accounts.",
       },
     ],
     screenshots: [],
-    href: "/products/school-enrichment",
+    href: "/products/krama",
   },
 ];
 
@@ -302,13 +351,13 @@ export const companyStats = [
 export const productFacts: Record<string, { value: string; label: string }[]> = {
   mathpath: [
     { value: "5", label: "Abacus curriculum modules, from Young Learners to the Master Module" },
+    { value: "34", label: "Rank divisions, from Copper to Champion, each with its own rank-up scene" },
     { value: "3", label: "Role-based workspaces: Admin, Teacher, and Student" },
-    { value: "100%", label: "Scoring and timing enforced server-side, including the Annual Competition" },
   ],
-  "school-enrichment": [
-    { value: "5-day", label: "Guided learning loop with auto-marking" },
+  krama: [
+    { value: "15", label: "Class 5 CBSE Maths chapters, live in the Curriculum Studio" },
+    { value: "5-day", label: "Chapter loop: learn, practise, apply, fix and master" },
     { value: "4", label: "Role levels, from Super Admin to Student" },
-    { value: "2", label: "Automated content checks before anything is published" },
   ],
 };
 
@@ -320,9 +369,13 @@ export const capabilities = [
   { icon: Boxes, label: "Curriculum Studio" },
   { icon: FileSpreadsheet, label: "Excel content import" },
   { icon: GaugeCircle, label: "Readiness governance" },
-  { icon: Sparkles, label: "Foundation Repair path" },
+  { icon: PenLine, label: "Part & method marks" },
+  { icon: Banknote, label: "Fees & payments" },
+  { icon: Receipt, label: "Invoices & receipts" },
+  { icon: Gift, label: "Rewards & ranks" },
+  { icon: ScrollText, label: "Report cards" },
   { icon: Database, label: "Auditable decisions" },
-  { icon: Lock, label: "Session hygiene" },
+  { icon: Lock, label: "Two-factor sign-in" },
   { icon: Building2, label: "Multi-school identity" },
   { icon: LayoutDashboard, label: "Parent-ready reports" },
   { icon: ShieldCheck, label: "Data-export & privacy controls" },
@@ -382,6 +435,12 @@ export const automationAreas = [
     title: "Reporting & readiness",
     before: "Someone compiles the same report by hand every week.",
     after: "Live reports anyone authorized can read at a glance.",
+  },
+  {
+    icon: Banknote,
+    title: "Fees & payments",
+    before: "Cash in a drawer, paper receipts, and a notebook of who still owes.",
+    after: "Invoices, receipts, online payments and automatic follow-ups, closed out daily.",
   },
   {
     icon: Lock,

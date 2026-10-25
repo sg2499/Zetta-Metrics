@@ -39,9 +39,9 @@ export default function Home() {
                     className="rounded-full px-2.5 py-0.5 text-[0.7rem] font-bold uppercase tracking-wider"
                     style={{ background: "var(--accent-soft)", color: "var(--accent)" }}
                   >
-                    Ed-Tech
+                    Live now
                   </span>
-                  Specialists in education platforms
+                  MathPath Platform · Next up: Krama
                   <ArrowRight size={14} className="mr-1.5" />
                 </Link>
               </Reveal>
@@ -239,7 +239,7 @@ export default function Home() {
           <SectionHeader
             eyebrow="Products"
             title="What we've built."
-            description="Two Ed-Tech platforms on one foundation: role-based workflows, backend-authoritative logic, and AI woven into the product itself."
+            description="MathPath is live and running a whole abacus program, fees included. Krama is being built for CBSE and ICSE schools, and its core already works. Both stand on one foundation: role-based workflows, backend-authoritative logic, and AI woven into the product itself."
           />
           <div className="mt-14 grid items-stretch gap-6 md:grid-cols-2">
             {products.map((product, i) => (

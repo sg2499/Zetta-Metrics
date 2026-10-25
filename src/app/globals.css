@@ -786,3 +786,77 @@ main {
 :root[data-theme="light"] .hero-shadow {
   background: radial-gradient(closest-side, rgba(15, 23, 42, 0.26), rgba(15, 23, 42, 0.08) 55%, transparent 100%);
 }
+
+/* ---------------------------------------------------------------
+   Krama zone — Krama's own brand world (deep indigo + forged gold),
+   scoped to its product page by re-pointing the same design tokens,
+   so every shared component (cards, glows, buttons) re-themes itself.
+------------------------------------------------------------------*/
+.krama-zone {
+  color-scheme: dark;
+  --bg-base: #0c0925;
+  --bg-raised: #15113d;
+  --bg-elevated: #1c1850;
+  --bg-overlay: rgba(28, 24, 80, 0.72);
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.2);
+  --text-primary: #f7f4ff;
+  --text-secondary: #bcb6e2;
+  --text-muted: #9d96cc;
+  --text-on-accent: #1d1100;
+  --accent: #f9ab2b;
+  --accent-strong: #e58f0b;
+  --accent-soft: rgba(249, 171, 43, 0.14);
+  --accent-silver: #ffe3a6;
+  --accent-glow: rgba(249, 171, 43, 0.26);
+  --status-live: #34d399;
+  --status-dev: #f9ab2b;
+  --glow-primary: rgba(249, 171, 43, 0.28);
+  --glow-secondary: rgba(125, 106, 235, 0.45);
+  --glow-tertiary: rgba(188, 182, 226, 0.14);
+  --glass-bg: rgba(28, 24, 80, 0.55);
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --shadow-soft: 0 8px 24px -12px rgba(0, 0, 0, 0.55);
+  --shadow-lifted: 0 20px 48px -16px rgba(0, 0, 0, 0.65);
+  --shadow-glow: 0 0 0 1px rgba(249, 171, 43, 0.2), 0 16px 48px -12px rgba(249, 171, 43, 0.3);
+}
+/* The page canvas itself (kept apart so the navbar can take the palette
+   without taking the solid background). */
+.krama-page {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+}
+.krama-zone .font-serif-display,
+.font-serif-display {
+  font-family: var(--font-fraunces), "Fraunces", Georgia, serif;
+  font-optical-sizing: auto;
+}
+.krama-zone .band,
+:root[data-theme="light"] .krama-zone .band {
+  background:
+    radial-gradient(80% 60% at 50% 0%, rgba(125, 106, 235, 0.28), transparent 70%),
+    linear-gradient(180deg, #171248, var(--bg-base));
+}
+/* Faint star-field for the Krama hero. */
+.krama-stars {
+  background-image:
+    radial-gradient(1.2px 1.2px at 12% 18%, rgba(255, 255, 255, 0.55), transparent 60%),
+    radial-gradient(1px 1px at 28% 62%, rgba(255, 255, 255, 0.4), transparent 60%),
+    radial-gradient(1.4px 1.4px at 46% 12%, rgba(255, 227, 166, 0.7), transparent 60%),
+    radial-gradient(1px 1px at 63% 44%, rgba(255, 255, 255, 0.45), transparent 60%),
+    radial-gradient(1.2px 1.2px at 78% 20%, rgba(255, 255, 255, 0.5), transparent 60%),
+    radial-gradient(1px 1px at 88% 70%, rgba(255, 227, 166, 0.55), transparent 60%),
+    radial-gradient(1px 1px at 8% 82%, rgba(255, 255, 255, 0.35), transparent 60%),
+    radial-gradient(1.3px 1.3px at 54% 86%, rgba(255, 255, 255, 0.4), transparent 60%);
+}
+@keyframes krama-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes rank-glow {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .krama-float, .rank-glow { animation: none !important; }
+}

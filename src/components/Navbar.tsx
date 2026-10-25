@@ -38,10 +38,12 @@ export default function Navbar() {
   }, []);
 
   const condensed = scrolled || mobileOpen;
+  // The Krama page has its own indigo-and-gold world; the bar joins it there.
+  const kramaZone = pathname.startsWith("/products/krama") ? "krama-zone" : "";
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 px-3 transition-[padding] duration-300 sm:px-4" style={{ paddingTop: condensed ? 12 : 0 }}>
+      <header className={`${kramaZone} fixed inset-x-0 top-0 z-50 bg-transparent px-3 transition-[padding] duration-300 sm:px-4`} style={{ paddingTop: condensed ? 12 : 0 }}>
         <div
           className="mx-auto flex items-center justify-between gap-4 border transition-all duration-300 ease-out"
           style={{
@@ -120,7 +122,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -12, scale: 0.98 }}
             transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-x-3 top-[84px] z-40 rounded-2xl border p-3 backdrop-blur-xl sm:inset-x-4 md:hidden"
+            className={`${kramaZone} fixed inset-x-3 top-[84px] z-40 rounded-2xl border p-3 backdrop-blur-xl sm:inset-x-4 md:hidden`}
             style={{ borderColor: "var(--glass-border)", backgroundColor: "var(--bg-overlay)", boxShadow: "var(--shadow-lifted)" }}
           >
             <nav className="flex flex-col gap-1">

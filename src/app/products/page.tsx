@@ -10,17 +10,17 @@ import MagneticLink from "@/components/motion/MagneticLink";
 // Side-by-side facts — every cell restates something already described on
 // the product pages; nothing here is new or aspirational.
 const comparison = [
-  { label: "Built for", mathpath: "Our client MathPath's abacus program and its Annual Competition", enrichment: "Full CBSE/ICSE academic delivery, Classes 5⁠–⁠10" },
-  { label: "Workspaces", mathpath: "Admin, Teacher, Student", enrichment: "Super Admin, Admin, Teacher, Student" },
-  { label: "Core loop", mathpath: "Daily practice, level assessments, and competition preparation", enrichment: "Five-day guided learning loop" },
-  { label: "Scoring", mathpath: "Server-side scoring; competitions ranked by accuracy, then time", enrichment: "Auto-marking, with a Foundation Repair path" },
-  { label: "Content", mathpath: "Abacus curriculum across five modules and their levels", enrichment: "Curriculum Studio with Excel import and quality checks" },
-  { label: "Tracking", mathpath: "Readiness, promotions, practice reports, and parent reports", enrichment: "Assignment-and-attempt lifecycle per student" },
-  { label: "Security", mathpath: "Answer keys and timers never leave the server", enrichment: "Session hygiene, role-scoped access, data-export and privacy controls" },
+  { label: "Built for", mathpath: "Our client MathPath's abacus program, its Annual Competition and its centres", krama: "CBSE and ICSE schools, Classes 5⁠–⁠10" },
+  { label: "Workspaces", mathpath: "Admin, Teacher, Student", krama: "Super Admin, School Admin, Teacher, Student" },
+  { label: "Core loop", mathpath: "Daily practice, level assessments, and competition preparation", krama: "A five-day chapter loop: learn, practise, apply, fix, master" },
+  { label: "Marking", mathpath: "Server-side scoring; competitions ranked by accuracy, then time", krama: "Auto-marking that understands units, plus part and method marks" },
+  { label: "Content", mathpath: "Abacus curriculum across five modules and their levels", krama: "A Curriculum Studio with all 15 Class 5 CBSE Maths chapters live" },
+  { label: "Beyond learning", mathpath: "Fee billing and payments, ranks, rewards, parent reports", krama: "Assessment schemes and report cards each school issues" },
+  { label: "Security", mathpath: "Answer keys and timers never leave the server; admin two-factor", krama: "Two-factor for administrators, role-scoped access and sign-in" },
 ];
 
 export default function ProductsPage() {
-  const [mathpath, enrichment] = products;
+  const [mathpath, krama] = products;
   return (
     <div>
       <section className="relative overflow-hidden pt-40 pb-20 md:pt-48">
@@ -39,7 +39,7 @@ export default function ProductsPage() {
                 Two platforms. <span className="gradient-text">One foundation.</span>
               </>
             }
-            description="Our Ed-Tech platforms: the MathPath Platform, which automates our client MathPath's abacus program and is live with their students, and School Enrichment, now in development. Both run on role-based workflows, backend-authoritative logic, and AI woven into the product itself: the same approach we bring to any institution or business ready to modernize."
+            description="Our Ed-Tech platforms: the MathPath Platform, which automates our client MathPath's abacus program and is live with their students, and Krama, our CBSE and ICSE learning platform, now in development with its core already built. Both run on role-based workflows, backend-authoritative logic, and AI woven into the product itself: the same approach we bring to any institution or business ready to modernize."
           />
           <div className="mt-16 grid items-stretch gap-6 md:grid-cols-2">
             {products.map((product, i) => (
@@ -63,7 +63,7 @@ export default function ProductsPage() {
                 <thead>
                   <tr style={{ background: "var(--bg-elevated)" }}>
                     <th className="w-[20%] px-6 py-5" />
-                    {[mathpath, enrichment].map((p) => (
+                    {[mathpath, krama].map((p) => (
                       <th key={p.slug} className="px-6 py-5 align-bottom">
                         <span className="flex items-center gap-2 font-display text-lg font-extrabold" style={{ color: "var(--text-primary)" }}>
                           {p.name}
@@ -86,7 +86,7 @@ export default function ProductsPage() {
                         {row.mathpath}
                       </td>
                       <td className="px-6 py-4 leading-6" style={{ color: "var(--text-secondary)" }}>
-                        {row.enrichment}
+                        {row.krama}
                       </td>
                     </tr>
                   ))}
