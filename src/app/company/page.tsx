@@ -17,14 +17,15 @@ export const metadata: Metadata = {
 };
 
 const companyFacts = [
-  { label: "Entity", value: "Zetta Metrics Technologies Pvt. Ltd." },
-  { label: "Headquarters", value: "Kolkata, India" },
-  { label: "Founded", value: "2026" },
+  { label: "Entity", value: brand.legalName },
+  { label: "CIN", value: brand.cin },
+  { label: "Incorporated", value: brand.incorporated },
+  { label: "Registered office", value: brand.registeredOffice.join(", ") },
   { label: "Focus", value: "Ed-Tech platforms and workflow software" },
 ];
 
 const milestones = [
-  { mark: "2026", title: "Founded in Kolkata", detail: "Started with one conviction: the processes institutions depend on deserve real software, not another spreadsheet.", href: "/contact", cta: "Work with us" },
+  { mark: "2026", title: "Incorporated in Kolkata", detail: "Incorporated on 10 August 2026, with one conviction: the processes institutions depend on deserve real software, not another spreadsheet.", href: "/contact", cta: "Work with us" },
   { mark: "Live", title: "The MathPath Platform", detail: "Runs MathPath's abacus program end to end: practice, assessments, the Annual Competition, ranks, rewards and fees.", href: "/products/mathpath", cta: "See the platform" },
   { mark: "Next", title: "Krama", detail: "A learning platform for CBSE and ICSE schools, Classes 5–10. In development, with its core already working.", href: "/products/krama", cta: "See what's built" },
 ];
@@ -57,10 +58,10 @@ export default function CompanyPage() {
               <dl className="surface-card divide-y" style={{ borderColor: "var(--border-subtle)" }}>
                 {companyFacts.map((f) => (
                   <div key={f.label} className="flex items-baseline justify-between gap-6 px-6 py-4" style={{ borderColor: "var(--border-subtle)" }}>
-                    <dt className="text-xs font-bold uppercase tracking-[0.14em]" style={{ color: "var(--text-muted)" }}>
+                    <dt className="shrink-0 text-xs font-bold uppercase tracking-[0.14em]" style={{ color: "var(--text-muted)" }}>
                       {f.label}
                     </dt>
-                    <dd className="text-right font-display text-sm font-bold" style={{ color: "var(--text-primary)" }}>
+                    <dd className={`text-right font-display text-sm font-bold leading-6 ${f.label === "CIN" ? "font-mono tracking-tight" : ""}`} style={{ color: "var(--text-primary)" }}>
                       {f.value}
                     </dd>
                   </div>

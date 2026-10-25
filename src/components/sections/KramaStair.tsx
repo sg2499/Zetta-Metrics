@@ -51,14 +51,14 @@ export default function KramaStair({ compact = false }: { compact?: boolean }) {
             <div
               className="absolute inset-0 overflow-hidden rounded-b-md border border-t-0"
               style={{
-                borderColor: "rgba(255,255,255,0.14)",
-                background: "linear-gradient(180deg, rgba(125,106,235,0.34), rgba(40,33,110,0.55) 55%, rgba(18,14,46,0.7))",
+                borderColor: "var(--krama-step-border)",
+                background: "var(--krama-step-bg)",
                 backdropFilter: "blur(6px)",
               }}
             >
               <span
                 className="font-serif-display absolute -bottom-3 right-1 select-none leading-none"
-                style={{ fontSize: compact ? "3.4rem" : "clamp(3.6rem, 8vw, 6.2rem)", color: "rgba(255,255,255,0.07)", fontWeight: 700 }}
+                style={{ fontSize: compact ? "3.4rem" : "clamp(3.6rem, 8vw, 6.2rem)", color: "var(--krama-step-num)", fontWeight: 700 }}
               >
                 {i + 1}
               </span>

@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import { ArrowRight, Gift, Lock, Medal, Sparkles } from "lucide-react";
-import { products } from "@/lib/content";
+import { ArrowRight, CheckCircle2, Gift, Lock, Medal, Sparkles } from "lucide-react";
+import { mathpathWorkspaces, products } from "@/lib/content";
 import ProductShowcase from "@/components/sections/ProductShowcase";
-import WorkspaceRows from "@/components/sections/WorkspaceRows";
 import ProductFacts from "@/components/sections/ProductFacts";
 import RankLadder from "@/components/sections/RankLadder";
 import PaymentsFlow from "@/components/sections/PaymentsFlow";
@@ -50,8 +48,8 @@ export default function MathPathPage() {
             </Reveal>
             <Reveal immediate delay={0.1}>
               <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
-                <MagneticLink href="#workspaces" className="btn-primary px-7 py-4 text-sm">
-                  Tour the workspaces <ArrowRight size={16} />
+                <MagneticLink href="#tour" className="btn-primary px-7 py-4 text-sm">
+                  Tour the platform <ArrowRight size={16} />
                 </MagneticLink>
                 <MagneticLink href="/contact" className="btn-secondary px-7 py-4 text-sm">
                   Build something like this
@@ -64,7 +62,7 @@ export default function MathPathPage() {
           </div>
 
           <Reveal delay={0.2} y={40}>
-            <div className="mt-16">
+            <div id="tour" className="mt-16 scroll-mt-28">
               <ProductShowcase />
             </div>
           </Reveal>
@@ -147,10 +145,41 @@ export default function MathPathPage() {
                 One platform. <span className="gradient-text">Built for every role.</span>
               </>
             }
-            description="Admins, teachers and students each get a workspace built around their job. Every screen here is from the live platform."
+            description="Admins, teachers and students each get a workspace built around their job, and see only what that job needs."
           />
-          <div className="mt-20">
-            <WorkspaceRows />
+          <div className="mt-14 grid items-stretch gap-5 lg:grid-cols-3">
+            {mathpathWorkspaces.map((w, i) => {
+              const Icon = w.icon;
+              return (
+                <Reveal key={w.id} delay={i * 0.07} className="h-full">
+                  <div className="surface-card hover-card flex h-full flex-col p-7 sm:p-8">
+                    <span
+                      className="inline-flex w-fit items-center gap-2 rounded-full px-3 py-1 text-xs font-bold uppercase tracking-[0.14em]"
+                      style={{ background: "var(--accent-soft)", color: "var(--accent)" }}
+                    >
+                      <Icon size={14} /> {w.label}
+                    </span>
+                    <h3 className="mt-5 font-display text-2xl font-extrabold leading-tight tracking-[-0.03em]" style={{ color: "var(--text-primary)" }}>
+                      {w.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-7" style={{ color: "var(--text-secondary)" }}>
+                      {w.summary}
+                    </p>
+                    <ul className="mt-6 space-y-3 border-t pt-6" style={{ borderColor: "var(--border-subtle)" }}>
+                      {w.points.map((pt) => (
+                        <li key={pt} className="flex items-start gap-3 text-sm font-medium" style={{ color: "var(--text-primary)" }}>
+                          <CheckCircle2 size={17} className="mt-0.5 shrink-0" style={{ color: "var(--accent)" }} />
+                          {pt}
+                        </li>
+                      ))}
+                    </ul>
+                    <p className="mt-auto pt-6 text-xs font-semibold" style={{ color: "var(--text-muted)" }}>
+                      {w.screens.length} screens in the tour above: {w.screens.map((sc) => sc.caption).join(", ")}
+                    </p>
+                  </div>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -212,24 +241,6 @@ export default function MathPathPage() {
           <div className="mt-14">
             <PaymentsFlow />
           </div>
-          <Reveal delay={0.1} y={30}>
-            <figure className="mx-auto mt-14 max-w-5xl">
-              <div className="product-frame">
-                <div className="flex items-center gap-2 border-b px-4 py-2.5" style={{ borderColor: "var(--border-subtle)", background: "var(--bg-elevated)" }}>
-                  <span className="h-2 w-2 rounded-full bg-[#ff5f57]" />
-                  <span className="h-2 w-2 rounded-full bg-[#febc2e]" />
-                  <span className="h-2 w-2 rounded-full bg-[#28c840]" />
-                  <span className="ml-3 text-[0.68rem] font-medium" style={{ color: "var(--text-muted)" }}>Admin · Payments</span>
-                </div>
-                <div className="relative" style={{ aspectRatio: "1920 / 1165", background: "#f3f4fb" }}>
-                  <Image src="/screenshots/mathpath/admin-payments.webp" alt="MathPath Platform, the admin Payments home" fill sizes="(min-width: 1024px) 1024px, 100vw" className="object-contain" />
-                </div>
-              </div>
-              <figcaption className="mt-3 text-center text-xs" style={{ color: "var(--text-muted)" }}>
-                The Payments home: today&apos;s collections, dues, what needs attention, and the day close. Amounts and names are masked.
-              </figcaption>
-            </figure>
-          </Reveal>
         </div>
       </section>
 

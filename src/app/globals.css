@@ -819,6 +819,48 @@ main {
   --shadow-soft: 0 8px 24px -12px rgba(0, 0, 0, 0.55);
   --shadow-lifted: 0 20px 48px -16px rgba(0, 0, 0, 0.65);
   --shadow-glow: 0 0 0 1px rgba(249, 171, 43, 0.2), 0 16px 48px -12px rgba(249, 171, 43, 0.3);
+  --krama-step-bg: linear-gradient(180deg, rgba(125, 106, 235, 0.34), rgba(40, 33, 110, 0.55) 55%, rgba(18, 14, 46, 0.7));
+  --krama-step-border: rgba(255, 255, 255, 0.14);
+  --krama-step-num: rgba(255, 255, 255, 0.07);
+  --krama-cover-bg: radial-gradient(90% 80% at 20% 0%, #2a2380, #0c0925 70%);
+  --krama-band-bg: radial-gradient(80% 60% at 50% 0%, rgba(125, 106, 235, 0.28), transparent 70%), linear-gradient(180deg, #171248, #0c0925);
+  --krama-stars: 1;
+}
+/* Krama in light mode: warm paper, deep indigo type, gold kept but deepened
+   so it reads on a light ground. */
+:root[data-theme="light"] .krama-zone {
+  color-scheme: light;
+  --bg-base: #f8f6f0;
+  --bg-raised: #ffffff;
+  --bg-elevated: #f2effb;
+  --bg-overlay: rgba(255, 255, 255, 0.82);
+  --border-subtle: rgba(40, 33, 110, 0.12);
+  --border-strong: rgba(40, 33, 110, 0.22);
+  --text-primary: #1b1548;
+  --text-secondary: #4a4379;
+  --text-muted: #6b6598;
+  --text-on-accent: #1d1100;
+  --accent: #d48a0c;
+  --accent-strong: #a86200;
+  --accent-soft: rgba(212, 138, 12, 0.12);
+  --accent-silver: #eab54f;
+  --accent-glow: rgba(212, 138, 12, 0.22);
+  --status-live: #059669;
+  --status-dev: #b86e00;
+  --glow-primary: rgba(249, 171, 43, 0.22);
+  --glow-secondary: rgba(125, 106, 235, 0.24);
+  --glow-tertiary: rgba(125, 106, 235, 0.12);
+  --glass-bg: rgba(255, 255, 255, 0.72);
+  --glass-border: rgba(40, 33, 110, 0.14);
+  --shadow-soft: 0 8px 24px -12px rgba(27, 21, 72, 0.18);
+  --shadow-lifted: 0 20px 48px -16px rgba(27, 21, 72, 0.22);
+  --shadow-glow: 0 0 0 1px rgba(212, 138, 12, 0.25), 0 16px 48px -12px rgba(212, 138, 12, 0.25);
+  --krama-step-bg: linear-gradient(180deg, rgba(125, 106, 235, 0.14), rgba(109, 95, 208, 0.22) 55%, rgba(80, 68, 180, 0.3));
+  --krama-step-border: rgba(40, 33, 110, 0.14);
+  --krama-step-num: rgba(40, 33, 110, 0.08);
+  --krama-cover-bg: radial-gradient(90% 80% at 20% 0%, #e7e1ff, #f8f6f0 70%);
+  --krama-band-bg: radial-gradient(80% 60% at 50% 0%, rgba(125, 106, 235, 0.14), transparent 70%), linear-gradient(180deg, #efecfa, #f8f6f0);
+  --krama-stars: 0;
 }
 /* The page canvas itself (kept apart so the navbar can take the palette
    without taking the solid background). */
@@ -833,12 +875,11 @@ main {
 }
 .krama-zone .band,
 :root[data-theme="light"] .krama-zone .band {
-  background:
-    radial-gradient(80% 60% at 50% 0%, rgba(125, 106, 235, 0.28), transparent 70%),
-    linear-gradient(180deg, #171248, var(--bg-base));
+  background: var(--krama-band-bg);
 }
 /* Faint star-field for the Krama hero. */
 .krama-stars {
+  opacity: calc(0.8 * var(--krama-stars, 1)) !important;
   background-image:
     radial-gradient(1.2px 1.2px at 12% 18%, rgba(255, 255, 255, 0.55), transparent 60%),
     radial-gradient(1px 1px at 28% 62%, rgba(255, 255, 255, 0.4), transparent 60%),

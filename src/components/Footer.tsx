@@ -95,11 +95,18 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t pt-6 md:flex-row" style={{ borderColor: "var(--border-subtle)" }}>
-          <p className="text-xs" style={{ color: "var(--text-muted)" }}>
-            &copy; {new Date().getFullYear()} {brand.legalName}. All rights reserved.
-          </p>
-          <div className="flex items-center gap-2 text-xs" style={{ color: "var(--text-muted)" }}>
+        <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t pt-6 md:flex-row md:items-center" style={{ borderColor: "var(--border-subtle)" }}>
+          <div className="max-w-3xl text-xs leading-6" style={{ color: "var(--text-muted)" }}>
+            <p>
+              &copy; {new Date().getFullYear()} {brand.legalName}. All rights reserved.
+            </p>
+            <p>
+              <span className="font-semibold" style={{ color: "var(--text-secondary)" }}>CIN</span> {brand.cin}
+              <span className="mx-2 opacity-50">·</span>
+              <span className="font-semibold" style={{ color: "var(--text-secondary)" }}>Registered office</span> {brand.registeredOffice.join(", ")}
+            </p>
+          </div>
+          <div className="flex shrink-0 items-center gap-2 text-xs" style={{ color: "var(--text-muted)" }}>
             <span className="status-dot pulse-dot" style={{ backgroundColor: "var(--accent)" }} />
             {brand.location}
           </div>

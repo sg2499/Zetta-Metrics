@@ -8,7 +8,7 @@ import KramaStair from "@/components/sections/KramaStair";
 /** Krama's own cover: its stair on its indigo-and-gold ground. */
 function KramaCover() {
   return (
-    <div className="krama-zone relative flex h-full items-end overflow-hidden px-6 pt-8" style={{ background: "radial-gradient(90% 80% at 20% 0%, #2a2380, #0c0925 70%)" }}>
+    <div className="krama-zone relative flex h-full items-end overflow-hidden px-6 pt-8" style={{ background: "var(--krama-cover-bg)" }}>
       <div className="krama-stars pointer-events-none absolute inset-0 opacity-80" aria-hidden="true" />
       <div className="relative w-full">
         <KramaStair compact />
@@ -23,7 +23,7 @@ export default function ProductCard({ product }: { product: (typeof products)[nu
   return (
     <Link href={product.href} className="group surface-card hover-card flex h-full flex-col">
       {/* Visual header */}
-      <div className="relative h-56 overflow-hidden border-b sm:h-64" style={{ borderColor: "var(--border-subtle)", background: cover ? "#f4f6fb" : "var(--bg-base)" }}>
+      <div className="relative overflow-hidden border-b" style={{ aspectRatio: "1920 / 967", borderColor: "var(--border-subtle)", background: cover ? "#f4f6fb" : "var(--bg-base)" }}>
         {cover ? (
           <>
             <Image
@@ -32,9 +32,8 @@ export default function ProductCard({ product }: { product: (typeof products)[nu
               fill
               quality={90}
               sizes="(min-width: 768px) 600px, 100vw"
-              className="object-cover object-left-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+              className="object-contain transition-transform duration-700 ease-out group-hover:scale-[1.02]"
             />
-            <div className="absolute inset-x-0 bottom-0 h-16" style={{ background: "linear-gradient(to top, var(--bg-raised), transparent)" }} />
           </>
         ) : (
           <KramaCover />

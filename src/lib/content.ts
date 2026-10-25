@@ -42,6 +42,15 @@ export const brand = {
   shortPositioning:
     "Ed-Tech platforms and workflow software for institutions ready to stop running on spreadsheets.",
   location: "Kolkata, India. Building for clients anywhere.",
+  // As registered with the Ministry of Corporate Affairs (ROC Kolkata II).
+  cin: "U62011WR2026PTC295956",
+  incorporated: "10 August 2026",
+  registeredOffice: [
+    "Laxmi Apartment, Flat No. A, 1st Floor",
+    "Atghara Chekpost, Rajarhat Gopalpur",
+    "North 24 Parganas, Rajarhat",
+    "West Bengal 700136, India",
+  ],
 };
 
 export const founders = [
@@ -369,7 +378,7 @@ export const mathpathScreens = mathpathWorkspaces.flatMap((w) =>
 
 // Home page stat cards: concrete facts, each one checkable.
 export const companyStats = [
-  { icon: MapPin, value: "2026", label: "Founded in Kolkata, India", animate: false },
+  { icon: MapPin, value: "2026", label: "Incorporated in Kolkata, India", animate: false },
   { icon: Layers, value: "2", label: "Platforms on one shared foundation", animate: true },
   { icon: GraduationCap, value: "5", label: "Abacus modules running live on MathPath", animate: true },
   { icon: Boxes, value: "15", label: "Class 5 CBSE Maths chapters live in Krama", animate: true },

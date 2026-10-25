@@ -79,6 +79,17 @@ const organizationJsonLd = {
   logo: "https://www.zetta-metrics.com/logo-mark.png",
   description:
     "Zetta Metrics builds Ed-Tech platforms and workflow software for institutions ready to stop running on spreadsheets, paper and follow-ups.",
+  foundingDate: "2026-08-10",
+  identifier: { "@type": "PropertyValue", propertyID: "CIN", value: "U62011WR2026PTC295956" },
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Laxmi Apartment, Flat No. A, 1st Floor, Atghara Chekpost, Rajarhat Gopalpur",
+    addressLocality: "Rajarhat, North 24 Parganas",
+    addressRegion: "West Bengal",
+    postalCode: "700136",
+    addressCountry: "IN",
+  },
+  email: "shaileshgupta@zetta-metrics.com",
 };
 
 export default function RootLayout({

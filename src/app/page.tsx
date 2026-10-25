@@ -2,9 +2,7 @@ import Link from "next/link";
 import { ArrowRight, GraduationCap, Workflow } from "lucide-react";
 import { companyStats, platformPillars, products } from "@/lib/content";
 import ProductCard from "@/components/sections/ProductCard";
-import ManualToSystem from "@/components/sections/ManualToSystem";
 import ChaosToOrder from "@/components/sections/ChaosToOrder";
-import HeroProductStage from "@/components/sections/HeroProductStage";
 import HeroScene from "@/components/three/HeroScene";
 import AutomationExplorer from "@/components/sections/AutomationExplorer";
 import ScrollStory from "@/components/sections/ScrollStory";
@@ -24,8 +22,8 @@ const bentoSpan = ["lg:col-span-2", "lg:col-span-1", "lg:col-span-1", "lg:col-sp
 export default function Home() {
   return (
     <div>
-      {/* Hero: the message on the left, the live product on the right */}
-      <section className="relative overflow-hidden pt-28 pb-10 md:pt-32 lg:pb-16">
+      {/* Hero: the message on the left, the studio-lit 3D "Z" on the right */}
+      <section className="relative overflow-hidden pt-24 pb-10 md:pt-28 lg:pb-16">
         <SectionGlow
           blobs={[
             { size: 620, top: "-20%", left: "-12%", color: "primary" },
@@ -33,7 +31,7 @@ export default function Home() {
           ]}
         />
         <div className="container-custom relative z-10">
-          <div className="grid items-center gap-10 lg:min-h-[calc(100vh-9rem)] lg:grid-cols-[0.95fr_1.05fr] lg:gap-8">
+          <div className="grid items-center gap-6 lg:min-h-[calc(100vh-8rem)] lg:grid-cols-[1.08fr_0.92fr] lg:gap-4">
             <div>
               <Reveal immediate>
                 <Link href="/products" className="announce-pill">
@@ -63,8 +61,8 @@ export default function Home() {
                   <MagneticLink href="/contact" className="btn-primary px-7 py-4 text-sm">
                     Talk to us <ArrowRight size={16} />
                   </MagneticLink>
-                  <MagneticLink href="/products/mathpath" className="btn-secondary px-7 py-4 text-sm">
-                    See the platform in action
+                  <MagneticLink href="/products" className="btn-secondary px-7 py-4 text-sm">
+                    Explore our products
                   </MagneticLink>
                 </div>
               </Reveal>
@@ -85,11 +83,9 @@ export default function Home() {
                 </div>
               </Reveal>
             </div>
-            <Reveal immediate delay={0.25} y={30}>
-              <div className="relative h-[340px] sm:h-[460px] lg:h-[min(600px,calc(100vh-10rem))]">
-                <HeroProductStage />
-              </div>
-            </Reveal>
+            <div className="relative h-[360px] sm:h-[440px] lg:h-[min(640px,calc(100vh-9rem))]">
+              <HeroScene />
+            </div>
           </div>
         </div>
       </section>
@@ -118,10 +114,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* The shift: pinned scroll sequence on desktop, a compact diagram elsewhere */}
-      <section className="relative pt-16 pin:pt-10">
-        <ChaosToOrder />
-        <div className="container-custom pb-12 pin:hidden">
+      {/* The shift: plays by itself once on screen */}
+      <section className="relative overflow-hidden py-20">
+        <div className="container-custom">
           <SectionHeader
             eyebrow="The shift"
             title={
@@ -133,7 +128,7 @@ export default function Home() {
           />
           <Reveal delay={0.1} y={30}>
             <div className="mt-12">
-              <ManualToSystem />
+              <ChaosToOrder />
             </div>
           </Reveal>
         </div>
@@ -256,11 +251,11 @@ export default function Home() {
         <ScrollStory />
       </section>
 
-      {/* CTA, with the studio-lit Z */}
+      {/* CTA */}
       <section className="relative overflow-hidden pt-8 pb-20">
         <div className="container-custom">
           <Reveal>
-            <div className="cta-panel relative overflow-hidden px-6 py-12 sm:px-12 lg:py-6">
+            <div className="cta-panel relative overflow-hidden px-6 py-16 text-center sm:px-12 sm:py-24">
               <SectionGlow
                 blobs={[
                   { size: 480, top: "-40%", left: "-10%", color: "primary" },
@@ -268,23 +263,18 @@ export default function Home() {
                 ]}
               />
               <div className="dot-grid pointer-events-none absolute inset-0 opacity-40" style={{ maskImage: "radial-gradient(ellipse at center, black, transparent 70%)" }} aria-hidden="true" />
-              <div className="relative grid items-center gap-6 lg:grid-cols-[1.15fr_0.85fr]">
-                <div className="text-center lg:py-12 lg:text-left">
-                  <h2 className="section-title">Still running a core process on spreadsheets and follow-ups?</h2>
-                  <p className="mt-5 text-base leading-7 sm:text-lg" style={{ color: "var(--text-secondary)" }}>
-                    Tell us how it works today. We&apos;ll tell you plainly whether it&apos;s a fit, and what it would take to build.
-                  </p>
-                  <div className="mt-10 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
-                    <MagneticLink href="/contact" className="btn-primary px-7 py-4 text-sm">
-                      Talk to us <ArrowRight size={16} />
-                    </MagneticLink>
-                    <MagneticLink href="/company" className="btn-secondary px-7 py-4 text-sm">
-                      About Zetta Metrics
-                    </MagneticLink>
-                  </div>
-                </div>
-                <div className="relative mx-auto h-[280px] w-full max-w-md sm:h-[340px] lg:h-[420px]">
-                  <HeroScene />
+              <div className="relative">
+                <h2 className="section-title">Still running a core process on spreadsheets and follow-ups?</h2>
+                <p className="mt-5 text-base leading-7 sm:text-lg" style={{ color: "var(--text-secondary)" }}>
+                  Tell us how it works today. We&apos;ll tell you plainly whether it&apos;s a fit for what we build, and what it would take.
+                </p>
+                <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+                  <MagneticLink href="/contact" className="btn-primary px-7 py-4 text-sm">
+                    Talk to us <ArrowRight size={16} />
+                  </MagneticLink>
+                  <MagneticLink href="/company" className="btn-secondary px-7 py-4 text-sm">
+                    About Zetta Metrics
+                  </MagneticLink>
                 </div>
               </div>
             </div>
