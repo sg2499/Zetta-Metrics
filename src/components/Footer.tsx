@@ -100,10 +100,13 @@ export default function Footer() {
             <p>
               &copy; {new Date().getFullYear()} {brand.legalName}. All rights reserved.
             </p>
+            <p className="mt-1">
+              <span className="font-semibold" style={{ color: "var(--text-secondary)" }}>CIN</span>{" "}
+              <span className="font-mono">{brand.cin}</span>
+            </p>
             <p>
-              <span className="font-semibold" style={{ color: "var(--text-secondary)" }}>CIN</span> {brand.cin}
-              <span className="mx-2 opacity-50">·</span>
-              <span className="font-semibold" style={{ color: "var(--text-secondary)" }}>Registered office</span> {brand.registeredOffice.join(", ")}
+              <span className="font-semibold" style={{ color: "var(--text-secondary)" }}>Registered office</span>{" "}
+              {brand.registeredOffice.join(", ")}
             </p>
           </div>
           <div className="flex shrink-0 items-center gap-2 text-xs" style={{ color: "var(--text-muted)" }}>

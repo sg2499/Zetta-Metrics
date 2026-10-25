@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowUpRight, Building2, CheckCircle2, Loader2, Mail, Phone, Send, XCircle } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, Loader2, Mail, Phone, Send, XCircle } from "lucide-react";
 import { LinkedinIcon } from "@/components/BrandIcons";
 import { brand } from "@/lib/content";
 import SectionGlow from "@/components/sections/SectionGlow";
+import CompanyDetails from "@/components/sections/CompanyDetails";
 import SectionHeader from "@/components/sections/SectionHeader";
 import Reveal from "@/components/motion/Reveal";
 
@@ -116,32 +117,7 @@ export default function ContactPage() {
               </Reveal>
 
               <Reveal delay={0.08}>
-                <div className="surface-card flex gap-4 p-5">
-                  <div
-                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl"
-                    style={{ background: "linear-gradient(150deg, var(--accent-soft), transparent)", border: "1px solid var(--glass-border)", color: "var(--accent)" }}
-                  >
-                    <Building2 size={18} />
-                  </div>
-                  <div className="min-w-0">
-                    <p className="text-xs font-semibold uppercase tracking-[0.12em]" style={{ color: "var(--text-muted)" }}>
-                      Registered office
-                    </p>
-                    <p className="mt-1 text-sm font-semibold" style={{ color: "var(--text-primary)" }}>
-                      {brand.legalName}
-                    </p>
-                    <address className="mt-1 text-sm not-italic leading-6" style={{ color: "var(--text-secondary)" }}>
-                      {brand.registeredOffice.map((line) => (
-                        <span key={line} className="block">
-                          {line}
-                        </span>
-                      ))}
-                    </address>
-                    <p className="mt-2 text-xs" style={{ color: "var(--text-muted)" }}>
-                      CIN <span className="font-mono">{brand.cin}</span>
-                    </p>
-                  </div>
-                </div>
+                <CompanyDetails title="Registered company" />
               </Reveal>
 
               <Reveal delay={0.1}>

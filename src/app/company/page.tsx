@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { brand, founders, companyPillars } from "@/lib/content";
 import { GithubIcon, LinkedinIcon } from "@/components/BrandIcons";
 import SectionGlow from "@/components/sections/SectionGlow";
+import CompanyDetails from "@/components/sections/CompanyDetails";
 import SectionHeader from "@/components/sections/SectionHeader";
 import IconBadge from "@/components/sections/IconBadge";
 import Reveal from "@/components/motion/Reveal";
@@ -15,14 +16,6 @@ export const metadata: Metadata = {
   title: "Company",
   description: "Zetta Metrics Technologies Private Limited: who we are, how we work, and what we have built.",
 };
-
-const companyFacts = [
-  { label: "Entity", value: brand.legalName },
-  { label: "CIN", value: brand.cin },
-  { label: "Incorporated", value: brand.incorporated },
-  { label: "Registered office", value: brand.registeredOffice.join(", ") },
-  { label: "Focus", value: "Ed-Tech platforms and workflow software" },
-];
 
 const milestones = [
   { mark: "2026", title: "Incorporated in Kolkata", detail: "Incorporated on 10 August 2026, with one conviction: the processes institutions depend on deserve real software, not another spreadsheet.", href: "/contact", cta: "Work with us" },
@@ -44,7 +37,7 @@ export default function CompanyPage() {
           ]}
         />
         <div className="container-custom">
-          <div className="grid items-end gap-12 lg:grid-cols-[1.25fr_0.75fr]">
+          <div className="grid items-center gap-12 lg:grid-cols-[1.2fr_0.8fr]">
             <Reveal immediate>
               <p className="eyebrow mb-5">Company</p>
               <h1 className="font-display text-[2.9rem] font-extrabold leading-[1.02] tracking-[-0.045em] sm:text-6xl lg:text-[4.6rem]" style={{ color: "var(--text-primary)" }}>
@@ -55,18 +48,7 @@ export default function CompanyPage() {
               </p>
             </Reveal>
             <Reveal immediate delay={0.1}>
-              <dl className="surface-card divide-y" style={{ borderColor: "var(--border-subtle)" }}>
-                {companyFacts.map((f) => (
-                  <div key={f.label} className="flex items-baseline justify-between gap-6 px-6 py-4" style={{ borderColor: "var(--border-subtle)" }}>
-                    <dt className="shrink-0 text-xs font-bold uppercase tracking-[0.14em]" style={{ color: "var(--text-muted)" }}>
-                      {f.label}
-                    </dt>
-                    <dd className={`text-right font-display text-sm font-bold leading-6 ${f.label === "CIN" ? "font-mono tracking-tight" : ""}`} style={{ color: "var(--text-primary)" }}>
-                      {f.value}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
+              <CompanyDetails />
             </Reveal>
           </div>
         </div>
