@@ -57,10 +57,22 @@ export default function ContactPage() {
     }
   };
 
-  const contactLinks = [
+  const iconBox = (Icon: React.ComponentType<{ size?: number }>) => (
+    <div
+      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl"
+      style={{ background: "linear-gradient(150deg, var(--accent-soft), transparent)", border: "1px solid var(--glass-border)", color: "var(--accent)" }}
+    >
+      <Icon size={18} />
+    </div>
+  );
+  const smallLabel = (text: string) => (
+    <p className="text-xs font-semibold uppercase tracking-[0.12em]" style={{ color: "var(--text-muted)" }}>
+      {text}
+    </p>
+  );
+  const linkCards = [
     { icon: Mail, label: "Email", value: brand.email, href: `mailto:${brand.email}` },
     { icon: LinkedinIcon, label: "LinkedIn", value: "Zetta Metrics", href: brand.linkedin },
-    ...brand.phones.map((p) => ({ icon: Phone, label: "Phone", value: `+91 ${p}`, href: `tel:+91${p}` })),
   ];
 
   return (
@@ -84,69 +96,53 @@ export default function ContactPage() {
             description="A process you want automated, a question about our products, or a partnership. Tell us what you need and we'll get back to you personally."
           />
 
-          <div className="mt-14 grid items-start gap-8 lg:grid-cols-[0.85fr_1.15fr]">
-            <div className="space-y-8">
-              <Reveal delay={0.06}>
-                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
-                  {contactLinks.map(({ icon: Icon, label, value, href }) => (
-                    <a
-                      key={`${label}-${value}`}
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group surface-card hover-card flex items-center gap-4 p-5"
-                    >
-                      <div
-                        className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl"
-                        style={{ background: "linear-gradient(150deg, var(--accent-soft), transparent)", border: "1px solid var(--glass-border)", color: "var(--accent)" }}
-                      >
-                        <Icon size={18} />
-                      </div>
-                      <div className="min-w-0 flex-1">
-                        <p className="text-xs font-semibold uppercase tracking-[0.12em]" style={{ color: "var(--text-muted)" }}>
-                          {label}
-                        </p>
-                        <p className="mt-0.5 truncate text-sm font-semibold" style={{ color: "var(--text-primary)" }}>
-                          {value}
-                        </p>
-                      </div>
-                      <ArrowUpRight size={16} className="shrink-0 opacity-40 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" style={{ color: "var(--accent)" }} />
-                    </a>
-                  ))}
-                </div>
-              </Reveal>
-
-              <Reveal delay={0.08}>
-                <CompanyDetails title="Registered company" />
-              </Reveal>
-
-              <Reveal delay={0.1}>
-                <div>
-                  <p className="eyebrow mb-5">What happens next</p>
-                  <ol className="relative space-y-6 border-l pl-6" style={{ borderColor: "var(--border-strong)" }}>
-                    {nextSteps.map((s, i) => (
-                      <li key={s.title} className="relative">
-                        <span
-                          className="absolute -left-[37px] flex h-6 w-6 items-center justify-center rounded-full font-display text-[0.7rem] font-extrabold"
-                          style={{ background: "linear-gradient(150deg, var(--accent-strong), var(--accent))", color: "var(--text-on-accent)", boxShadow: "0 0 0 4px var(--bg-base)" }}
+          <div className="mt-14 grid items-stretch gap-8 lg:grid-cols-[0.85fr_1.15fr]">
+            <Reveal delay={0.08} className="h-full min-w-0">
+              <div className="flex h-full flex-col gap-4">
+                {linkCards.map(({ icon, label, value, href }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group surface-card hover-card flex flex-1 items-center gap-4 p-6"
+                  >
+                    {iconBox(icon)}
+                    <div className="min-w-0 flex-1">
+                      {smallLabel(label)}
+                      <p className="mt-1 text-base font-semibold [overflow-wrap:anywhere]" style={{ color: "var(--text-primary)" }}>
+                        {value}
+                      </p>
+                    </div>
+                    <ArrowUpRight size={17} className="shrink-0 opacity-40 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" style={{ color: "var(--accent)" }} />
+                  </a>
+                ))}
+                <div className="surface-card flex flex-1 items-center gap-4 p-6">
+                  {iconBox(Phone)}
+                  <div className="min-w-0 flex-1">
+                    {smallLabel("Phone")}
+                    <div className="mt-1 flex flex-col gap-0.5">
+                      {brand.phones.map((p) => (
+                        <a
+                          key={p}
+                          href={`tel:+91${p}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group inline-flex w-fit items-center gap-1.5 text-base font-semibold transition-colors hover:text-[var(--accent)]"
+                          style={{ color: "var(--text-primary)" }}
                         >
-                          {i + 1}
-                        </span>
-                        <p className="font-display text-base font-bold" style={{ color: "var(--text-primary)" }}>
-                          {s.title}
-                        </p>
-                        <p className="mt-1 text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
-                          {s.detail}
-                        </p>
-                      </li>
-                    ))}
-                  </ol>
+                          +91 {p}
+                          <ArrowUpRight size={14} className="opacity-0 transition-opacity group-hover:opacity-100" style={{ color: "var(--accent)" }} />
+                        </a>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-              </Reveal>
-            </div>
+              </div>
+            </Reveal>
 
-            <Reveal delay={0.12}>
-              <form onSubmit={submit} className="glass-panel space-y-5 p-7 sm:p-9">
+            <Reveal delay={0.08} className="h-full min-w-0">
+              <form onSubmit={submit} className="glass-panel h-full space-y-5 p-7 sm:p-9">
                 <div>
                   <h2 className="font-display text-2xl font-extrabold tracking-tight" style={{ color: "var(--text-primary)" }}>
                     Send a message
@@ -237,6 +233,39 @@ export default function ContactPage() {
                   </p>
                 )}
               </form>
+            </Reveal>
+          </div>
+
+          <div className="mt-8 grid items-stretch gap-8 lg:grid-cols-2">
+            <Reveal delay={0.1} className="h-full min-w-0">
+              <CompanyDetails title="Registered company" className="h-full" />
+            </Reveal>
+            <Reveal delay={0.1} className="h-full min-w-0">
+              <div className="surface-card h-full p-7">
+                <p className="text-[0.68rem] font-bold uppercase tracking-[0.16em]" style={{ color: "var(--accent)" }}>
+                  What happens next
+                </p>
+                <ol className="mt-6 space-y-6">
+                  {nextSteps.map((st, i) => (
+                    <li key={st.title} className="flex gap-4">
+                      <span
+                        className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full font-display text-xs font-extrabold"
+                        style={{ background: "linear-gradient(150deg, var(--accent-strong), var(--accent))", color: "var(--text-on-accent)" }}
+                      >
+                        {i + 1}
+                      </span>
+                      <div>
+                        <p className="font-display text-base font-bold" style={{ color: "var(--text-primary)" }}>
+                          {st.title}
+                        </p>
+                        <p className="mt-1 text-sm leading-6" style={{ color: "var(--text-secondary)" }}>
+                          {st.detail}
+                        </p>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+              </div>
             </Reveal>
           </div>
         </div>

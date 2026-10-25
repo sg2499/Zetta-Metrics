@@ -913,3 +913,8 @@ h2 .gradient-text,
   letter-spacing: -0.025em;
   padding-right: 0.06em;
 }
+
+/* Theme toggle: show the icon for the mode you would switch to. */
+.theme-toggle .theme-icon-moon { display: none; }
+:root[data-theme="light"] .theme-toggle .theme-icon-sun { display: none; }
+:root[data-theme="light"] .theme-toggle .theme-icon-moon { display: block; }

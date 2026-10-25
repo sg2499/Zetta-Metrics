@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight, GraduationCap, Workflow } from "lucide-react";
 import { companyStats, platformPillars, products } from "@/lib/content";
 import ProductCard from "@/components/sections/ProductCard";
-import ChaosToOrder from "@/components/sections/ChaosToOrder";
+import ShiftFilm from "@/components/sections/ShiftFilm";
 import HeroScene from "@/components/three/HeroScene";
 import AutomationExplorer from "@/components/sections/AutomationExplorer";
 import ScrollStory from "@/components/sections/ScrollStory";
@@ -114,22 +114,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* The shift: plays by itself once on screen */}
-      <section className="relative overflow-hidden py-20">
+      {/* The shift: a short film, sized to fit one screen */}
+      <section className="relative py-16 sm:py-20">
         <div className="container-custom">
-          <SectionHeader
-            eyebrow="The shift"
-            title={
-              <>
-                From scattered manual work <span className="gradient-text">to one system.</span>
-              </>
-            }
-            description="Spreadsheets, email chains, chat follow-ups and paper go in. One workflow comes out, where every step is checked, timed and on record."
-          />
-          <Reveal delay={0.1} y={30}>
-            <div className="mt-12">
-              <ChaosToOrder />
-            </div>
+          <Reveal y={30}>
+            <ShiftFilm />
           </Reveal>
         </div>
       </section>

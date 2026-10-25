@@ -9,9 +9,9 @@ const label = "text-[0.68rem] font-bold uppercase tracking-[0.16em]";
  * date side by side, then the registered office as a proper address block.
  * Shared by the Company and Contact pages so both read identically.
  */
-export default function CompanyDetails({ title = "Company details" }: { title?: string }) {
+export default function CompanyDetails({ title = "Company details", className = "" }: { title?: string; className?: string }) {
   return (
-    <div className="surface-card overflow-hidden">
+    <div className={`surface-card overflow-hidden ${className}`}>
       <div className="px-6 py-5">
         <p className={`${label} flex items-center gap-2`} style={{ color: "var(--accent)" }}>
           <Building2 size={13} /> {title}
