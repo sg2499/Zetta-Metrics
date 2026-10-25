@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { ArrowRight, Gift, Lock, Medal, Sparkles } from "lucide-react";
 import { products } from "@/lib/content";
 import ProductShowcase from "@/components/sections/ProductShowcase";
@@ -50,14 +51,14 @@ export default function MathPathPage() {
             <Reveal immediate delay={0.1}>
               <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
                 <MagneticLink href="#workspaces" className="btn-primary px-7 py-4 text-sm">
-                  See the workspaces <ArrowRight size={16} />
+                  Tour the workspaces <ArrowRight size={16} />
                 </MagneticLink>
                 <MagneticLink href="/contact" className="btn-secondary px-7 py-4 text-sm">
-                  Want a platform like this?
+                  Build something like this
                 </MagneticLink>
               </div>
               <p className="mt-5 text-xs leading-5" style={{ color: "var(--text-muted)" }}>
-                <Lock size={12} className="mr-1.5 inline-block -translate-y-px" /> A private platform, live exclusively for MathPath&apos;s own students and teachers.
+                <Lock size={12} className="mr-1.5 inline-block -translate-y-px" /> Private to MathPath. Live with its students, teachers and centres.
               </p>
             </Reveal>
           </div>
@@ -93,7 +94,7 @@ export default function MathPathPage() {
                 From the first mock <span className="gradient-text">to the main event.</span>
               </>
             }
-            description="MathPath's Annual Competition is the highlight of every student's year. The platform prepares each student for it step by step, then runs the event itself."
+            description="The Annual Competition is the high point of a MathPath student's year. The platform prepares every student for it, step by step, then runs the event itself."
           />
           <ol className="relative mt-14 grid items-stretch gap-5 md:grid-cols-3">
             {/* connecting rule behind the step markers (desktop) */}
@@ -146,7 +147,7 @@ export default function MathPathPage() {
                 One platform. <span className="gradient-text">Built for every role.</span>
               </>
             }
-            description="Admins, teachers, and students each get a workspace scoped to exactly what they need to do — all running on the same server-authoritative core."
+            description="Admins, teachers and students each get a workspace built around their job. Every screen here is from the live platform."
           />
           <div className="mt-20">
             <WorkspaceRows />
@@ -170,7 +171,7 @@ export default function MathPathPage() {
                 Practice that students <span className="gradient-text">want to come back to.</span>
               </>
             }
-            description="Every question earns XP and MathCoins. XP climbs a 34-division rank ladder from Copper to Champion, and coins unlock real rewards in the store."
+            description="Every sheet, mock and assessment earns XP and MathCoins. XP climbs a 34-division ladder from Copper to Champion. Coins buy real rewards."
           />
           <Reveal delay={0.1} y={30}>
             <div className="mt-14">
@@ -179,8 +180,8 @@ export default function MathPathPage() {
           </Reveal>
           <div className="mt-8 grid gap-5 md:grid-cols-3">
             {[
-              { icon: Medal, title: "A rank-up is an event", detail: "Each new division plays its own cut scene with a forged 3D medallion and a soundtrack, so progress feels earned." },
-              { icon: Gift, title: "A store for MathCoins", detail: "Students spend what they earn on real rewards. Prices climb gradually, so there is always another one to aim for." },
+              { icon: Medal, title: "A rank-up is an event", detail: "Every new division opens with a cinematic cut scene and its own forged 3D medallion, so progress feels earned." },
+              { icon: Gift, title: "A store for MathCoins", detail: "Students spend what they earn on real rewards, set the next one as their goal, and collect it at their centre." },
               { icon: Sparkles, title: "Small moments that count", detail: "Podium leaderboards, practice heatmaps, badges in a trophy room, and a birthday greeting waiting on the dashboard." },
             ].map((c, i) => (
               <Reveal key={c.title} delay={i * 0.07} className="h-full">
@@ -206,11 +207,29 @@ export default function MathPathPage() {
                 The business side runs <span className="gradient-text">on the same platform.</span>
               </>
             }
-            description="Fee setup, monthly billing, counter and online payments, and follow-ups, for admins who would rather not keep a notebook of who owes what."
+            description="Billing, collections, follow-ups and the daily cash count, run from the same platform as the classroom."
           />
           <div className="mt-14">
             <PaymentsFlow />
           </div>
+          <Reveal delay={0.1} y={30}>
+            <figure className="mx-auto mt-14 max-w-5xl">
+              <div className="product-frame">
+                <div className="flex items-center gap-2 border-b px-4 py-2.5" style={{ borderColor: "var(--border-subtle)", background: "var(--bg-elevated)" }}>
+                  <span className="h-2 w-2 rounded-full bg-[#ff5f57]" />
+                  <span className="h-2 w-2 rounded-full bg-[#febc2e]" />
+                  <span className="h-2 w-2 rounded-full bg-[#28c840]" />
+                  <span className="ml-3 text-[0.68rem] font-medium" style={{ color: "var(--text-muted)" }}>Admin · Payments</span>
+                </div>
+                <div className="relative" style={{ aspectRatio: "1920 / 1165", background: "#f3f4fb" }}>
+                  <Image src="/screenshots/mathpath/admin-payments.webp" alt="MathPath Platform, the admin Payments home" fill sizes="(min-width: 1024px) 1024px, 100vw" className="object-contain" />
+                </div>
+              </div>
+              <figcaption className="mt-3 text-center text-xs" style={{ color: "var(--text-muted)" }}>
+                The Payments home: today&apos;s collections, dues, what needs attention, and the day close. Amounts and names are masked.
+              </figcaption>
+            </figure>
+          </Reveal>
         </div>
       </section>
 
@@ -220,8 +239,8 @@ export default function MathPathPage() {
         <div className="container-custom">
           <SectionHeader
             eyebrow="Under the hood"
-            title="What's in the platform."
-            description="The mechanics that make the platform trustworthy enough to run MathPath's abacus program every day, and its Annual Competition once a year."
+            title="What the platform does."
+            description="The mechanics that make it trustworthy enough to run MathPath's program every day, and its Annual Competition once a year."
           />
           <div className="mt-14 grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {product.highlights.map((h, i) => (
@@ -248,7 +267,7 @@ export default function MathPathPage() {
             <div className="cta-panel relative flex flex-col items-start gap-8 overflow-hidden p-10 sm:p-14 md:flex-row md:items-center md:justify-between">
               <SectionGlow blobs={[{ size: 420, top: "-40%", right: "-5%", color: "primary" }]} />
               <div className="min-w-0 flex-1">
-                <h2 className="section-title">Want a platform like this built for you?</h2>
+                <h2 className="section-title">Want a platform like this for your institution?</h2>
                 <p className="mt-4 text-base leading-7" style={{ color: "var(--text-secondary)" }}>
                   The MathPath Platform is private to MathPath&apos;s students, but the approach behind it isn&apos;t. Tell us about the process you want to turn into software.
                 </p>

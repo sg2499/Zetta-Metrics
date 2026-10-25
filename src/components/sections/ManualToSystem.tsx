@@ -5,7 +5,6 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   ArrowDown,
-  BrainCircuit,
   CheckCircle2,
   FileSpreadsheet,
   Inbox,
@@ -13,6 +12,7 @@ import {
   Mail,
   MessageCircle,
   Printer,
+  ServerCog,
   StickyNote,
   UserCheck,
 } from "lucide-react";
@@ -29,16 +29,16 @@ import { useSafeReducedMotion } from "@/components/motion/useSafeReducedMotion";
 const MESS = [
   { icon: FileSpreadsheet, label: "marks_final_v3 (2).xlsx", tag: "Outdated", rot: -3, dx: 0 },
   { icon: Mail, label: "Re: Fwd: approval needed?", tag: "No reply", rot: 2, dx: 22 },
-  { icon: MessageCircle, label: "Please send today's scores", tag: "Chasing", rot: -1.5, dx: 6 },
-  { icon: Printer, label: "Printed worksheets — to mark", tag: "Pending", rot: 2.5, dx: 26 },
+  { icon: MessageCircle, label: "Can you send today's scores?", tag: "Chasing", rot: -1.5, dx: 6 },
+  { icon: Printer, label: "Worksheets, still to mark", tag: "Pending", rot: 2.5, dx: 26 },
   { icon: StickyNote, label: "Who has the latest version?", tag: "Unclear", rot: -2, dx: 2 },
 ];
 
 const PIPELINE = [
-  { icon: Inbox, label: "Intake", status: "Automated" },
-  { icon: BrainCircuit, label: "AI scoring", status: "Server-side" },
-  { icon: UserCheck, label: "Approval", status: "Role-based" },
-  { icon: LineChart, label: "Live report", status: "Real-time" },
+  { icon: Inbox, label: "Work comes in", status: "One place, every time" },
+  { icon: ServerCog, label: "Rules applied", status: "On the server" },
+  { icon: UserCheck, label: "Approved by role", status: "On record" },
+  { icon: LineChart, label: "Reported live", status: "Period on period" },
 ];
 
 // Vertical centers (in %) of the evenly spaced items on each side, used to
@@ -148,7 +148,7 @@ function Core({ small = false }: { small?: boolean }) {
         </div>
       </div>
       <span className="mt-5 whitespace-nowrap text-[0.65rem] font-bold uppercase tracking-[0.18em]" style={{ color: "var(--accent)" }}>
-        Zetta platform
+        One system
       </span>
     </div>
   );
@@ -199,7 +199,7 @@ export default function ManualToSystem() {
           </div>
         </div>
         <div>
-          {colLabel("With Zetta: an intelligent workflow", "var(--accent)")}
+          {colLabel("With Zetta: one workflow", "var(--accent)")}
           <div className="flex h-[340px] flex-col justify-around">
             {PIPELINE.map((p, i) => (
               <PipeNode key={p.label} step={p} active={!reduce && i === active} done={reduce || i < active} />
@@ -221,7 +221,7 @@ export default function ManualToSystem() {
           <Core small />
           <ArrowDown size={18} style={{ color: "var(--accent)" }} />
         </div>
-        {colLabel("With Zetta: an intelligent workflow", "var(--accent)")}
+        {colLabel("With Zetta: one workflow", "var(--accent)")}
         <div className="grid gap-2.5 sm:grid-cols-2">
           {PIPELINE.map((p, i) => (
             <PipeNode key={p.label} step={p} active={!reduce && i === active} done={reduce || i < active} />

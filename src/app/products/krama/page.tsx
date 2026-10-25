@@ -184,7 +184,7 @@ export default function KramaPage() {
                 One platform. <span className="gradient-text">A place for every role.</span>
               </>
             }
-            description="Each role signs in on its own tab and sees only what it needs."
+            description="Each role signs in on its own page and sees only what its job needs."
           />
           <div className="mt-14 grid items-stretch gap-5 md:grid-cols-2 lg:grid-cols-4">
             {roles.map((r, i) => (

@@ -860,3 +860,15 @@ main {
 @media (prefers-reduced-motion: reduce) {
   .krama-float, .rank-glow { animation: none !important; }
 }
+
+/* Editorial accent: the highlighted words in page and section headlines are
+   set in Fraunces italic, keeping the brand gradient. */
+h1 .gradient-text,
+h2 .gradient-text,
+.headline-accent {
+  font-family: var(--font-fraunces), "Fraunces", Georgia, serif;
+  font-style: italic;
+  font-weight: 560;
+  letter-spacing: -0.025em;
+  padding-right: 0.06em;
+}

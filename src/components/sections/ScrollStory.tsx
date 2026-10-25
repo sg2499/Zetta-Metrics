@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll, useSpring } from "framer-motion";
-import { AlertTriangle, ArrowRight, BarChart3, BrainCircuit, CheckCircle2, KeyRound, Plus, Users, Workflow, Layers } from "lucide-react";
+import { AlertTriangle, ArrowRight, BarChart3, CheckCircle2, KeyRound, Plus, Timer, Users, Workflow, Layers } from "lucide-react";
 import { processSteps } from "@/lib/content";
 import { useSafeReducedMotion } from "@/components/motion/useSafeReducedMotion";
 
@@ -42,7 +42,7 @@ function BuildVisual({ reduce }: { reduce: boolean }) {
   const blocks = [
     { icon: Users, label: "Roles" },
     { icon: Workflow, label: "Workflow" },
-    { icon: BrainCircuit, label: "AI scoring" },
+    { icon: Timer, label: "Scoring" },
     { icon: KeyRound, label: "Access" },
     { icon: BarChart3, label: "Reports" },
     { icon: Layers, label: "Audit trail" },

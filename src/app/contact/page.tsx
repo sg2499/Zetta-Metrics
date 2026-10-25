@@ -8,12 +8,12 @@ import SectionGlow from "@/components/sections/SectionGlow";
 import SectionHeader from "@/components/sections/SectionHeader";
 import Reveal from "@/components/motion/Reveal";
 
-const subjects = ["Product inquiry", "Partnership or investment", "Careers", "General inquiry"];
+const subjects = ["A process to automate", "Our products", "Partnership or investment", "Careers", "Something else"];
 
 const nextSteps = [
-  { title: "Your message reaches the founders", detail: "No ticket queue — it goes straight to the people who build the product." },
-  { title: "We reply personally", detail: "With real answers to your questions, not a canned brochure." },
-  { title: "If it's a fit, we map it together", detail: "A working session on how your process runs today and what the system would look like." },
+  { title: "It reaches the founders", detail: "No ticket queue. Your message goes straight to the people who build the product." },
+  { title: "We reply personally", detail: "With straight answers to your questions, not a brochure." },
+  { title: "If it fits, we map it together", detail: "A working session on how the process runs today, and what the system should look like." },
 ];
 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
@@ -77,10 +77,10 @@ export default function ContactPage() {
             eyebrow="Contact"
             title={
               <>
-                Let&apos;s talk about <span className="gradient-text">your workflow.</span>
+                Tell us how the work runs <span className="gradient-text">today.</span>
               </>
             }
-            description="Whether it's a product inquiry, a partnership, or investment — tell us what you need and we'll get back to you."
+            description="A process you want automated, a question about our products, or a partnership. Tell us what you need and we'll get back to you personally."
           />
 
           <div className="mt-14 grid items-start gap-8 lg:grid-cols-[0.85fr_1.15fr]">
@@ -144,10 +144,10 @@ export default function ContactPage() {
               <form onSubmit={submit} className="glass-panel space-y-5 p-7 sm:p-9">
                 <div>
                   <h2 className="font-display text-2xl font-extrabold tracking-tight" style={{ color: "var(--text-primary)" }}>
-                    Send us a message
+                    Send a message
                   </h2>
                   <p className="mt-1 text-sm" style={{ color: "var(--text-secondary)" }}>
-                    Sent straight to our inbox — we&apos;ll get back to you personally.
+                    It goes straight to our inbox. A few lines are enough to start.
                   </p>
                 </div>
                 <div className="grid gap-5 md:grid-cols-2">
@@ -160,7 +160,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="grid gap-5 md:grid-cols-2">
-                  <Field label="Company / organization">
+                  <Field label="Organisation">
                     <input className="field" value={form.company} onChange={(e) => setForm({ ...form, company: e.target.value })} placeholder="Optional" autoComplete="organization" />
                   </Field>
                   <Field label="Contact number">
@@ -196,7 +196,7 @@ export default function ContactPage() {
                 </fieldset>
 
                 <Field label="Message">
-                  <textarea required rows={5} className="field" style={{ resize: "vertical" }} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} placeholder="Tell us a bit about what you need..." />
+                  <textarea required rows={5} className="field" style={{ resize: "vertical" }} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} placeholder="What does the process look like today, and what should change?" />
                 </Field>
 
                 <button
@@ -217,7 +217,7 @@ export default function ContactPage() {
 
                 {status === "sent" && (
                   <p className="flex items-center gap-2 text-sm font-medium" style={{ color: "var(--accent)" }}>
-                    <CheckCircle2 size={16} /> Message sent — we&apos;ll be in touch soon.
+                    <CheckCircle2 size={16} /> Message sent. We&apos;ll be in touch soon.
                   </p>
                 )}
                 {status === "error" && (

@@ -3,7 +3,6 @@ import {
   Award,
   Banknote,
   Boxes,
-  BrainCircuit,
   Building2,
   CheckCircle2,
   ClipboardCheck,
@@ -39,17 +38,17 @@ export const brand = {
   github: "https://github.com/sg2499",
   linkedin: "https://www.linkedin.com/company/zetta-metrics/",
   positioning:
-    "We're an AI-native SaaS company specialising in Ed-Tech platforms and workflow automation: role-based workflows, backend-authoritative logic, and AI built into the product from day one, not bolted on after. The MathPath Platform, built for our client MathPath's abacus program, and Krama, our CBSE and ICSE learning platform for Classes 5–10, are how we bring that to education, and the same approach extends to any institution or business whose manual process is ready to become software.",
+    "Zetta Metrics builds Ed-Tech platforms and workflow software for institutions that still run on spreadsheets, paper and follow-ups. Every system we ship gives each role its own workspace, decides its rules on the server, and keeps a record of every decision. The MathPath Platform runs a live abacus program end to end. Krama, our platform for CBSE and ICSE schools, is next.",
   shortPositioning:
-    "AI-native Ed-Tech platforms and workflow automation, built for the institutions and businesses that run on them.",
-  location: "Kolkata, India — building for clients worldwide",
+    "Ed-Tech platforms and workflow software for institutions ready to stop running on spreadsheets.",
+  location: "Kolkata, India. Building for clients anywhere.",
 };
 
 export const founders = [
   {
     name: "Shailesh Gupta",
     role: "Founder & Director",
-    bio: "Started out as a Data Scientist at Teleperformance, building attrition and credit-risk models, then spent two years on applied AI and LLM systems during a Master's in Data Science and AI at IIT Roorkee. Leads product and engineering at Zetta Metrics — the one writing the code everything runs on.",
+    bio: "Began as a Data Scientist at Teleperformance, building attrition and credit-risk models, then spent two years on applied AI and LLM systems during a Master's in Data Science and AI at IIT Roorkee. Leads product and engineering, and writes the code the platforms run on.",
     image: "/founder-shailesh.jpg",
     linkedin: "https://www.linkedin.com/in/shailesh-gupta-7b7278188",
     github: "https://github.com/sg2499",
@@ -57,68 +56,66 @@ export const founders = [
   {
     name: "Ashalatha Gupta",
     role: "Founder & Director",
-    bio: "Co-founder and Director, running the operating and business side of Zetta Metrics so product and engineering can stay focused on what ships.",
+    bio: "Runs operations and the business side of Zetta Metrics, so product and engineering stay focused on what ships next.",
     image: null,
   },
 ];
 
-// Used on the Home page ("The platform" section) — framed around the
-// engineering principles we apply to whatever we build, not around any one
-// product or a single fixed "engine."
+// Home page, "The platform". Order matches PillarVisual:
+// 0 server rules, 1 shared blocks, 2 audit trail, 3 role matrix.
 export const platformPillars = [
   {
-    icon: BrainCircuit,
-    title: "AI inside the product, not bolted on",
+    icon: Database,
+    title: "The rules live on the server",
     summary:
-      "Scoring, decisions, and content checks run through AI as part of the product itself — never a chat widget dropped on top afterward.",
+      "Scores, timers, approvals and promotions are decided on the server and nowhere else. People see the outcome. Nobody can edit the rule.",
   },
   {
     icon: Workflow,
-    title: "Built to be reused, not rebuilt",
+    title: "Built once, reused on purpose",
     summary:
-      "Roles, approvals, and workflow logic are designed as reusable building blocks, so the next product we build starts ahead of the last one instead of from zero.",
+      "Roles, assignments, approvals, scoring and reports are engineered as building blocks, so each new product starts where the last one finished.",
   },
   {
-    icon: Database,
-    title: "Scoring you can audit",
+    icon: ScrollText,
+    title: "Every decision on record",
     summary:
-      "Every decision and status change traces back to a server-side rule, not a client guess — so it's always auditable.",
+      "Who changed what, when and why is logged the moment it happens. Nothing depends on someone remembering.",
   },
   {
     icon: ShieldCheck,
-    title: "Built for production, not demos",
+    title: "Every role, its own workspace",
     summary:
-      "Role separation, session handling, and data controls are part of the first build for any client we take on — because what we ship reaches real users, not a pitch audience.",
+      "Admins, teachers and students each work in a space built for their job, and see exactly what that job needs. Nothing more.",
   },
 ];
 
-// Used on the Company page (mission recap) — same underlying principles as
-// platformPillars, framed around how we operate as a company rather than
-// what any one product does technically. Keep this distinct in wording.
+// Company page, "How we operate". How we work as a company, worded
+// differently from platformPillars on purpose.
 export const companyPillars = [
   {
-    icon: BrainCircuit,
-    title: "AI is the default, not an add-on",
+    icon: Network,
+    title: "Start from the process, not the software",
     summary:
-      "We don't design a product and then look for a place to fit AI in — the intelligent layer is part of the first draft of every system we build.",
+      "We map how the work runs today, every role and every hand-off, before we design a single screen.",
   },
   {
     icon: Workflow,
-    title: "We build reusable systems, not one-offs",
+    title: "Build once, reuse on purpose",
     summary:
-      "Every engagement is designed so what we learn and build carries into the next one — that's what lets us keep expanding into new products and new industries.",
+      "What we engineer for one client becomes a building block for the next, so every product starts further ahead.",
   },
   {
     icon: Database,
-    title: "Decisions have to be explainable",
+    title: "If it decides, it explains",
     summary:
-      "If a system scores, grades, or approves something, the reasoning has to be traceable — we don't ship logic nobody can account for.",
+      "Anything that scores, grades or approves leaves a trail a person can follow. We don't ship logic nobody can account for.",
   },
   {
     icon: ShieldCheck,
-    title: "We build for the people who'll actually use it",
+    title: "Built for daily use, not a demo",
     summary:
-      "Access control, data handling, and session hygiene are standard from day one, because what we ship reaches real users, not a demo audience.",
+      "A teacher between classes, a student on a phone, an admin closing the day. We design for them, and security ships in version one.",
   },
 ];
 
@@ -126,12 +123,12 @@ export const products = [
   {
     slug: "mathpath",
     name: "MathPath Platform",
-    tagline: "The platform that runs our client MathPath's abacus program, from daily practice to its Annual Competition and the fees behind it.",
+    tagline: "One platform for MathPath's entire abacus program: practice, assessments, competitions and fees.",
     status: "live" as const,
     statusLabel: "Live",
     eyebrow: "Built for MathPath",
     summary:
-      "MathPath runs an abacus and mental-math program whose high point is its Annual Competition, a premier once-a-year event where hundreds of students compete. Zetta Metrics built the MathPath Platform to run the whole journey: daily practice generated from MathPath's own curriculum, readiness-checked assessments and level promotions, competition-format mock exams, the Annual Competition itself, and the business side too, from fee collection to parent reports, with a rank-and-rewards system that keeps students practising every day.",
+      "MathPath teaches abacus and mental maths across five modules, from Young Learners to the Master Module. The MathPath Platform runs all of it: daily practice sheets from MathPath's own curriculum, readiness checks and level assessments, competition mock exams, the Annual Competition itself, and the fee desk behind the centres. Ranks, MathCoins and a reward store keep students practising every day.",
     icon: LayoutDashboard,
     // The road to MathPath's Annual Competition: practice, then the event itself.
     competitionPath: [
@@ -139,99 +136,99 @@ export const products = [
         icon: Target,
         title: "Competition mock exams",
         detail:
-          "Unlimited mock exams in the exact format of the real event: the same sections, per-section timers, and instructions, with a fresh randomised paper on every attempt, so students keep beating their own best score.",
+          "The real event's format, section for section: the same timers and the same instructions. Every attempt draws a fresh paper, and no sum repeats within a mock.",
       },
       {
         icon: ClipboardCheck,
         title: "Annual Competition practice papers",
         detail:
-          "Level-wise practice papers for the event, assigned in bulk by admins and teachers, with a practice leaderboard and reports that show each student's toughest section.",
+          "Level-wise papers assigned in bulk, a practice leaderboard, and reports that show each student exactly which section to work on.",
       },
       {
         icon: Trophy,
         title: "The Annual Competition",
         detail:
-          "MathPath's premier event runs on the platform: every student is placed at the right competition level automatically, sits the same paper as everyone at that level, and is ranked fairly once results are released.",
+          "Every student is placed at the right level automatically, sits the same paper as everyone at that level, and is ranked fairly when results are released.",
       },
     ],
     highlights: [
       {
         icon: Layers,
-        title: "Curriculum-faithful practice engine",
+        title: "Learning Path Studio",
         detail:
-          "Daily practice sets generated from MathPath's own curriculum workbooks across five modules, from Young Learners to the Master Module, with abacus and visual methods kept exactly as they are taught.",
+          "All five modules, from Young Learners to Master, with their levels, lessons and daily practice sheets. Every sheet is reviewed and published before a teacher can assign it.",
       },
       {
         icon: Target,
         title: "Competition-format mock exams",
         detail:
-          "Mocks that mirror the real event section by section, with independent section timers, a fresh randomised paper on every attempt, and marks that always add up to 100.",
+          "Section by section, timer by timer, the real event. A fresh paper on every attempt, and marks that always total 100.",
       },
       {
         icon: Trophy,
-        title: "Annual Competition, end to end",
+        title: "The Annual Competition, end to end",
         detail:
-          "Automatic level placement, one identical paper per level, section timers that pause on a genuine disconnect and resume to the second, and one attempt per student.",
+          "Automatic level placement, one paper per level, one attempt per student. Section timers pause on a genuine disconnect and resume to the second.",
       },
       {
         icon: Medal,
-        title: "Fair ranking, sealed results, certificates",
+        title: "Fair ranking, sealed results",
         detail:
-          "Ranked by accuracy, then completion time, with ties going to whoever made their first mistake later. Results stay sealed until the announcement, then certificates download from each student's portal.",
+          "Ranked by accuracy, then time. Ties go to whoever made their first mistake later. Results stay sealed until the announcement, then certificates download from each student's portal.",
       },
       {
         icon: GaugeCircle,
-        title: "Assessments, readiness, and promotions",
+        title: "Readiness before every level",
         detail:
-          "Teachers check readiness before a level assessment; timed, server-scored assessments then drive level promotions, with a full history and an approval queue for re-attempts.",
+          "Teachers see how much of a level's practice each student has cleared before assigning its assessment. Server-scored results drive promotions, and re-attempts go through an approval queue.",
       },
       {
         icon: Sparkles,
-        title: "A rank ladder students want to climb",
+        title: "A rank ladder worth climbing",
         detail:
-          "Ranks from Copper to Champion across a 34-division roadmap, with forged 3D medallions, a cut scene with its own soundtrack on every rank-up, XP, badges, practice heatmaps, and podium leaderboards.",
+          "Thirty-four divisions from Copper to Champion, each with a forged 3D medallion and a cinematic rank-up. Add XP, badges, podium leaderboards and a trophy room.",
       },
       {
         icon: Gift,
-        title: "Rewards worth practising for",
+        title: "A reward store for MathCoins",
         detail:
-          "A reward store where students spend the MathCoins they earn on real rewards, priced to climb gradually so there is always the next one to work toward.",
+          "Every sheet, mock and assessment earns MathCoins. Students set a reward as their goal, unlock it, and collect it at their centre.",
       },
       {
         icon: Banknote,
-        title: "Fees and payments, handled",
+        title: "The fee desk, built in",
         detail:
-          "Fee setup, invoices, receipts and monthly billing, counter and online payments, parent pay links, follow-ups and promises to pay, and a cash count to close each day.",
+          "Fee setup, monthly billing, invoices and receipts, counter and online payments, advances, follow-ups, expenses, and a cash count to close each day.",
       },
       {
         icon: FileSpreadsheet,
-        title: "Performance and parent reports",
+        title: "Performance Reports",
         detail:
-          "One set of numbers across an overview, a drill-down, and a student summary for admins and teachers, plus progress reports teachers deliver to parents.",
+          "Any 7, 30 or 90 days against the period before: active students, sheets cleared, first-try clear rate, accuracy, practice time and promotions, week by week.",
       },
       {
         icon: ListChecks,
-        title: "A teacher's day, made lighter",
+        title: "A teacher's day, already sorted",
         detail:
-          "Assign Practice shows each student's status for every lesson and says plainly why one can't be taken yet. Review opens the exact sheet, and birthdays surface so no student is missed.",
+          "The dashboard opens on what needs doing: who needs their next lesson, whose sheets are waiting, which re-attempts are due, whose birthday is this week.",
       },
       {
         icon: Lock,
-        title: "Server-authoritative by design",
+        title: "Nothing to tamper with",
         detail:
-          "Answer keys and timers never leave the server and every score is calculated there. Admins sign in with two-factor verification, and idle sessions end on their own.",
+          "Answer keys and timers never leave the server, and every score is calculated there. Admins sign in with two-factor verification, and idle sessions end on their own.",
       },
       {
         icon: Activity,
         title: "Live competition monitoring",
         detail:
-          "Admins watch the Annual Competition unfold in real time — per-student progress, section completion, and timer status across every level, as it happens.",
+          "During the Annual Competition, admins watch every level in real time: each student's progress, finished sections and timer status, as it happens.",
       },
     ],
     screenshots: [
-      { src: "/screenshots/mathpath/admin-dashboard.png", caption: "Admin — Control Centre" },
-      { src: "/screenshots/mathpath/teacher-dashboard.png", caption: "Teacher — Teaching Workspace" },
-      { src: "/screenshots/mathpath/student-dashboard.png", caption: "Student — Learning Workspace" },
+      { src: "/screenshots/mathpath/student-dashboard.webp", caption: "Student · Learning Workspace" },
+      { src: "/screenshots/mathpath/teacher-dashboard.webp", caption: "Teacher · Teaching Workspace" },
+      { src: "/screenshots/mathpath/admin-dashboard.webp", caption: "Admin · Control Centre" },
     ],
     href: "/products/mathpath",
   },
@@ -243,32 +240,32 @@ export const products = [
     statusLabel: "In Development",
     eyebrow: "School learning platform",
     summary:
-      "Krama is the school learning platform Zetta Metrics is building for CBSE and ICSE, Classes 5–10. Every chapter runs on a five-day loop of learn, practise, apply, fix and master, with practice set by the teacher and marked the moment it is submitted. The foundations are already built and working end to end: school-by-school accounts, a Curriculum Studio holding all 15 Class 5 CBSE Maths chapters, marking that understands units, and the school's own assessment scheme and report cards.",
+      "Krama is the learning platform we are building for CBSE and ICSE schools, Classes 5–10. Every chapter runs on a five-day loop of learn, practise, apply, fix and master, with practice set by the teacher and marked the moment it is submitted. The foundation already works end to end: school-by-school accounts, a Curriculum Studio holding all 15 Class 5 CBSE Maths chapters, marking that understands units, and each school's own assessment scheme and report cards.",
     icon: GraduationCap,
     highlights: [
       {
         icon: Building2,
         title: "School-first from the ground up",
         detail:
-          "Every school gets its own structure of Admin, Teacher and Student, with a Super Admin above them. Each role has its own sign-in and its own workspace.",
+          "Each school gets its own Admin, Teacher and Student roles, with a Super Admin above them. Every role has its own sign-in and its own workspace.",
       },
       {
         icon: Boxes,
         title: "A Curriculum Studio, already stocked",
         detail:
-          "Board, class, subject, chapter and concept lessons move through draft, review and publish. All 15 Class 5 CBSE Maths chapters are in and live, behind automated quality checks.",
+          "Board, class, subject, chapter and concept lessons move through draft, review and publish. All 15 Class 5 CBSE Maths chapters are live, behind automated quality checks.",
       },
       {
         icon: Sparkles,
         title: "The five-day chapter loop",
         detail:
-          "Teachers assign practice to chosen students of a section; students work through Today's Practice; results arrive the moment they submit, with per-question review for the teacher.",
+          "Teachers assign practice to chosen students in a section. Students work through Today's Practice. Results land the moment they submit, with per-question review for the teacher.",
       },
       {
         icon: ClipboardCheck,
         title: "Marking that understands answers",
         detail:
-          "Numbers, words and ordering are all marked automatically. Units, currency and signs are understood, tolerance and rounding are respected, and multi-part answers get a box for each part.",
+          "Numbers, words and ordering are marked automatically. Units, currency and signs are understood, tolerance and rounding respected, and multi-part answers get a box for each part.",
       },
       {
         icon: PenLine,
@@ -280,19 +277,19 @@ export const products = [
         icon: Award,
         title: "Each school's own assessment scheme",
         detail:
-          "School years and a versioned scheme per class, subject and year, built from weighted components, either marks entered by the teacher or the platform's own practice, with grades and a worked example.",
+          "A versioned scheme per class, subject and year, built from weighted components: marks the teacher enters, or the platform's own practice. Grades included, with a worked example.",
       },
       {
         icon: ScrollText,
         title: "Report cards the school issues",
         detail:
-          "Co-scholastic areas, attendance, grades and remarks per student per term, rolled into Term 1 and Year-End cards from the school's published scheme.",
+          "Co-scholastic areas, attendance, grades and remarks for every student, rolled into Term 1 and Year-End cards from the school's published scheme.",
       },
       {
         icon: Lock,
         title: "Secure from the first sign-in",
         detail:
-          "Administrators sign in with two-factor verification, every first password must be replaced, and each sign-in tab accepts only its own role's accounts.",
+          "Administrators use two-factor verification, every first password must be replaced, and each sign-in page accepts only its own role's accounts.",
       },
     ],
     screenshots: [],
@@ -300,152 +297,182 @@ export const products = [
   },
 ];
 
-// The three role-based workspaces inside the MathPath Platform — drives the
-// home page product showcase and the "three workspaces" section on its page.
+export interface WorkspaceScreen {
+  src: string;
+  caption: string;
+  route: string;
+  width: number;
+  height: number;
+}
+
+const shot = (file: string, caption: string, route: string, width: number, height: number): WorkspaceScreen => ({
+  src: `/screenshots/mathpath/${file}.webp`,
+  caption,
+  route,
+  width,
+  height,
+});
+
+// The three role-based workspaces inside the MathPath Platform, each with the
+// real screens captured from the platform (fee figures masked).
 export const mathpathWorkspaces = [
   {
     id: "student",
     label: "Student",
     icon: GraduationCap,
-    path: "student",
-    title: "A daily workspace students actually open",
+    title: "A workspace students open every day",
     summary:
-      "Daily practice, assessments, competition mock exams and practice papers, progress, and achievements in one place, with ranks, XP, and a trophy room that turn daily practice into a habit.",
-    points: ["Daily practice sets and timed assessments", "Competition mocks and practice papers", "Ranks, XP, and achievements"],
-    screenshot: { src: "/screenshots/mathpath/student-dashboard.png", caption: "Student — Learning Workspace", width: 1920, height: 946 },
+      "Assigned sheets, assessments, mock exams and progress in one place, wrapped in ranks, XP and MathCoins that turn daily practice into a habit.",
+    points: ["Assigned practice with timers and instant results", "Mock exams, podium leaderboards and a trophy room", "A reward store for the MathCoins they earn"],
+    screens: [
+      shot("student-dashboard", "Learning Workspace", "Dashboard", 1920, 967),
+      shot("student-practice", "Assigned Practice", "Practice", 1920, 1200),
+      shot("student-rewards", "Reward Store", "Rewards", 1920, 1200),
+      shot("student-leaderboard", "Mock Exam Leaderboard", "Leaderboard", 1892, 1150),
+    ],
   },
   {
     id: "teacher",
     label: "Teacher",
     icon: Users,
-    path: "teacher",
-    title: "Guidance for every assigned learner",
+    title: "Every student's next step, at a glance",
     summary:
-      "Teachers assign practice, assessments, and competition practice papers, check readiness, and follow every assigned student's progress, all scoped to their own students.",
-    points: ["Assign practice, assessments, and competition papers", "Readiness checks before assessment", "Competition progress and parent reports"],
-    screenshot: { src: "/screenshots/mathpath/teacher-dashboard.png", caption: "Teacher — Teaching Workspace", width: 1920, height: 869 },
+      "Teachers see who needs their next lesson, whose sheets are waiting and which re-attempts are due, then assign, review and follow up from the same workspace.",
+    points: ["Assign practice and assessments lesson by lesson", "A Practice Tracker with accuracy zones and a priority queue", "Readiness checks before every level assessment"],
+    screens: [
+      shot("teacher-dashboard", "Teaching Workspace", "Dashboard", 1920, 1180),
+      shot("teacher-practice", "Practice Tracker", "Practice", 1920, 1200),
+      shot("teacher-students", "My Students", "Students", 1920, 1120),
+    ],
   },
   {
     id: "admin",
     label: "Admin",
     icon: LayoutDashboard,
-    path: "admin",
-    title: "One control centre for everything",
+    title: "The whole program, from one control centre",
     summary:
-      "Admins govern the learning path, users, assessments, and the Annual Competition, from the mock and event studios to live monitoring and performance reports.",
-    points: ["Learning path and user management", "Mock Studio and Annual Competition Studio", "Live monitoring and performance reports"],
-    screenshot: { src: "/screenshots/mathpath/admin-dashboard.png", caption: "Admin — Control Centre", width: 1920, height: 869 },
+      "Curriculum, people, assessments, competitions, fees and reports. Today's approvals and dues sit on the first screen, beside a live view of who is online.",
+    points: ["Learning Path Studio across all five modules", "Payments: billing, collections and day close", "Performance Reports over any 7, 30 or 90 days"],
+    screens: [
+      shot("admin-dashboard", "Control Centre", "Dashboard", 1920, 1090),
+      shot("admin-payments", "Payments", "Payments", 1920, 1165),
+      shot("admin-reports", "Performance Reports", "Reports", 1920, 1000),
+      shot("admin-curriculum", "Learning Path Studio", "Learning Path", 1920, 1120),
+    ],
   },
 ];
 
-// Home page stat cards — facts about Zetta Metrics as a company, never
-// about one product (product facts live on each product's own page).
+// Every MathPath screen in one ordered list, for full-size viewing.
+export const mathpathScreens = mathpathWorkspaces.flatMap((w) =>
+  w.screens.map((s) => ({ ...s, caption: `${w.label} · ${s.caption}` })),
+);
+
+// Home page stat cards: concrete facts, each one checkable.
 export const companyStats = [
   { icon: MapPin, value: "2026", label: "Founded in Kolkata, India", animate: false },
-  { icon: Layers, value: "2", label: "Platforms built on one foundation", animate: true },
-  { icon: GraduationCap, value: "Ed-Tech", label: "Our core specialisation, with AI in every product", animate: false },
-  { icon: ShieldCheck, value: "100%", label: "Backend-authoritative, auditable logic", animate: true },
+  { icon: Layers, value: "2", label: "Platforms on one shared foundation", animate: true },
+  { icon: GraduationCap, value: "5", label: "Abacus modules running live on MathPath", animate: true },
+  { icon: Boxes, value: "15", label: "Class 5 CBSE Maths chapters live in Krama", animate: true },
 ];
 
 // Product-specific facts, shown only on that product's page.
 export const productFacts: Record<string, { value: string; label: string }[]> = {
   mathpath: [
-    { value: "5", label: "Abacus curriculum modules, from Young Learners to the Master Module" },
-    { value: "34", label: "Rank divisions, from Copper to Champion, each with its own rank-up scene" },
-    { value: "3", label: "Role-based workspaces: Admin, Teacher, and Student" },
+    { value: "5", label: "Curriculum modules, from Young Learners to Master" },
+    { value: "34", label: "Rank divisions, from Copper to Champion" },
+    { value: "3", label: "Role workspaces: Admin, Teacher and Student" },
   ],
   krama: [
     { value: "15", label: "Class 5 CBSE Maths chapters, live in the Curriculum Studio" },
-    { value: "5-day", label: "Chapter loop: learn, practise, apply, fix and master" },
+    { value: "5-day", label: "Chapter loop: learn, practise, apply, fix, master" },
     { value: "4", label: "Role levels, from Super Admin to Student" },
   ],
 };
 
-// Capability strip on the home page — real features across both products.
+// Capability strip: real features across both products.
 export const capabilities = [
-  { icon: Users, label: "Role-based access" },
+  { icon: Users, label: "Role-based workspaces" },
   { icon: Timer, label: "Server-timed assessments" },
-  { icon: ClipboardCheck, label: "Auto-marking" },
-  { icon: Boxes, label: "Curriculum Studio" },
-  { icon: FileSpreadsheet, label: "Excel content import" },
-  { icon: GaugeCircle, label: "Readiness governance" },
-  { icon: PenLine, label: "Part & method marks" },
-  { icon: Banknote, label: "Fees & payments" },
-  { icon: Receipt, label: "Invoices & receipts" },
-  { icon: Gift, label: "Rewards & ranks" },
+  { icon: ClipboardCheck, label: "Automatic marking" },
+  { icon: Boxes, label: "Curriculum studios" },
+  { icon: FileSpreadsheet, label: "Spreadsheet content import" },
+  { icon: GaugeCircle, label: "Readiness checks" },
+  { icon: PenLine, label: "Part and method marks" },
+  { icon: Banknote, label: "Fees and payments" },
+  { icon: Receipt, label: "Invoices and receipts" },
+  { icon: Gift, label: "Ranks and rewards" },
   { icon: ScrollText, label: "Report cards" },
-  { icon: Database, label: "Auditable decisions" },
+  { icon: Database, label: "Audit trails" },
   { icon: Lock, label: "Two-factor sign-in" },
-  { icon: Building2, label: "Multi-school identity" },
-  { icon: LayoutDashboard, label: "Parent-ready reports" },
-  { icon: ShieldCheck, label: "Data-export & privacy controls" },
+  { icon: Building2, label: "Multi-school accounts" },
+  { icon: LayoutDashboard, label: "Performance reports" },
+  { icon: ShieldCheck, label: "Privacy and export controls" },
 ];
 
 export const processSteps = [
   {
     icon: Network,
-    title: "Start with the real process",
+    title: "Map the real process",
     detail:
-      "We map the workflow as it actually runs today — the roles, the handoffs, the manual steps — before writing a line of product code.",
-  },
-  {
-    icon: BrainCircuit,
-    title: "Build it right, not just fast",
-    detail:
-      "Roles, workflows, and logic are engineered as reusable pieces from the start, so the next thing we build doesn't start from zero.",
-  },
-  {
-    icon: CheckCircle2,
-    title: "Ship it, then extend it",
-    detail:
-      "The product goes into real use with real users. What we learn feeds the next build, so every product we ship starts further ahead than the last one.",
-  },
-];
-
-// "What we automate" on the home page — the kinds of manual work Zetta turns
-// into software, each shown as a plain before/after. Framed as capabilities
-// (all proven inside our own platforms), not as claimed clients.
-export const automationAreas = [
-  {
-    icon: ClipboardCheck,
-    title: "Assessments & scoring",
-    before: "Paper tests, hand marking, and marks typed into spreadsheets.",
-    after: "Timed online assessments, auto-marked and scored on the server.",
+      "We sit with the people doing the work and map it as it actually runs: every role, every hand-off, every spreadsheet. Then we design.",
   },
   {
     icon: Workflow,
-    title: "Approvals & sign-offs",
-    before: "Email threads and the constant question of who approved what.",
-    after: "Role-based approval steps with every decision on record.",
+    title: "Engineer it to last",
+    detail:
+      "Roles, rules and records are built as reusable pieces from day one, with security in the first release, not a later one.",
+  },
+  {
+    icon: CheckCircle2,
+    title: "Ship it, then keep extending",
+    detail:
+      "The product goes live with real users. What we learn shapes the next release, and every new build starts further ahead.",
+  },
+];
+
+// "What we automate" on the home page: manual work we turn into software,
+// shown as a plain before and after. Each one is proven in our own platforms.
+export const automationAreas = [
+  {
+    icon: ClipboardCheck,
+    title: "Assessments and scoring",
+    before: "Paper tests, marking by hand, and marks typed into a spreadsheet.",
+    after: "Timed online assessments, marked automatically and scored on the server.",
+  },
+  {
+    icon: Workflow,
+    title: "Approvals and sign-offs",
+    before: "Email threads, and no clear answer to who approved what.",
+    after: "Approval steps by role, with every decision on record.",
   },
   {
     icon: FileSpreadsheet,
     title: "Content pipelines",
-    before: "Copy-pasting between files and checking everything by eye.",
-    after: "Excel import with automated structural and quality checks.",
+    before: "Copying between files and checking everything by eye.",
+    after: "Bulk import with automatic structure and quality checks before anything goes live.",
   },
   {
     icon: Users,
-    title: "Assignments & follow-ups",
-    before: "Chasing people on chat for status updates and submissions.",
-    after: "Assignments with tracked attempts and automatic status.",
+    title: "Assignments and follow-ups",
+    before: "Chasing people on chat for status and submissions.",
+    after: "Assignments that track every attempt and surface who needs a nudge.",
   },
   {
     icon: GaugeCircle,
-    title: "Reporting & readiness",
-    before: "Someone compiles the same report by hand every week.",
-    after: "Live reports anyone authorized can read at a glance.",
+    title: "Reporting",
+    before: "Someone rebuilds the same report by hand every week.",
+    after: "Live reports, compared period on period, for anyone allowed to see them.",
   },
   {
     icon: Banknote,
-    title: "Fees & payments",
+    title: "Fees and payments",
     before: "Cash in a drawer, paper receipts, and a notebook of who still owes.",
-    after: "Invoices, receipts, online payments and automatic follow-ups, closed out daily.",
+    after: "Invoices, receipts, online payments and follow-ups, with the day closed out properly.",
   },
   {
     icon: Lock,
-    title: "Access & data control",
+    title: "Access and data",
     before: "Shared logins and spreadsheets anyone can open or forward.",
-    after: "Role-scoped access, session hygiene, and export controls.",
+    after: "Access by role, sessions that expire, and controlled exports.",
   },
 ];

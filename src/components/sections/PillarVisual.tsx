@@ -1,4 +1,4 @@
-import { BrainCircuit, Check, Lock, Sparkles } from "lucide-react";
+import { Check, Lock, ServerCog, Sparkles } from "lucide-react";
 
 /**
  * Illustrative, gently animated diagrams for the home page's platform bento
@@ -26,7 +26,7 @@ function AiFlow() {
   return (
     <div className="flex w-full max-w-xl items-center justify-between gap-1 sm:gap-3">
       <div className="flex flex-col gap-2">
-        {["Attempt", "Content", "Request"].map((x, i) => (
+        {["Attempt", "Payment", "Request"].map((x, i) => (
           <div key={x} className="seq-light rounded-lg border px-2 py-1.5 text-[0.68rem] font-medium sm:px-3 sm:py-2 sm:text-xs" style={{ ...chipStyle, animationDelay: `${i * 2}s` }}>
             {x}
           </div>
@@ -38,18 +38,18 @@ function AiFlow() {
           className="core-pulse relative flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl sm:h-20 sm:w-20"
           style={{ background: "linear-gradient(150deg, var(--accent-strong), var(--accent))" }}
         >
-          <BrainCircuit className="h-6 w-6 sm:h-8 sm:w-8" style={{ color: "var(--text-on-accent)" }} />
+          <ServerCog className="h-6 w-6 sm:h-8 sm:w-8" style={{ color: "var(--text-on-accent)" }} />
           <span className="core-ring absolute -inset-3 rounded-full" aria-hidden="true" />
         </div>
         <span className="text-[0.6rem] font-bold uppercase tracking-[0.16em]" style={{ color: "var(--accent)" }}>
-          AI layer
+          Server rules
         </span>
       </div>
       <Connector />
       <div className="flex flex-col gap-2">
         {[
           { t: "Scored", c: "var(--status-live)" },
-          { t: "Checked", c: "var(--accent)" },
+          { t: "Recorded", c: "var(--accent)" },
           { t: "Routed", c: "var(--status-dev)" },
         ].map((o, i) => (
           <div key={o.t} className="seq-light flex items-center gap-1.5 rounded-lg border px-2 py-1.5 text-[0.68rem] font-medium sm:px-3 sm:py-2 sm:text-xs" style={{ ...chipStyle, animationDelay: `${i * 2 + 0.6}s` }}>

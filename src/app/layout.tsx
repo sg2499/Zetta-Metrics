@@ -29,14 +29,13 @@ const fraunces = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.zetta-metrics.com"),
   title: {
-    default: "Zetta Metrics | AI-Native Ed-Tech Platforms & Automation",
+    default: "Zetta Metrics | Ed-Tech Platforms & Workflow Software",
     template: "%s | Zetta Metrics",
   },
   description:
-    "Zetta Metrics specialises in AI-native Ed-Tech platforms and workflow automation, including the MathPath Platform and Krama, turning manual, fragmented processes into intelligent digital workflows.",
+    "Zetta Metrics builds Ed-Tech platforms and workflow software, including the MathPath Platform and Krama, for institutions ready to stop running on spreadsheets, paper and follow-ups.",
   keywords: [
     "Zetta Metrics",
-    "AI automation platform",
     "SaaS",
     "Ed-Tech platform",
     "EdTech",
@@ -47,8 +46,6 @@ export const metadata: Metadata = {
     "MathPath Platform",
     "abacus learning platform",
     "Krama",
-    "AI workflow orchestration",
-    "machine learning",
     "India SaaS company",
   ],
   authors: [{ name: "Zetta Metrics Technologies Private Limited" }],
@@ -58,14 +55,14 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://www.zetta-metrics.com",
     siteName: "Zetta Metrics",
-    title: "Zetta Metrics | AI-Native Ed-Tech Platforms & Automation",
+    title: "Zetta Metrics | Ed-Tech Platforms & Workflow Software",
     description:
-      "AI-native Ed-Tech platforms and workflow automation. The MathPath Platform and Krama run on the same underlying foundation.",
+      "Ed-Tech platforms and workflow software. The MathPath Platform is live; Krama is next, on the same foundation.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Zetta Metrics | AI-Native Ed-Tech Platforms & Automation",
-    description: "AI-native Ed-Tech platforms and workflow automation, for teams who are done doing things by hand.",
+    title: "Zetta Metrics | Ed-Tech Platforms & Workflow Software",
+    description: "Ed-Tech platforms and workflow software, for institutions done doing things by hand.",
   },
   robots: {
     index: true,
@@ -81,7 +78,7 @@ const organizationJsonLd = {
   url: "https://www.zetta-metrics.com",
   logo: "https://www.zetta-metrics.com/logo-mark.png",
   description:
-    "Zetta Metrics specialises in AI-native Ed-Tech platforms and workflow automation, turning manual, fragmented processes into intelligent digital workflows.",
+    "Zetta Metrics builds Ed-Tech platforms and workflow software for institutions ready to stop running on spreadsheets, paper and follow-ups.",
 };
 
 export default function RootLayout({

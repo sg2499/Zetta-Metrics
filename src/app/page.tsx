@@ -3,6 +3,8 @@ import { ArrowRight, GraduationCap, Workflow } from "lucide-react";
 import { companyStats, platformPillars, products } from "@/lib/content";
 import ProductCard from "@/components/sections/ProductCard";
 import ManualToSystem from "@/components/sections/ManualToSystem";
+import ChaosToOrder from "@/components/sections/ChaosToOrder";
+import HeroProductStage from "@/components/sections/HeroProductStage";
 import HeroScene from "@/components/three/HeroScene";
 import AutomationExplorer from "@/components/sections/AutomationExplorer";
 import ScrollStory from "@/components/sections/ScrollStory";
@@ -16,14 +18,14 @@ import AnimatedStat from "@/components/motion/AnimatedStat";
 import HeadlineReveal from "@/components/motion/HeadlineReveal";
 import ScrollLitText from "@/components/motion/ScrollLitText";
 
-// Bento placement: [wide][narrow] / [narrow][wide] — a checkerboard rhythm.
+// Bento placement: [wide][narrow] / [narrow][wide], a checkerboard rhythm.
 const bentoSpan = ["lg:col-span-2", "lg:col-span-1", "lg:col-span-1", "lg:col-span-2"];
 
 export default function Home() {
   return (
     <div>
-      {/* Hero — split: message on the left, the 3D studio-lit "Z" on the right */}
-      <section className="relative overflow-hidden pt-24 pb-10 md:pt-28 lg:pb-16">
+      {/* Hero: the message on the left, the live product on the right */}
+      <section className="relative overflow-hidden pt-28 pb-10 md:pt-32 lg:pb-16">
         <SectionGlow
           blobs={[
             { size: 620, top: "-20%", left: "-12%", color: "primary" },
@@ -31,7 +33,7 @@ export default function Home() {
           ]}
         />
         <div className="container-custom relative z-10">
-          <div className="grid items-center gap-6 lg:min-h-[calc(100vh-8rem)] lg:grid-cols-[1.08fr_0.92fr] lg:gap-4">
+          <div className="grid items-center gap-10 lg:min-h-[calc(100vh-9rem)] lg:grid-cols-[0.95fr_1.05fr] lg:gap-8">
             <div>
               <Reveal immediate>
                 <Link href="/products" className="announce-pill">
@@ -39,24 +41,21 @@ export default function Home() {
                     className="rounded-full px-2.5 py-0.5 text-[0.7rem] font-bold uppercase tracking-wider"
                     style={{ background: "var(--accent-soft)", color: "var(--accent)" }}
                   >
-                    Live now
+                    Live
                   </span>
-                  MathPath Platform · Next up: Krama
+                  MathPath Platform · Krama in development
                   <ArrowRight size={14} className="mr-1.5" />
                 </Link>
               </Reveal>
               <h1
                 className="mt-7 font-display font-extrabold leading-[1] tracking-[-0.045em]"
-                style={{ color: "var(--text-primary)", fontSize: "clamp(2.9rem, min(6vw, 10vh), 5.6rem)" }}
+                style={{ color: "var(--text-primary)", fontSize: "clamp(2.7rem, min(5.2vw, 9vh), 4.9rem)" }}
               >
-                <HeadlineReveal
-                  delay={0.1}
-                  segments={[{ text: "Turn manual work into" }, { text: "intelligent workflows.", gradient: true }]}
-                />
+                <HeadlineReveal delay={0.1} segments={[{ text: "The work you run by hand," }, { text: "rebuilt as software.", gradient: true }]} />
               </h1>
               <Reveal immediate delay={0.35}>
-                <p className="mt-6 leading-[1.6]" style={{ color: "var(--text-secondary)", fontSize: "clamp(1.02rem, 2.6vh, 1.25rem)" }}>
-                  Zetta Metrics specialises in Ed-Tech platforms and workflow automation: AI-native software that replaces spreadsheets, paperwork, and manual hand-offs with systems your people actually run on.
+                <p className="mt-6 max-w-xl leading-[1.65]" style={{ color: "var(--text-secondary)", fontSize: "clamp(1.02rem, 2.5vh, 1.2rem)" }}>
+                  Zetta Metrics builds Ed-Tech platforms and workflow software for institutions that still run on spreadsheets, paper and follow-ups. One already runs an entire abacus program, from the first practice sheet to the fee desk.
                 </p>
               </Reveal>
               <Reveal immediate delay={0.45}>
@@ -64,16 +63,15 @@ export default function Home() {
                   <MagneticLink href="/contact" className="btn-primary px-7 py-4 text-sm">
                     Talk to us <ArrowRight size={16} />
                   </MagneticLink>
-                  <MagneticLink href="/products" className="btn-secondary px-7 py-4 text-sm">
-                    Explore our products
+                  <MagneticLink href="/products/mathpath" className="btn-secondary px-7 py-4 text-sm">
+                    See the platform in action
                   </MagneticLink>
                 </div>
               </Reveal>
               <Reveal immediate delay={0.55}>
-                {/* Our focus: the two things we specialise in, stated plainly. */}
                 <div className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-2">
                   <span className="text-[0.68rem] font-bold uppercase tracking-[0.18em]" style={{ color: "var(--text-muted)" }}>
-                    Our focus
+                    What we build
                   </span>
                   {[
                     { icon: GraduationCap, label: "Ed-Tech platforms" },
@@ -87,9 +85,11 @@ export default function Home() {
                 </div>
               </Reveal>
             </div>
-            <div className="relative h-[360px] sm:h-[440px] lg:h-[min(640px,calc(100vh-9rem))]">
-              <HeroScene />
-            </div>
+            <Reveal immediate delay={0.25} y={30}>
+              <div className="relative h-[340px] sm:h-[460px] lg:h-[min(600px,calc(100vh-10rem))]">
+                <HeroProductStage />
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -97,12 +97,12 @@ export default function Home() {
       {/* Company stats */}
       <section className="relative pb-8">
         <div className="container-custom">
-          <div className="grid grid-cols-1 items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-2 items-stretch gap-3 sm:gap-5 lg:grid-cols-4">
             {companyStats.map((s, i) => (
               <Reveal key={s.label} delay={i * 0.07} className="h-full">
-                <div className="surface-card hover-card flex h-full flex-col p-7">
+                <div className="surface-card hover-card flex h-full flex-col p-5 sm:p-7">
                   <IconBadge icon={s.icon} />
-                  <p className="mt-8 font-display text-5xl font-extrabold tracking-[-0.045em]" style={{ color: "var(--text-primary)" }}>
+                  <p className="mt-6 font-display text-4xl sm:mt-8 sm:text-5xl font-extrabold tracking-[-0.045em]" style={{ color: "var(--text-primary)" }}>
                     {s.animate ? <AnimatedStat value={s.value} /> : s.value}
                   </p>
                   <p className="mt-3 text-sm font-medium leading-6" style={{ color: "var(--text-secondary)" }}>
@@ -118,23 +118,52 @@ export default function Home() {
         </div>
       </section>
 
-      {/* The shift */}
-      <section className="relative overflow-hidden py-20">
-        <div className="container-custom">
+      {/* The shift: pinned scroll sequence on desktop, a compact diagram elsewhere */}
+      <section className="relative pt-16 pin:pt-10">
+        <ChaosToOrder />
+        <div className="container-custom pb-12 pin:hidden">
           <SectionHeader
             eyebrow="The shift"
             title={
               <>
-                From scattered manual work <span className="gradient-text">to one intelligent system.</span>
+                From scattered manual work <span className="gradient-text">to one system.</span>
               </>
             }
-            description="Spreadsheets, email chains, chat follow-ups, and paper go in. A single workflow comes out, where every step is automated, checked, and on record."
+            description="Spreadsheets, email chains, chat follow-ups and paper go in. One workflow comes out, where every step is checked, timed and on record."
           />
           <Reveal delay={0.1} y={30}>
             <div className="mt-12">
               <ManualToSystem />
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      {/* Products */}
+      <section className="relative overflow-hidden py-24">
+        <SectionGlow
+          blobs={[
+            { size: 480, top: "0%", right: "-10%", color: "tertiary" },
+            { size: 360, bottom: "0%", left: "-6%", color: "primary", delay: 6 },
+          ]}
+        />
+        <div className="container-custom">
+          <SectionHeader
+            eyebrow="Products"
+            title={
+              <>
+                Two platforms. <span className="gradient-text">One foundation.</span>
+              </>
+            }
+            description="The MathPath Platform is live, running an abacus program from daily practice to the Annual Competition and the fees behind it. Krama, for CBSE and ICSE schools, is being built on the same foundation, and its core already works."
+          />
+          <div className="mt-14 grid items-stretch gap-6 md:grid-cols-2">
+            {products.map((product, i) => (
+              <Reveal key={product.slug} delay={i * 0.08} className="h-full">
+                <ProductCard product={product} />
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -151,10 +180,10 @@ export default function Home() {
             eyebrow="What we automate"
             title={
               <>
-                If it runs on spreadsheets and follow-ups, <span className="gradient-text">we can turn it into software.</span>
+                If it runs on spreadsheets and reminders, <span className="gradient-text">it can run on software.</span>
               </>
             }
-            description="The same building blocks, applied to whichever process your team still runs by hand. Pick one to see the difference."
+            description="The same building blocks, applied to whatever your team still does by hand. Pick one to see the before and after."
           />
           <div className="mt-14">
             <AutomationExplorer />
@@ -190,13 +219,13 @@ export default function Home() {
         />
         <div className="container-custom">
           <SectionHeader
-            eyebrow="The platform"
+            eyebrow="The foundation"
             title={
               <>
-                Built once. <span className="gradient-text">Reused on purpose.</span>
+                Four rules. <span className="gradient-text">Every build.</span>
               </>
             }
-            description="Every product we ship stands on the same engineered foundation, so each new build starts ahead of where the last one finished."
+            description="Every product we ship stands on the same engineered foundation, so each one starts further ahead than the last."
           />
           <div className="mt-14 grid grid-cols-1 items-stretch gap-5 lg:grid-cols-3">
             {platformPillars.map((pillar, i) => (
@@ -221,41 +250,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* How we build — pinned scroll story */}
+      {/* How we build: pinned scroll story */}
       <section className="relative py-20 pin:py-0">
         <SectionGlow blobs={[{ size: 520, top: "20%", right: "-10%", color: "primary" }]} />
         <ScrollStory />
       </section>
 
-      {/* Products */}
-      <section className="relative overflow-hidden py-20">
-        <SectionGlow
-          blobs={[
-            { size: 480, top: "0%", right: "-10%", color: "tertiary" },
-            { size: 360, bottom: "0%", left: "-6%", color: "primary", delay: 6 },
-          ]}
-        />
-        <div className="container-custom">
-          <SectionHeader
-            eyebrow="Products"
-            title="What we've built."
-            description="MathPath is live and running a whole abacus program, fees included. Krama is being built for CBSE and ICSE schools, and its core already works. Both stand on one foundation: role-based workflows, backend-authoritative logic, and AI woven into the product itself."
-          />
-          <div className="mt-14 grid items-stretch gap-6 md:grid-cols-2">
-            {products.map((product, i) => (
-              <Reveal key={product.slug} delay={i * 0.08} className="h-full">
-                <ProductCard product={product} />
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
+      {/* CTA, with the studio-lit Z */}
       <section className="relative overflow-hidden pt-8 pb-20">
         <div className="container-custom">
           <Reveal>
-            <div className="cta-panel relative overflow-hidden px-6 py-16 text-center sm:px-12 sm:py-24">
+            <div className="cta-panel relative overflow-hidden px-6 py-12 sm:px-12 lg:py-6">
               <SectionGlow
                 blobs={[
                   { size: 480, top: "-40%", left: "-10%", color: "primary" },
@@ -263,18 +268,23 @@ export default function Home() {
                 ]}
               />
               <div className="dot-grid pointer-events-none absolute inset-0 opacity-40" style={{ maskImage: "radial-gradient(ellipse at center, black, transparent 70%)" }} aria-hidden="true" />
-              <div className="relative">
-                <h2 className="section-title">Still running a core process on spreadsheets and follow-ups?</h2>
-                <p className="mt-5 text-base leading-7 sm:text-lg" style={{ color: "var(--text-secondary)" }}>
-                  Tell us how it works today. We&apos;ll tell you plainly whether it&apos;s a fit for what we build, and what it would take.
-                </p>
-                <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-                  <MagneticLink href="/contact" className="btn-primary px-7 py-4 text-sm">
-                    Talk to us <ArrowRight size={16} />
-                  </MagneticLink>
-                  <MagneticLink href="/company" className="btn-secondary px-7 py-4 text-sm">
-                    About Zetta Metrics
-                  </MagneticLink>
+              <div className="relative grid items-center gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+                <div className="text-center lg:py-12 lg:text-left">
+                  <h2 className="section-title">Still running a core process on spreadsheets and follow-ups?</h2>
+                  <p className="mt-5 text-base leading-7 sm:text-lg" style={{ color: "var(--text-secondary)" }}>
+                    Tell us how it works today. We&apos;ll tell you plainly whether it&apos;s a fit, and what it would take to build.
+                  </p>
+                  <div className="mt-10 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
+                    <MagneticLink href="/contact" className="btn-primary px-7 py-4 text-sm">
+                      Talk to us <ArrowRight size={16} />
+                    </MagneticLink>
+                    <MagneticLink href="/company" className="btn-secondary px-7 py-4 text-sm">
+                      About Zetta Metrics
+                    </MagneticLink>
+                  </div>
+                </div>
+                <div className="relative mx-auto h-[280px] w-full max-w-md sm:h-[340px] lg:h-[420px]">
+                  <HeroScene />
                 </div>
               </div>
             </div>

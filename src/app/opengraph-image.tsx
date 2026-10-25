@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Zetta Metrics: AI-native Ed-Tech platforms and workflow automation";
+export const alt = "Zetta Metrics: Ed-Tech platforms and workflow software";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -87,7 +87,7 @@ export default async function Image() {
             letterSpacing: "-0.02em",
           }}
         >
-          Turn manual work into intelligent workflows.
+          The work you run by hand, rebuilt as software.
         </div>
         <div
           style={{
@@ -97,7 +97,7 @@ export default async function Image() {
             color: "#a3b1c2",
           }}
         >
-          AI-native Ed-Tech platforms &amp; workflow automation
+          Ed-Tech platforms &amp; workflow software
         </div>
       </div>
     ),

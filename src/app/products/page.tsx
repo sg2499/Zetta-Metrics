@@ -10,13 +10,13 @@ import MagneticLink from "@/components/motion/MagneticLink";
 // Side-by-side facts — every cell restates something already described on
 // the product pages; nothing here is new or aspirational.
 const comparison = [
-  { label: "Built for", mathpath: "Our client MathPath's abacus program, its Annual Competition and its centres", krama: "CBSE and ICSE schools, Classes 5⁠–⁠10" },
+  { label: "Built for", mathpath: "Our client MathPath: its abacus program, its centres and its Annual Competition", krama: "CBSE and ICSE schools, Classes 5–10" },
   { label: "Workspaces", mathpath: "Admin, Teacher, Student", krama: "Super Admin, School Admin, Teacher, Student" },
-  { label: "Core loop", mathpath: "Daily practice, level assessments, and competition preparation", krama: "A five-day chapter loop: learn, practise, apply, fix, master" },
-  { label: "Marking", mathpath: "Server-side scoring; competitions ranked by accuracy, then time", krama: "Auto-marking that understands units, plus part and method marks" },
-  { label: "Content", mathpath: "Abacus curriculum across five modules and their levels", krama: "A Curriculum Studio with all 15 Class 5 CBSE Maths chapters live" },
-  { label: "Beyond learning", mathpath: "Fee billing and payments, ranks, rewards, parent reports", krama: "Assessment schemes and report cards each school issues" },
-  { label: "Security", mathpath: "Answer keys and timers never leave the server; admin two-factor", krama: "Two-factor for administrators, role-scoped access and sign-in" },
+  { label: "Core loop", mathpath: "Daily practice sheets, readiness checks, level assessments", krama: "A five-day chapter loop: learn, practise, apply, fix, master" },
+  { label: "Marking", mathpath: "Scored on the server; competitions ranked by accuracy, then time", krama: "Automatic marking that understands units, plus part and method marks" },
+  { label: "Content", mathpath: "Five curriculum modules, from Young Learners to Master", krama: "A Curriculum Studio with all 15 Class 5 CBSE Maths chapters live" },
+  { label: "Beyond learning", mathpath: "Fees and payments, ranks and rewards, Performance Reports", krama: "Each school's assessment scheme and the report cards it issues" },
+  { label: "Security", mathpath: "Answer keys and timers stay on the server; two-factor for admins", krama: "Two-factor for administrators; access and sign-in by role" },
 ];
 
 export default function ProductsPage() {
@@ -39,7 +39,7 @@ export default function ProductsPage() {
                 Two platforms. <span className="gradient-text">One foundation.</span>
               </>
             }
-            description="Our Ed-Tech platforms: the MathPath Platform, which automates our client MathPath's abacus program and is live with their students, and Krama, our CBSE and ICSE learning platform, now in development with its core already built. Both run on role-based workflows, backend-authoritative logic, and AI woven into the product itself: the same approach we bring to any institution or business ready to modernize."
+            description="The MathPath Platform runs our client MathPath's abacus program today, live with its students, teachers and centres. Krama, for CBSE and ICSE schools, is in development and its core already works. Both share one foundation: a workspace for every role, rules decided on the server, and a record of every decision."
           />
           <div className="mt-16 grid items-stretch gap-6 md:grid-cols-2">
             {products.map((product, i) => (
@@ -117,7 +117,7 @@ export default function ProductsPage() {
               <div className="min-w-0 flex-1">
                 <h2 className="section-title">Have a workflow that looks like this?</h2>
                 <p className="mt-4 text-base leading-7" style={{ color: "var(--text-secondary)" }}>
-                  If your process is manual, fragmented, and repetitive, it&apos;s probably a fit for what we build.
+                  If your process is manual, scattered and repeated every week, it is probably a fit for what we build.
                 </p>
               </div>
               <MagneticLink href="/contact" className="btn-primary shrink-0 whitespace-nowrap px-7 py-4 text-sm">
