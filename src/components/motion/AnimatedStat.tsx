@@ -16,7 +16,7 @@ import { useSafeReducedMotion } from "@/components/motion/useSafeReducedMotion";
 export default function AnimatedStat({ value }: { value: string }) {
   const ref = useRef<HTMLSpanElement>(null);
   const reduce = useSafeReducedMotion();
-  const match = value.match(/^(\d{1,4})(%?)$/);
+  const match = value.match(/^(\d{1,3}(?:,\d{3})?|\d{1,4})(%?)$/);
   const [display, setDisplay] = useState(match ? `0${match[2]}` : value);
   const [triggered, setTriggered] = useState(false);
 
@@ -42,7 +42,7 @@ export default function AnimatedStat({ value }: { value: string }) {
       setDisplay(value);
       return;
     }
-    const target = parseInt(match[1], 10);
+    const target = parseInt(match[1].replace(/,/g, ""), 10);
     const suffix = match[2];
     const duration = 1200;
     let start = 0;
@@ -51,7 +51,8 @@ export default function AnimatedStat({ value }: { value: string }) {
       if (!start) start = now;
       const progress = Math.min((now - start) / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
-      setDisplay(`${Math.round(target * eased)}${suffix}`);
+      const n = Math.round(target * eased);
+      setDisplay(`${match[1].includes(",") ? n.toLocaleString("en-IN") : n}${suffix}`);
       if (progress < 1) frame = requestAnimationFrame(tick);
     };
     frame = requestAnimationFrame(tick);

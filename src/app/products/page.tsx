@@ -12,11 +12,11 @@ import MagneticLink from "@/components/motion/MagneticLink";
 const comparison = [
   { label: "Built for", mathpath: "Our client MathPath: its abacus program, its centres and its Annual Competition", krama: "CBSE and ICSE schools, Classes 5–10" },
   { label: "Workspaces", mathpath: "Admin, Teacher, Student", krama: "Super Admin, School Admin, Teacher, Student" },
-  { label: "Core loop", mathpath: "Daily practice sheets, readiness checks, level assessments", krama: "A five-day chapter loop: learn, practise, apply, fix, master" },
-  { label: "Marking", mathpath: "Scored on the server; competitions ranked by accuracy, then time", krama: "Automatic marking that understands units, plus part and method marks" },
-  { label: "Content", mathpath: "Five curriculum modules, from Young Learners to Master", krama: "A Curriculum Studio with all 15 Class 5 CBSE Maths chapters live" },
-  { label: "Beyond learning", mathpath: "Fees and payments, ranks and rewards, Performance Reports", krama: "Each school's assessment scheme and the report cards it issues" },
-  { label: "Security", mathpath: "Answer keys and timers stay on the server; two-factor for admins", krama: "Two-factor for administrators; access and sign-in by role" },
+  { label: "Core loop", mathpath: "Daily practice sheets, readiness checks, level assessments", krama: "Practice set by the teacher, with Foundation Repair on any gap" },
+  { label: "Marking", mathpath: "Scored on the server; competitions ranked by accuracy, then time", krama: "Marked on submission; long answers marked step by step" },
+  { label: "Content", mathpath: "Five curriculum modules, from Young Learners to Master", krama: "15 Class 5 CBSE Maths chapters and 1,006 question patterns" },
+  { label: "Beyond learning", mathpath: "Fees and payments, ranks and rewards, Performance Reports", krama: "Mock papers, Class Analytics, weekly reports home and report cards" },
+  { label: "Security", mathpath: "Answer keys and timers stay on the server; two-factor for admins", krama: "Two-factor for admins; mock papers timed on the server" },
 ];
 
 export default function ProductsPage() {

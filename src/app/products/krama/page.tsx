@@ -23,26 +23,26 @@ const roles = [
   {
     icon: GraduationCap,
     label: "Student",
-    title: "Practice that's ready every day",
-    points: ["A dashboard with a live next step", "Today's Practice, marked the moment you submit", "Results that show each option in words"],
+    title: "Know exactly what to practise next",
+    points: ["Practice marked the moment it is submitted", "Mock papers sat online, with solutions after", "A skill map and a Practise Next of their own"],
   },
   {
     icon: Users,
     label: "Teacher",
-    title: "Set it, then review what matters",
-    points: ["Assign practice to chosen students of a section", "Per-question review and part marks, with a reason", "Attendance, grades and remarks each term"],
+    title: "See the gap, then close it",
+    points: ["Practice and mock papers for chosen students", "Class Analytics down to each question", "Weekly reports home and report-card marks"],
   },
   {
     icon: Building2,
     label: "School admin",
-    title: "The school's own rules, in one place",
-    points: ["Assessment schemes by class, subject and year", "Report cards issued from the published scheme", "Who teaches which section"],
+    title: "The whole school, on its own rules",
+    points: ["Classes and sections from one workbook", "Assessment schemes and report cards", "Mock papers in the school's own format"],
   },
   {
     icon: Boxes,
     label: "Super admin",
-    title: "Curriculum across every school",
-    points: ["The Curriculum Studio and its review workflow", "Mapping published curriculum to each school", "Live figures across all schools"],
+    title: "Every school, one curriculum",
+    points: ["Schools added, suspended and restored", "The Curriculum Studio and its review trail", "Published chapters and calendars per school"],
   },
 ];
 
@@ -134,7 +134,7 @@ export default function KramaPage() {
                 Not a plan. <span className="gradient-text">Working software.</span>
               </>
             }
-            description="Krama is still being built, and the parts below already run end to end: from a school's first sign-in to a published chapter, a marked answer and a report card."
+            description="Krama is still growing, and everything below already runs end to end: from a school's setup workbook to a marked mock paper, a weekly note home and a report card."
           />
           <div className="mt-14 grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {product.highlights.map((h, i) => (
@@ -223,7 +223,7 @@ export default function KramaPage() {
                 Built stage by stage, <span className="gradient-text">one stage at a time.</span>
               </>
             }
-            description="An honest view of the build: what is done, what is underway, and what comes next."
+            description="An honest view of the build: six stages done, one underway, and what comes next."
           />
           <div className="mt-14">
             <KramaRoadmap />

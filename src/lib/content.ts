@@ -249,56 +249,56 @@ export const products = [
     statusLabel: "In Development",
     eyebrow: "School learning platform",
     summary:
-      "Krama is the learning platform we are building for CBSE and ICSE schools, Classes 5–10. Every chapter runs on a five-day loop of learn, practise, apply, fix and master, with practice set by the teacher and marked the moment it is submitted. The foundation already works end to end: school-by-school accounts, a Curriculum Studio holding all 15 Class 5 CBSE Maths chapters, marking that understands units, and each school's own assessment scheme and report cards.",
+      "Krama is the learning platform we are building for CBSE and ICSE schools, Classes 5–10. Its core already runs end to end on all 15 Class 5 CBSE Maths chapters: practice that marks itself the moment it is submitted, gaps traced back to the topic beneath them, mock papers where every student sits their own version, and a weekly report home, all the way to the school's own report card.",
     icon: GraduationCap,
     highlights: [
       {
         icon: Building2,
-        title: "School-first from the ground up",
+        title: "A school set up from one workbook",
         detail:
-          "Each school gets its own Admin, Teacher and Student roles, with a Super Admin above them. Every role has its own sign-in and its own workspace.",
+          "We add the school and its first admin. Classes, sections, teachers and students arrive in one workbook, checked first and imported whole, with a printable sign-in slip for every student.",
       },
       {
         icon: Boxes,
         title: "A Curriculum Studio, already stocked",
         detail:
-          "Board, class, subject, chapter and concept lessons move through draft, review and publish. All 15 Class 5 CBSE Maths chapters are live, behind automated quality checks.",
+          "All 15 Class 5 CBSE Maths chapters are published, each with its own page of lessons and questions, a review trail behind it and a calendar for every school.",
       },
       {
         icon: Sparkles,
-        title: "The five-day chapter loop",
+        title: "Practice that marks itself",
         detail:
-          "Teachers assign practice to chosen students in a section. Students work through Today's Practice. Results land the moment they submit, with per-question review for the teacher.",
-      },
-      {
-        icon: ClipboardCheck,
-        title: "Marking that understands answers",
-        detail:
-          "Numbers, words and ordering are marked automatically. Units, currency and signs are understood, tolerance and rounding respected, and multi-part answers get a box for each part.",
-      },
-      {
-        icon: PenLine,
-        title: "Part and method marks",
-        detail:
-          "On questions worth two marks or more, students show their working. Teachers review the automatic marks and award part marks with a reason the student can read.",
-      },
-      {
-        icon: Award,
-        title: "Each school's own assessment scheme",
-        detail:
-          "A versioned scheme per class, subject and year, built from weighted components: marks the teacher enters, or the platform's own practice. Grades included, with a worked example.",
+          "Teachers set practice for chosen students. Answers are marked on submission, units, rounding and multi-part answers included, and a weak result opens a Foundation Repair on the topic underneath.",
       },
       {
         icon: ScrollText,
-        title: "Report cards the school issues",
+        title: "Mock papers, one version per student",
         detail:
-          "Co-scholastic areas, attendance, grades and remarks for every student, rolled into Term 1 and Year-End cards from the school's published scheme.",
+          "1,006 question patterns across all 15 chapters. Every student sits their own version, timed on the server with reading time and autosave, and never sees the same question twice.",
       },
       {
-        icon: Lock,
-        title: "Secure from the first sign-in",
+        icon: PenLine,
+        title: "Long answers, marked step by step",
         detail:
-          "Administrators use two-factor verification, every first password must be replaced, and each sign-in page accepts only its own role's accounts.",
+          "Every 3- and 5-mark mock question marks itself one step at a time. On practice, teachers review the working and award part marks with a reason the student can read.",
+      },
+      {
+        icon: Target,
+        title: "My Progress for every student",
+        detail:
+          "A skill map of what is strong, getting there or needs work, a Practise Next that picks the right questions, and a standing band that only ever encourages.",
+      },
+      {
+        icon: Activity,
+        title: "Class Analytics and a weekly note home",
+        detail:
+          "A question-by-student grid and the common misconceptions in each chapter, one click from setting practice. Parents get a weekly report drafted from real work, never a ranking.",
+      },
+      {
+        icon: Award,
+        title: "Report cards on the school's own scheme",
+        detail:
+          "A versioned assessment scheme per class, subject and year, with co-scholastic areas, attendance and remarks, rolled into Term 1 and Year-End cards that carry the school's logo.",
       },
     ],
     screenshots: [],
@@ -381,7 +381,7 @@ export const companyStats = [
   { icon: MapPin, value: "2026", label: "Incorporated in Kolkata, India", animate: false },
   { icon: Layers, value: "2", label: "Platforms on one shared foundation", animate: true },
   { icon: GraduationCap, value: "5", label: "Abacus modules running live on MathPath", animate: true },
-  { icon: Boxes, value: "15", label: "Class 5 CBSE Maths chapters live in Krama", animate: true },
+  { icon: Boxes, value: "1,006", label: "Question patterns behind Krama's mock papers", animate: true },
 ];
 
 // Product-specific facts, shown only on that product's page.
@@ -392,9 +392,9 @@ export const productFacts: Record<string, { value: string; label: string }[]> = 
     { value: "3", label: "Role workspaces: Admin, Teacher and Student" },
   ],
   krama: [
-    { value: "15", label: "Class 5 CBSE Maths chapters, live in the Curriculum Studio" },
-    { value: "5-day", label: "Chapter loop: learn, practise, apply, fix, master" },
-    { value: "4", label: "Role levels, from Super Admin to Student" },
+    { value: "15", label: "Class 5 CBSE Maths chapters, published end to end" },
+    { value: "1,006", label: "Question patterns, so every student sits their own mock paper" },
+    { value: "4", label: "Role workspaces, from Super Admin to Student" },
   ],
 };
 

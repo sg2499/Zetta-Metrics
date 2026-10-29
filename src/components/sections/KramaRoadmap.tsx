@@ -7,34 +7,44 @@ type Status = "done" | "underway" | "next";
 
 const stages: { title: string; status: Status; points: string[] }[] = [
   {
-    title: "Foundation",
+    title: "Schools and roles",
     status: "done",
-    points: ["School → Admin, Teacher, Student structure", "A workspace and sign-in for every role", "Automated checks on every change before it ships"],
+    points: ["Schools added with their first admin", "Setup from one workbook, with sign-in slips", "Two-factor for admins; issued passwords replaced"],
   },
   {
     title: "Curriculum Studio",
     status: "done",
-    points: ["Draft, review and publish workflow", "All 15 Class 5 CBSE Maths chapters live", "Automated question-quality checks"],
+    points: ["Draft, review and publish", "All 15 Class 5 CBSE Maths chapters", "A calendar for every school"],
   },
   {
-    title: "The learning loop",
+    title: "The practice loop",
+    status: "done",
+    points: ["Practice set for chosen students", "Marked the moment it is submitted", "Foundation Repair on the topic beneath"],
+  },
+  {
+    title: "Marking and report cards",
+    status: "done",
+    points: ["Units, tolerance and rounding", "Part and method marks, with a reason", "School schemes and report cards"],
+  },
+  {
+    title: "Mock papers",
+    status: "done",
+    points: ["1,006 question patterns, all 15 chapters", "Every student sits their own version", "Long answers marked step by step"],
+  },
+  {
+    title: "Progress and analytics",
+    status: "done",
+    points: ["My Progress and Practise Next", "Class Analytics and misconceptions", "A weekly report home for parents"],
+  },
+  {
+    title: "Lessons and the daily rhythm",
     status: "underway",
-    points: ["Assign, attempt, auto-mark, results", "Today's Practice and teacher review", "Catch-up paths built on prerequisites"],
+    points: ["Chapter lessons for students", "The five-day loop, released day by day", "A class page for every teacher"],
   },
   {
-    title: "Marking and assessment",
-    status: "underway",
-    points: ["Units, tolerance and rounding", "Part and method marks", "Assessment schemes and report cards"],
-  },
-  {
-    title: "Papers and mocks",
+    title: "More classes, more schools",
     status: "next",
-    points: ["Question papers generated from published chapters", "Mock tests for every class"],
-  },
-  {
-    title: "Analytics and rollout",
-    status: "next",
-    points: ["Insight for schools, teachers and parents", "More classes and subjects", "School-by-school rollout"],
+    points: ["Classes 6–10 and more subjects", "ICSE alongside CBSE", "School-by-school rollout"],
   },
 ];
 
@@ -56,7 +66,7 @@ export default function KramaRoadmap() {
           </div>
         </div>
       </div>
-      <ol className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      <ol className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {stages.map((s, i) => {
           const done = s.status === "done";
           const underwayNow = s.status === "underway";
